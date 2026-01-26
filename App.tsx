@@ -18,14 +18,12 @@ import SubmissionGrid from './components/SubmissionGrid';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardStats from './components/DashboardStats';
-import { getStatusSummary } from './geminiService';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'submissions' | 'members' | 'settings'>('submissions');
   const [members] = useState<Member[]>(mockMembers);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
-  const [aiSummary, setAiSummary] = useState<string>('분석 중...');
 
   // 기수 설정 상태 (기본값: 1월 3일 ~ 1월 26일)
   const [cohortName, setCohortName] = useState('6기');
@@ -41,16 +39,6 @@ const App: React.FC = () => {
   useEffect(() => {
     setSubmissions(generateSubmissions());
   }, []);
-
-  useEffect(() => {
-    if (submissions.length > 0) {
-      const fetchSummary = async () => {
-        const summary = await getStatusSummary(members, submissions);
-        setAiSummary(summary || '');
-      };
-      fetchSummary();
-    }
-  }, [submissions, members]);
 
   const handleSync = () => {
     setIsSyncing(true);
@@ -97,21 +85,6 @@ const App: React.FC = () => {
             <div className="space-y-6">
               {/* 상단 통계 카드 */}
               <DashboardStats members={members} submissions={submissions} />
-
-              {/* AI 분석 요약 */}
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <BarChart3 className="h-5 w-5 text-blue-500" />
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-sm font-semibold text-blue-800">AI 현황 분석 (Gemini)</h3>
-                    <p className="mt-1 text-sm text-blue-700 leading-relaxed italic">
-                      {aiSummary}
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               {/* 메인 제출 그리드 */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
