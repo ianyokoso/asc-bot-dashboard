@@ -1,0 +1,8 @@
+{
+  "name": "ASC Bot Admin Dashboard",
+  "description": "A high-performance management dashboard for ASC Discord Bot administrators to track assignment submissions, manage members across tracks, and monitor automated reminders.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
