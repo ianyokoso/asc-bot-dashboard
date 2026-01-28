@@ -2,7 +2,8 @@
 export enum Track {
   SHORTFORM = 'Shortform',
   LONGFORM = 'Longform',
-  BUILDER = 'Builder',
+  BUILDER_BASIC = 'Builder Basic',
+  BUILDER_ADVANCED = 'Builder Advanced',
   SALES = 'Sales',
   AI_AGENT = 'AI Agent'
 }
@@ -14,6 +15,7 @@ export interface Member {
   name: string;
   discordId: string;
   track: Track;
+  tracks?: Track[];
   joinedAt: string;
   notionSync: boolean;
 }
@@ -22,6 +24,7 @@ export interface Submission {
   memberId: string;
   date: string;
   status: SubmissionStatus;
+  tracks?: Track[];
   link?: string;
 }
 

@@ -1,8 +1,4 @@
-
-import { Member, Track, Submission, SubmissionStatus } from './types';
-
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-01-28 11:12:48)
-const REAL_DATA = {
+{
   "members": [
     {
       "id": "2f396446-e4ec-81d1-abbf-cd24922a71a3",
@@ -75,18 +71,5 @@ const REAL_DATA = {
       "link": "https://www.figma.com/asjdklasjdlkas"
     }
   ],
-  "lastUpdated": "2026-01-28T11:12:48.390703"
-};
-
-export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
-  ...m,
-  track: m.track as Track
-}));
-
-export const generateSubmissions = (): Submission[] => {
-    return REAL_DATA.submissions.map(s => ({
-        ...s,
-        status: s.status as SubmissionStatus,
-        link: s.link || undefined
-    }));
-};
+  "lastUpdated": "2026-01-28T11:08:15.640944"
+}
