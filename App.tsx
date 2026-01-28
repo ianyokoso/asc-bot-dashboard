@@ -19,7 +19,8 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardStats from './components/DashboardStats';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+// Use Vercel Proxy (vercel.json) or Vite Proxy (vite.config.ts)
+const API_BASE_URL = '/api-proxy';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'submissions' | 'members' | 'settings'>('submissions');
@@ -29,9 +30,10 @@ const App: React.FC = () => {
 
   // 기수 설정 상태 (기본값: 1월 3일 ~ 1월 26일)
   // 기수 설정 상태 (기본값: 2월)
-  const [cohortName, setCohortName] = useState('7기');
-  const [startDate, setStartDate] = useState('2024-02-01');
-  const [endDate, setEndDate] = useState('2024-02-29');
+  // 기수 설정 상태 (Fixed Defaults as requested)
+  const [cohortName, setCohortName] = useState('6기');
+  const [startDate, setStartDate] = useState('2026-02-09');
+  const [endDate, setEndDate] = useState('2026-03-09');
 
   // 휴무 금지 기간 상태 (설날 연휴 예시)
   const [holidayStart, setHolidayStart] = useState('2024-02-09');
