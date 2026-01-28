@@ -19,6 +19,8 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardStats from './components/DashboardStats';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'submissions' | 'members' | 'settings'>('submissions');
   const [members, setMembers] = useState<Member[]>(mockMembers);
@@ -43,7 +45,8 @@ const App: React.FC = () => {
 
   // Load settings on mount
   useEffect(() => {
-    fetch('http://localhost:8000/api/settings')
+    // Load Settings on Mount
+    fetch(`${API_BASE_URL}/api/settings`)
       .then(res => res.json())
       .then(data => {
         if (data.cohortName) setCohortName(data.cohortName);
@@ -54,14 +57,22 @@ const App: React.FC = () => {
       })
       .catch(err => console.error("Failed to load settings:", err));
 
-    // Load Data
-    setSubmissions(generateSubmissions());
+    // Load Real Data on Mount
+    fetch(`${API_BASE_URL}/api/data`)
+      .then(res => res.json())
+      .then(result => {
+        if (result.status === 'success') {
+          setMembers(result.data.members);
+          setSubmissions(result.data.submissions);
+        }
+      })
+      .catch(err => console.error("Failed to load data:", err));
   }, []);
 
   const handleSync = async () => {
     setIsSyncing(true);
     try {
-      const res = await fetch('http://localhost:8000/api/sync', { method: 'POST' });
+      const res = await fetch(`${API_BASE_URL}/api/sync`, { method: 'POST' });
       const result = await res.json();
 
       if (result.status === 'success') {
@@ -95,7 +106,7 @@ const App: React.FC = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:8000/api/settings', {
+      const res = await fetch(`${API_BASE_URL}/api/settings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -181,10 +192,10 @@ const App: React.FC = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-medium">{member.name}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${(member.track === Track.BUILDER_BASIC || member.track === Track.BUILDER_ADVANCED) ? 'bg-indigo-100 text-indigo-700' :
-                              member.track === Track.SHORTFORM ? 'bg-pink-100 text-pink-700' :
-                                member.track === Track.LONGFORM ? 'bg-purple-100 text-purple-700' :
-                                  member.track === Track.SALES ? 'bg-green-100 text-green-700' :
-                                    'bg-amber-100 text-amber-700'
+                            member.track === Track.SHORTFORM ? 'bg-pink-100 text-pink-700' :
+                              member.track === Track.LONGFORM ? 'bg-purple-100 text-purple-700' :
+                                member.track === Track.SALES ? 'bg-green-100 text-green-700' :
+                                  'bg-amber-100 text-amber-700'
                             }`}>
                             {member.track}
                           </span>

@@ -16,7 +16,7 @@ interface SubmissionGridProps {
 }
 
 const SubmissionGrid: React.FC<SubmissionGridProps> = ({ members, submissions, cohortConfig }) => {
-  const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
+  const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT, Track.UNASSIGNED];
   const [activeTrack, setActiveTrack] = useState<Track>(Track.SHORTFORM);
 
   // 현재 선택된 트랙의 멤버들

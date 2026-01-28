@@ -5,7 +5,8 @@ export enum Track {
   BUILDER_BASIC = 'Builder Basic',
   BUILDER_ADVANCED = 'Builder Advanced',
   SALES = 'Sales',
-  AI_AGENT = 'AI Agent'
+  AI_AGENT = 'AI Agent',
+  UNASSIGNED = 'Unassigned'
 }
 
 export type SubmissionStatus = 'submitted' | 'missed' | 'pending' | 'none';
