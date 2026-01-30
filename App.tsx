@@ -47,7 +47,7 @@ const App: React.FC = () => {
 
   // Load settings on mount
   useEffect(() => {
-    // Load Settings on Mount
+    // 1. Load Settings
     fetch(`${API_BASE_URL}/api/settings`)
       .then(res => res.json())
       .then(data => {
@@ -59,19 +59,36 @@ const App: React.FC = () => {
       })
       .catch(err => console.error("Failed to load settings:", err));
 
-    // Load Real Data on Mount
-    fetch(`${API_BASE_URL}/api/data`)
-      .then(res => res.json())
-      .then(result => {
+    // 2. Load Real Data with Auto-Sync Fallback
+    const loadData = async () => {
+      setIsSyncing(true); // Show loading initially
+      try {
+        console.log("Fetching cached data...");
+        const res = await fetch(`${API_BASE_URL}/api/data`);
+        const result = await res.json();
+
         if (result.status === 'success') {
+          console.log("Cached data loaded successfully");
           setMembers(result.data.members);
           setSubmissions(result.data.submissions);
+          setIsSyncing(false);
+        } else {
+          // If cache missing or error, trigger Auto-Sync
+          console.warn("Cached data missing, triggering auto-sync...", result.message);
+          await handleSync(true); // Pass true to suppress alerts for auto-sync
         }
-      })
-      .catch(err => console.error("Failed to load data:", err));
+      } catch (err) {
+        console.error("Failed to load cached data:", err);
+        // Fallback to sync on network error too?
+        console.log("Attempting auto-sync due to cache fetch error...");
+        await handleSync(true);
+      }
+    };
+
+    loadData();
   }, []);
 
-  const handleSync = async () => {
+  const handleSync = async (isAuto = false) => {
     setIsSyncing(true);
     try {
       const res = await fetch(`${API_BASE_URL}/api/sync`, { method: 'POST' });
@@ -79,18 +96,17 @@ const App: React.FC = () => {
 
       if (result.status === 'success') {
         const newData = result.data;
-        // Type casting might be implicit or strictly handled, assuming JSON matches 
         setMembers(newData.members);
         setSubmissions(newData.submissions);
-        alert("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.");
+        if (!isAuto) alert("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.");
+        else console.log("✅ Auto-sync completed.");
       } else {
-        alert(`❌ 동기화 실패: ${result.message}`);
+        if (!isAuto) alert(`❌ 동기화 실패: ${result.message}`);
+        else console.error(`❌ Auto-sync failed: ${result.message}`);
       }
     } catch (err) {
       console.error(err);
-      alert(`❌ 서버 접속 실패: ${err} \n(admin_server.py가 켜져 있나요?)`);
-      // Fallback: If server fails, maybe keep old data or show mocks? 
-      // For now, let's just alert.
+      if (!isAuto) alert(`❌ 서버 접속 실패: ${err} \n(admin_server.py가 켜져 있나요?)`);
     } finally {
       setIsSyncing(false);
     }
