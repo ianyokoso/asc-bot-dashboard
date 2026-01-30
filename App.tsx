@@ -47,7 +47,9 @@ const Toast: React.FC<ToastProps> = ({ message, type, visible, onClose }) => {
 };
 
 // Use Vercel Proxy (vercel.json) or Vite Proxy (vite.config.ts)
-const API_BASE_URL = '/api-proxy';
+// [FIX] URL Logic: Use Proxy for Local & Vercel (HTTPS), Direct IP for Server (HTTP)
+const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
+const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'submissions' | 'members' | 'settings'>('submissions');
@@ -210,7 +212,7 @@ const App: React.FC = () => {
         showToast(`설정 저장 실패: ${result.message}`, 'error');
       } else {
         console.log("✅ Notification setting updated immediately.");
-        showToast(newState ? "알림이 활성화되었습니다." : "알림이 비활성화되었습니다.", 'success');
+        showToast(newState ? "알림이 활성화되었습니다." : "알림이 비활성화되었습니다.", newState ? 'success' : 'error');
       }
     } catch (err) {
       setNotificationsEnabled(!newState);
@@ -221,7 +223,9 @@ const App: React.FC = () => {
   const currentHeaderTitle = useMemo(() => {
     if (activeTab === 'submissions') return `${cohortName} 과제 제출 현황`;
     if (activeTab === 'members') return '멤버 관리';
-    return '봇 설정';
+    if (activeTab === 'submissions') return `${cohortName} 과제 제출 현황`;
+    if (activeTab === 'members') return '멤버 관리';
+    return '봇 설정 (v2.0 - Red Patch)';
   }, [activeTab, cohortName]);
 
   const cohortConfig = useMemo(() => ({
