@@ -19,6 +19,33 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardStats from './components/DashboardStats';
 
+// [NEW] Simple Toast Component
+interface ToastProps {
+  message: string;
+  type: 'success' | 'error';
+  visible: boolean;
+  onClose: () => void;
+}
+
+const Toast: React.FC<ToastProps> = ({ message, type, visible, onClose }) => {
+  useEffect(() => {
+    if (visible) {
+      const timer = setTimeout(onClose, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [visible, onClose]);
+
+  if (!visible) return null;
+
+  return (
+    <div className={`fixed bottom-6 right-6 px-6 py-3 rounded-lg shadow-lg text-white font-medium transform transition-all duration-300 z-50 flex items-center gap-2 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      } ${type === 'success' ? 'bg-emerald-500' : 'bg-rose-500'}`}>
+      {type === 'success' ? <CheckCircle className="w-5 h-5" /> : <AlertTriangle className="w-5 h-5" />}
+      {message}
+    </div>
+  );
+};
+
 // Use Vercel Proxy (vercel.json) or Vite Proxy (vite.config.ts)
 const API_BASE_URL = '/api-proxy';
 
@@ -47,6 +74,21 @@ const App: React.FC = () => {
 
   // 알림 전체 활성화 상태
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+
+  // [NEW] Toast State
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error'; visible: boolean }>({
+    message: '',
+    type: 'success',
+    visible: false
+  });
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type, visible: true });
+  };
+
+  const hideToast = () => {
+    setToast(prev => ({ ...prev, visible: false }));
+  };
 
   // Load settings on mount
   useEffect(() => {
@@ -149,6 +191,33 @@ const App: React.FC = () => {
     }
   };
 
+  // [NEW] Immediate Toggle Handler
+  const handleToggleNotifications = async () => {
+    const newState = !notificationsEnabled;
+    setNotificationsEnabled(newState); // Optimistic Update
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/settings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ notificationsEnabled: newState })
+      });
+      const result = await res.json();
+
+      if (result.status !== 'success') {
+        // Revert on failure
+        setNotificationsEnabled(!newState);
+        showToast(`설정 저장 실패: ${result.message}`, 'error');
+      } else {
+        console.log("✅ Notification setting updated immediately.");
+        showToast(newState ? "알림이 활성화되었습니다." : "알림이 비활성화되었습니다.", 'success');
+      }
+    } catch (err) {
+      setNotificationsEnabled(!newState);
+      showToast(`서버 통신 오류: ${err}`, 'error');
+    }
+  };
+
   const currentHeaderTitle = useMemo(() => {
     if (activeTab === 'submissions') return `${cohortName} 과제 제출 현황`;
     if (activeTab === 'members') return '멤버 관리';
@@ -173,6 +242,13 @@ const App: React.FC = () => {
           onSync={handleSync}
           onSave={activeTab === 'settings' ? handleApplySettings : undefined}
           isSyncing={isSyncing}
+        />
+
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          visible={toast.visible}
+          onClose={hideToast}
         />
 
         <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
@@ -318,7 +394,7 @@ const App: React.FC = () => {
                     <p className="text-sm text-gray-500 mt-1">봇의 모든 자동 알림(과제 리마인드 등)을 켜거나 끕니다.</p>
                   </div>
                   <button
-                    onClick={() => setNotificationsEnabled(!notificationsEnabled)}
+                    onClick={handleToggleNotifications}
                     className={`w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-300 ${notificationsEnabled ? 'bg-indigo-500' : 'bg-gray-300'}`}
                   >
                     <div className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${notificationsEnabled ? 'translate-x-6' : 'translate-x-0'}`} />
