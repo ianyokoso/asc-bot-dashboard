@@ -45,6 +45,9 @@ const App: React.FC = () => {
   const [weeklyTime1, setWeeklyTime1] = useState('10:00');
   const [weeklyTime2, setWeeklyTime2] = useState('18:00');
 
+  // 알림 전체 활성화 상태
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+
   // Load settings on mount
   useEffect(() => {
     // 1. Load Settings
@@ -56,6 +59,7 @@ const App: React.FC = () => {
         if (data.endDate) setEndDate(data.endDate);
         if (data.holidayStart) setHolidayStart(data.holidayStart);
         if (data.holidayEnd) setHolidayEnd(data.holidayEnd);
+        if (data.notificationsEnabled !== undefined) setNotificationsEnabled(data.notificationsEnabled);
       })
       .catch(err => console.error("Failed to load settings:", err));
 
@@ -120,7 +124,8 @@ const App: React.FC = () => {
       startDate,
       endDate,
       holidayStart,
-      holidayEnd
+      holidayEnd,
+      notificationsEnabled
     };
 
     try {
@@ -301,6 +306,23 @@ const App: React.FC = () => {
                       />
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold flex items-center gap-2">
+                      <Bell className="w-5 h-5 text-indigo-500" /> 알림 전체 설정
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">봇의 모든 자동 알림(과제 리마인드 등)을 켜거나 끕니다.</p>
+                  </div>
+                  <button
+                    onClick={() => setNotificationsEnabled(!notificationsEnabled)}
+                    className={`w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-300 ${notificationsEnabled ? 'bg-indigo-500' : 'bg-gray-300'}`}
+                  >
+                    <div className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${notificationsEnabled ? 'translate-x-6' : 'translate-x-0'}`} />
+                  </button>
                 </div>
               </div>
 
