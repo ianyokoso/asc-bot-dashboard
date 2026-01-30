@@ -1,16 +1,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import {
-  LayoutGrid,
-  Users,
-  Settings,
-  Bell,
-  RefreshCw,
-  CheckCircle,
-  BarChart3,
-  AlertTriangle,
-  Calendar,
-  Save
+  Calendar, Users, Settings, Save, AlertTriangle, CheckCircle, Bell, Mail, Beaker
 } from 'lucide-react';
 import { mockMembers, generateSubmissions } from './mockData';
 import { Track, Member, Submission } from './types';
@@ -50,6 +41,82 @@ const Toast: React.FC<ToastProps> = ({ message, type, visible, onClose }) => {
 // [FIX] URL Logic: Use Proxy for Local & Vercel (HTTPS), Direct IP for Server (HTTP)
 const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
 const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
+
+const NotificationTester: React.FC<{ members: Member[], onTest: (targetId: string, msgType: string) => void }> = ({ members, onTest }) => {
+  const [targetType, setTargetType] = useState<'me' | 'user'>('me');
+  const [selectedUserId, setSelectedUserId] = useState<string>('');
+  const [msgType, setMsgType] = useState<string>('숏폼 미제출 리마인더');
+
+  const handleTest = () => {
+    let targetId = '1392850552416768072'; // Default to admin for 'me'
+    if (targetType === 'user') {
+      if (!selectedUserId) return alert("테스트 대상을 선택해주세요.");
+      targetId = selectedUserId;
+    }
+    onTest(targetId, msgType);
+  };
+
+  return (
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mt-6">
+      <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+        <Mail className="w-5 h-5 text-indigo-500" /> 알림 테스트
+      </h3>
+
+      <div className="space-y-6">
+        {/* Target Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">테스트 대상 선택</label>
+          <div className="flex items-center gap-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="radio" checked={targetType === 'me'} onChange={() => setTargetType('me')} className="w-4 h-4 text-indigo-600" />
+              <span>내 DM으로만 보내기</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="radio" checked={targetType === 'user'} onChange={() => setTargetType('user')} className="w-4 h-4 text-indigo-600" />
+              <span>특정 사용자에게 보내기</span>
+            </label>
+          </div>
+
+          {targetType === 'user' && (
+            <div className="mt-2">
+              <select
+                className="w-full md:w-1/2 p-2 border border-gray-300 rounded-md"
+                value={selectedUserId}
+                onChange={(e) => setSelectedUserId(e.target.value)}
+              >
+                <option value="">사용자 선택...</option>
+                {members.map(m => (
+                  <option key={m.discordId} value={m.discordId}>@{m.name} ({m.track})</option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
+
+        {/* Message Type Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">알림 유형</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {['숏폼 미제출 리마인더', '주간 과제 1차 리마인더 (오후)', '주간 과제 2차 리마인더 (저녁)', '패널티 경고 (4회)', '패널티 탈락 (5회)'].map((type) => (
+              <label key={type} className="flex items-center gap-2 cursor-pointer p-2 border rounded-lg hover:bg-gray-50 border-gray-200">
+                <input type="radio" name="msgType" checked={msgType === type} onChange={() => setMsgType(type)} className="w-4 h-4 text-indigo-600" />
+                <span className="text-sm">{type}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Action Button */}
+        <button
+          onClick={handleTest}
+          className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center gap-2 shadow-md"
+        >
+          <Beaker className="w-5 h-5" /> 테스트 알림 보내기
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'submissions' | 'members' | 'settings'>('submissions');
@@ -217,6 +284,25 @@ const App: React.FC = () => {
     } catch (err) {
       setNotificationsEnabled(!newState);
       showToast(`서버 통신 오류: ${err}`, 'error');
+    }
+  };
+
+  // [NEW] Test Notification Handler
+  const handleTestNotification = async (targetId: string, msgType: string) => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/test-notification`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ targetId, msgType })
+      });
+      const result = await res.json();
+      if (result.status === 'success') {
+        showToast(`✅ 테스트 알림 발송 요청 완료!`, 'success');
+      } else {
+        showToast(`❌ 발송 요청 실패: ${result.message}`, 'error');
+      }
+    } catch (err) {
+      showToast(`❌ 서버 통신 오류: ${err}`, 'error');
     }
   };
 
@@ -433,6 +519,10 @@ const App: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* [NEW] Notification Tester UI */}
+              <NotificationTester members={members} onTest={handleTestNotification} />
+
             </div>
           )}
         </div>
