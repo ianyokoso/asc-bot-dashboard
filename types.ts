@@ -15,6 +15,7 @@ export interface Member {
   id: string;
   name: string;
   discordId: string;
+  discordUsername?: string;
   track: Track;
   tracks?: Track[];
   joinedAt: string;

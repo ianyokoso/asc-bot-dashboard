@@ -204,8 +204,9 @@ const SubmissionGrid: React.FC<SubmissionGridProps> = ({ members, submissions, c
               filteredMembers.map(member => (
                 <tr key={member.id} className="hover:bg-gray-50 transition-colors group">
                   <td className="px-6 py-4 border-r border-gray-200 bg-white sticky left-0 z-10 shadow-[1px_0_3px_rgba(0,0,0,0.05)] group-hover:bg-gray-50">
-                    <div className="flex items-center">
-                      <span className="text-[13px] font-bold text-gray-900">{member.discordId}</span>
+                    <div className="flex flex-col">
+                      <span className="text-[13px] font-bold text-gray-900">{member.name}</span>
+                      <span className="text-[11px] text-gray-500">{member.discordUsername || member.discordId}</span>
                     </div>
                   </td>
                   {displayDates.map((date) => {

@@ -431,8 +431,8 @@ const App: React.FC = () => {
                     {members.map(member => (
                       <tr key={member.id} className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">{member.name}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-indigo-600 font-medium">{member.discordId}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-xs text-gray-400">{member.id}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-indigo-600 font-medium">{member.discordUsername || member.discordId}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-xs text-gray-400">{member.discordId}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${(member.track === Track.BUILDER_BASIC || member.track === Track.BUILDER_ADVANCED) ? 'bg-indigo-100 text-indigo-700' :
                             member.track === Track.SHORTFORM ? 'bg-pink-100 text-pink-700' :
