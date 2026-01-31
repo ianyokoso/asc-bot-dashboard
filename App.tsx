@@ -6,6 +6,7 @@ import {
 import { mockMembers, generateSubmissions } from './mockData';
 import { Track, Member, Submission } from './types';
 import SubmissionGrid from './components/SubmissionGrid';
+import SubmissionGridModern from './components/SubmissionGridModern';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardStats from './components/DashboardStats';
@@ -173,7 +174,7 @@ const NotificationTester: React.FC<{ members: Member[], onTest: (targetId: strin
 };
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'submissions' | 'members' | 'settings'>('submissions');
+  const [activeTab, setActiveTab] = useState<'submissions' | 'design_test' | 'members' | 'settings'>('submissions');
   const [members, setMembers] = useState<Member[]>(mockMembers);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -362,8 +363,7 @@ const App: React.FC = () => {
 
   const currentHeaderTitle = useMemo(() => {
     if (activeTab === 'submissions') return `${cohortName} 과제 제출 현황`;
-    if (activeTab === 'members') return '멤버 관리';
-    if (activeTab === 'submissions') return `${cohortName} 과제 제출 현황`;
+    if (activeTab === 'design_test') return `${cohortName} 과제 제출 현황 (UI Test)`;
     if (activeTab === 'members') return '멤버 관리';
     return '봇 설정 (v2.0 - Red Patch)';
   }, [activeTab, cohortName]);
@@ -409,6 +409,20 @@ const App: React.FC = () => {
                   cohortConfig={cohortConfig}
                 />
               </div>
+            </div>
+          )}
+
+          {activeTab === 'design_test' && (
+            <div className="space-y-6">
+              <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-4 text-sm text-indigo-800 flex items-center gap-2">
+                <Beaker className="w-5 h-5" />
+                <span>UI 테스트 모드입니다. (Glassmorphism, Sticky Header, Tooltips 적용)</span>
+              </div>
+              <SubmissionGridModern
+                members={members}
+                submissions={submissions}
+                cohortConfig={cohortConfig}
+              />
             </div>
           )}
 

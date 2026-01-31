@@ -1,15 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import { Table, Users, Settings, Zap } from 'lucide-react';
+import { Table, Users, Settings, Zap, Beaker } from 'lucide-react';
 
 interface SidebarProps {
-  activeTab: 'submissions' | 'members' | 'settings';
-  setActiveTab: (tab: 'submissions' | 'members' | 'settings') => void;
+  activeTab: 'submissions' | 'design_test' | 'members' | 'settings';
+  setActiveTab: (tab: 'submissions' | 'design_test' | 'members' | 'settings') => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   const menuItems = [
     { id: 'submissions', icon: Table, label: '제출 현황' },
+    { id: 'design_test', icon: Beaker, label: '제출 현황 (Test)' },
     { id: 'members', icon: Users, label: '멤버 관리' },
     { id: 'settings', icon: Settings, label: '봇 설정' },
   ];
