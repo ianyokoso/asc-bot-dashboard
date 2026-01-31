@@ -46,6 +46,8 @@ const NotificationTester: React.FC<{ members: Member[], onTest: (targetId: strin
   const [targetType, setTargetType] = useState<'me' | 'user'>('me');
   const [selectedUserId, setSelectedUserId] = useState<string>('');
   const [msgType, setMsgType] = useState<string>('숏폼 미제출 리마인더');
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleTest = () => {
     let targetId = '1392850552416768072'; // Default to admin for 'me'
@@ -78,41 +80,93 @@ const NotificationTester: React.FC<{ members: Member[], onTest: (targetId: strin
           </div>
 
           {targetType === 'user' && (
-            <div className="mt-2">
-              <select
-                className="w-full md:w-1/2 p-2 border border-gray-300 rounded-md"
-                value={selectedUserId}
-                onChange={(e) => setSelectedUserId(e.target.value)}
+            <div className="mt-2 relative w-full md:w-1/2">
+              {/* Trigger Button */}
+              <button
+                type="button"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="w-full text-left p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 bg-white flex justify-between items-center"
               >
-                <option value="">사용자 선택...</option>
-                {members.map(m => (
-                  <option key={m.discordId} value={m.discordId}>@{m.name} ({m.track})</option>
-                ))}
-              </select>
+                <span className={selectedUserId ? "text-black" : "text-gray-500"}>
+                  {selectedUserId
+                    ? (() => {
+                      const m = members.find(m => m.discordId === selectedUserId);
+                      return m ? `@${m.name}/${m.discordId}/` : "사용자 선택...";
+                    })()
+                    : "사용자 선택..."}
+                </span>
+                <span className="text-gray-400 text-xs">▼</span>
+              </button>
+
+              {/* Dropdown Panel */}
+              {isDropdownOpen && (
+                <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 flex flex-col">
+                  {/* Search Input (Sticky Top) */}
+                  <div className="p-2 border-b border-gray-100 bg-gray-50 rounded-t-md sticky top-0">
+                    <input
+                      type="text"
+                      placeholder="이름 검색..."
+                      className="w-full p-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      autoFocus
+                    />
+                  </div>
+
+                  {/* Scrollable List */}
+                  <div className="overflow-y-auto flex-1 custom-scrollbar">
+                    {members
+                      .filter(m =>
+                        m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        (m.track && m.track.toLowerCase().includes(searchTerm.toLowerCase()))
+                      )
+                      .map(m => (
+                        <div
+                          key={m.discordId}
+                          onClick={() => {
+                            setSelectedUserId(m.discordId);
+                            setIsDropdownOpen(false);
+                            setSearchTerm(''); // Optional: Clear search on select
+                          }}
+                          className={`p-2 text-sm cursor-pointer hover:bg-indigo-50 ${selectedUserId === m.discordId ? 'bg-indigo-100 text-indigo-700 font-medium' : 'text-gray-700'}`}
+                        >
+                          @{m.name}/{m.discordId}/ <span className="text-xs text-gray-400">({m.track})</span>
+                        </div>
+                      ))}
+
+                    {members.filter(m =>
+                      m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                      (m.track && m.track.toLowerCase().includes(searchTerm.toLowerCase()))
+                    ).length === 0 && (
+                        <div className="p-3 text-sm text-gray-400 text-center">검색 결과 없음</div>
+                      )}
+                  </div>
+                </div>
+              )}
             </div>
           )}
-        </div>
 
-        {/* Message Type Selection */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">알림 유형</label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {['숏폼 미제출 리마인더', '주간 과제 1차 리마인더 (오후)', '주간 과제 2차 리마인더 (저녁)', '패널티 경고 (4회)', '패널티 탈락 (5회)'].map((type) => (
-              <label key={type} className="flex items-center gap-2 cursor-pointer p-2 border rounded-lg hover:bg-gray-50 border-gray-200">
-                <input type="radio" name="msgType" checked={msgType === type} onChange={() => setMsgType(type)} className="w-4 h-4 text-indigo-600" />
-                <span className="text-sm">{type}</span>
-              </label>
-            ))}
+          {/* Message Type Selection */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">알림 유형</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {['숏폼 미제출 리마인더', '주간 과제 1차 리마인더 (오후)', '주간 과제 2차 리마인더 (저녁)', '패널티 경고 (4회)', '패널티 탈락 (5회)'].map((type) => (
+                <label key={type} className="flex items-center gap-2 cursor-pointer p-2 border rounded-lg hover:bg-gray-50 border-gray-200">
+                  <input type="radio" name="msgType" checked={msgType === type} onChange={() => setMsgType(type)} className="w-4 h-4 text-indigo-600" />
+                  <span className="text-sm">{type}</span>
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Action Button */}
-        <button
-          onClick={handleTest}
-          className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center gap-2 shadow-md"
-        >
-          <Beaker className="w-5 h-5" /> 테스트 알림 보내기
-        </button>
+          {/* Action Button */}
+          <button
+            onClick={handleTest}
+            className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center gap-2 shadow-md"
+          >
+            <Beaker className="w-5 h-5" /> 테스트 알림 보내기
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -365,8 +419,9 @@ const App: React.FC = () => {
                 <table className="w-full text-left">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                      <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">디스코드</th>
                       <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">이름</th>
+                      <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">디스코드 ID</th>
+                      <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">사용자 ID</th>
                       <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">트랙</th>
                       <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider text-center">노션 연동</th>
                       <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">가입일</th>
@@ -375,10 +430,9 @@ const App: React.FC = () => {
                   <tbody className="divide-y divide-gray-200">
                     {members.map(member => (
                       <tr key={member.id} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-base font-bold text-indigo-600">{member.discordId}</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-medium">{member.name}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">{member.name}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-indigo-600 font-medium">{member.discordId}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-xs text-gray-400">{member.id}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${(member.track === Track.BUILDER_BASIC || member.track === Track.BUILDER_ADVANCED) ? 'bg-indigo-100 text-indigo-700' :
                             member.track === Track.SHORTFORM ? 'bg-pink-100 text-pink-700' :
