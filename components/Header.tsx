@@ -7,23 +7,69 @@ interface HeaderProps {
   onSync: () => void;
   onSave?: () => void;
   isSyncing: boolean;
+  startDate?: string;
+  endDate?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, onSync, onSave, isSyncing }) => {
+const Header: React.FC<HeaderProps> = ({ title, onSync, onSave, isSyncing, startDate, endDate }) => {
+  // Calculate Progress
+  const calculateProgress = () => {
+    if (!startDate || !endDate) return 0;
+    const start = new Date(startDate).getTime();
+    const end = new Date(endDate).getTime();
+    const now = new Date().getTime();
+    const total = end - start;
+    const current = now - start;
+    if (total <= 0) return 0;
+    return Math.min(Math.max((current / total) * 100, 0), 100);
+  };
+
+  const progress = calculateProgress();
+  const formatShortDate = (dateStr?: string) => {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    return `${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`;
+  };
+
   return (
     <header className="h-16 bg-white border-b border-gray-200 px-6 flex items-center justify-between flex-shrink-0">
-      <h1 className="text-xl font-bold text-gray-800">{title}</h1>
+      <div className="flex items-center gap-6">
+        <h1 className="text-xl font-bold text-gray-800">{title}</h1>
+
+        {startDate && endDate && (
+          <div className="hidden md:flex items-center gap-4 ml-4">
+            <span className="text-[10px] font-bold text-gray-400 font-sans tracking-tight">{formatShortDate(startDate)}</span>
+
+            {/* Luxury Progress Bar Container */}
+            <div className="w-64 h-3 bg-slate-200/40 rounded-full backdrop-blur-md border border-white/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] relative z-0">
+
+              {/* Gradient Fill */}
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-[#1e293b] via-indigo-500 to-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.3)] relative"
+                style={{ width: `${progress}%` }}
+              >
+                {/* Glowing Circular Pin */}
+                <div className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(34,211,238,0.6)] border-[3px] border-cyan-50 z-10 flex items-center justify-center">
+                  <div className="w-1 h-1 bg-cyan-500 rounded-full animate-pulse"></div>
+                </div>
+
+                {/* Glass Tooltip */}
+                <div className="absolute -right-8 -top-10 bg-white/70 backdrop-blur-xl px-2.5 py-1 rounded-lg border border-white/80 shadow-[0_8px_16px_rgba(0,0,0,0.05)] flex flex-col items-center transform transition-all hover:scale-105">
+                  <span className="text-[10px] font-extrabold text-slate-600 tracking-wide font-sans leading-none">
+                    TODAY <span className="text-cyan-600">{formatShortDate(new Date().toISOString())}</span>
+                  </span>
+                  {/* Tooltip Arrow */}
+                  <div className="w-1.5 h-1.5 bg-white/70 rotate-45 border-r border-b border-white/80 absolute -bottom-0.5"></div>
+                </div>
+              </div>
+            </div>
+
+            <span className="text-[10px] font-bold text-gray-400 font-sans tracking-tight">{formatShortDate(endDate)}</span>
+          </div>
+        )}
+      </div>
 
       <div className="flex items-center gap-4">
-        <div className="relative hidden sm:block">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder="멤버 이름 검색..."
-            className="pl-9 pr-4 py-2 bg-gray-100 border-transparent rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all w-64"
-          />
-        </div>
-
         {onSave && (
           <button
             onClick={onSave}
@@ -40,11 +86,6 @@ const Header: React.FC<HeaderProps> = ({ title, onSync, onSave, isSyncing }) => 
         >
           <RefreshCw className={`w-4 h-4 ${isSyncing ? 'animate-spin' : ''}`} />
           {isSyncing ? '동기화 중...' : '새로고침'}
-        </button>
-
-        <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors relative">
-          <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
         </button>
       </div>
     </header>

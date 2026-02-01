@@ -10,7 +10,6 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   const menuItems = [
     { id: 'submissions', icon: Table, label: '제출 현황' },
-    { id: 'design_test', icon: Beaker, label: '제출 현황 (Test)' },
     { id: 'members', icon: Users, label: '멤버 관리' },
     { id: 'settings', icon: Settings, label: '봇 설정' },
   ];
@@ -22,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   useEffect(() => {
     const checkStatus = async () => {
       try {
-        const res = await fetch('/api-proxy/api/status');
+        const res = await fetch('http://168.107.16.76:8000/api/status');
         const data = await res.json();
 
         if (data.status === 'online') setBotStatus('online');
@@ -60,48 +59,72 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   };
 
   return (
-    <aside className="w-64 bg-gray-900 text-white flex flex-col hidden md:flex">
-      <div className="p-6 flex items-center gap-3">
-        <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-          <Zap className="w-6 h-6 text-white fill-white" />
+    <aside className="w-64 h-full bg-white/10 backdrop-blur-xl border-r border-white/20 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-all duration-300 relative z-50">
+
+      {/* Branding Area */}
+      <div className="p-8 pb-6 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-indigo-900/10 hover:scale-105 transition-transform duration-300 bg-white/40 backdrop-blur-sm border border-white/50">
+          <img src="/asc_logo.png" alt="ASC Logo" className="w-full h-full object-cover" />
         </div>
-        <span className="text-xl font-bold tracking-tight">ASC Admin</span>
+        <span className="text-xl font-extrabold tracking-tight text-[#1e293b] font-sans">ASC Tracker</span>
       </div>
 
-      <nav className="flex-1 px-4 py-6 space-y-1">
-        {menuItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => setActiveTab(item.id as any)}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${activeTab === item.id
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-              }`}
-          >
-            <item.icon className={`w-5 h-5 ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`} />
-            {item.label}
-          </button>
-        ))}
+      {/* Navigation */}
+      <nav className="flex-1 px-4 space-y-1.5 mt-2">
+        {menuItems.map((item) => {
+          // Hide design test if needed, or keep for dev
+          if (item.id === 'design_test') return null;
+
+          const isActive = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-2xl transition-all duration-200 group relative overflow-hidden ${isActive
+                  ? 'bg-white/60 text-[#1e293b] shadow-sm ring-1 ring-white/60 backdrop-blur-md'
+                  : 'text-gray-500 hover:bg-white/30 hover:text-gray-800'
+                }`}
+            >
+              <item.icon
+                className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'text-[#1e293b] scale-105' : 'text-gray-400 group-hover:text-gray-600'
+                  }`}
+              />
+              <span className={`font-bold text-sm tracking-wide ${isActive ? 'font-nav-active' : 'font-nav'}`}>
+                {item.label}
+              </span>
+
+              {/* Active Indicator Dot */}
+              {isActive && (
+                <div className="absolute right-4 w-1.5 h-1.5 rounded-full bg-[#1e293b] shadow-[0_0_8px_rgba(30,41,59,0.5)]"></div>
+              )}
+            </button>
+          );
+        })}
       </nav>
 
-      <div className="p-4 border-t border-gray-800">
-        <div className="bg-gray-800 rounded-lg p-3 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500"></div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold truncate">Admin User</p>
-            <p className="text-[10px] text-gray-500 truncate">Operation Team</p>
+      {/* Footer / User Info */}
+      <div className="p-6 border-t border-white/20">
+        <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/20 border border-white/30 hover:bg-white/30 transition-colors cursor-pointer">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs shadow-inner">
+            AD
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs font-bold text-[#1e293b]">Admin User</span>
+            <span className="text-[10px] text-gray-500">Manager Access</span>
           </div>
         </div>
       </div>
-
       {/* Bot Status Indicator */}
-      <div className="px-4 pb-4">
-        <div className="bg-gray-800 rounded-lg p-3 border border-gray-700">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-xs font-bold text-gray-300">{getStatusText()}</span>
-            <div className={`w-2.5 h-2.5 rounded-full ${getStatusColor()} animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.3)]`}></div>
+      <div className="px-4 pb-6">
+        <div className="bg-white/40 rounded-2xl p-4 border border-white/60 shadow-sm backdrop-blur-md">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-bold text-gray-700">{getStatusText()}</span>
+            <div className={`w-2.5 h-2.5 rounded-full ${getStatusColor()} animate-pulse shadow-sm`}></div>
           </div>
-          <p className="text-[10px] text-gray-500">마지막 응답: {lastSeenText}</p>
+          <div className="flex items-center justify-between text-[10px] text-gray-500">
+            <span>Last seen:</span>
+            <span className="font-mono font-medium">{lastSeenText}</span>
+          </div>
         </div>
       </div>
     </aside>

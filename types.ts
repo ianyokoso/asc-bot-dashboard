@@ -16,6 +16,8 @@ export interface Member {
   name: string;
   discordId: string;
   discordUsername?: string;
+  discordNickname?: string; // [NEW] Discord Nickname (e.g. "이충우/caleb/0기")
+  profileImage?: string; // [NEW] Profile Picture URL
   track: Track;
   tracks?: Track[];
   joinedAt: string;

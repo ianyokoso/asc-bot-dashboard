@@ -3,6 +3,10 @@
         {
             "source": "/api-proxy/:match*",
             "destination": "http://168.107.16.76:8000/:match*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
