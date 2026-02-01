@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Settings, AlertTriangle, Bell, CheckCircle, Minus } from 'lucide-react';
+import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import LuxuryHeader from '../components/LuxuryHeader';
 import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
@@ -149,10 +149,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 <div className="p-6 rounded-3xl bg-white/30 backdrop-blur-2xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
                                     <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-[80px] -mr-40 -mt-40 pointer-events-none"></div>
 
-                                    <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-[#1e293b]">
-                                        <span className="w-1.5 h-5 bg-[#1e293b] rounded-full"></span>
-                                        기수 및 기간 설정
-                                    </h3>
+                                    <div className="flex justify-between items-center mb-6">
+                                        <h3 className="text-lg font-bold flex items-center gap-3 text-[#1e293b]">
+                                            <span className="w-1.5 h-5 bg-[#1e293b] rounded-full"></span>
+                                            기수 및 기간 설정
+                                        </h3>
+                                        <button
+                                            onClick={onApplySettings}
+                                            className="px-3 py-1.5 bg-[#1e293b] hover:bg-[#334155] text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+                                        >
+                                            <Save className="w-3.5 h-3.5" />
+                                            저장
+                                        </button>
+                                    </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
@@ -194,10 +203,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                                 {/* 2. Holiday Setting */}
                                 <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
-                                    <h3 className="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                        <div className="w-1 h-5 bg-amber-400 rounded-full"></div>
-                                        휴무 기간 설정
-                                    </h3>
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h3 className="text-base font-bold flex items-center gap-2 text-gray-800">
+                                            <div className="w-1 h-5 bg-amber-400 rounded-full"></div>
+                                            휴무 기간 설정
+                                        </h3>
+                                        <button
+                                            onClick={onApplySettings}
+                                            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+                                        >
+                                            <Save className="w-3.5 h-3.5" />
+                                            저장
+                                        </button>
+                                    </div>
 
                                     <div className="p-4 bg-amber-200/20 border border-amber-500/10 rounded-xl backdrop-blur-md mb-4 flex gap-3 items-start shadow-inner">
                                         <div className="p-1.5 bg-amber-400/20 rounded-full text-amber-600 shadow-sm">
@@ -261,10 +279,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                                 {/* 4. Schedule Picker */}
                                 <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-                                    <h3 className="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                        <div className="w-1 h-5 bg-purple-500 rounded-full"></div>
-                                        리마인드 스케줄
-                                    </h3>
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h3 className="text-base font-bold flex items-center gap-2 text-gray-800">
+                                            <div className="w-1 h-5 bg-purple-500 rounded-full"></div>
+                                            리마인드 스케줄
+                                        </h3>
+                                        <button
+                                            onClick={onApplySettings}
+                                            className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+                                        >
+                                            <Save className="w-3.5 h-3.5" />
+                                            저장
+                                        </button>
+                                    </div>
 
                                     <div className="space-y-4">
                                         {/* Row 1 */}

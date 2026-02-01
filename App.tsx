@@ -22,8 +22,8 @@ const App: React.FC = () => {
   const [endDate, setEndDate] = useState('2026-03-09');
 
   // 휴무 금지 기간 상태
-  const [holidayStart, setHolidayStart] = useState('2024-02-09');
-  const [holidayEnd, setHolidayEnd] = useState('2024-02-12');
+  const [holidayStart, setHolidayStart] = useState('');
+  const [holidayEnd, setHolidayEnd] = useState('');
 
   // 리마인드 시간 상태
   const [sfTime1, setSfTime1] = useState('12:00');
@@ -61,6 +61,11 @@ const App: React.FC = () => {
         if (data.holidayStart) setHolidayStart(data.holidayStart);
         if (data.holidayEnd) setHolidayEnd(data.holidayEnd);
         if (data.notificationsEnabled !== undefined) setNotificationsEnabled(data.notificationsEnabled);
+        // Load Time Settings
+        if (data.sfTime1) setSfTime1(data.sfTime1);
+        if (data.sfTime2) setSfTime2(data.sfTime2);
+        if (data.weeklyTime1) setWeeklyTime1(data.weeklyTime1);
+        if (data.weeklyTime2) setWeeklyTime2(data.weeklyTime2);
       })
       .catch(err => console.error("Failed to load settings:", err));
 
@@ -124,7 +129,11 @@ const App: React.FC = () => {
       endDate,
       holidayStart,
       holidayEnd,
-      notificationsEnabled
+      notificationsEnabled,
+      sfTime1,
+      sfTime2,
+      weeklyTime1,
+      weeklyTime2
     };
 
     try {
@@ -132,6 +141,7 @@ const App: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
+
       });
 
       const result = await res.json();
