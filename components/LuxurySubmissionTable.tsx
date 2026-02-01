@@ -204,11 +204,7 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                                                 <div className="flex items-center gap-1 md:gap-2">
                                                     <span className="font-bold text-[#1e293b] text-xs md:text-sm truncate max-w-[90px] md:max-w-full">{member.name}</span>
                                                     {/* Track Badge (Hidden on Mobile) */}
-                                                    {member.track && (
-                                                        <span className="hidden md:inline-block px-1.5 py-0.5 rounded-[4px] bg-slate-100 text-slate-500 text-[10px] font-bold border border-slate-200">
-                                                            {member.track}
-                                                        </span>
-                                                    )}
+
                                                 </div>
                                                 <span className="hidden md:block text-[11px] text-slate-400 font-medium truncate">@{member.discordUsername || member.discordNickname}</span>
                                             </div>
