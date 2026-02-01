@@ -18,10 +18,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   const [botStatus, setBotStatus] = useState<'online' | 'delayed' | 'offline' | 'loading'>('loading');
   const [lastSeenText, setLastSeenText] = useState('확인 중...');
 
+  // Determine API URL (Same logic as App.tsx)
+  const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
+  const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
+
   useEffect(() => {
     const checkStatus = async () => {
       try {
-        const res = await fetch('http://168.107.16.76:8000/api/status');
+        const res = await fetch(`${API_BASE_URL}/api/status`);
         const data = await res.json();
 
         if (data.status === 'online') setBotStatus('online');
