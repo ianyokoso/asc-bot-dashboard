@@ -32,7 +32,9 @@ interface AdminDashboardProps {
     weeklyTime1: string; setWeeklyTime1: (val: string) => void;
     weeklyTime2: string; setWeeklyTime2: (val: string) => void;
     // Actions
-    onApplySettings: () => void;
+    onSaveCohort: () => void;
+    onSaveHoliday: () => void;
+    onSaveSchedule: () => void;
     onToggleNotifications: () => void;
     notificationsEnabled: boolean;
     onTestNotification: (targetId: string, msgType: string) => void;
@@ -53,7 +55,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     sfTime2, setSfTime2,
     weeklyTime1, setWeeklyTime1,
     weeklyTime2, setWeeklyTime2,
-    onApplySettings,
+    onSaveCohort,
+    onSaveHoliday,
+    onSaveSchedule,
     onToggleNotifications,
     notificationsEnabled,
     onTestNotification
@@ -155,8 +159,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                             기수 및 기간 설정
                                         </h3>
                                         <button
-                                            onClick={onApplySettings}
-                                            className="px-3 py-1.5 bg-[#1e293b] hover:bg-[#334155] text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+                                            onClick={onSaveCohort}
+                                            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
                                         >
                                             <Save className="w-3.5 h-3.5" />
                                             저장
@@ -209,8 +213,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                             휴무 기간 설정
                                         </h3>
                                         <button
-                                            onClick={onApplySettings}
-                                            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+                                            onClick={onSaveHoliday}
+                                            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
                                         >
                                             <Save className="w-3.5 h-3.5" />
                                             저장
@@ -285,8 +289,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                             리마인드 스케줄
                                         </h3>
                                         <button
-                                            onClick={onApplySettings}
-                                            className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+                                            onClick={onSaveSchedule}
+                                            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5"
                                         >
                                             <Save className="w-3.5 h-3.5" />
                                             저장

@@ -120,34 +120,18 @@ const App: React.FC = () => {
     }
   };
 
-  const handleApplySettings = async () => {
+  // Generic Helper for Saving
+  const saveSettings = async (payload: any, successMessage: string) => {
     setIsSyncing(true);
-
-    const payload = {
-      cohortName,
-      startDate,
-      endDate,
-      holidayStart,
-      holidayEnd,
-      notificationsEnabled,
-      sfTime1,
-      sfTime2,
-      weeklyTime1,
-      weeklyTime2
-    };
-
     try {
       const res = await fetch(`${API_BASE_URL}/api/settings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
-
       });
-
       const result = await res.json();
-
       if (result.status === 'success') {
-        showToast(`✅ 설정 저장 및 배포가 시작되었습니다!\n(서버 반영까지 약 1-2분 소요)`, 'success');
+        showToast(`✅ ${successMessage}\n(서버 반영까지 약 1-2분 소요)`, 'success');
       } else {
         showToast(`❌ 오류: ${result.message}`, 'error');
       }
@@ -157,6 +141,10 @@ const App: React.FC = () => {
       setIsSyncing(false);
     }
   };
+
+  const saveCohort = () => saveSettings({ cohortName, startDate, endDate }, "기수/기간 설정 저장 완료!");
+  const saveHoliday = () => saveSettings({ holidayStart, holidayEnd }, "휴무 설정 저장 완료!");
+  const saveSchedule = () => saveSettings({ sfTime1, sfTime2, weeklyTime1, weeklyTime2 }, "스케줄 설정 저장 완료!");
 
   // Immediate Toggle Handler
   const handleToggleNotifications = async () => {
@@ -239,7 +227,9 @@ const App: React.FC = () => {
             sfTime2={sfTime2} setSfTime2={setSfTime2}
             weeklyTime1={weeklyTime1} setWeeklyTime1={setWeeklyTime1}
             weeklyTime2={weeklyTime2} setWeeklyTime2={setWeeklyTime2}
-            onApplySettings={handleApplySettings}
+            onSaveCohort={saveCohort}
+            onSaveHoliday={saveHoliday}
+            onSaveSchedule={saveSchedule}
             onToggleNotifications={handleToggleNotifications}
             notificationsEnabled={notificationsEnabled}
             onTestNotification={handleTestNotification}
