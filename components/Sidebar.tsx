@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Table, Users, Settings, Zap, Beaker } from 'lucide-react';
+import { Table, Users, Settings } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: 'submissions' | 'design_test' | 'members' | 'settings';
@@ -59,7 +59,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   };
 
   return (
-    <aside className="w-64 h-full bg-white/10 backdrop-blur-xl border-r border-white/20 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-all duration-300 relative z-50">
+    // Updated Background: Slightly more transparent & glass-like to blend with the vibrant mesh
+    <aside className="w-64 h-full bg-white/20 backdrop-blur-2xl border-r border-white/30 flex flex-col shadow-[4px_0_30px_rgba(0,0,0,0.02)] transition-all duration-300 relative z-50">
 
       {/* Branding Area */}
       <div className="p-8 pb-6 flex items-center gap-3">
@@ -70,19 +71,19 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 space-y-1.5 mt-2">
+      <nav className="flex-1 px-4 space-y-2 mt-2">
         {menuItems.map((item) => {
-          // Hide design test if needed, or keep for dev
+          // Hide design test if needed
           if (item.id === 'design_test') return null;
 
           const isActive = activeTab === item.id;
           return (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-2xl transition-all duration-200 group relative overflow-hidden ${isActive
-                  ? 'bg-white/60 text-[#1e293b] shadow-sm ring-1 ring-white/60 backdrop-blur-md'
-                  : 'text-gray-500 hover:bg-white/30 hover:text-gray-800'
+              onClick={() => setActiveTab(item.id as any)}
+              className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-2xl transition-all duration-300 group relative overflow-hidden ${isActive
+                ? 'bg-white/70 text-[#1e293b] shadow-[0_4px_20px_rgba(0,0,0,0.03)] ring-1 ring-white/60 backdrop-blur-md translate-x-1'
+                : 'text-gray-500 hover:bg-white/40 hover:text-gray-800'
                 }`}
             >
               <item.icon
@@ -93,9 +94,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
                 {item.label}
               </span>
 
-              {/* Active Indicator Dot */}
+              {/* Active Indicator Pillage */}
               {isActive && (
-                <div className="absolute right-4 w-1.5 h-1.5 rounded-full bg-[#1e293b] shadow-[0_0_8px_rgba(30,41,59,0.5)]"></div>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-1.5 h-6 rounded-full bg-[#1e293b]/10"></div>
               )}
             </button>
           );
@@ -104,8 +105,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
 
       {/* Footer / User Info */}
       <div className="p-6 border-t border-white/20">
-        <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/20 border border-white/30 hover:bg-white/30 transition-colors cursor-pointer">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs shadow-inner">
+        <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/20 border border-white/30 hover:bg-white/40 transition-colors cursor-pointer group">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs shadow-inner group-hover:scale-110 transition-transform">
             AD
           </div>
           <div className="flex flex-col">
@@ -116,7 +117,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
       </div>
       {/* Bot Status Indicator */}
       <div className="px-4 pb-6">
-        <div className="bg-white/40 rounded-2xl p-4 border border-white/60 shadow-sm backdrop-blur-md">
+        <div className="bg-white/30 rounded-2xl p-4 border border-white/50 shadow-sm backdrop-blur-md">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-gray-700">{getStatusText()}</span>
             <div className={`w-2.5 h-2.5 rounded-full ${getStatusColor()} animate-pulse shadow-sm`}></div>

@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { Calendar, Settings, AlertTriangle, Bell, CheckCircle, Minus } from 'lucide-react';
+import { Settings, AlertTriangle, Bell, CheckCircle, Minus } from 'lucide-react'; // Removed Calendar, Header imports
 import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import SubmissionGridModern from '../components/SubmissionGridModern';
+import LuxuryHeader from '../components/LuxuryHeader'; // New Header
+import LuxuryTrackTabs from '../components/LuxuryTrackTabs'; // New Tabs
+import LuxurySubmissionTable from '../components/LuxurySubmissionTable'; // New Table
 import MemberManagement from '../components/MemberManagement';
 import NotificationTester from '../components/NotificationTester';
-import { Member, Submission } from '../types';
+import { Member, Submission, Track } from '../types'; // Added Track
 
 interface AdminDashboardProps {
     members: Member[];
@@ -59,65 +60,78 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 }) => {
     const [activeTab, setActiveTab] = useState<'submissions' | 'design_test' | 'members' | 'settings'>('submissions');
 
+    // Track State for Submissions Tab
+    const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
+    const [activeTrack, setActiveTrack] = useState<Track>(Track.SHORTFORM);
+
     const currentHeaderTitle = useMemo(() => {
         const displayCohort = cohortConfig.name.endsWith('기') ? cohortConfig.name : `${cohortConfig.name}기`;
 
-        if (activeTab === 'submissions') return `${displayCohort} 과제 제출 현황`;
-        if (activeTab === 'design_test') return `${displayCohort} 과제 제출 현황 (UI Test)`;
+        if (activeTab === 'submissions') return `${displayCohort} 과제 제출 현황`; // Title matches User view
+        if (activeTab === 'design_test') return `${displayCohort} UI Test`;
         if (activeTab === 'members') return '멤버 관리';
-        return '봇 설정 (v2.0 - Red Patch)';
+        return '봇 설정 (v2.0)';
     }, [activeTab, cohortConfig.name]);
 
     return (
-        <div className="flex h-screen bg-[#F3F4F6] overflow-hidden relative font-sans text-gray-900 selection:bg-indigo-100 selection:text-indigo-700">
-            {/* 1. Visual Foundation: Vibrant Pastel Mesh Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100/50 z-0"></div>
+        <div className="flex h-screen bg-[#F0F4F8] overflow-hidden relative font-sans text-gray-900 selection:bg-indigo-100 selection:text-indigo-700">
+            {/* 1. Visual Foundation: Stronger Pastel Mesh Gradient matching UserDashboard */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-200 z-0"></div>
 
-            {/* Decorative Blobs (Enhanced for depth) */}
-            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-300/30 rounded-full blur-[120px] pointer-events-none mix-blend-multiply opacity-80 animate-blob"></div>
-            <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-300/30 rounded-full blur-[120px] pointer-events-none mix-blend-multiply opacity-80 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-[30%] right-[30%] w-[40%] h-[40%] bg-pink-200/30 rounded-full blur-[100px] pointer-events-none mix-blend-multiply opacity-80 animate-blob animation-delay-4000"></div>
+            {/* Decorative Blobs (Vibrant & Large - Matching UserDashboard) */}
+            <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply opacity-80 animate-blob"></div>
+            <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-purple-400/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply opacity-80 animate-blob animation-delay-2000"></div>
+            <div className="absolute top-[30%] right-[30%] w-[40%] h-[40%] bg-pink-300/20 rounded-full blur-[100px] pointer-events-none mix-blend-multiply opacity-80 animate-blob animation-delay-4000"></div>
 
             {/* 2. Admin Structure: Translucent Glass Sidebar */}
             <div className="relative z-20 h-full">
                 <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
 
-            <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative z-10">
-                <Header
+            <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative z-10 h-full">
+                {/* Unified Luxury Header */}
+                <LuxuryHeader
                     title={currentHeaderTitle}
                     onSync={onSync}
-                    onSave={activeTab === 'settings' ? onApplySettings : undefined}
                     isSyncing={isSyncing}
                     startDate={cohortConfig.startDate}
                     endDate={cohortConfig.endDate}
                 />
 
-                <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
+                    {/* SUBMISSIONS TAB - Matches User Dashboard Exactly */}
                     {activeTab === 'submissions' && (
-                        <div className="space-y-6">
-                            {/* Main Table: Large Frosted Glass Panel */}
-                            <div className="bg-white/40 backdrop-blur-3xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 overflow-hidden relative">
-                                <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-white/10 pointer-events-none"></div>
-                                <div className="relative z-10">
-                                    <SubmissionGridModern
-                                        members={members}
-                                        submissions={submissions}
-                                        cohortConfig={cohortConfig}
-                                    />
-                                </div>
+                        <div className="flex-1 flex flex-col min-h-0">
+                            {/* Floating Track Tabs */}
+                            <LuxuryTrackTabs
+                                trackOrder={trackOrder}
+                                activeTrack={activeTrack}
+                                setActiveTrack={setActiveTrack}
+                                members={members}
+                            />
+
+                            {/* Spacious Data Table */}
+                            <LuxurySubmissionTable
+                                members={members}
+                                submissions={submissions}
+                                cohortConfig={cohortConfig}
+                                activeTrack={activeTrack}
+                            />
+                        </div>
+                    )}
+
+                    {/* MEMBERS TAB */}
+                    {activeTab === 'members' && (
+                        <div className="p-4 md:p-8">
+                            <div className="bg-white/40 backdrop-blur-3xl rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-white/50 overflow-hidden p-1">
+                                <MemberManagement members={members} />
                             </div>
                         </div>
                     )}
 
-                    {activeTab === 'members' && (
-                        <div className="bg-white/40 backdrop-blur-3xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 overflow-hidden p-1">
-                            <MemberManagement members={members} />
-                        </div>
-                    )}
-
+                    {/* SETTINGS TAB */}
                     {activeTab === 'settings' && (
-                        <div className="max-w-4xl space-y-8 pb-20 mx-auto">
+                        <div className="max-w-4xl space-y-8 pb-20 mx-auto p-4 md:p-8 w-full">
                             {/* Header Title Styling */}
                             <div className="flex items-center gap-3 mb-4 px-2">
                                 <div className="p-3 bg-white/40 rounded-2xl backdrop-blur-xl border border-white/60 shadow-sm">
@@ -162,7 +176,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                                 onChange={(e) => setStartDate(e.target.value)}
                                                 className="w-full pl-5 pr-10 py-3.5 bg-white/40 border border-white/50 rounded-2xl focus:ring-2 focus:ring-[#1e293b]/20 focus:bg-white/60 focus:border-[#1e293b]/30 outline-none transition-all duration-300 backdrop-blur-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] font-semibold text-gray-800 cursor-pointer"
                                             />
-                                            <Calendar className="w-5 h-5 text-gray-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                                         </div>
                                     </div>
                                     <div className="space-y-3">
@@ -174,7 +187,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                                 onChange={(e) => setEndDate(e.target.value)}
                                                 className="w-full pl-5 pr-10 py-3.5 bg-white/40 border border-white/50 rounded-2xl focus:ring-2 focus:ring-[#1e293b]/20 focus:bg-white/60 focus:border-[#1e293b]/30 outline-none transition-all duration-300 backdrop-blur-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] font-semibold text-gray-800 cursor-pointer"
                                             />
-                                            <Calendar className="w-5 h-5 text-gray-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                                         </div>
                                     </div>
                                 </div>
