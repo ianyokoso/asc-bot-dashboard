@@ -269,40 +269,41 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                         </div>
 
                         <div className="space-y-4">
-                            <div className="p-4 bg-indigo-50/50 rounded-2xl border border-indigo-100/50">
-                                <span className="text-[11px] font-bold text-indigo-400 uppercase tracking-widest block mb-1">Status</span>
-                                <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                                    <span className="text-sm font-semibold text-slate-700 uppercase">Submitted (제출 완료)</span>
+                            {/* Memo Style Content Area */}
+                            <div className="p-5 bg-[#fcfcfc] rounded-2xl border border-slate-200/60 shadow-inner min-h-[120px] flex flex-col">
+                                <div className="flex items-center gap-2 mb-3 border-b border-slate-100 pb-2">
+                                    <FileText className="w-4 h-4 text-indigo-400" />
+                                    <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest">Memo / Content</span>
+                                </div>
+
+                                <div className="flex-1 text-sm text-slate-600 leading-relaxed max-h-[200px] overflow-y-auto custom-scrollbar whitespace-pre-wrap font-medium">
+                                    {selectedSubmission.sub.content || "작성된 내용이 없습니다."}
                                 </div>
                             </div>
 
-                            {/* [NEW] Submission Content Text Area */}
-                            {selectedSubmission.sub.content && (
-                                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <FileText className="w-3.5 h-3.5 text-slate-400" />
-                                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Submission Content</span>
-                                    </div>
-                                    <div className="text-sm text-slate-600 leading-relaxed max-h-[120px] overflow-y-auto custom-scrollbar whitespace-pre-wrap">
-                                        {selectedSubmission.sub.content}
+                            {/* Link Area as Text */}
+                            {selectedSubmission.sub.link && (
+                                <div className="group relative">
+                                    <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 flex flex-col gap-1">
+                                        <div className="flex items-center gap-2">
+                                            <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Reference Link</span>
+                                        </div>
+                                        <a
+                                            href={selectedSubmission.sub.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xs text-indigo-500 font-semibold break-all hover:underline underline-offset-2"
+                                        >
+                                            {selectedSubmission.sub.link}
+                                        </a>
                                     </div>
                                 </div>
                             )}
 
-                            {selectedSubmission.sub.link ? (
-                                <a
-                                    href={selectedSubmission.sub.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-2xl font-bold shadow-[0_12px_24px_-8px_rgba(79,70,229,0.4)] hover:shadow-[0_12px_32px_-8px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 transition-all active:scale-[0.98]"
-                                >
-                                    <span>제출물 확인하기</span>
-                                    <ExternalLink className="w-4 h-4" />
-                                </a>
-                            ) : (
-                                <div className="py-4 text-center text-slate-400 font-medium text-sm">
-                                    등록된 링크가 없습니다.
+                            {!selectedSubmission.sub.link && !selectedSubmission.sub.content && (
+                                <div className="py-8 text-center text-slate-400 font-medium text-sm italic">
+                                    기록된 정보가 없습니다.
                                 </div>
                             )}
                         </div>
