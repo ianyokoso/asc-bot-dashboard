@@ -308,7 +308,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <button
-                                            onClick={() => onRunCommand('sync_members', false)}
+                                            onClick={() => {
+                                                if (window.confirm('멤버 정보를 동기화하시겠습니까? \n(Discord ↔ Notion)')) {
+                                                    onRunCommand('sync_members', false);
+                                                }
+                                            }}
                                             className="px-4 py-3 bg-white border border-indigo-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-300 transition-all shadow-sm group/btn flex flex-col items-center gap-2"
                                         >
                                             <span className="text-sm font-bold text-gray-700 group-hover/btn:text-indigo-700">멤버 정보 동기화</span>
@@ -316,7 +320,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                         </button>
 
                                         <button
-                                            onClick={() => onRunCommand('sync_apps', true)}
+                                            onClick={() => {
+                                                if (window.confirm('신청서를 강제 동기화하시겠습니까? \n(서버 부하가 발생할 수 있습니다)')) {
+                                                    onRunCommand('sync_apps', true);
+                                                }
+                                            }}
                                             className="px-4 py-3 bg-white border border-green-200 rounded-xl hover:bg-green-50 hover:border-green-300 transition-all shadow-sm group/btn flex flex-col items-center gap-2"
                                         >
                                             <span className="text-sm font-bold text-gray-700 group-hover/btn:text-green-700">신청서 강제 동기화</span>
