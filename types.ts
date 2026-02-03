@@ -31,6 +31,7 @@ export interface Submission {
   tracks?: Track[];
   link?: string;
   content?: string;
+  images?: string[];
 }
 
 export interface TrackConfig {
