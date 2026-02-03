@@ -1,6 +1,6 @@
-import React, { useMemo, useRef, useEffect } from 'react';
+import React, { useMemo, useRef, useEffect, useState } from 'react';
 import { Member, Submission, Track, SubmissionStatus } from '../types';
-import { CheckCircle2, Clock, Info } from 'lucide-react';
+import { CheckCircle2, Clock, Info, ExternalLink, X } from 'lucide-react';
 
 interface LuxurySubmissionTableProps {
     members: Member[];
@@ -18,6 +18,9 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
 
     // Ref for the scrollable container
     const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    // Selected submission for Modal
+    const [selectedSubmission, setSelectedSubmission] = useState<{ sub: Submission, memberName: string } | null>(null);
 
     // 1. Filter Members by Track
     const filteredMembers = useMemo(() => {
@@ -227,9 +230,15 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                                         }
 
                                         return (
-                                            <td key={`${member.discordId}-${date}`} className="border-b border-indigo-50/30 p-1 md:p-2 text-center relative">
+                                            <td
+                                                key={`${member.discordId}-${date}`}
+                                                className="border-b border-indigo-50/30 p-1 md:p-2 text-center relative"
+                                            >
                                                 {/* Cell Content */}
-                                                <div className="w-full h-9 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center transition-all hover:bg-white/50 cursor-default">
+                                                <div
+                                                    className={`w-full h-9 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center transition-all hover:bg-white/50 ${sub ? 'cursor-pointer active:scale-95' : 'cursor-default'}`}
+                                                    onClick={() => sub && setSelectedSubmission({ sub, memberName: member.name })}
+                                                >
                                                     {renderStatus(finalStatus)}
                                                 </div>
                                             </td>
@@ -241,6 +250,52 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                     </table>
                 </div>
             </div>
+
+            {/* Submission Detail Modal */}
+            {selectedSubmission && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+                    <div className="bg-white/90 backdrop-blur-2xl border border-white/50 rounded-[32px] p-6 md:p-8 w-full max-w-[400px] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.15)] animate-in zoom-in-95 duration-200">
+                        <div className="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 className="text-xl font-bold text-slate-800">{selectedSubmission.memberName}</h3>
+                                <p className="text-slate-500 text-sm font-medium">{selectedSubmission.sub.date} 과제물</p>
+                            </div>
+                            <button
+                                onClick={() => setSelectedSubmission(null)}
+                                className="p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-400"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        <div className="space-y-4">
+                            <div className="p-4 bg-indigo-50/50 rounded-2xl border border-indigo-100/50">
+                                <span className="text-[11px] font-bold text-indigo-400 uppercase tracking-widest block mb-1">Status</span>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                                    <span className="text-sm font-semibold text-slate-700 uppercase">Submitted (제출 완료)</span>
+                                </div>
+                            </div>
+
+                            {selectedSubmission.sub.link ? (
+                                <a
+                                    href={selectedSubmission.sub.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-2xl font-bold shadow-[0_12px_24px_-8px_rgba(79,70,229,0.4)] hover:shadow-[0_12px_32px_-8px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 transition-all active:scale-[0.98]"
+                                >
+                                    <span>제출물 확인하기</span>
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
+                            ) : (
+                                <div className="py-4 text-center text-slate-400 font-medium text-sm">
+                                    등록된 링크가 없습니다.
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
