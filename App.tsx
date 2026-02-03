@@ -191,6 +191,29 @@ const App: React.FC = () => {
     }
   };
 
+  // Run Bot Command Handler
+  const handleRunCommand = async (command: string, force: boolean = false) => {
+    setIsSyncing(true); // Show loading
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/run-command`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ command, cohort: cohortName, force })
+      });
+      const result = await res.json();
+
+      if (result.status === 'success') {
+        showToast(`✅ 명령 실행 성공: ${result.message}`, 'success');
+      } else {
+        showToast(`❌ 실행 실패: ${result.message}`, 'error');
+      }
+    } catch (err) {
+      showToast(`❌ 서버 통신 오류: ${err}`, 'error');
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
   const cohortConfig = useMemo(() => ({
     startDate,
     endDate,
@@ -233,6 +256,7 @@ const App: React.FC = () => {
             onToggleNotifications={handleToggleNotifications}
             notificationsEnabled={notificationsEnabled}
             onTestNotification={handleTestNotification}
+            onRunCommand={handleRunCommand}
           />
         } />
       </Routes>

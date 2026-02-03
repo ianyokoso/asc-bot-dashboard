@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save } from 'lucide-react';
+import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save, Zap } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import LuxuryHeader from '../components/LuxuryHeader';
 import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
@@ -38,6 +38,7 @@ interface AdminDashboardProps {
     onToggleNotifications: () => void;
     notificationsEnabled: boolean;
     onTestNotification: (targetId: string, msgType: string) => void;
+    onRunCommand: (command: string, force: boolean) => void;
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -60,7 +61,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     onSaveSchedule,
     onToggleNotifications,
     notificationsEnabled,
-    onTestNotification
+    onTestNotification,
+    onRunCommand
 }) => {
     const [activeTab, setActiveTab] = useState<'submissions' | 'design_test' | 'members' | 'settings'>('submissions');
 
@@ -281,6 +283,60 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                     </div>
                                 </div>
 
+
+
+                                {/* 3.5 Bot Command Triggers */}
+                                <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+                                    <div className="flex justify-between items-center mb-6">
+                                        <h3 className="text-base font-bold flex items-center gap-2 text-[#1e293b]">
+                                            <div className="p-1.5 bg-indigo-100 rounded-lg text-indigo-600">
+                                                <Zap className="w-4 h-4" />
+                                            </div>
+                                            Bot Action Triggers
+                                        </h3>
+                                    </div>
+
+                                    <div className="p-4 bg-indigo-50/50 border border-indigo-100 rounded-xl mb-6">
+                                        <p className="text-xs text-indigo-700/80 leading-relaxed font-medium flex gap-2">
+                                            <AlertTriangle className="w-4 h-4 text-indigo-500 shrink-0" />
+                                            <span>
+                                                이 기능들은 봇 서버에 직접 명령을 내립니다. <br />
+                                                실행 시 서버 부하가 발생할 수 있으니 주의해서 사용하세요.
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <button
+                                            onClick={() => onRunCommand('sync_members', false)}
+                                            className="px-4 py-3 bg-white border border-indigo-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-300 transition-all shadow-sm group/btn flex flex-col items-center gap-2"
+                                        >
+                                            <span className="text-sm font-bold text-gray-700 group-hover/btn:text-indigo-700">멤버 정보 동기화</span>
+                                            <span className="text-[10px] text-gray-400">Discord ↔ Notion</span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => onRunCommand('sync_apps', true)}
+                                            className="px-4 py-3 bg-white border border-green-200 rounded-xl hover:bg-green-50 hover:border-green-300 transition-all shadow-sm group/btn flex flex-col items-center gap-2"
+                                        >
+                                            <span className="text-sm font-bold text-gray-700 group-hover/btn:text-green-700">신청서 강제 동기화</span>
+                                            <span className="text-[10px] text-gray-400">Force App Scan</span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => {
+                                                if (window.confirm('정말로 조 배정을 다시 실행하시겠습니까? 기존 데이터가 변경될 수 있습니다.')) {
+                                                    onRunCommand('reassign_groups', true);
+                                                }
+                                            }}
+                                            className="px-4 py-3 bg-white border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 transition-all shadow-sm group/btn flex flex-col items-center gap-2"
+                                        >
+                                            <span className="text-sm font-bold text-gray-700 group-hover/btn:text-red-700">조 배정 재실행</span>
+                                            <span className="text-[10px] text-gray-400">Reset & Reassign</span>
+                                        </button>
+                                    </div>
+                                </div>
+
                                 {/* 4. Schedule Picker */}
                                 <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
                                     <div className="flex justify-between items-center mb-4">
@@ -333,8 +389,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         </div>
                     )}
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 };
 
