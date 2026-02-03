@@ -96,8 +96,8 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                 return (
                     <div className="flex justify-center items-center w-full h-full">
                         {/* Premium Gradient Checkmark */}
-                        <div className="w-4 h-4 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-[0_4px_12px_rgba(16,185,129,0.3)] hover:scale-110 transition-transform duration-300 border border-white/20">
-                            <span className="text-white font-bold text-[9px]">✓</span>
+                        <div className="w-[18px] h-[18px] rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-[0_4px_12px_rgba(16,185,129,0.3)] hover:scale-110 transition-transform duration-300 border border-white/20">
+                            <span className="text-white font-bold text-[10px]">✓</span>
                         </div>
                     </div>
                 );
@@ -105,8 +105,8 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                 return (
                     <div className="flex justify-center items-center w-full h-full">
                         {/* Premium Gradient Cross */}
-                        <div className="w-4 h-4 rounded-full bg-gradient-to-br from-rose-400 to-red-500 flex items-center justify-center shadow-[0_4px_12px_rgba(244,63,94,0.3)] hover:scale-110 transition-transform duration-300 border border-white/20">
-                            <span className="text-white font-bold text-[7px]">✕</span>
+                        <div className="w-[18px] h-[18px] rounded-full bg-gradient-to-br from-rose-400 to-red-500 flex items-center justify-center shadow-[0_4px_12px_rgba(244,63,94,0.3)] hover:scale-110 transition-transform duration-300 border border-white/20">
+                            <span className="text-white font-bold text-[8px]">✕</span>
                         </div>
                     </div>
                 );
