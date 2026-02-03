@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-04 00:37:58)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-04 00:44:28)
 const REAL_DATA = {
   "members": [
     {
@@ -2331,8 +2331,20 @@ const REAL_DATA = {
       "notionSync": true
     }
   ],
-  "submissions": [],
-  "lastUpdated": "2026-02-04T00:37:58.875833"
+  "submissions": [
+    {
+      "memberId": "2f796446-e4ec-8111-9a9c-f776e9209f33",
+      "date": "2026-01-30",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.figma.com/asjdklasjdlkas",
+      "content": "[이안/부운영자] 크리에이터 숏폼 과제",
+      "images": null
+    }
+  ],
+  "lastUpdated": "2026-02-04T00:44:28.602163"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
