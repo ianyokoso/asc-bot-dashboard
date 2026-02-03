@@ -30,6 +30,7 @@ export interface Submission {
   status: SubmissionStatus;
   tracks?: Track[];
   link?: string;
+  content?: string;
 }
 
 export interface TrackConfig {

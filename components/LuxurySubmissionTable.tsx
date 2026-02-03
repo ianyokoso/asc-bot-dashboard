@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useEffect, useState } from 'react';
 import { Member, Submission, Track, SubmissionStatus } from '../types';
-import { CheckCircle2, Clock, Info, ExternalLink, X } from 'lucide-react';
+import { CheckCircle2, Clock, Info, ExternalLink, X, FileText } from 'lucide-react';
 
 interface LuxurySubmissionTableProps {
     members: Member[];
@@ -276,6 +276,19 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                                     <span className="text-sm font-semibold text-slate-700 uppercase">Submitted (제출 완료)</span>
                                 </div>
                             </div>
+
+                            {/* [NEW] Submission Content Text Area */}
+                            {selectedSubmission.sub.content && (
+                                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <FileText className="w-3.5 h-3.5 text-slate-400" />
+                                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Submission Content</span>
+                                    </div>
+                                    <div className="text-sm text-slate-600 leading-relaxed max-h-[120px] overflow-y-auto custom-scrollbar whitespace-pre-wrap">
+                                        {selectedSubmission.sub.content}
+                                    </div>
+                                </div>
+                            )}
 
                             {selectedSubmission.sub.link ? (
                                 <a
