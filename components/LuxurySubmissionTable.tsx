@@ -189,7 +189,7 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                             {filteredMembers.map((member) => (
                                 <tr key={member.discordId} className="group hover:bg-white/40 transition-colors">
                                     {/* Fixed Member Column - High Opacity Background for Mobile fix */}
-                                    <td className="sticky left-0 z-10 w-[130px] md:w-[280px] p-2 md:p-4 border-r border-indigo-50/30 bg-white/90 md:bg-white/40 backdrop-blur-xl group-hover:bg-indigo-50/80 md:group-hover:bg-white/60 transition-colors shadow-[4px_0_12px_rgba(0,0,0,0.02)]">
+                                    <td className="sticky left-0 z-10 w-[130px] md:w-[280px] p-2 md:p-4 border-r border-indigo-50/30 bg-white/95 md:bg-white/95 backdrop-blur-xl group-hover:bg-indigo-50/80 md:group-hover:bg-white/95 transition-colors shadow-[4px_0_12px_rgba(0,0,0,0.02)]">
                                         <div className="flex items-center gap-2 md:gap-4 md:pl-2">
                                             {/* Avatar (Now Visible on Mobile - Small Size) */}
                                             <div className="flex w-6 h-6 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-indigo-100 to-white shadow-sm border border-white items-center justify-center overflow-hidden flex-shrink-0">
