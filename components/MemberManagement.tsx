@@ -7,6 +7,61 @@ interface MemberManagementProps {
     members: Member[];
 }
 
+// --- Slim Status Tile Component (Glass Version) ---
+const StatusTile: React.FC<{
+    label: string;
+    count: number;
+    active: boolean;
+    onClick: () => void;
+    color: string;
+    disableBorder?: boolean;
+}> = ({
+    label,
+    count,
+    active,
+    onClick,
+    color, // e.g., "indigo"
+}) => {
+        // Dynamic color classes
+        const activeText = `text-${color}-700`;
+        const hoverBg = `hover:bg-white/40`;
+
+        return (
+            <button
+                onClick={onClick}
+                className={`
+          relative flex items-center justify-between gap-3 px-3 py-2 rounded-xl border text-sm transition-all duration-200 min-w-[120px] flex-1 backdrop-blur-md
+          ${active
+                        ? `bg-white/60 border-white/60 shadow-sm ${activeText} font-bold ring-1 ring-white/50`
+                        : `bg-white/20 border-white/30 text-gray-600 ${hoverBg}`}
+        `}
+            >
+                <div className="flex items-center gap-2">
+                    <div className={`w-2 h-2 rounded-full ${active ? `bg-${color}-500` : `bg-${color}-400/50`}`}></div>
+                    <span className="truncate">{label}</span>
+                </div>
+                <span className="font-mono font-medium">{count}</span>
+            </button>
+        );
+    };
+
+const CompactTrackBadge: React.FC<{ track: Track }> = ({ track }) => {
+    let classes = "bg-gray-100/50 text-gray-500 border-gray-200/50";
+    switch (track) {
+        case Track.SHORTFORM: classes = "bg-rose-50/50 text-rose-700 border-rose-100/50"; break;
+        case Track.LONGFORM: classes = "bg-pink-50/50 text-pink-700 border-pink-100/50"; break;
+        case Track.BUILDER_BASIC: classes = "bg-teal-50/50 text-teal-700 border-teal-100/50"; break;
+        case Track.BUILDER_ADVANCED: classes = "bg-emerald-50/50 text-emerald-700 border-emerald-100/50"; break;
+        case Track.SALES: classes = "bg-blue-50/50 text-blue-700 border-blue-100/50"; break;
+        case Track.AI_AGENT: classes = "bg-purple-50/50 text-purple-700 border-purple-100/50"; break;
+    }
+    return (
+        <span className={`px-2 py-0.5 rounded text-[11px] font-medium border ${classes} whitespace-nowrap backdrop-blur-sm`}>
+            {track || 'Unassigned'}
+        </span>
+    );
+};
+
 const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
     const [filterTrack, setFilterTrack] = useState<Track | 'Total' | 'Inactive'>('Total');
     const [searchTerm, setSearchTerm] = useState('');
@@ -72,65 +127,6 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
         return result;
     }, [members, filterTrack, searchTerm]);
 
-    // --- Slim Status Tile Component (Glass Version) ---
-    const StatusTile = ({
-        label,
-        count,
-        active,
-        onClick,
-        color, // e.g., "indigo"
-        disableBorder = false
-    }: {
-        label: string;
-        count: number;
-        active: boolean;
-        onClick: () => void;
-        color: string;
-        disableBorder?: boolean;
-    }) => {
-        // Dynamic color classes
-        // Active: More solid/visible but still glassy
-        // Inactive: Very transparent glass
-        const activeBg = `bg-${color}-500/10`; // Very subtle tint
-        const activeText = `text-${color}-700`;
-        const activeBorder = `border-${color}-200/50`;
-        const hoverBg = `hover:bg-white/40`;
-
-        return (
-            <button
-                onClick={onClick}
-                className={`
-          relative flex items-center justify-between gap-3 px-3 py-2 rounded-xl border text-sm transition-all duration-200 min-w-[120px] flex-1 backdrop-blur-md
-          ${active
-                        ? `bg-white/60 border-white/60 shadow-sm ${activeText} font-bold ring-1 ring-white/50`
-                        : `bg-white/20 border-white/30 text-gray-600 ${hoverBg}`}
-        `}
-            >
-                <div className="flex items-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${active ? `bg-${color}-500` : `bg-${color}-400/50`}`}></div>
-                    <span className="truncate">{label}</span>
-                </div>
-                <span className="font-mono font-medium">{count}</span>
-            </button>
-        );
-    };
-
-    const CompactTrackBadge = ({ track }: { track: Track }) => {
-        let classes = "bg-gray-100/50 text-gray-500 border-gray-200/50";
-        switch (track) {
-            case Track.SHORTFORM: classes = "bg-rose-50/50 text-rose-700 border-rose-100/50"; break;
-            case Track.LONGFORM: classes = "bg-pink-50/50 text-pink-700 border-pink-100/50"; break;
-            case Track.BUILDER_BASIC: classes = "bg-teal-50/50 text-teal-700 border-teal-100/50"; break;
-            case Track.BUILDER_ADVANCED: classes = "bg-emerald-50/50 text-emerald-700 border-emerald-100/50"; break;
-            case Track.SALES: classes = "bg-blue-50/50 text-blue-700 border-blue-100/50"; break;
-            case Track.AI_AGENT: classes = "bg-purple-50/50 text-purple-700 border-purple-100/50"; break;
-        }
-        return (
-            <span className={`px-2 py-0.5 rounded text-[11px] font-medium border ${classes} whitespace-nowrap backdrop-blur-sm`}>
-                {track || 'Unassigned'}
-            </span>
-        );
-    };
 
     return (
         <div className="space-y-4 pb-12 font-sans h-full flex flex-col">
