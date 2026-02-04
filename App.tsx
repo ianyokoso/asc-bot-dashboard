@@ -127,7 +127,7 @@ const App: React.FC = () => {
       const res = await fetch(`${API_BASE_URL}/api/settings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ ...payload, trigger: 'manual' })
       });
       const result = await res.json();
       if (result.status === 'success') {
