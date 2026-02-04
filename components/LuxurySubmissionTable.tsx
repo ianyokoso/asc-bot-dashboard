@@ -216,7 +216,12 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
 
                                     {/* Submission Cells */}
                                     {displayDates.map(date => {
-                                        const sub = submissions.find(s => s.memberId === member.id && s.date === date);
+                                        // [FIX] Filter submission by Active Track (Prevent showing same submission across different tracks)
+                                        const sub = submissions.find(s =>
+                                            s.memberId === member.id &&
+                                            s.date === date &&
+                                            (s.tracks ? s.tracks.includes(activeTrack) : true)
+                                        );
                                         const status = sub ? sub.status : 'pending';
 
                                         let finalStatus: SubmissionStatus = 'none';
