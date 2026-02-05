@@ -6,6 +6,7 @@ import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
 import LuxurySubmissionTable from '../components/LuxurySubmissionTable';
 import MemberManagement from '../components/MemberManagement';
 import NotificationTester from '../components/NotificationTester';
+import NotificationPreview from '../components/NotificationPreview';
 import { Member, Submission, Track } from '../types';
 
 interface AdminDashboardProps {
@@ -154,6 +155,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                             {/* Main Stack Layout (Left Aligned, Vertical) */}
                             <div className="flex flex-col gap-4 max-w-4xl">
+                                {/* Next Notification Preview */}
+                                <NotificationPreview />
 
                                 {/* 1. Period Setting */}
                                 <div className="p-6 rounded-3xl bg-white/30 backdrop-blur-2xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
