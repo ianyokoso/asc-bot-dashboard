@@ -65,7 +65,7 @@ export default function NotificationPreview() {
             <div className="target-info">
               {notif.targets && notif.targets.length > 0 ? (
                 <span className="targets">
-                  👥 {notif.targets.join(', ')}
+                  <span className="icon">👥</span> {notif.targets.join(', ')}
                   {typeof notif.count === 'number' && notif.count > notif.targets.length &&
                     <span className="extra"> 외 {notif.count - notif.targets.length}명</span>
                   }
@@ -81,42 +81,48 @@ export default function NotificationPreview() {
 
       <style jsx>{`
                 .compact-preview {
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: rgba(15, 23, 42, 0.4); /* Darker background for visibility */
+                    border: 1px solid rgba(255, 255, 255, 0.15);
                     border-radius: 12px;
-                    padding: 12px 16px;
-                    margin-bottom: 20px;
-                    backdrop-filter: blur(8px);
+                    padding: 14px 20px;
+                    margin-top: 40px; /* Separator for bottom placement */
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    backdrop-filter: blur(12px);
                 }
                 .compact-header {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    margin-bottom: 10px;
-                    padding-bottom: 6px;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                    margin-bottom: 12px;
+                    padding-bottom: 8px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 }
                 .title {
-                    font-size: 13px;
-                    font-weight: 700;
-                    color: rgba(255, 255, 255, 0.9);
-                    letter-spacing: -0.01em;
+                    font-size: 14px;
+                    font-weight: 800;
+                    color: #fff;
+                    letter-spacing: -0.02em;
+                    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
                 }
                 .refresh-badge {
                     font-size: 10px;
+                    font-weight: 500;
                     color: rgba(255, 255, 255, 0.4);
+                    background: rgba(255, 255, 255, 0.05);
+                    padding: 2px 8px;
+                    border-radius: 100px;
                 }
                 .compact-list {
                     display: flex;
                     flex-direction: column;
-                    gap: 6px;
+                    gap: 8px;
                 }
                 .compact-item {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 6px 0;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+                    padding: 8px 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                 }
                 .compact-item:last-child {
                     border-bottom: none;
@@ -124,45 +130,53 @@ export default function NotificationPreview() {
                 .main-info {
                     display: flex;
                     align-items: center;
-                    gap: 8px;
+                    gap: 10px;
                 }
                 .time {
                     font-size: 12px;
-                    font-weight: 800;
-                    color: #fff;
-                    background: rgba(255, 255, 255, 0.1);
-                    padding: 2px 6px;
-                    border-radius: 4px;
-                    font-family: 'JetBrains Mono', monospace;
+                    font-weight: 900;
+                    color: #f72585; /* Vibrant pink for high visibility */
+                    background: rgba(247, 37, 133, 0.1);
+                    padding: 3px 8px;
+                    border-radius: 6px;
+                    font-family: 'Inter', system-ui, sans-serif;
                 }
                 .type {
-                    font-size: 12px;
-                    font-weight: 600;
-                    color: rgba(255, 255, 255, 0.85);
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: #fff; /* Solid white */
                 }
                 .countdown {
                     font-size: 11px;
-                    color: rgba(255, 255, 255, 0.5);
+                    font-weight: 500;
+                    color: #a5b4fc; /* Light blue */
                 }
                 .target-info {
                     text-align: right;
                 }
                 .targets {
-                    font-size: 11px;
-                    color: rgba(255, 255, 255, 0.7);
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #e2e8f0; /* Near white */
+                }
+                .icon {
+                    opacity: 0.8;
+                    margin-right: 4px;
                 }
                 .targets-none {
-                    font-size: 11px;
+                    font-size: 12px;
+                    font-weight: 500;
                     color: rgba(255, 255, 255, 0.4);
                 }
                 .extra {
-                    color: #a5b4fc;
-                    font-weight: 600;
+                    color: #4ade80; /* Success green */
+                    font-weight: 700;
                 }
                 .error-small {
-                    font-size: 10px;
-                    color: #fda4af;
-                    margin-top: 4px;
+                    font-size: 11px;
+                    color: #f87171;
+                    font-weight: 600;
+                    margin-top: 8px;
                 }
             `}</style>
     </div>
