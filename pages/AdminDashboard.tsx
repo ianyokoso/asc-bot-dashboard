@@ -156,7 +156,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             {/* Main Stack Layout (Left Aligned, Vertical) */}
                             <div className="flex flex-col gap-4 max-w-4xl">
                                 {/* Next Notification Preview */}
-                                <NotificationPreview />
+                                
 
                                 {/* 1. Period Setting */}
                                 <div className="p-6 rounded-3xl bg-white/30 backdrop-blur-2xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
@@ -425,6 +425,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 <div className="p-1 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
                                     <NotificationTester members={members} onTest={onTestNotification} />
                                 </div>
+
+                                {/* Next Notification Preview - Moved to Bottom */}
+                                <NotificationPreview />
                             </div>
                         </div>
                     )}
