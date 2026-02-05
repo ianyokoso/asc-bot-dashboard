@@ -33,6 +33,7 @@ const App: React.FC = () => {
 
   // 알림 전체 활성화 상태
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [testMode, setTestMode] = useState(false);
 
   // Toast State
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error'; visible: boolean }>({
@@ -61,6 +62,7 @@ const App: React.FC = () => {
         if (data.holidayStart) setHolidayStart(data.holidayStart);
         if (data.holidayEnd) setHolidayEnd(data.holidayEnd);
         if (data.notificationsEnabled !== undefined) setNotificationsEnabled(data.notificationsEnabled);
+        if (data.testMode !== undefined) setTestMode(data.testMode);
         // Load Time Settings
         if (data.sfTime1) setSfTime1(data.sfTime1);
         if (data.sfTime2) setSfTime2(data.sfTime2);
@@ -172,6 +174,31 @@ const App: React.FC = () => {
     }
   };
 
+  // Test Mode Toggle Handler
+  const handleToggleTestMode = async () => {
+    const newState = !testMode;
+    setTestMode(newState);
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/settings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ testMode: newState, trigger: 'manual' })
+      });
+      const result = await res.json();
+
+      if (result.status !== 'success') {
+        setTestMode(!newState);
+        showToast(`설정 저장 실패: ${result.message}`, 'error');
+      } else {
+        showToast(newState ? "테스트 모드가 활성화되었습니다. (운영진만 알림 수신)" : "테스트 모드가 비활성화되었습니다.", newState ? 'success' : 'error');
+      }
+    } catch (err) {
+      setTestMode(!newState);
+      showToast(`서버 통신 오류: ${err}`, 'error');
+    }
+  };
+
   // Test Notification Handler
   const handleTestNotification = async (targetId: string, msgType: string) => {
     try {
@@ -255,6 +282,8 @@ const App: React.FC = () => {
             onSaveSchedule={saveSchedule}
             onToggleNotifications={handleToggleNotifications}
             notificationsEnabled={notificationsEnabled}
+            testMode={testMode}
+            onToggleTestMode={handleToggleTestMode}
             onTestNotification={handleTestNotification}
             onRunCommand={handleRunCommand}
           />

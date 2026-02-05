@@ -37,6 +37,8 @@ interface AdminDashboardProps {
     onSaveSchedule: () => void;
     onToggleNotifications: () => void;
     notificationsEnabled: boolean;
+    testMode: boolean;
+    onToggleTestMode: () => void;
     onTestNotification: (targetId: string, msgType: string) => void;
     onRunCommand: (command: string, force: boolean) => void;
 }
@@ -61,6 +63,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     onSaveSchedule,
     onToggleNotifications,
     notificationsEnabled,
+    testMode,
+    onToggleTestMode,
     onTestNotification,
     onRunCommand
 }) => {
@@ -283,6 +287,31 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                     </div>
                                 </div>
 
+                                {/* 3.3 Test Mode Toggle */}
+                                <div className="p-6 rounded-3xl bg-gradient-to-br from-amber-500/10 to-orange-500/5 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-row items-center justify-between relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/20 rounded-full blur-[60px] -mr-16 -mt-16 pointer-events-none"></div>
+
+                                    <div className="space-y-1 relative z-10">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <Zap className={`w-4 h-4 ${testMode ? 'text-amber-600' : 'text-gray-400'} transition-colors`} />
+                                            <h3 className="font-bold text-gray-800 text-base">Test Mode</h3>
+                                        </div>
+                                        <p className="text-[11px] text-gray-500 font-medium max-w-[200px]">
+                                            운영진에게만 알림을 보냅니다. (미제출 알림 테스트용)
+                                        </p>
+                                    </div>
+
+                                    <div className="relative z-10">
+                                        <button
+                                            onClick={onToggleTestMode}
+                                            className={`w-14 h-8 flex items-center rounded-full p-1 transition-all duration-500 shadow-inner border border-white/20 ${testMode ? 'bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.5)]' : 'bg-gray-300/50'}`}
+                                        >
+                                            <div className={`w-6 h-6 bg-white rounded-full shadow-lg transform duration-300 ease-in-out ${testMode ? 'translate-x-[24px]' : 'translate-x-0'} flex items-center justify-center`}>
+                                                {testMode ? <CheckCircle className="w-3.5 h-3.5 text-amber-500" /> : <Minus className="w-3.5 h-3.5 text-gray-400" />}
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
 
 
                                 {/* 3.5 Bot Command Triggers */}
