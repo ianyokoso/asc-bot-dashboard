@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 interface Notification {
   type: string;
   time: string;
-  date: string;
   countdown: string;
   targets: string[];
   count: number | string;
@@ -22,218 +21,150 @@ const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
 
 export default function NotificationPreview() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [lastUpdated, setLastUpdated] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
   const fetchPreview = async () => {
     try {
-      setLoading(true);
       const response = await fetch(`${API_BASE_URL}/api/notifications/preview`);
-
       const data: PreviewResponse = await response.json();
-
       if (data.success) {
         setNotifications(data.notifications);
-        setLastUpdated(data.last_updated);
         setError('');
-      } else {
-        setError('알림 정보를 불러오는데 실패했습니다.');
       }
     } catch (err) {
-      console.error('Failed to fetch notification preview:', err);
-      setError('서버 연결 실패');
+      setError('Connection failed');
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    // Initial fetch
     fetchPreview();
-
-    // Auto-refresh every 5 minutes
     const interval = setInterval(fetchPreview, 5 * 60 * 1000);
-
     return () => clearInterval(interval);
   }, []);
 
-  if (loading && notifications.length === 0) {
-    return (
-      <div className="notification-preview-card loading">
-        <h3>🔔 다음 예정 알림</h3>
-        <p>로딩 중...</p>
-      </div>
-    );
-  }
+  if (loading && notifications.length === 0) return null;
 
   return (
-    <div className="notification-preview-card">
-      <div className="preview-header">
-        <h3>🔔 다음 예정 알림</h3>
-        <span className="last-updated">
-          🔄 {lastUpdated ? `마지막 업데이트: ${lastUpdated}` : '5분마다 자동 갱신'}
-        </span>
+    <div className="compact-preview">
+      <div className="compact-header">
+        <span className="title">🚀 Upcoming Notifications</span>
+        <span className="refresh-badge">Auto-refreshes in 5m</span>
       </div>
 
-      {error && (
-        <div className="preview-error">
-          ⚠️ {error}
-        </div>
-      )}
-
-      {notifications.length === 0 && !error ? (
-        <div className="preview-empty">
-          <p>예정된 알림이 없습니다.</p>
-        </div>
-      ) : (
-        <div className="preview-list">
-          {notifications.map((notif, index) => (
-            <div key={index} className="preview-item">
-              <div className="preview-item-header">
-                <span className="preview-icon">{notif.icon}</span>
-                <span className="preview-time">
-                  {notif.time} <span className="preview-countdown">({notif.countdown})</span>
-                </span>
-              </div>
-              <div className="preview-item-body">
-                <p className="preview-type">{notif.type}</p>
-                <p className="preview-targets">
-                  👥 대상: {typeof notif.count === 'number' ? `${notif.count}명` : notif.count}
-                  {notif.targets && notif.targets.length > 0 && (
-                    <span className="preview-names">
-                      {' '}({notif.targets.join(', ')}
-                      {typeof notif.count === 'number' && notif.count > notif.targets.length &&
-                        ` 외 ${notif.count - notif.targets.length}명`})
-                    </span>
-                  )}
-                </p>
-                {notif.date && (
-                  <p className="preview-date">📅 {notif.date}</p>
-                )}
-              </div>
+      <div className="compact-list">
+        {notifications.map((notif, index) => (
+          <div key={index} className="compact-item">
+            <div className="main-info">
+              <span className="time">{notif.time}</span>
+              <span className="type">{notif.type}</span>
+              <span className="countdown">({notif.countdown})</span>
             </div>
-          ))}
-        </div>
-      )}
+            <div className="target-info">
+              {notif.targets && notif.targets.length > 0 ? (
+                <span className="targets">
+                  👥 {notif.targets.join(', ')}
+                  {typeof notif.count === 'number' && notif.count > notif.targets.length &&
+                    <span className="extra"> 외 {notif.count - notif.targets.length}명</span>
+                  }
+                </span>
+              ) : (
+                <span className="targets-none">👥 Target: {notif.count}</span>
+              )}
+            </div>
+          </div>
+        ))}
+        {error && <div className="error-small">⚠️ {error}</div>}
+      </div>
 
       <style jsx>{`
-        .notification-preview-card {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border-radius: 16px;
-          padding: 24px;
-          margin-bottom: 24px;
-          color: white;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .preview-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
-          padding-bottom: 16px;
-          border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .preview-header h3 {
-          margin: 0;
-          font-size: 24px;
-          font-weight: 700;
-        }
-
-        .last-updated {
-          font-size: 12px;
-          opacity: 0.8;
-        }
-
-        .preview-error {
-          background: rgba(255, 59, 48, 0.2);
-          border: 1px solid rgba(255, 59, 48, 0.4);
-          border-radius: 8px;
-          padding: 12px;
-          margin-bottom: 16px;
-        }
-
-        .preview-empty {
-          text-align: center;
-          padding: 32px;
-          opacity: 0.7;
-        }
-
-        .preview-list {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .preview-item {
-          background: rgba(255, 255, 255, 0.15);
-          backdrop-filter: blur(10px);
-          border-radius: 12px;
-          padding: 16px;
-          transition: transform 0.2s, background 0.2s;
-        }
-
-        .preview-item:hover {
-          transform: translateY(-2px);
-          background: rgba(255, 255, 255, 0.2);
-        }
-
-        .preview-item-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 8px;
-        }
-
-        .preview-icon {
-          font-size: 24px;
-        }
-
-        .preview-time {
-          font-size: 18px;
-          font-weight: 600;
-        }
-
-        .preview-countdown {
-          font-size: 14px;
-          opacity: 0.8;
-          font-weight: 400;
-        }
-
-        .preview-item-body {
-          margin-top: 8px;
-        }
-
-        .preview-type {
-          font-size: 16px;
-          font-weight: 600;
-          margin: 4px 0;
-        }
-
-        .preview-targets {
-          font-size: 14px;
-          opacity: 0.9;
-          margin: 4px 0;
-        }
-
-        .preview-names {
-          font-size: 12px;
-          opacity: 0.7;
-        }
-
-        .preview-date {
-          font-size: 12px;
-          opacity: 0.7;
-          margin: 4px 0;
-        }
-
-        .loading {
-          text-align: center;
-          padding: 32px;
-        }
-      `}</style>
+                .compact-preview {
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 12px;
+                    padding: 12px 16px;
+                    margin-bottom: 20px;
+                    backdrop-filter: blur(8px);
+                }
+                .compact-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    padding-bottom: 6px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                }
+                .title {
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: rgba(255, 255, 255, 0.9);
+                    letter-spacing: -0.01em;
+                }
+                .refresh-badge {
+                    font-size: 10px;
+                    color: rgba(255, 255, 255, 0.4);
+                }
+                .compact-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                }
+                .compact-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 6px 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+                }
+                .compact-item:last-child {
+                    border-bottom: none;
+                }
+                .main-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+                .time {
+                    font-size: 12px;
+                    font-weight: 800;
+                    color: #fff;
+                    background: rgba(255, 255, 255, 0.1);
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: 'JetBrains Mono', monospace;
+                }
+                .type {
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: rgba(255, 255, 255, 0.85);
+                }
+                .countdown {
+                    font-size: 11px;
+                    color: rgba(255, 255, 255, 0.5);
+                }
+                .target-info {
+                    text-align: right;
+                }
+                .targets {
+                    font-size: 11px;
+                    color: rgba(255, 255, 255, 0.7);
+                }
+                .targets-none {
+                    font-size: 11px;
+                    color: rgba(255, 255, 255, 0.4);
+                }
+                .extra {
+                    color: #a5b4fc;
+                    font-weight: 600;
+                }
+                .error-small {
+                    font-size: 10px;
+                    color: #fda4af;
+                    margin-top: 4px;
+                }
+            `}</style>
     </div>
   );
 }
