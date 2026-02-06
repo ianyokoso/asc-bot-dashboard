@@ -7,6 +7,7 @@ interface Notification {
   targets: string[];
   count: number | string;
   icon: string;
+  enabled?: boolean;
 }
 
 interface PreviewResponse {
@@ -64,14 +65,14 @@ export default function NotificationPreview() {
             </div>
             <div className="target-info">
               {notif.targets && notif.targets.length > 0 ? (
-                <span className="targets">
+                <span className={`targets ${notif.enabled === false ? 'disabled' : ''}`}>
                   <span className="icon">👥</span> {notif.targets.join(', ')}
                   {typeof notif.count === 'number' && notif.count > notif.targets.length &&
                     <span className="extra"> 외 {notif.count - notif.targets.length}명</span>
                   }
                 </span>
               ) : (
-                <span className="targets-none">👥 Target: {notif.count}</span>
+                <span className={`targets-none ${notif.enabled === false ? 'disabled' : ''}`}>👥 Target: {notif.count}</span>
               )}
             </div>
           </div>
@@ -159,6 +160,9 @@ export default function NotificationPreview() {
                     font-weight: 500;
                     color: #e2e8f0; /* Near white */
                 }
+                .targets.disabled {
+                    color: rgba(255, 255, 255, 0.4);
+                }
                 .icon {
                     opacity: 0.8;
                     margin-right: 4px;
@@ -166,6 +170,9 @@ export default function NotificationPreview() {
                 .targets-none {
                     font-size: 12px;
                     font-weight: 500;
+                    color: #e2e8f0; /* Near white - default for global active */
+                }
+                .targets-none.disabled {
                     color: rgba(255, 255, 255, 0.4);
                 }
                 .extra {
