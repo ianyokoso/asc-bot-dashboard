@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 20:51:41)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 20:54:30)
 const REAL_DATA = {
   "members": [
     {
@@ -238,10 +238,10 @@ const REAL_DATA = {
       "discordNickname": "김정환/됴냐/0기",
       "profileImage": "",
       "tracks": [
-        "Sales",
-        "Longform"
+        "Longform",
+        "Sales"
       ],
-      "track": "Sales",
+      "track": "Longform",
       "joinedAt": "2026-02-04",
       "notionSync": true,
       "cohort": "6기",
@@ -2647,10 +2647,10 @@ const REAL_DATA = {
       "discordNickname": "고원규/1Q/6기",
       "profileImage": "",
       "tracks": [
-        "AI Agent",
-        "Builder Basic"
+        "Builder Basic",
+        "AI Agent"
       ],
-      "track": "AI Agent",
+      "track": "Builder Basic",
       "joinedAt": "2026-02-08",
       "notionSync": true,
       "cohort": "6기",
@@ -3020,10 +3020,10 @@ const REAL_DATA = {
       "discordNickname": "천하윤/하윤킹/6기",
       "profileImage": "",
       "tracks": [
-        "Longform",
-        "Builder Advanced"
+        "Builder Advanced",
+        "Longform"
       ],
-      "track": "Longform",
+      "track": "Builder Advanced",
       "joinedAt": "2026-02-08",
       "notionSync": true,
       "cohort": "6기",
@@ -3360,7 +3360,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-09T20:51:41.122776"
+  "lastUpdated": "2026-02-09T20:54:30.369697"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({

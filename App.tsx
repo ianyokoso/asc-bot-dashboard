@@ -15,6 +15,8 @@ const App: React.FC = () => {
   const [members, setMembers] = useState<Member[]>(mockMembers);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [groupData, setGroupData] = useState<any[]>([]); // New
+  const [isGroupsLoading, setIsGroupsLoading] = useState(false); // New
 
   // 기수 및 기간 설정
   const [cohortName, setCohortName] = useState('6기');
@@ -71,6 +73,9 @@ const App: React.FC = () => {
       })
       .catch(err => console.error("Failed to load settings:", err));
 
+    // 1.5 Load Group Data
+    fetchGroups();
+
     // 2. Load Real Data with Auto-Sync Fallback
     const loadData = async () => {
       setIsSyncing(true); // Show loading initially
@@ -98,6 +103,21 @@ const App: React.FC = () => {
     loadData();
   }, []);
 
+  const fetchGroups = async () => {
+    setIsGroupsLoading(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/groups`);
+      const result = await res.json();
+      if (result.status === 'success') {
+        setGroupData(result.data);
+      }
+    } catch (err) {
+      console.error("Failed to fetch groups:", err);
+    } finally {
+      setIsGroupsLoading(false);
+    }
+  };
+
   const handleSync = async (isAuto = false) => {
     setIsSyncing(true);
     try {
@@ -108,6 +128,7 @@ const App: React.FC = () => {
         const newData = result.data;
         setMembers(newData.members);
         setSubmissions(newData.submissions);
+        await fetchGroups(); // Also update groups after sync
         if (!isAuto) showToast("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.", 'success');
         else console.log("✅ Auto-sync completed.");
       } else {
@@ -286,6 +307,8 @@ const App: React.FC = () => {
             onToggleTestMode={handleToggleTestMode}
             onTestNotification={handleTestNotification}
             onRunCommand={handleRunCommand}
+            groupData={groupData}
+            isGroupsLoading={isGroupsLoading}
           />
         } />
       </Routes>

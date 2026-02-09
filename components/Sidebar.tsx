@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Table, Users, Settings, LayoutGrid } from 'lucide-react';
 
 interface SidebarProps {
-  activeTab: 'submissions' | 'design_test' | 'members' | 'groups' | 'settings';
-  setActiveTab: (tab: 'submissions' | 'design_test' | 'members' | 'groups' | 'settings') => void;
+  activeTab: 'submissions' | 'groups' | 'members' | 'settings';
+  setActiveTab: (tab: 'submissions' | 'groups' | 'members' | 'settings') => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   const menuItems = [
     { id: 'submissions', icon: Table, label: '제출 현황' },
-    { id: 'members', icon: Users, label: '멤버 관리' },
     { id: 'groups', icon: LayoutGrid, label: '조 관리' },
+    { id: 'members', icon: Users, label: '멤버 관리' },
     { id: 'settings', icon: Settings, label: '봇 설정' },
   ];
 
@@ -64,10 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   };
 
   return (
-    // Updated Background: Slightly more transparent & glass-like to blend with the vibrant mesh
     <aside className="w-64 h-full bg-white/20 backdrop-blur-2xl border-r border-white/30 flex flex-col shadow-[4px_0_30px_rgba(0,0,0,0.02)] transition-all duration-300 relative z-50">
-
-      {/* Branding Area */}
       <div className="p-8 pb-6 flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-indigo-900/10 hover:scale-105 transition-transform duration-300 bg-white/40 backdrop-blur-sm border border-white/50">
           <img src="/asc_logo.png" alt="ASC Logo" className="w-full h-full object-cover" />
@@ -75,12 +72,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
         <span className="text-xl font-extrabold tracking-tight text-[#1e293b] font-sans">ASC Tracker</span>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 px-4 space-y-2 mt-2">
         {menuItems.map((item) => {
-          // Hide design test if needed
-          if (item.id === 'design_test') return null;
-
           const isActive = activeTab === item.id;
           return (
             <button
@@ -95,11 +88,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
                 className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'text-[#1e293b] scale-105' : 'text-gray-400 group-hover:text-gray-600'
                   }`}
               />
-              <span className={`font-bold text-sm tracking-wide ${isActive ? 'font-nav-active' : 'font-nav'}`}>
+              <span className={`font-bold text-sm tracking-wide ${isActive ? 'font-bold' : ''}`}>
                 {item.label}
               </span>
 
-              {/* Active Indicator Pillage */}
               {isActive && (
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 w-1.5 h-6 rounded-full bg-[#1e293b]/10"></div>
               )}
@@ -108,7 +100,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
         })}
       </nav>
 
-      {/* Footer / User Info */}
       <div className="p-6 border-t border-white/20">
         <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/20 border border-white/30 hover:bg-white/40 transition-colors cursor-pointer group">
           <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs shadow-inner group-hover:scale-110 transition-transform">
@@ -120,7 +111,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
           </div>
         </div>
       </div>
-      {/* Bot Status Indicator */}
       <div className="px-4 pb-6">
         <div className="bg-white/30 rounded-2xl p-4 border border-white/50 shadow-sm backdrop-blur-md">
           <div className="flex items-center justify-between mb-2">
