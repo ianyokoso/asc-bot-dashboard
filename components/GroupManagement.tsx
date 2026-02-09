@@ -175,7 +175,7 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
                             <h3 className="text-lg font-bold text-gray-800">{currentTrackData.trackName}</h3>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
                             {currentTrackData.groups.map((group, groupIdx) => {
                                 // Calculate Progress
                                 const submittedCount = group.members.filter(m =>
@@ -193,16 +193,16 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
                                 return (
                                     <div
                                         key={groupIdx}
-                                        className="group relative bg-white/60 backdrop-blur-xl border border-white/60 rounded-[28px] p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                                        className="group relative bg-white/60 backdrop-blur-xl border border-white/60 rounded-[20px] p-4 shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
                                     >
                                         {/* Card Header */}
-                                        <div className="flex justify-between items-start mb-5">
+                                        <div className="flex justify-between items-start mb-3">
                                             <div>
                                                 <div className="flex items-center gap-2 mb-1">
-                                                    <h4 className="text-lg font-extrabold text-gray-800 tracking-tight">{group.groupName}</h4>
+                                                    <h4 className="text-base font-extrabold text-gray-800 tracking-tight">{group.groupName}</h4>
 
                                                     {/* Progress Badge (Idea 1) */}
-                                                    <div className={`px-2 py-0.5 rounded-md text-[10px] font-bold flex items-center gap-1 ${badgeColor}`}>
+                                                    <div className={`px-1.5 py-0.5 rounded-md text-[9px] font-bold flex items-center gap-1 ${badgeColor}`}>
                                                         {progressPercentage === 100 && <span>🔥</span>}
                                                         <span>{submittedCount}/{totalCount}</span>
                                                     </div>
@@ -211,21 +211,21 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
                                                         href={`https://www.notion.so/${group.dbId.replace(/-/g, '')}`}
                                                         target="_blank"
                                                         rel="noreferrer"
-                                                        className="p-1.5 rounded-lg text-gray-300 hover:text-indigo-500 hover:bg-indigo-50 transition-colors ml-1"
+                                                        className="p-1 rounded-lg text-gray-300 hover:text-indigo-500 hover:bg-indigo-50 transition-colors ml-1"
                                                         title="Open Notion"
                                                     >
-                                                        <ExternalLink className="w-3.5 h-3.5" />
+                                                        <ExternalLink className="w-3 h-3" />
                                                     </a>
                                                 </div>
-                                                <p className="text-xs font-medium text-gray-400 flex items-center gap-1.5">
-                                                    <Users className="w-3 h-3" />
+                                                <p className="text-[10px] font-medium text-gray-400 flex items-center gap-1">
+                                                    <Users className="w-2.5 h-2.5" />
                                                     {group.members.length} Members
                                                 </p>
                                             </div>
                                         </div>
 
                                         {/* Member List */}
-                                        <div className="space-y-2.5 flex-1">
+                                        <div className="space-y-1.5 flex-1">
                                             {group.members.map((member, mIdx) => {
                                                 const isLeader = member.role === '조장';
                                                 const hasSubmitted = submissions.some(s => s.memberId === member.id && s.status === 'submitted');
@@ -234,29 +234,29 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
                                                     <div
                                                         key={mIdx}
                                                         className={`
-                                                            flex items-center justify-between p-2.5 rounded-xl border transition-all
+                                                            flex items-center justify-between p-2 rounded-lg border transition-all
                                                             ${isLeader
                                                                 ? 'bg-indigo-50/80 border-indigo-200/60 shadow-sm ring-1 ring-indigo-100/50'
                                                                 : 'bg-white/40 border-transparent hover:bg-white hover:border-white/60 hover:shadow-sm'
                                                             }
                                                         `}
                                                     >
-                                                        <div className="flex items-center gap-3 overflow-hidden">
+                                                        <div className="flex items-center gap-2.5 overflow-hidden">
                                                             {/* Profile Image or Fallback */}
                                                             <div className={`
-                                                                w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm shadow-sm overflow-hidden bg-gray-100
+                                                                w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs shadow-sm overflow-hidden bg-gray-100
                                                                 ${isLeader && !member.profileImage ? 'bg-gradient-to-br from-indigo-100 to-white text-indigo-600 ring-2 ring-white' : ''}
                                                             `}>
                                                                 {member.profileImage ? (
                                                                     <img src={member.profileImage} alt={member.name} className="w-full h-full object-cover" />
                                                                 ) : (
-                                                                    isLeader ? <Crown className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5 text-gray-400" />
+                                                                    isLeader ? <Crown className="w-3 h-3" /> : <User className="w-3 h-3 text-gray-400" />
                                                                 )}
                                                             </div>
 
                                                             <div className="flex flex-col min-w-0">
-                                                                <div className="flex items-center gap-1.5">
-                                                                    <span className={`text-sm tracking-tight truncate ${isLeader ? 'font-bold text-gray-800' : 'font-medium text-gray-600'}`}>
+                                                                <div className="flex items-center gap-1">
+                                                                    <span className={`text-xs tracking-tight truncate ${isLeader ? 'font-bold text-gray-800' : 'font-medium text-gray-600'}`}>
                                                                         {member.name}
                                                                     </span>
                                                                     {/* Submission Dot Indicator (Idea 3) */}
@@ -264,13 +264,13 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
                                                                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 ring-2 ring-white/50" title="Submitted"></div>
                                                                     )}
                                                                 </div>
-                                                                <span className="text-[10px] text-gray-400 font-mono truncate">
+                                                                <span className="text-[9px] text-gray-400 font-mono truncate">
                                                                     {member.discordId}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                         {isLeader && (
-                                                            <span className="flex-shrink-0 text-[9px] font-extrabold bg-indigo-600 text-white px-1.5 py-0.5 rounded shadow-sm shadow-indigo-200 ml-2">
+                                                            <span className="flex-shrink-0 text-[8px] font-extrabold bg-indigo-600 text-white px-1 py-0.5 rounded shadow-sm shadow-indigo-200 ml-1">
                                                                 조장
                                                             </span>
                                                         )}
