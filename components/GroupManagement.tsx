@@ -74,12 +74,19 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
         if (!searchTerm) return track;
 
         // Filter groups within the active track
+        const filteredGroups = track.groups.filter(group =>
+            group.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            group.members.some(m => m.name.toLowerCase().includes(searchTerm.toLowerCase()) || m.discordId.includes(searchTerm))
+        );
+
+        // Sort groups naturally (Numeric sort: 10조 comes after 2조)
+        filteredGroups.sort((a, b) =>
+            a.groupName.localeCompare(b.groupName, undefined, { numeric: true, sensitivity: 'base' })
+        );
+
         return {
             ...track,
-            groups: track.groups.filter(group =>
-                group.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                group.members.some(m => m.name.toLowerCase().includes(searchTerm.toLowerCase()) || m.discordId.includes(searchTerm))
-            )
+            groups: filteredGroups
         };
     }, [sortedTracks, activeTab, searchTerm]);
 
