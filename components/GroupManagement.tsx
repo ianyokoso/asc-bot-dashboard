@@ -71,17 +71,22 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
         const track = sortedTracks.find(t => t.trackName === activeTab);
         if (!track) return null;
 
-        if (!searchTerm) return track;
-
-        // Filter groups within the active track
-        const filteredGroups = track.groups.filter(group =>
-            group.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            group.members.some(m => m.name.toLowerCase().includes(searchTerm.toLowerCase()) || m.discordId.includes(searchTerm))
+        // Always sort groups naturally (1, 2, ..., 10)
+        const sortedGroups = [...track.groups].sort((a, b) =>
+            a.groupName.localeCompare(b.groupName, undefined, { numeric: true, sensitivity: 'base' })
         );
 
-        // Sort groups naturally
-        filteredGroups.sort((a, b) =>
-            a.groupName.localeCompare(b.groupName, undefined, { numeric: true, sensitivity: 'base' })
+        if (!searchTerm) {
+            return {
+                ...track,
+                groups: sortedGroups
+            };
+        }
+
+        // Filter groups within the active track
+        const filteredGroups = sortedGroups.filter(group =>
+            group.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            group.members.some(m => m.name.toLowerCase().includes(searchTerm.toLowerCase()) || m.discordId.includes(searchTerm))
         );
 
         return {
