@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 20:54:30)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 20:58:31)
 const REAL_DATA = {
   "members": [
     {
@@ -238,10 +238,10 @@ const REAL_DATA = {
       "discordNickname": "김정환/됴냐/0기",
       "profileImage": "",
       "tracks": [
-        "Longform",
-        "Sales"
+        "Sales",
+        "Longform"
       ],
-      "track": "Longform",
+      "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
       "cohort": "6기",
@@ -3360,7 +3360,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-09T20:54:30.369697"
+  "lastUpdated": "2026-02-09T20:58:31.979105"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
