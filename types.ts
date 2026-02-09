@@ -6,6 +6,8 @@ export enum Track {
   BUILDER_ADVANCED = 'Builder Advanced',
   SALES = 'Sales',
   AI_AGENT = 'AI Agent',
+  CREATOR_LITE = 'Creator Lite',
+  BUILDER_LITE = 'Builder Lite',
   UNASSIGNED = 'Unassigned'
 }
 

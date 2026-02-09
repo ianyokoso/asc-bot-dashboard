@@ -5,6 +5,7 @@ import LuxuryHeader from '../components/LuxuryHeader';
 import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
 import LuxurySubmissionTable from '../components/LuxurySubmissionTable';
 import MemberManagement from '../components/MemberManagement';
+import GroupManagement from '../components/GroupManagement';
 import NotificationTester from '../components/NotificationTester';
 import NotificationPreview from '../components/NotificationPreview';
 import { Member, Submission, Track } from '../types';
@@ -69,7 +70,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     onTestNotification,
     onRunCommand
 }) => {
-    const [activeTab, setActiveTab] = useState<'submissions' | 'design_test' | 'members' | 'settings'>('submissions');
+    const [activeTab, setActiveTab] = useState<'submissions' | 'design_test' | 'members' | 'groups' | 'settings'>('submissions');
 
     // Track State for Submissions Tab
     const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
@@ -81,6 +82,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         if (activeTab === 'submissions') return `${displayCohort} 과제 제출 현황`;
         if (activeTab === 'design_test') return `${displayCohort} UI Test`;
         if (activeTab === 'members') return '멤버 관리';
+        if (activeTab === 'groups') return '조 관리';
         return '봇 설정 (v2.0)';
     }, [activeTab, cohortConfig.name]);
 
@@ -109,7 +111,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     endDate={cohortConfig.endDate}
                 />
 
-                <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
+                <div className={`flex-1 flex flex-col ${activeTab === 'submissions' || activeTab === 'groups' ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'}`}>
                     {/* SUBMISSIONS TAB */}
                     {activeTab === 'submissions' && (
                         <div className="flex-1 flex flex-col min-h-0">
@@ -137,6 +139,15 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         </div>
                     )}
 
+                    {/* GROUPS TAB */}
+                    {activeTab === 'groups' && (
+                        <div className="flex-1 p-4 md:p-6">
+                            <div className="bg-white/40 backdrop-blur-3xl rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-white/50 overflow-hidden h-full">
+                                <GroupManagement members={members} submissions={submissions} />
+                            </div>
+                        </div>
+                    )}
+
                     {/* SETTINGS TAB */}
                     {activeTab === 'settings' && (
                         <div className="w-full px-6 md:px-10 pb-20">
@@ -156,7 +167,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             {/* Main Stack Layout (Left Aligned, Vertical) */}
                             <div className="flex flex-col gap-4 max-w-4xl">
                                 {/* Next Notification Preview */}
-                                
+
 
                                 {/* 1. Period Setting */}
                                 <div className="p-6 rounded-3xl bg-white/30 backdrop-blur-2xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
