@@ -1,40 +1,9 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 20:58:31)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 22:58:37)
 const REAL_DATA = {
   "members": [
-    {
-      "id": "2df6400e-9268-807c-9c1e-f0d5e668ffdf",
-      "name": "양성열",
-      "discordId": "1212351510290243616",
-      "discordUsername": "_yang5071",
-      "discordNickname": "양성열 / 5기",
-      "profileImage": "https://cdn.discordapp.com/embed/avatars/3.png",
-      "tracks": [],
-      "track": "Unknown",
-      "joinedAt": "2026-01-05",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-01-05T08:46:00.000Z"
-    },
-    {
-      "id": "2df6400e-9268-80e6-a976-f62af164bfe3",
-      "name": "진창용",
-      "discordId": "863629308471803904",
-      "discordUsername": "this8228",
-      "discordNickname": "진창용/꾸머/5기",
-      "profileImage": "https://cdn.discordapp.com/avatars/863629308471803904/893b638cc4dea781f448c4f81fe875cd.png?size=1024",
-      "tracks": [
-        "AI Agent",
-        "Shortform"
-      ],
-      "track": "AI Agent",
-      "joinedAt": "2026-01-05",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-01-05T08:50:00.000Z"
-    },
     {
       "id": "2df6400e-9268-8100-9d3e-d292c27a828c",
       "name": "박진우",
@@ -238,10 +207,10 @@ const REAL_DATA = {
       "discordNickname": "김정환/됴냐/0기",
       "profileImage": "",
       "tracks": [
-        "Sales",
-        "Longform"
+        "Longform",
+        "Sales"
       ],
-      "track": "Sales",
+      "track": "Longform",
       "joinedAt": "2026-02-04",
       "notionSync": true,
       "cohort": "6기",
@@ -3020,10 +2989,10 @@ const REAL_DATA = {
       "discordNickname": "천하윤/하윤킹/6기",
       "profileImage": "",
       "tracks": [
-        "Builder Advanced",
-        "Longform"
+        "Longform",
+        "Builder Advanced"
       ],
-      "track": "Builder Advanced",
+      "track": "Longform",
       "joinedAt": "2026-02-08",
       "notionSync": true,
       "cohort": "6기",
@@ -3136,7 +3105,7 @@ const REAL_DATA = {
       "profileImage": "https://cdn.discordapp.com/embed/avatars/4.png",
       "tracks": [
         "Sales",
-        "Builder Advanced"
+        "Builder Basic"
       ],
       "track": "Sales",
       "joinedAt": "2026-02-07",
@@ -3290,6 +3259,20 @@ const REAL_DATA = {
       "notionSync": true,
       "cohort": "6기",
       "created_time": "2026-02-09T06:51:00.000Z"
+    },
+    {
+      "id": "3026400e-9268-817b-af6d-df71b0975788",
+      "name": "안웅현",
+      "discordId": "1229047466339471422",
+      "discordUsername": "wallaby_wh",
+      "discordNickname": "안웅현",
+      "profileImage": "https://cdn.discordapp.com/avatars/1229047466339471422/6c5996770c985bcd6e5b68131ff2ba04.png?size=1024",
+      "tracks": [],
+      "track": "Unknown",
+      "joinedAt": "2026-02-09",
+      "notionSync": true,
+      "cohort": null,
+      "created_time": "2026-02-09T11:59:00.000Z"
     }
   ],
   "submissions": [
@@ -3360,7 +3343,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-09T20:58:31.979105"
+  "lastUpdated": "2026-02-09T22:58:37.311758"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
