@@ -1,7 +1,7 @@
+
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:20:45)
-// Force redeploy: 2026-02-12
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:35:53)
 const REAL_DATA = {
   "members": [
     {
@@ -275,8 +275,8 @@ const REAL_DATA = {
       "profileImage": "",
       "tracks": [
         "Sales",
-        "Longform",
-        "Shortform"
+        "Shortform",
+        "Longform"
       ],
       "track": "Sales",
       "joinedAt": "2026-02-04",
@@ -3295,6 +3295,19 @@ const REAL_DATA = {
   ],
   "submissions": [
     {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470024904899559672/1471164995558576261/image.png?ex=698df0ab&is=698c9f2b&hm=4e6df29bd752d6de418619e5633bac113b483f359bdf1c0d0f86df6cbce03392&",
+      "content": "스레드 처음 가입했더니, 이렇게 나오네요 ㅎㅎ 인스타 활동 이력도 없고 그래서 그렇다는데... \n가입 완료되면, 과제 시작하겠습니다! (미제출 횟수에 포함되지 않았으면 하는데🙏  검토 부탁드립니다🙇 )",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470024904899559672/1471164995558576261/image.png?ex=698df0ab&is=698c9f2b&hm=4e6df29bd752d6de418619e5633bac113b483f359bdf1c0d0f86df6cbce03392&"
+      ]
+    },
+    {
       "memberId": "2fd6400e-9268-8137-bb07-fa8e8ab11813",
       "date": "2026-02-11",
       "status": "submitted",
@@ -3570,7 +3583,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T00:20:45.251198"
+  "lastUpdated": "2026-02-12T00:35:53.858960"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
@@ -3580,10 +3593,10 @@ export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
 }));
 
 export const generateSubmissions = (): Submission[] => {
-  return REAL_DATA.submissions.map(s => ({
-    ...s,
-    status: s.status as SubmissionStatus,
-    tracks: s.tracks ? s.tracks.map((t: string) => t as Track) : undefined,
-    link: s.link || undefined
-  }));
+    return REAL_DATA.submissions.map(s => ({
+        ...s,
+        status: s.status as SubmissionStatus,
+        tracks: s.tracks ? s.tracks.map((t: string) => t as Track) : undefined,
+        link: s.link || undefined
+    }));
 };
