@@ -1,7 +1,7 @@
-
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
 // ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:20:45)
+// Force redeploy: 2026-02-12
 const REAL_DATA = {
   "members": [
     {
@@ -3580,10 +3580,10 @@ export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
 }));
 
 export const generateSubmissions = (): Submission[] => {
-    return REAL_DATA.submissions.map(s => ({
-        ...s,
-        status: s.status as SubmissionStatus,
-        tracks: s.tracks ? s.tracks.map((t: string) => t as Track) : undefined,
-        link: s.link || undefined
-    }));
+  return REAL_DATA.submissions.map(s => ({
+    ...s,
+    status: s.status as SubmissionStatus,
+    tracks: s.tracks ? s.tracks.map((t: string) => t as Track) : undefined,
+    link: s.link || undefined
+  }));
 };
