@@ -1,9 +1,76 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-09 22:58:37)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:20:45)
 const REAL_DATA = {
   "members": [
+    {
+      "id": "2df6400e-9268-8028-8dbe-ef8246e90b85",
+      "name": "정연우",
+      "discordId": "1247448582101930040",
+      "discordUsername": "dong_.chimi",
+      "discordNickname": "5기/ 똑사장 연우",
+      "profileImage": "https://cdn.discordapp.com/avatars/1247448582101930040/daa87d555034e7ed81dbbab9317b00cc.png?size=1024",
+      "tracks": [
+        "AI Agent",
+        "Builder Basic"
+      ],
+      "track": "AI Agent",
+      "joinedAt": "2026-01-05",
+      "notionSync": true,
+      "cohort": null,
+      "created_time": "2026-01-05T08:47:00.000Z"
+    },
+    {
+      "id": "2df6400e-9268-807c-8701-d2dfa8c77dd2",
+      "name": "윤사라",
+      "discordId": "1456132328849149953",
+      "discordUsername": "sara.mindplanet",
+      "discordNickname": "윤사라/하기로/5기",
+      "profileImage": "https://cdn.discordapp.com/avatars/1456132328849149953/672e298367e3ed264e8e109b50de8840.png?size=1024",
+      "tracks": [
+        "Sales"
+      ],
+      "track": "Sales",
+      "joinedAt": "2026-01-05",
+      "notionSync": true,
+      "cohort": null,
+      "created_time": "2026-01-05T08:49:00.000Z"
+    },
+    {
+      "id": "2df6400e-9268-807c-9c1e-f0d5e668ffdf",
+      "name": "양성열",
+      "discordId": "1212351510290243616",
+      "discordUsername": "_yang5071",
+      "discordNickname": "양성열 / 5기",
+      "profileImage": "https://cdn.discordapp.com/embed/avatars/3.png",
+      "tracks": [
+        "Builder Advanced",
+        "Shortform"
+      ],
+      "track": "Builder Advanced",
+      "joinedAt": "2026-01-05",
+      "notionSync": true,
+      "cohort": null,
+      "created_time": "2026-01-05T08:46:00.000Z"
+    },
+    {
+      "id": "2df6400e-9268-80e6-a976-f62af164bfe3",
+      "name": "진창용",
+      "discordId": "863629308471803904",
+      "discordUsername": "this8228",
+      "discordNickname": "진창용/꾸머/5기",
+      "profileImage": "https://cdn.discordapp.com/avatars/863629308471803904/893b638cc4dea781f448c4f81fe875cd.png?size=1024",
+      "tracks": [
+        "AI Agent",
+        "Builder Advanced"
+      ],
+      "track": "AI Agent",
+      "joinedAt": "2026-01-05",
+      "notionSync": true,
+      "cohort": null,
+      "created_time": "2026-01-05T08:50:00.000Z"
+    },
     {
       "id": "2df6400e-9268-8100-9d3e-d292c27a828c",
       "name": "박진우",
@@ -75,7 +142,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -119,7 +186,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -149,7 +216,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -179,7 +246,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -196,7 +263,7 @@ const REAL_DATA = {
       "track": "Builder Advanced",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -207,13 +274,14 @@ const REAL_DATA = {
       "discordNickname": "김정환/됴냐/0기",
       "profileImage": "",
       "tracks": [
+        "Sales",
         "Longform",
-        "Sales"
+        "Shortform"
       ],
-      "track": "Longform",
+      "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:30:00.000Z"
     },
     {
@@ -243,7 +311,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -259,7 +327,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -347,7 +415,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -377,7 +445,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -393,7 +461,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -423,7 +491,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -441,7 +509,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -474,7 +542,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -490,7 +558,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -534,7 +602,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -578,7 +646,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -594,7 +662,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -645,7 +713,7 @@ const REAL_DATA = {
       "track": "Shortform",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -661,7 +729,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -672,7 +740,8 @@ const REAL_DATA = {
       "discordNickname": "브라이언/5기",
       "profileImage": "https://cdn.discordapp.com/avatars/1219146433081511947/4e22c528d161aa10e6b88f63aa1417b6.png?size=1024",
       "tracks": [
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Longform",
       "joinedAt": "2026-01-05",
@@ -707,7 +776,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -723,7 +792,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -740,7 +809,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -770,7 +839,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -814,7 +883,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -840,12 +909,13 @@ const REAL_DATA = {
       "profileImage": "https://cdn.discordapp.com/avatars/440463702534258688/8075e31ad9cfaafec735509b81227027.png?size=1024",
       "tracks": [
         "Sales",
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -875,7 +945,7 @@ const REAL_DATA = {
       "track": "Builder Advanced",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -994,7 +1064,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1081,7 +1151,7 @@ const REAL_DATA = {
       "track": "Shortform",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1092,7 +1162,8 @@ const REAL_DATA = {
       "discordNickname": "박현준 / 노코드 개발 / 3기",
       "profileImage": "https://cdn.discordapp.com/avatars/915962978879299635/f345d7dc30cd3fdd03ace4853f91d88d.png?size=1024",
       "tracks": [
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Longform",
       "joinedAt": "2026-01-05",
@@ -1128,7 +1199,7 @@ const REAL_DATA = {
       "track": "Builder Advanced",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1159,7 +1230,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -1175,7 +1246,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -1191,7 +1262,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1252,7 +1323,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1268,7 +1339,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1313,7 +1384,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1377,7 +1448,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1407,7 +1478,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1424,7 +1495,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1456,7 +1527,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1472,7 +1543,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1502,7 +1573,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -1519,7 +1590,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -1535,7 +1606,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1552,7 +1623,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -1583,7 +1654,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1627,7 +1698,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1672,7 +1743,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1717,7 +1788,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -1735,7 +1806,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1765,7 +1836,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1782,7 +1853,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1856,7 +1927,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1873,7 +1944,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1889,7 +1960,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1906,7 +1977,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -1959,7 +2030,8 @@ const REAL_DATA = {
       "discordNickname": "이진아/제나/5기",
       "profileImage": "https://cdn.discordapp.com/avatars/1295735487121588315/19c3519b5b8b24c12f6e42bd5f04a0b6.png?size=1024",
       "tracks": [
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Longform",
       "joinedAt": "2026-01-05",
@@ -1994,7 +2066,7 @@ const REAL_DATA = {
       "track": "Builder Advanced",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -2040,7 +2112,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -2126,7 +2198,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -2156,7 +2228,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T07:30:00.000Z"
     },
     {
@@ -2200,7 +2272,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
     },
     {
@@ -2288,18 +2360,20 @@ const REAL_DATA = {
       "created_time": "2026-01-31T14:03:00.000Z"
     },
     {
-      "id": "2f96400e-9268-817d-9772-c9d8dfddd69a",
+      "id": "3016400e-9268-81bd-9654-c77433264b00",
       "name": "강민",
       "discordId": "1306527505322217497",
       "discordUsername": "ghoiibaad",
       "discordNickname": "강민/고드/4기",
-      "profileImage": "https://cdn.discordapp.com/embed/avatars/4.png",
-      "tracks": [],
-      "track": "Unknown",
-      "joinedAt": "2026-01-31",
+      "profileImage": "",
+      "tracks": [
+        "Shortform"
+      ],
+      "track": "Shortform",
+      "joinedAt": "2026-02-08",
       "notionSync": true,
       "cohort": "6기",
-      "created_time": "2026-01-31T14:04:00.000Z"
+      "created_time": "2026-02-08T12:33:00.000Z"
     },
     {
       "id": "2f96400e-9268-8188-b2a2-c0232b089a58",
@@ -2331,7 +2405,7 @@ const REAL_DATA = {
     },
     {
       "id": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "name": "이안/부운영자",
+      "name": "이안",
       "discordId": "1392850552416768072",
       "discordUsername": "ian_61591",
       "discordNickname": "이안/부운영자",
@@ -2450,7 +2524,7 @@ const REAL_DATA = {
       "track": "Shortform",
       "joinedAt": "2026-01-31",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-01-31T14:04:00.000Z"
     },
     {
@@ -2508,12 +2582,12 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-03",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-03T13:45:00.000Z"
     },
     {
       "id": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
-      "name": "김깜직/6기",
+      "name": "김깜직",
       "discordId": "1314864693730611311",
       "discordUsername": "jeongminhwii",
       "discordNickname": "김깜직/6기",
@@ -2554,7 +2628,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:15:00.000Z"
     },
     {
@@ -2572,15 +2646,15 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:16:00.000Z"
     },
     {
       "id": "2fd6400e-9268-8120-bd8b-f5af991a620a",
-      "name": "이브레인",
+      "name": "이만성",
       "discordId": "1351320828431564882",
       "discordUsername": "kimdiving",
-      "discordNickname": "이브레인",
+      "discordNickname": "이만성/이브레인/6기",
       "profileImage": "https://cdn.discordapp.com/embed/avatars/1.png",
       "tracks": [
         "Sales",
@@ -2589,7 +2663,7 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:14:00.000Z"
     },
     {
@@ -2605,41 +2679,25 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T10:58:00.000Z"
     },
     {
-      "id": "3016400e-9268-8139-b447-fcbb968d8bf7",
-      "name": "고원규/1Q/6기",
-      "discordId": "1108655291404390440",
-      "discordUsername": "go1q_",
-      "discordNickname": "고원규/1Q/6기",
-      "profileImage": "",
-      "tracks": [
-        "Builder Basic",
-        "AI Agent"
-      ],
-      "track": "Builder Basic",
-      "joinedAt": "2026-02-08",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-02-08T10:03:00.000Z"
-    },
-    {
       "id": "2fd6400e-9268-8137-bb07-fa8e8ab11813",
-      "name": "김연재/케이슬립/6기",
+      "name": "김연재",
       "discordId": "1309802194215899157",
       "discordUsername": "sylvie_46932",
       "discordNickname": "김연재/케이슬립/6기",
       "profileImage": "https://cdn.discordapp.com/embed/avatars/1.png",
       "tracks": [
         "Sales",
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:15:00.000Z"
     },
     {
@@ -2650,17 +2708,18 @@ const REAL_DATA = {
       "discordNickname": "문병관/baker/6기",
       "profileImage": "https://cdn.discordapp.com/embed/avatars/1.png",
       "tracks": [
-        "Builder Basic"
+        "Builder Basic",
+        "AI Agent"
       ],
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:14:00.000Z"
     },
     {
       "id": "2fd6400e-9268-8168-a39e-fa71e8c4d86b",
-      "name": "조은비/플로/6기",
+      "name": "조은비",
       "discordId": "1468444537616859350",
       "discordUsername": "flor_25630",
       "discordNickname": "조은비/플로/6기",
@@ -2671,15 +2730,15 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:15:00.000Z"
     },
     {
       "id": "2fd6400e-9268-8172-994c-f2f75ab413b1",
-      "name": "jaram",
+      "name": "박자람",
       "discordId": "1468448455616893031",
       "discordUsername": "jaram.park",
-      "discordNickname": "jaram",
+      "discordNickname": "박자람/6기",
       "profileImage": "https://cdn.discordapp.com/avatars/1468448455616893031/6c5996770c985bcd6e5b68131ff2ba04.png?size=1024",
       "tracks": [
         "Builder Basic"
@@ -2687,12 +2746,12 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
       "id": "2fd6400e-9268-8180-92da-ca2d7cccaec1",
-      "name": "노신희/신이/6기",
+      "name": "노신희",
       "discordId": "1011241117997600869",
       "discordUsername": "dolpaliyagjangsu2528",
       "discordNickname": "노신희/신이/6기",
@@ -2719,7 +2778,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:14:00.000Z"
     },
     {
@@ -2736,7 +2795,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:14:00.000Z"
     },
     {
@@ -2753,12 +2812,12 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
       "id": "2fd6400e-9268-819d-93b5-da9757bcc9b7",
-      "name": "송현미/쏭대표/6기",
+      "name": "송현미",
       "discordId": "1468468111526334466",
       "discordUsername": "hyun2030.",
       "discordNickname": "송현미/쏭대표/6기",
@@ -2769,7 +2828,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
@@ -2785,12 +2844,12 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:12:00.000Z"
     },
     {
       "id": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
-      "name": "박시준/닷셰프/6기",
+      "name": "박시준",
       "discordId": "1468452985406226525",
       "discordUsername": "dassyepeubagsijun_33578",
       "discordNickname": "박시준/닷셰프/6기",
@@ -2817,12 +2876,12 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:10:00.000Z"
     },
     {
       "id": "2fd6400e-9268-81ba-85ef-e17d1232093b",
-      "name": "그레이스킴/드리밍코치/6기",
+      "name": "그레이스킴",
       "discordId": "1392144792778965015",
       "discordUsername": "dreamingcoach1",
       "discordNickname": "그레이스킴/드리밍코치/6기",
@@ -2833,7 +2892,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
@@ -2855,7 +2914,7 @@ const REAL_DATA = {
     },
     {
       "id": "2fd6400e-9268-81ca-9eb7-cdeedff433d2",
-      "name": "Serena Ko",
+      "name": "고평온",
       "discordId": "1468439960376967299",
       "discordUsername": "jyforever10",
       "discordNickname": "Serena Ko",
@@ -2866,12 +2925,12 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
       "id": "2fd6400e-9268-81ca-b12f-cc1cb33d59bf",
-      "name": "곽병준/6기",
+      "name": "곽병준",
       "discordId": "762516489407692820",
       "discordUsername": "kkwakkk5543",
       "discordNickname": "곽병준/6기",
@@ -2883,7 +2942,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:10:00.000Z"
     },
     {
@@ -2902,7 +2961,7 @@ const REAL_DATA = {
     },
     {
       "id": "2fd6400e-9268-81e0-bd5b-fb74ce02611c",
-      "name": "곽수연/가걍/6기",
+      "name": "곽수연",
       "discordId": "1138814429618774216",
       "discordUsername": "sy_k_",
       "discordNickname": "곽수연/가걍/6기",
@@ -2913,7 +2972,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
@@ -2925,17 +2984,18 @@ const REAL_DATA = {
       "profileImage": "https://cdn.discordapp.com/avatars/1172143518064582668/0e351edb4bbe3d129099ab14fffb7932.png?size=1024",
       "tracks": [
         "Sales",
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:14:00.000Z"
     },
     {
       "id": "2fd6400e-9268-81e6-873e-c5a131700198",
-      "name": "김영준/로그/6기",
+      "name": "김영준",
       "discordId": "1058984826734129262",
       "discordUsername": "juny5923",
       "discordNickname": "김영준/로그/6기",
@@ -2947,7 +3007,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
@@ -2964,39 +3024,42 @@ const REAL_DATA = {
       "track": "Shortform",
       "joinedAt": "2026-02-04",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
       "id": "2fd6400e-9268-81ed-afee-c1b5690af250",
-      "name": "김다은/다니/6기",
+      "name": "김다은",
       "discordId": "1468428085572665477",
       "discordUsername": "dani_00525",
       "discordNickname": "김다은/다니/6기",
       "profileImage": "https://cdn.discordapp.com/avatars/1468428085572665477/2105fbd6227c9fb6e139665bfb870852.png?size=1024",
-      "tracks": [],
-      "track": "Unknown",
+      "tracks": [
+        "Sales"
+      ],
+      "track": "Sales",
       "joinedAt": "2026-02-04",
       "notionSync": true,
       "cohort": "6기",
       "created_time": "2026-02-04T09:13:00.000Z"
     },
     {
-      "id": "3016400e-9268-8154-a7ca-faf1bf508840",
+      "id": "2fd6400e-9268-81fb-8543-ed0754fb6680",
       "name": "천하윤",
       "discordId": "901418397731012689",
-      "discordUsername": "@ceoyujin_",
-      "discordNickname": "천하윤/하윤킹/6기",
-      "profileImage": "",
+      "discordUsername": "ceonyujin_",
+      "discordNickname": "천하윤 / 하윤킹 / 6기",
+      "profileImage": "https://cdn.discordapp.com/embed/avatars/1.png",
       "tracks": [
         "Longform",
-        "Builder Advanced"
+        "Builder Advanced",
+        "Shortform"
       ],
       "track": "Longform",
-      "joinedAt": "2026-02-08",
+      "joinedAt": "2026-02-04",
       "notionSync": true,
       "cohort": "6기",
-      "created_time": "2026-02-08T13:01:00.000Z"
+      "created_time": "2026-02-04T09:10:00.000Z"
     },
     {
       "id": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
@@ -3012,7 +3075,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-05",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-05T12:53:00.000Z"
     },
     {
@@ -3051,7 +3114,7 @@ const REAL_DATA = {
     },
     {
       "id": "2fe6400e-9268-81e0-86cd-ea72e6a3d2b1",
-      "name": "카라",
+      "name": "이화연",
       "discordId": "1468756827461259488",
       "discordUsername": "kara023170",
       "discordNickname": "카라",
@@ -3093,7 +3156,7 @@ const REAL_DATA = {
       "track": "AI Agent",
       "joinedAt": "2026-02-06",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-06T09:24:00.000Z"
     },
     {
@@ -3122,12 +3185,13 @@ const REAL_DATA = {
       "profileImage": "https://cdn.discordapp.com/avatars/1468441587875844143/8569adcbd36c70a7578c017bf5604ea5.png?size=1024",
       "tracks": [
         "Sales",
-        "Longform"
+        "Longform",
+        "Shortform"
       ],
       "track": "Sales",
       "joinedAt": "2026-02-08",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-08T10:03:00.000Z"
     },
     {
@@ -3140,45 +3204,31 @@ const REAL_DATA = {
       "tracks": [
         "Sales",
         "Longform",
-        "Builder Basic"
+        "Builder Basic",
+        "Shortform"
       ],
       "track": "Sales",
       "joinedAt": "2026-02-08",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-08T11:40:00.000Z"
     },
     {
-      "id": "3016400e-9268-814d-b3cb-de675787891c",
-      "name": "김다은",
-      "discordId": "1468428085572665477",
-      "discordUsername": "dani_00520",
-      "discordNickname": "김다은",
+      "id": "3016400e-9268-8139-b447-fcbb968d8bf7",
+      "name": "고원규/1Q/6기",
+      "discordId": "1108655291404390440",
+      "discordUsername": "go1q_",
+      "discordNickname": "고원규/1Q/6기",
       "profileImage": "",
       "tracks": [
-        "Sales"
-      ],
-      "track": "Sales",
-      "joinedAt": "2026-02-08",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-02-08T12:32:00.000Z"
-    },
-    {
-      "id": "3016400e-9268-8166-b986-e32260426a4e",
-      "name": "서유상/ 제나 /3기",
-      "discordId": "937608136318144543",
-      "discordUsername": "xena2022",
-      "discordNickname": "서유상/ 제나 /3기",
-      "profileImage": "",
-      "tracks": [
-        "AI Agent"
+        "AI Agent",
+        "Builder Basic"
       ],
       "track": "AI Agent",
       "joinedAt": "2026-02-08",
       "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-02-08T13:01:00.000Z"
+      "cohort": null,
+      "created_time": "2026-02-08T10:03:00.000Z"
     },
     {
       "id": "3016400e-9268-8175-a957-d84741a15a93",
@@ -3195,40 +3245,8 @@ const REAL_DATA = {
       "track": "Sales",
       "joinedAt": "2026-02-08",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-08T10:03:00.000Z"
-    },
-    {
-      "id": "3016400e-9268-8195-8e35-e2dc326b512b",
-      "name": "노신희",
-      "discordId": "1011241117997600869",
-      "discordUsername": "rebeccashin0922@gmail.com",
-      "discordNickname": "노신희/신이/6기",
-      "profileImage": "",
-      "tracks": [
-        "Sales"
-      ],
-      "track": "Sales",
-      "joinedAt": "2026-02-08",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-02-08T03:58:00.000Z"
-    },
-    {
-      "id": "3016400e-9268-81bd-9654-c77433264b00",
-      "name": "강민/고드/4기",
-      "discordId": "1306527505322217497",
-      "discordUsername": "ghoiibaad",
-      "discordNickname": "강민/고드/4기",
-      "profileImage": "",
-      "tracks": [
-        "Shortform"
-      ],
-      "track": "Shortform",
-      "joinedAt": "2026-02-08",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-02-08T12:33:00.000Z"
     },
     {
       "id": "3016400e-9268-81ef-b6e0-c5ae2ea3f18f",
@@ -3243,7 +3261,7 @@ const REAL_DATA = {
       "track": "Builder Basic",
       "joinedAt": "2026-02-08",
       "notionSync": true,
-      "cohort": "6기",
+      "cohort": null,
       "created_time": "2026-02-08T10:03:00.000Z"
     },
     {
@@ -3271,14 +3289,223 @@ const REAL_DATA = {
       "track": "Unknown",
       "joinedAt": "2026-02-09",
       "notionSync": true,
-      "cohort": null,
+      "cohort": "코치",
       "created_time": "2026-02-09T11:59:00.000Z"
     }
   ],
   "submissions": [
     {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
+      "memberId": "2fd6400e-9268-8137-bb07-fa8e8ab11813",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/activity-7427366058862252033-xY-E?utm_source=share&utm_medium=member_desktop&rcm=ACoAABy8IToBpjkSdesT6ABCVru0gkrsl7erGDQ",
+      "content": "https://www.linkedin.com/posts/activity-7427366058862252033-xY-E?utm_source=share&utm_medium=member_desktop&rcm=ACoAABy8IToBpjkSdesT6ABCVru0gkrsl7erGDQ",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-814a-b27c-e51737db7b7a",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@aron_aiconbia/post/DUnwhG7j2XR?xmt=AQF0oW887Ulm4hBRQhs9LR3wfNW8Lhgix0RiyOmVGz4Ltg",
+      "content": "https://www.threads.com/@aron_aiconbia/post/DUnwhG7j2XR?xmt=AQF0oW887Ulm4hBRQhs9LR3wfNW8Lhgix0RiyOmVGz4Ltg",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-80e6-a976-f62af164bfe3",
       "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1duaM0LiNdxjBOktd4SL5upFtu4rkAoEPaZ5nbXb2G-8/edit?usp=sharing",
+      "content": "1주차 과제 제출합니다~\n1. prd.md 파일\n2. 서비스 스크린샷\nhttps://docs.google.com/document/d/1duaM0LiNdxjBOktd4SL5upFtu4rkAoEPaZ5nbXb2G-8/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81f6-9118-c3a00fbd6580",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@jakvis.labs/post/DUnvaZsEi63?xmt=AQF0P5cb6d7LFvV_9rGtwqQtiXs_YUpGMKmpWX3Mw_9pz3o",
+      "content": "https://www.threads.com/@jakvis.labs/post/DUnvaZsEi63?xmt=AQF0P5cb6d7LFvV_9rGtwqQtiXs_YUpGMKmpWX3Mw_9pz3o",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DUnuYAFkgGl",
+      "content": "https://www.threads.com/@makekim.kr/post/DUnuYAFkgGl",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f1-aa1e-f7250a0d3470",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@okay.community/post/DUnufz8D1Cn?xmt=AQF0xaGPZKVzfGYpDPXh6ppPobDBZ21_XCiupdMlgGx_Nn46H1p_7b4RQLhUQWn2-QYKyrSh&slof=1",
+      "content": "https://www.threads.com/@okay.community/post/DUnufz8D1Cn?xmt=AQF0xaGPZKVzfGYpDPXh6ppPobDBZ21_XCiupdMlgGx_Nn46H1p_7b4RQLhUQWn2-QYKyrSh&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8135-a31c-d965505143f6",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@swlbear/post/DUnthdMj2aV?xmt=AQF0OPuT89aoHLgz7pXwHs7gCAhi0z4SJXt5GG-u2FiEsr6egSQnPrcNxxdQL3MrQTa-eIw&slof=1",
+      "content": "https://www.threads.com/@swlbear/post/DUnthdMj2aV?xmt=AQF0OPuT89aoHLgz7pXwHs7gCAhi0z4SJXt5GG-u2FiEsr6egSQnPrcNxxdQL3MrQTa-eIw&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DUnZPleD5L7/?igsh=aW95Ync3cm54bjF1",
+      "content": "https://www.instagram.com/reel/DUnZPleD5L7/?igsh=aW95Ync3cm54bjF1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@inner.builder/post/DUnLoydkTSN?xmt=AQF0hmAVLBbNz2Kr-zZ3Ov1AsVufkx547yJ1loRyajhrVg",
+      "content": "https://www.threads.com/@inner.builder/post/DUnLoydkTSN?xmt=AQF0hmAVLBbNz2Kr-zZ3Ov1AsVufkx547yJ1loRyajhrVg",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@home_dad_sol/post/DUnDL4bgqXm?xmt=AQF06S_w6C7xOrVfmdkbACEsHq6BapvIzrf-tCMEabWV5A",
+      "content": "https://www.threads.com/@home_dad_sol/post/DUnDL4bgqXm?xmt=AQF06S_w6C7xOrVfmdkbACEsHq6BapvIzrf-tCMEabWV5A",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8112-9aff-ccc87d661968",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@slowwbuilder/post/DUnXIBAkoBn?xmt=AQF0QDkW1WlYG5XZxwwneC9B7rpsMuSXyxQQmmDvmqQMkQ",
+      "content": "https://www.threads.com/@slowwbuilder/post/DUnXIBAkoBn?xmt=AQF0QDkW1WlYG5XZxwwneC9B7rpsMuSXyxQQmmDvmqQMkQ",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81eb-a6f4-cecebc61bfbb",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://naver.me/5If2obcH",
+      "content": "https://naver.me/5If2obcH",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DUnPLcqj0G_?xmt=AQF0Zk9WD1MI-t-Qyv6cZtjOAKmO2SNsdrYQM_sAGpCdFA",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DUnPLcqj0G_?xmt=AQF0Zk9WD1MI-t-Qyv6cZtjOAKmO2SNsdrYQM_sAGpCdFA",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dotshef/post/DUm3_fxEY5u?hl=ko",
+      "content": "https://www.threads.com/@dotshef/post/DUm3_fxEY5u?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DUmkCXqib6y?xmt=AQF0FUxyxahb78V8tNvF-KiI1RZ-0rVNdrugFmobgmzzGH4",
+      "content": "https://www.threads.com/@dodo_list_/post/DUmkCXqib6y?xmt=AQF0FUxyxahb78V8tNvF-KiI1RZ-0rVNdrugFmobgmzzGH4",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DUmbb6AjyWd?xmt=AQF0ISFUidnCeNeEjCRRY5vSEK7Yk_ByO3vfjy98qyErAd0Xt7dos5Z6yD5Jie7rUZh4HaZL&slof=1",
+      "content": "https://www.threads.com/@lawyerssm/post/DUmbb6AjyWd?xmt=AQF0ISFUidnCeNeEjCRRY5vSEK7Yk_ByO3vfjy98qyErAd0Xt7dos5Z6yD5Jie7rUZh4HaZL&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/stevejobboo_rlksxiuksqsi-ai-gtm-share-7427164674170757120-tQlT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "content": "https://www.linkedin.com/posts/stevejobboo_rlksxiuksqsi-ai-gtm-share-7427164674170757120-tQlT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-10",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/valueforyourbiz_i-connected-claude-code-with-the-newsletter-activity-7426597974404915201-2mrz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6L56oBcnSGNNosRJL25X2aGHLoxESQD-U",
+      "content": "https://www.linkedin.com/posts/valueforyourbiz_i-connected-claude-code-with-the-newsletter-activity-7426597974404915201-2mrz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6L56oBcnSGNNosRJL25X2aGHLoxESQD-U\n\nhttps://www.instagram.com/reel/DUjUrZgioyz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-09",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/stevejobboo_ascstu-activity-7426624973089280000-nwVI?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "content": "https://www.linkedin.com/posts/stevejobboo_ascstu-activity-7426624973089280000-nwVI?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
+      "date": "2026-02-09",
       "status": "submitted",
       "tracks": [
         "AI Agent"
@@ -3289,7 +3516,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
+      "date": "2026-02-09",
       "status": "submitted",
       "tracks": [
         "Sales"
@@ -3300,7 +3527,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
+      "date": "2026-02-09",
       "status": "submitted",
       "tracks": [
         "Builder Advanced"
@@ -3311,7 +3538,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
+      "date": "2026-02-09",
       "status": "submitted",
       "tracks": [
         "Builder Basic"
@@ -3322,7 +3549,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
+      "date": "2026-02-09",
       "status": "submitted",
       "tracks": [
         "Longform"
@@ -3343,7 +3570,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-09T22:58:37.311758"
+  "lastUpdated": "2026-02-12T00:20:45.251198"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
