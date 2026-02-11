@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:35:53)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:44:35)
 const REAL_DATA = {
   "members": [
     {
@@ -265,24 +265,6 @@ const REAL_DATA = {
       "notionSync": true,
       "cohort": null,
       "created_time": "2026-01-05T08:36:00.000Z"
-    },
-    {
-      "id": "2fd6400e-9268-81e3-8edc-f8a1b3ae5f26",
-      "name": "김정환",
-      "discordId": "1369399300324593780",
-      "discordUsername": "sleepingpain",
-      "discordNickname": "김정환/됴냐/0기",
-      "profileImage": "",
-      "tracks": [
-        "Sales",
-        "Shortform",
-        "Longform"
-      ],
-      "track": "Sales",
-      "joinedAt": "2026-02-04",
-      "notionSync": true,
-      "cohort": null,
-      "created_time": "2026-02-04T09:30:00.000Z"
     },
     {
       "id": "2df6400e-9268-8114-a6ed-c7c89589c9d1",
@@ -2994,6 +2976,24 @@ const REAL_DATA = {
       "created_time": "2026-02-04T09:14:00.000Z"
     },
     {
+      "id": "2fd6400e-9268-81e3-8edc-f8a1b3ae5f26",
+      "name": "김정환",
+      "discordId": "1100513913533120532",
+      "discordUsername": "sleepingpain",
+      "discordNickname": "김정환/됴냐/0기",
+      "profileImage": "https://cdn.discordapp.com/avatars/1100513913533120532/d7de579f95a349efaa361580e9ec8834.png?size=1024",
+      "tracks": [
+        "Sales",
+        "Longform",
+        "Shortform"
+      ],
+      "track": "Sales",
+      "joinedAt": "2026-02-04",
+      "notionSync": true,
+      "cohort": null,
+      "created_time": "2026-02-04T09:30:00.000Z"
+    },
+    {
       "id": "2fd6400e-9268-81e6-873e-c5a131700198",
       "name": "김영준",
       "discordId": "1058984826734129262",
@@ -3583,7 +3583,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T00:35:53.858960"
+  "lastUpdated": "2026-02-12T00:44:35.728090"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
