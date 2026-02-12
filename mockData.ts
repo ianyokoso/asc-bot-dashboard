@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 17:13:22)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 18:17:53)
 const REAL_DATA = {
   "members": [
     {
@@ -2342,22 +2342,6 @@ const REAL_DATA = {
       "created_time": "2026-01-31T14:03:00.000Z"
     },
     {
-      "id": "3016400e-9268-81bd-9654-c77433264b00",
-      "name": "강민",
-      "discordId": "1306527505322217497",
-      "discordUsername": "ghoiibaad",
-      "discordNickname": "강민/고드/4기",
-      "profileImage": "",
-      "tracks": [
-        "Shortform"
-      ],
-      "track": "Shortform",
-      "joinedAt": "2026-02-08",
-      "notionSync": true,
-      "cohort": "6기",
-      "created_time": "2026-02-08T12:33:00.000Z"
-    },
-    {
       "id": "2f96400e-9268-8188-b2a2-c0232b089a58",
       "name": "구름향기",
       "discordId": "1405134129187520623",
@@ -2690,8 +2674,7 @@ const REAL_DATA = {
       "discordNickname": "문병관/baker/6기",
       "profileImage": "https://cdn.discordapp.com/embed/avatars/1.png",
       "tracks": [
-        "Builder Basic",
-        "AI Agent"
+        "Builder Basic"
       ],
       "track": "Builder Basic",
       "joinedAt": "2026-02-04",
@@ -3085,12 +3068,8 @@ const REAL_DATA = {
       "discordUsername": "thesweetchapter",
       "discordNickname": "sophia",
       "profileImage": "",
-      "tracks": [
-        "Sales",
-        "Builder Basic",
-        "AI Agent"
-      ],
-      "track": "Sales",
+      "tracks": [],
+      "track": "Unknown",
       "joinedAt": "2026-02-05",
       "notionSync": true,
       "cohort": null,
@@ -3249,6 +3228,22 @@ const REAL_DATA = {
       "created_time": "2026-02-08T10:03:00.000Z"
     },
     {
+      "id": "3016400e-9268-81bd-9654-c77433264b00",
+      "name": "강민",
+      "discordId": "1306527505322217497",
+      "discordUsername": "ghoiibaad",
+      "discordNickname": "강민/고드/4기",
+      "profileImage": "",
+      "tracks": [
+        "Shortform"
+      ],
+      "track": "Shortform",
+      "joinedAt": "2026-02-08",
+      "notionSync": true,
+      "cohort": "6기",
+      "created_time": "2026-02-08T12:33:00.000Z"
+    },
+    {
       "id": "3016400e-9268-81ef-b6e0-c5ae2ea3f18f",
       "name": "이효정/샤무스/1기",
       "discordId": "1126851617686306919",
@@ -3294,6 +3289,41 @@ const REAL_DATA = {
     }
   ],
   "submissions": [
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DUpiAZAkvVd",
+      "content": "https://www.threads.com/@makekim.kr/post/DUpiAZAkvVd",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81eb-a6f4-cecebc61bfbb",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://naver.me/xzHv5F7T",
+      "content": "https://naver.me/xzHv5F7T",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8137-bb07-fa8e8ab11813",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470024904899559672/1471426314564145266/2026-02-12_174204.png?ex=698ee40b&is=698d928b&hm=d234b45dfb413cce255d09c0206da651f855f0600d1644bbac2d92b923c79017&",
+      "content": "[김연재/케이슬립/6기] 크리에이터 숏폼 과제",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470024904899559672/1471426314564145266/2026-02-12_174204.png?ex=698ee40b&is=698d928b&hm=d234b45dfb413cce255d09c0206da651f855f0600d1644bbac2d92b923c79017&"
+      ]
+    },
     {
       "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
       "date": "2026-02-12",
@@ -3715,7 +3745,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T17:13:22.598871"
+  "lastUpdated": "2026-02-12T18:17:53.479996"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
