@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 00:44:35)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 17:05:49)
 const REAL_DATA = {
   "members": [
     {
@@ -3295,6 +3295,116 @@ const REAL_DATA = {
   ],
   "submissions": [
     {
+      "memberId": "2df6400e-9268-814a-b27c-e51737db7b7a",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@aron_aiconbia/post/DUpiV5YD30X?xmt=AQF0auf-s7JQ2eerBfVdo533vBFLAtXm95F_XhqYzFbLJUSi2hM-jAfybKIIZ4S-qt5a5YWT&slof=1",
+      "content": "https://www.threads.com/@aron_aiconbia/post/DUpiV5YD30X?xmt=AQF0auf-s7JQ2eerBfVdo533vBFLAtXm95F_XhqYzFbLJUSi2hM-jAfybKIIZ4S-qt5a5YWT&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DUpgREHE947?xmt=AQF07zxstCWFSmCkZJHpsqWz9HORLV2G-rzZSNB9ZNwgDg",
+      "content": "https://www.threads.com/@ai.profitwise/post/DUpgREHE947?xmt=AQF07zxstCWFSmCkZJHpsqWz9HORLV2G-rzZSNB9ZNwgDg",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@home_dad_sol/post/DUpjM7XD4H_?xmt=AQF0uRjUjNcUJ8N1RFKn7qqvecr7bOi78En8c5BpRmNcbUrJ-91uZUgKVPamPeQYjhzmaGAK&slof=1",
+      "content": "https://www.threads.com/@home_dad_sol/post/DUpjM7XD4H_?xmt=AQF0uRjUjNcUJ8N1RFKn7qqvecr7bOi78En8c5BpRmNcbUrJ-91uZUgKVPamPeQYjhzmaGAK&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8164-adb9-c6849e98bfb3",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@keep.going.ellie/post/DUogSDQE3_5?xmt=AQF0w1LrGYhF7Sw33sN8ASJXq6mfLfOPfVTVV1jxbZLmK-50KXCZMfTLz9QG--BWRUm7asg&slof=1",
+      "content": "https://www.threads.com/@keep.going.ellie/post/DUogSDQE3_5?xmt=AQF0w1LrGYhF7Sw33sN8ASJXq6mfLfOPfVTVV1jxbZLmK-50KXCZMfTLz9QG--BWRUm7asg&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DUosMaeE-hu?xmt=AQF0cn6vJK6UYqc4w1VCDavfw4bCTGgqVwJnr_OKwvoaG0oEkMwmXxSi0-ZDmwsWLCcGy48&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DUosMaeE-hu?xmt=AQF0cn6vJK6UYqc4w1VCDavfw4bCTGgqVwJnr_OKwvoaG0oEkMwmXxSi0-ZDmwsWLCcGy48&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DUo3NTQk5Ei?xmt=AQF09OXmUm50N4MMIC7A80SdbwYRjppklod8I0IzwDmiMPwp-JNypxpcg4q4ZDP6Horjq9DJ&slof=1",
+      "content": "https://www.threads.com/@dodo_list_/post/DUo3NTQk5Ei?xmt=AQF09OXmUm50N4MMIC7A80SdbwYRjppklod8I0IzwDmiMPwp-JNypxpcg4q4ZDP6Horjq9DJ&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DUn4wKpiAQM?xmt=AQF0afCGD8SuJba2aGQ4Za3vGUS7_RwdJRIcYihmi2RY-M2jj3fP4fZ6jk5b3gsTaWksUwZD&slof=1 ",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DUn4wKpiAQM?xmt=AQF0afCGD8SuJba2aGQ4Za3vGUS7_RwdJRIcYihmi2RY-M2jj3fP4fZ6jk5b3gsTaWksUwZD&slof=1 ",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ina.sasad;",
+      "content": "https://www.threads.com/@ina.sasad;",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@curious_lamie/post/DUmQBpZE6Rq?xmt=AQF0vArToqvgAeG5enFZbZ8-7wVK7JcmsiBxnIejcjXDMLcf3mHyrci2oeT0hJASTevwiow&slof=1",
+      "content": "AI 댄스 프롬프트 \nhttps://www.threads.com/@curious_lamie/post/DUmQBpZE6Rq?xmt=AQF0vArToqvgAeG5enFZbZ8-7wVK7JcmsiBxnIejcjXDMLcf3mHyrci2oeT0hJASTevwiow&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e3-8edc-f8a1b3ae5f26",
+      "date": "2026-02-11",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/p/DUnxh0TAcfF/",
+      "content": "https://www.instagram.com/p/DUnxh0TAcfF/\n어쩌다 보니... 스레드 계정을 만들자 마자 정지(?)를 먹었네요. 뭔가 잘못 입력한게 있나 봅니다. ㅠ\n어쩌다 보니... 인스타를 올리게 되었네요~\n\n",
+      "images": null
+    },
+    {
       "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
       "date": "2026-02-11",
       "status": "submitted",
@@ -3583,7 +3693,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T00:44:35.728090"
+  "lastUpdated": "2026-02-12T17:05:49.801664"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
