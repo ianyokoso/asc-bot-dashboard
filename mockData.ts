@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 18:37:10)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 18:38:03)
 const REAL_DATA = {
   "members": [
     {
@@ -3745,7 +3745,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T18:37:10.399300"
+  "lastUpdated": "2026-02-12T18:38:03.323356"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
