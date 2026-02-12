@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 17:05:49)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 17:13:22)
 const REAL_DATA = {
   "members": [
     {
@@ -3295,6 +3295,28 @@ const REAL_DATA = {
   ],
   "submissions": [
     {
+      "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dotshef/post/DUpoy1SkcLA?hl=ko",
+      "content": "https://www.threads.com/@dotshef/post/DUpoy1SkcLA?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8112-9aff-ccc87d661968",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@slowwbuilder/post/DUponLTkiID?xmt=AQF0njRJGqOJLM0IT3SUyODU9KaGEA4K99genmi5POBOEQ",
+      "content": "https://www.threads.com/@slowwbuilder/post/DUponLTkiID?xmt=AQF0njRJGqOJLM0IT3SUyODU9KaGEA4K99genmi5POBOEQ",
+      "images": null
+    },
+    {
       "memberId": "2df6400e-9268-814a-b27c-e51737db7b7a",
       "date": "2026-02-12",
       "status": "submitted",
@@ -3384,7 +3406,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
-      "date": "2026-02-11",
+      "date": "2026-02-12",
       "status": "submitted",
       "tracks": [
         "Shortform"
@@ -3406,7 +3428,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
-      "date": "2026-02-11",
+      "date": "2026-02-12",
       "status": "submitted",
       "tracks": [
         "Shortform"
@@ -3419,7 +3441,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2fd6400e-9268-8137-bb07-fa8e8ab11813",
-      "date": "2026-02-11",
+      "date": "2026-02-12",
       "status": "submitted",
       "tracks": [
         "Shortform"
@@ -3693,7 +3715,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T17:05:49.801664"
+  "lastUpdated": "2026-02-12T17:13:22.598871"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
