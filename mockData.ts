@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-13 10:19:55)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-13 13:35:19)
 const REAL_DATA = {
   "members": [
     {
@@ -3290,6 +3290,17 @@ const REAL_DATA = {
   ],
   "submissions": [
     {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@rm.visualizer/post/DUrZaqSDUWx?xmt=AQF0Q3u3_mLCAVi-sxQO-1fWkegW9odxLUgfoHJNgBun04TVko_gvYMrVlKX7QVSv_P04sRT&slof=1",
+      "content": "https://www.threads.com/@rm.visualizer/post/DUrZaqSDUWx?xmt=AQF0Q3u3_mLCAVi-sxQO-1fWkegW9odxLUgfoHJNgBun04TVko_gvYMrVlKX7QVSv_P04sRT&slof=1",
+      "images": null
+    },
+    {
       "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
       "date": "2026-02-13",
       "status": "submitted",
@@ -3624,17 +3635,6 @@ const REAL_DATA = {
       "images": null
     },
     {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-11",
-      "status": "submitted",
-      "tracks": [
-        "Shortform"
-      ],
-      "link": "https://www.threads.com/@ina.sasad;",
-      "content": "https://www.threads.com/@ina.sasad;",
-      "images": null
-    },
-    {
       "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
       "date": "2026-02-12",
       "status": "submitted",
@@ -3855,64 +3855,9 @@ const REAL_DATA = {
       "link": "https://www.linkedin.com/posts/stevejobboo_rlksxiuksqsi-ai-gtm-share-7427164674170757120-tQlT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
       "content": "https://www.linkedin.com/posts/stevejobboo_rlksxiuksqsi-ai-gtm-share-7427164674170757120-tQlT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
       "images": null
-    },
-    {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
-      "status": "submitted",
-      "tracks": [
-        "AI Agent"
-      ],
-      "link": "https://www.threads.com/asdjklasdjl",
-      "content": "과제 테스트입니다.\n\nhttps://www.threads.com/asdjklasdjl",
-      "images": null
-    },
-    {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
-      "status": "submitted",
-      "tracks": [
-        "Sales"
-      ],
-      "link": "https://www.threads.com/asdjklasdjl",
-      "content": "과제 테스트입니다.\n\nhttps://www.threads.com/asdjklasdjl",
-      "images": null
-    },
-    {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
-      "status": "submitted",
-      "tracks": [
-        "Builder Advanced"
-      ],
-      "link": "https://www.threads.com/asdjklasdjl",
-      "content": "과제 테스트입니다.\n\nhttps://www.threads.com/asdjklasdjl",
-      "images": null
-    },
-    {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
-      "status": "submitted",
-      "tracks": [
-        "Builder Basic"
-      ],
-      "link": "https://www.threads.com/asdjklasdjl",
-      "content": "과제 테스트입니다.\n\nhttps://www.threads.com/asdjklasdjl",
-      "images": null
-    },
-    {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-15",
-      "status": "submitted",
-      "tracks": [
-        "Longform"
-      ],
-      "link": "https://www.threads.com/asdjklasdjl",
-      "content": "https://www.threads.com/asdjklasdjl",
-      "images": null
     }
   ],
-  "lastUpdated": "2026-02-13T10:19:55.710206"
+  "lastUpdated": "2026-02-13T13:35:19.929245"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
