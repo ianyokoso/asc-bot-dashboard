@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-13 10:09:39)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-13 10:19:55)
 const REAL_DATA = {
   "members": [
     {
@@ -3857,28 +3857,6 @@ const REAL_DATA = {
       "images": null
     },
     {
-      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
-      "date": "2026-02-10",
-      "status": "submitted",
-      "tracks": [
-        "Shortform"
-      ],
-      "link": "https://www.linkedin.com/posts/valueforyourbiz_i-connected-claude-code-with-the-newsletter-activity-7426597974404915201-2mrz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6L56oBcnSGNNosRJL25X2aGHLoxESQD-U",
-      "content": "https://www.linkedin.com/posts/valueforyourbiz_i-connected-claude-code-with-the-newsletter-activity-7426597974404915201-2mrz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6L56oBcnSGNNosRJL25X2aGHLoxESQD-U\n\nhttps://www.instagram.com/reel/DUjUrZgioyz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "images": null
-    },
-    {
-      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
-      "date": "2026-02-09",
-      "status": "submitted",
-      "tracks": [
-        "Shortform"
-      ],
-      "link": "https://www.linkedin.com/posts/stevejobboo_ascstu-activity-7426624973089280000-nwVI?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
-      "content": "https://www.linkedin.com/posts/stevejobboo_ascstu-activity-7426624973089280000-nwVI?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
-      "images": null
-    },
-    {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
       "date": "2026-02-15",
       "status": "submitted",
@@ -3932,20 +3910,9 @@ const REAL_DATA = {
       "link": "https://www.threads.com/asdjklasdjl",
       "content": "https://www.threads.com/asdjklasdjl",
       "images": null
-    },
-    {
-      "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-09",
-      "status": "submitted",
-      "tracks": [
-        "Shortform"
-      ],
-      "link": "https://www.threads.com/sjdalkdjlads",
-      "content": "https://www.threads.com/sjdalkdjlads",
-      "images": null
     }
   ],
-  "lastUpdated": "2026-02-13T10:09:39.033972"
+  "lastUpdated": "2026-02-13T10:19:55.710206"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
