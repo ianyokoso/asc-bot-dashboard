@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-12 18:46:40)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-13 10:09:39)
 const REAL_DATA = {
   "members": [
     {
@@ -3096,7 +3096,7 @@ const REAL_DATA = {
       "name": "이화연",
       "discordId": "1468756827461259488",
       "discordUsername": "kara023170",
-      "discordNickname": "카라",
+      "discordNickname": "이화연/카라/6기",
       "profileImage": "https://cdn.discordapp.com/embed/avatars/3.png",
       "tracks": [
         "Shortform"
@@ -3289,6 +3289,206 @@ const REAL_DATA = {
     }
   ],
   "submissions": [
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DUrQv3oExtl?xmt=AQF0N41F0soeVd335K1l6x9SrzIa2ISY0czz0p6KCL6M257LnEmSQFw4M2rzAcsrLsS-F8o&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DUrQv3oExtl?xmt=AQF0N41F0soeVd335K1l6x9SrzIa2ISY0czz0p6KCL6M257LnEmSQFw4M2rzAcsrLsS-F8o&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-814f-b0d4-c563a8c55273",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Builder Basic"
+      ],
+      "link": "https://docs.google.com/document/d/1iK81NitDXhk24iDSF51r4WJRdCriImLxaQe0_McaruM/",
+      "content": "https://docs.google.com/document/d/1iK81NitDXhk24iDSF51r4WJRdCriImLxaQe0_McaruM/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/stevejobboo_gtm-parkour-comfortzone-activity-7427725403366010880-3WFG?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DulLrpcZaRa57dmKl7U",
+      "content": "#gtm #parkour #comfortzone | 김영훈 ... 자녀들에게 어떤 교육을 하고 있나요?",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8135-a31c-d965505143f6",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.net/@swlbear/post/DUqWpCWdYAy?xmt=AQF0EoN6mzlTeyBuJJpZTxO0zHb7JGzMFztIoK1V17_SsDCy2rV0sLbGW8ggi7EpnASgkmg9&slof=1",
+      "content": "백영솔 UX/UI 디자인 on Threads",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.net/@benji98760/post/DUqVXvCj53W?hl=ko",
+      "content": "스레드 첫 글... 긴장된다. 괜히 부끄럽다...",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8137-bb07-fa8e8ab11813",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/feed/update/urn:li:activity:7427729295051268096/",
+      "content": "https://www.linkedin.com/feed/update/urn:li:activity:7427729295051268096/\n\n\"수면이 회복되면, 삶도 회복됩니다\" \n수면무호흡증 진단부터 양압기 치료 적응까지 — 40대 남성 김OO님 사례\n\n김OO님(40대 남성), 건강 관리에 진심인 분이셨습니다. 심혈관 관련 약을 꼬박꼬박 챙기고, 10kg 넘게 감량을 진행하고, 동료들 건강까지 챙기는 분. 다만 아침마다 유독 머리가 멍하고 몸이 무거운 게, 이만큼 노력하는데 뭔가 이상하다... 생각하셨다고 합니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470024904899559672/1471522602282385578/image.png?ex=698f3db7&is=698dec37&hm=ead834147122cee52ef103bcd4ce04ffcca270fb43ff51dffc2e8239a44f4143&"
+      ]
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Sales"
+      ],
+      "link": "https://whimsical.com/KH7s2aaRUyU2BQzUeZXF6u",
+      "content": "안녕하세요 과제 인증 올립겠습니다.\n\n[과제 1. 자신만의 퍼널 설계도 만들어오기 - 퍼널 링크 공유하기]\nhttps://whimsical.com/KH7s2aaRUyU2BQzUeZXF6u\n\n[과제 2. 나만의 USP 정의하고 차별화요기 - 문서 제출하기]\nhttps://docs.google.com/document/d/1ZAJUxFgpR50uJXUG91A3lnXICRkbnaZHEClRWraQdkQ/edit?usp=sharing\n\n[과제 3. 고객 인터뷰 3명 진행하기]\nhttps://docs.google.com/document/d/1X37IwXY8eZJWD_4KzCtySo4SviF8PSNWaLTMzAG8efs/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81f6-9118-c3a00fbd6580",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@jakvis.labs/post/DUqUkrHEodZ?xmt=AQF0P5cb6d7LFvV_9rGtwqQtiXs_YUpGMKmpWX3Mw_9pz3o",
+      "content": "https://www.threads.com/@jakvis.labs/post/DUqUkrHEodZ?xmt=AQF0P5cb6d7LFvV_9rGtwqQtiXs_YUpGMKmpWX3Mw_9pz3o",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-807c-9c1e-f0d5e668ffdf",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@simpliciety/post/DUqTpUREhhW?xmt=AQF07TOjdwrd4Ju6IyM8iAsy4kQmco4YDHnnD_un5-6qxMz8b9sXpQ3SOAVe3bU7AgAQWUdx&slof=1",
+      "content": "https://www.threads.com/@simpliciety/post/DUqTpUREhhW?xmt=AQF07TOjdwrd4Ju6IyM8iAsy4kQmco4YDHnnD_un5-6qxMz8b9sXpQ3SOAVe3bU7AgAQWUdx&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8182-80ec-f33a6a7fceaa",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@gncut_official/post/DUqSSuJCaRv?xmt=AQF0o1B7-Sbolp5Jhqh4_2UWDYNnoOHFhZUyo-atPcCU3g",
+      "content": "https://www.threads.com/@gncut_official/post/DUqSSuJCaRv?xmt=AQF0o1B7-Sbolp5Jhqh4_2UWDYNnoOHFhZUyo-atPcCU3g",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@inner.builder/post/DUqSL8vka9p?xmt=AQF05JiE2ZgeG5Wl0Yr0M-EzGzWsFYyk0U6qmhKtKHjSbA",
+      "content": "https://www.threads.com/@inner.builder/post/DUqSL8vka9p?xmt=AQF05JiE2ZgeG5Wl0Yr0M-EzGzWsFYyk0U6qmhKtKHjSbA",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e3-8edc-f8a1b3ae5f26",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/p/DUqRxi4AZ7Q/?img_index=2",
+      "content": "https://www.instagram.com/p/DUqRxi4AZ7Q/?img_index=2",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@kama.creative_/post/DUqRkTyEiFX?xmt=AQF0xzcm2pKC4VErV8_owbiQRkHP3IUbDchk5oM4ylPPSDYisT5C5x3k1GO6E1VXwznoEnw&slof=1",
+      "content": "https://www.threads.com/@kama.creative_/post/DUqRkTyEiFX?xmt=AQF0xzcm2pKC4VErV8_owbiQRkHP3IUbDchk5oM4ylPPSDYisT5C5x3k1GO6E1VXwznoEnw&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DUqMOPNkp3b?xmt=AQF0xflqxCU076FmkicidIDwPT_fH-RSFNXUkPIwS-UYog",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DUqMOPNkp3b?xmt=AQF0xflqxCU076FmkicidIDwPT_fH-RSFNXUkPIwS-UYog",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e1-a52f-e0e6871e5fe5",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@jiyong.product/post/DUqIU-7k-ys?xmt=AQF0cqzyUzx7JSVAE3kyNgDoAlYECrgVrKrk2OAEH42mhw",
+      "content": "https://www.threads.com/@jiyong.product/post/DUqIU-7k-ys?xmt=AQF0cqzyUzx7JSVAE3kyNgDoAlYECrgVrKrk2OAEH42mhw",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-81e0-86cd-ea72e6a3d2b1",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/hwayounlee_%EB%85%B8%EB%8F%99%EB%B2%95-%EC%9D%B8%EC%82%AC%EB%85%B8%EB%AC%B4-hr-activity-7427671041872658432--N6j",
+      "content": "https://www.linkedin.com/posts/hwayounlee_%EB%85%B8%EB%8F%99%EB%B2%95-%EC%9D%B8%EC%82%AC%EB%85%B8%EB%AC%B4-hr-activity-7427671041872658432--N6j",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DUp1tYxD3SB?xmt=AQF0d5tnDOdbTdg5PPhw6rps6v2oAaBQU3yVMyIToinNRg",
+      "content": "https://www.threads.com/@lawyerssm/post/DUp1tYxD3SB?xmt=AQF0d5tnDOdbTdg5PPhw6rps6v2oAaBQU3yVMyIToinNRg",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-12",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@rm.visualizer/post/DUp0VTiE-L6?xmt=AQF0WTfxFxEAdx27uGe8C8hOgIJKJrbof0Zwpla7SH2BLmURn4curLmtu0nEZIrbD8bdWEQ&slof=1",
+      "content": "AI Agent 처음엔 멘붕 올만 해. \nhttps://www.threads.com/@rm.visualizer/post/DUp0VTiE-L6?xmt=AQF0WTfxFxEAdx27uGe8C8hOgIJKJrbof0Zwpla7SH2BLmURn4curLmtu0nEZIrbD8bdWEQ&slof=1",
+      "images": null
+    },
     {
       "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
       "date": "2026-02-12",
@@ -3680,7 +3880,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-09",
+      "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
         "AI Agent"
@@ -3691,7 +3891,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-09",
+      "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
         "Sales"
@@ -3702,7 +3902,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-09",
+      "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
         "Builder Advanced"
@@ -3713,7 +3913,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-09",
+      "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
         "Builder Basic"
@@ -3724,7 +3924,7 @@ const REAL_DATA = {
     },
     {
       "memberId": "2f96400e-9268-81d4-b2d8-e81a50044ba1",
-      "date": "2026-02-09",
+      "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
         "Longform"
@@ -3745,7 +3945,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-12T18:46:40.908191"
+  "lastUpdated": "2026-02-13T10:09:39.033972"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
