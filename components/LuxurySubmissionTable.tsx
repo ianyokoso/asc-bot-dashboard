@@ -222,7 +222,11 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                                             s.date === date &&
                                             (s.tracks ? s.tracks.includes(activeTrack) : true)
                                         );
-                                        const status = sub ? sub.status : 'pending';
+
+                                        let isHoliday = false;
+                                        if (cohortConfig.holidayStart && cohortConfig.holidayEnd) {
+                                            if (date >= cohortConfig.holidayStart && date <= cohortConfig.holidayEnd) isHoliday = true;
+                                        }
 
                                         let finalStatus: SubmissionStatus = 'none';
 
@@ -231,20 +235,25 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
                                         } else {
                                             const targetDate = new Date(date).getTime();
                                             const todayDate = new Date().setHours(0, 0, 0, 0);
-                                            if (targetDate < todayDate) finalStatus = 'missed';
+                                            // Only mark as missed if NOT a holiday
+                                            if (targetDate < todayDate && !isHoliday) finalStatus = 'missed';
                                         }
 
                                         return (
                                             <td
                                                 key={`${member.discordId}-${date}`}
-                                                className="border-b border-indigo-50/30 p-1 md:p-2 text-center relative"
+                                                className={`border-b border-indigo-50/30 p-1 md:p-2 text-center relative ${isHoliday ? 'bg-rose-50/20' : ''}`}
                                             >
                                                 {/* Cell Content */}
                                                 <div
                                                     className={`w-full h-9 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center transition-all hover:bg-white/50 ${sub ? 'cursor-pointer active:scale-95' : 'cursor-default'}`}
                                                     onClick={() => sub && setSelectedSubmission({ sub, memberName: member.name })}
                                                 >
-                                                    {renderStatus(finalStatus)}
+                                                    {isHoliday && !sub ? (
+                                                        <span className="text-rose-200 font-bold text-sm">-</span>
+                                                    ) : (
+                                                        renderStatus(finalStatus)
+                                                    )}
                                                 </div>
                                             </td>
                                         );
