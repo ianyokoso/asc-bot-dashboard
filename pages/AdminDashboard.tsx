@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save, Zap } from 'lucide-react';
+import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save, Zap, AlertCircle } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import LuxuryHeader from '../components/LuxuryHeader';
 import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
@@ -76,7 +76,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     groupData,
     isGroupsLoading
 }) => {
+    // Tabs: Submissions vs Groups vs Members vs Settings
     const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'settings'>('submissions');
+    // Views inside Submissions tab
+    const [submissionsView, setSubmissionsView] = useState<'table' | 'missing'>('table');
 
     // Track State for Submissions Tab
     const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
@@ -119,27 +122,58 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 <div className={`flex-1 flex flex-col ${activeTab === 'submissions' || activeTab === 'groups' ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'}`}>
                     {/* SUBMISSIONS TAB */}
                     {activeTab === 'submissions' && (
-                        <div className="flex-1 flex flex-col min-h-0">
-                            <LuxuryTrackTabs
-                                trackOrder={trackOrder}
-                                activeTrack={activeTrack}
-                                setActiveTrack={setActiveTrack}
-                                members={members}
-                            />
-                            <LuxurySubmissionTable
-                                members={members}
-                                submissions={submissions}
-                                cohortConfig={cohortConfig}
-                                activeTrack={activeTrack}
-                            />
-                            <div className="px-4 md:px-8 pb-4 md:pb-8">
-                                <MissingReport
-                                    members={members}
-                                    submissions={submissions}
-                                    cohortConfig={cohortConfig}
-                                    activeTrack={activeTrack}
-                                />
+                        <div className="flex-1 flex flex-col min-h-0 bg-slate-50/30">
+                            {/* View Toggle */}
+                            <div className="flex justify-center mt-4 mb-2 z-10 shrink-0">
+                                <div className="bg-white/80 backdrop-blur-md p-1 rounded-full flex gap-1 border border-indigo-100 shadow-sm relative z-[60]">
+                                    <button
+                                        onClick={() => setSubmissionsView('table')}
+                                        className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${submissionsView === 'table'
+                                            ? 'bg-indigo-600 text-white shadow-md'
+                                            : 'text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50'
+                                            }`}
+                                    >
+                                        전체 현황 표
+                                    </button>
+                                    <button
+                                        onClick={() => setSubmissionsView('missing')}
+                                        className={`px-6 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${submissionsView === 'missing'
+                                            ? 'bg-rose-500 text-white shadow-md'
+                                            : 'text-slate-500 hover:text-rose-500 hover:bg-rose-50/50'
+                                            }`}
+                                    >
+                                        <AlertCircle className="w-4 h-4" />
+                                        미제출자 특별 관리
+                                    </button>
+                                </div>
                             </div>
+
+                            {submissionsView === 'table' ? (
+                                <>
+                                    <LuxuryTrackTabs
+                                        trackOrder={trackOrder}
+                                        activeTrack={activeTrack}
+                                        setActiveTrack={setActiveTrack}
+                                        members={members}
+                                    />
+                                    <div className="flex-1 min-h-0 relative">
+                                        <LuxurySubmissionTable
+                                            members={members}
+                                            submissions={submissions}
+                                            cohortConfig={cohortConfig}
+                                            activeTrack={activeTrack}
+                                        />
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-8">
+                                    <MissingReport
+                                        members={members}
+                                        submissions={submissions}
+                                        cohortConfig={cohortConfig}
+                                    />
+                                </div>
+                            )}
                         </div>
                     )}
 
