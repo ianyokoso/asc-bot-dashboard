@@ -1,7 +1,7 @@
 
 import { Member, Track, Submission, SubmissionStatus } from './types';
 
-// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-13 13:35:19)
+// ✅ Python 스크립트로 추출한 실제 데이터 (Last Sync: 2026-02-19 10:20:16)
 const REAL_DATA = {
   "members": [
     {
@@ -268,13 +268,15 @@ const REAL_DATA = {
     },
     {
       "id": "2df6400e-9268-8114-a6ed-c7c89589c9d1",
-      "name": "샤무스",
+      "name": "이효정",
       "discordId": "1126851617686306919",
       "discordUsername": "s5amu5",
       "discordNickname": "샤무스/1기",
       "profileImage": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "tracks": [],
-      "track": "Unknown",
+      "tracks": [
+        "Builder Basic"
+      ],
+      "track": "Builder Basic",
       "joinedAt": "2026-01-05",
       "notionSync": true,
       "cohort": "6기",
@@ -1782,8 +1784,7 @@ const REAL_DATA = {
       "profileImage": "https://cdn.discordapp.com/avatars/634719627213144065/c80473675370015533b3831a4dbaf5a2.png?size=1024",
       "tracks": [
         "AI Agent",
-        "Builder Advanced",
-        "Shortform"
+        "Builder Advanced"
       ],
       "track": "AI Agent",
       "joinedAt": "2026-01-05",
@@ -3244,22 +3245,6 @@ const REAL_DATA = {
       "created_time": "2026-02-08T12:33:00.000Z"
     },
     {
-      "id": "3016400e-9268-81ef-b6e0-c5ae2ea3f18f",
-      "name": "이효정/샤무스/1기",
-      "discordId": "1126851617686306919",
-      "discordUsername": "shamoos",
-      "discordNickname": "이효정/샤무스/1기",
-      "profileImage": "",
-      "tracks": [
-        "Builder Basic"
-      ],
-      "track": "Builder Basic",
-      "joinedAt": "2026-02-08",
-      "notionSync": true,
-      "cohort": null,
-      "created_time": "2026-02-08T10:03:00.000Z"
-    },
-    {
       "id": "3026400e-9268-8116-bdd9-e32a8006a60a",
       "name": "백영재",
       "discordId": "1101312772316332083",
@@ -3290,6 +3275,3273 @@ const REAL_DATA = {
   ],
   "submissions": [
     {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-19",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DU51auxD1Y3?xmt=AQF0m7udYVyVp0wAjqE0ORuWt1f_vYkbdg7Lct0QyXjn6yeFt9D-9OXd7Lme02qkslDAVJfb&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DU51auxD1Y3?xmt=AQF0m7udYVyVp0wAjqE0ORuWt1f_vYkbdg7Lct0QyXjn6yeFt9D-9OXd7Lme02qkslDAVJfb&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-19",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DU51auxD1Y3?xmt=AQF0m7udYVyVp0wAjqE0ORuWt1f_vYkbdg7Lct0QyXjn6yeFt9D-9OXd7Lme02qkslDAVJfb&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DU51auxD1Y3?xmt=AQF0m7udYVyVp0wAjqE0ORuWt1f_vYkbdg7Lct0QyXjn6yeFt9D-9OXd7Lme02qkslDAVJfb&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8114-b66c-c76e8e022b02",
+      "date": "2026-02-22",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://claim-safe-flow.lovable.app/",
+      "content": "AI 기반 운수업 금융 운영 및 리스크 인프라 플랫폼\n\n\nPRD\n화일로 첨부\n\n랜딩 페이지\nhttps://claim-safe-flow.lovable.app/\n\n랜딩 페이지는 lovable 업글 후 재정비 해보도록 하겠습니다",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8114-b66c-c76e8e022b02",
+      "date": "2026-02-22",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://claim-safe-flow.lovable.app/",
+      "content": "AI 기반 운수업 금융 운영 및 리스크 인프라 플랫폼\n\n\nPRD\n화일로 첨부\n\n랜딩 페이지\nhttps://claim-safe-flow.lovable.app/\n\n랜딩 페이지는 lovable 업글 후 재정비 해보도록 하겠습니다",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@benji98760/post/DU5wqa2j1rd?hl=ko",
+      "content": "https://www.threads.com/@benji98760/post/DU5wqa2j1rd?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@benji98760/post/DU5wqa2j1rd?hl=ko",
+      "content": "https://www.threads.com/@benji98760/post/DU5wqa2j1rd?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@inner.builder/post/DU5uxxfEbo-?xmt=AQF0_BRRCOnPb74h55ET1jcEzJIfGO53VJBf0HNafYZdLQ",
+      "content": "https://www.threads.com/@inner.builder/post/DU5uxxfEbo-?xmt=AQF0_BRRCOnPb74h55ET1jcEzJIfGO53VJBf0HNafYZdLQ",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@inner.builder/post/DU5uxxfEbo-?xmt=AQF0_BRRCOnPb74h55ET1jcEzJIfGO53VJBf0HNafYZdLQ",
+      "content": "https://www.threads.com/@inner.builder/post/DU5uxxfEbo-?xmt=AQF0_BRRCOnPb74h55ET1jcEzJIfGO53VJBf0HNafYZdLQ",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DU5pB-vE7WW?xmt=AQF0Z-hUKatGptcJsClPL0WllFP2xiFpyoPWW-nNY8dP3g",
+      "content": "https://www.threads.com/@ai.profitwise/post/DU5pB-vE7WW?xmt=AQF0Z-hUKatGptcJsClPL0WllFP2xiFpyoPWW-nNY8dP3g",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DU5pB-vE7WW?xmt=AQF0Z-hUKatGptcJsClPL0WllFP2xiFpyoPWW-nNY8dP3g",
+      "content": "https://www.threads.com/@ai.profitwise/post/DU5pB-vE7WW?xmt=AQF0Z-hUKatGptcJsClPL0WllFP2xiFpyoPWW-nNY8dP3g",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DU5efSYkrkx",
+      "content": "https://www.threads.com/@makekim.kr/post/DU5efSYkrkx",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DU5efSYkrkx",
+      "content": "https://www.threads.com/@makekim.kr/post/DU5efSYkrkx",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@stevejobboogtm/post/DU5WMQUgWwq?xmt=AQF0kBZuCcIe7uUQACSldeqAann7Pa0mO9XTrZSlUC9qzZmqd6cgGbz3j9XA-IxC7miQp0M&slof=1",
+      "content": "https://www.threads.com/@stevejobboogtm/post/DU5WMQUgWwq?xmt=AQF0kBZuCcIe7uUQACSldeqAann7Pa0mO9XTrZSlUC9qzZmqd6cgGbz3j9XA-IxC7miQp0M&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@stevejobboogtm/post/DU5WMQUgWwq?xmt=AQF0kBZuCcIe7uUQACSldeqAann7Pa0mO9XTrZSlUC9qzZmqd6cgGbz3j9XA-IxC7miQp0M&slof=1",
+      "content": "https://www.threads.com/@stevejobboogtm/post/DU5WMQUgWwq?xmt=AQF0kBZuCcIe7uUQACSldeqAann7Pa0mO9XTrZSlUC9qzZmqd6cgGbz3j9XA-IxC7miQp0M&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DU5Vto8j9w7?xmt=AQF05JogN51EyfNbwNZxTyHB9pNw8QPVGG9uBWP72OjJtoC25rW9lSWqF_U4OFf1qCiGhWev&slof=1",
+      "content": "https://www.threads.com/@lawyerssm/post/DU5Vto8j9w7?xmt=AQF05JogN51EyfNbwNZxTyHB9pNw8QPVGG9uBWP72OjJtoC25rW9lSWqF_U4OFf1qCiGhWev&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DU5Vto8j9w7?xmt=AQF05JogN51EyfNbwNZxTyHB9pNw8QPVGG9uBWP72OjJtoC25rW9lSWqF_U4OFf1qCiGhWev&slof=1",
+      "content": "https://www.threads.com/@lawyerssm/post/DU5Vto8j9w7?xmt=AQF05JogN51EyfNbwNZxTyHB9pNw8QPVGG9uBWP72OjJtoC25rW9lSWqF_U4OFf1qCiGhWev&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DU5ROFUkY4X?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DU5ROFUkY4X?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DU5ROFUkY4X?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DU5ROFUkY4X?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://x.com/dot_shef/status/2024052220355076315",
+      "content": "https://x.com/dot_shef/status/2024052220355076315",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://x.com/dot_shef/status/2024052220355076315",
+      "content": "https://x.com/dot_shef/status/2024052220355076315",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DU49yj6iCYn?xmt=AQF0REDXJBRS6UcNxnKtGQj7ceIAtDcK0DZMrAK2I6EjG7JR9rti-f3RDC1hGaIAAm1FtJEo&slof=1",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DU49yj6iCYn?xmt=AQF0REDXJBRS6UcNxnKtGQj7ceIAtDcK0DZMrAK2I6EjG7JR9rti-f3RDC1hGaIAAm1FtJEo&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DU49yj6iCYn?xmt=AQF0REDXJBRS6UcNxnKtGQj7ceIAtDcK0DZMrAK2I6EjG7JR9rti-f3RDC1hGaIAAm1FtJEo&slof=1",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DU49yj6iCYn?xmt=AQF0REDXJBRS6UcNxnKtGQj7ceIAtDcK0DZMrAK2I6EjG7JR9rti-f3RDC1hGaIAAm1FtJEo&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-22",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://open.substack.com/pub/daddoctordeveloper/p/8-years-of-surgery-10-months-away?utm_campaign=post&utm_medium=email",
+      "content": "https://open.substack.com/pub/daddoctordeveloper/p/8-years-of-surgery-10-months-away?utm_campaign=post&utm_medium=email",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-22",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://open.substack.com/pub/daddoctordeveloper/p/8-years-of-surgery-10-months-away?utm_campaign=post&utm_medium=email",
+      "content": "https://open.substack.com/pub/daddoctordeveloper/p/8-years-of-surgery-10-months-away?utm_campaign=post&utm_medium=email",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@interior.pulse/post/DU4pLYekaXe?xmt=AQF07HM5uOMIEHLCgI5g6L1v7jm0gCZnZwNaEYqcKHvV9pZf1UvJs6xAkkzQ9mqlJ7SeJPXe&slof=1",
+      "content": "https://www.threads.com/@interior.pulse/post/DU4pLYekaXe?xmt=AQF07HM5uOMIEHLCgI5g6L1v7jm0gCZnZwNaEYqcKHvV9pZf1UvJs6xAkkzQ9mqlJ7SeJPXe&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@interior.pulse/post/DU4pLYekaXe?xmt=AQF07HM5uOMIEHLCgI5g6L1v7jm0gCZnZwNaEYqcKHvV9pZf1UvJs6xAkkzQ9mqlJ7SeJPXe&slof=1",
+      "content": "https://www.threads.com/@interior.pulse/post/DU4pLYekaXe?xmt=AQF07HM5uOMIEHLCgI5g6L1v7jm0gCZnZwNaEYqcKHvV9pZf1UvJs6xAkkzQ9mqlJ7SeJPXe&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DU4mS9sD6mw?xmt=AQF0fbM0hL9WiGF6eTrTeczy0VRt1_SqIfIzzlkObtQM8UFkWYK9SKqgJr7LnVhUI1s-HeGe&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DU4mS9sD6mw?xmt=AQF0fbM0hL9WiGF6eTrTeczy0VRt1_SqIfIzzlkObtQM8UFkWYK9SKqgJr7LnVhUI1s-HeGe&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DU4mS9sD6mw?xmt=AQF0fbM0hL9WiGF6eTrTeczy0VRt1_SqIfIzzlkObtQM8UFkWYK9SKqgJr7LnVhUI1s-HeGe&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DU4mS9sD6mw?xmt=AQF0fbM0hL9WiGF6eTrTeczy0VRt1_SqIfIzzlkObtQM8UFkWYK9SKqgJr7LnVhUI1s-HeGe&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DU4G4MnilIK?xmt=AQF0N8IBTHwgJllzXGyDHnxoRPvpJPX99BwN_yeUaQCF4FDRbyLm3pCoJNRLbI55u4NNn-c&slof=1",
+      "content": "https://www.threads.com/@dodo_list_/post/DU4G4MnilIK?xmt=AQF0N8IBTHwgJllzXGyDHnxoRPvpJPX99BwN_yeUaQCF4FDRbyLm3pCoJNRLbI55u4NNn-c&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DU4G4MnilIK?xmt=AQF0N8IBTHwgJllzXGyDHnxoRPvpJPX99BwN_yeUaQCF4FDRbyLm3pCoJNRLbI55u4NNn-c&slof=1",
+      "content": "https://www.threads.com/@dodo_list_/post/DU4G4MnilIK?xmt=AQF0N8IBTHwgJllzXGyDHnxoRPvpJPX99BwN_yeUaQCF4FDRbyLm3pCoJNRLbI55u4NNn-c&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DU4TjD7j12w/?igsh=MXFhbWo1bHRibHd6",
+      "content": "https://www.instagram.com/reel/DU4TjD7j12w/?igsh=MXFhbWo1bHRibHd6",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DU4TjD7j12w/?igsh=MXFhbWo1bHRibHd6",
+      "content": "https://www.instagram.com/reel/DU4TjD7j12w/?igsh=MXFhbWo1bHRibHd6",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DU36yrLiHuY?xmt=AQF07TNnl8lzb0-7KuBT1dPi7ShKJ7Y4bsfDHew76sFA01TqGG7oIX_7V1O1Y8LRD4KJedMy&slof=1",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DU36yrLiHuY?xmt=AQF07TNnl8lzb0-7KuBT1dPi7ShKJ7Y4bsfDHew76sFA01TqGG7oIX_7V1O1Y8LRD4KJedMy&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-18",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DU36yrLiHuY?xmt=AQF07TNnl8lzb0-7KuBT1dPi7ShKJ7Y4bsfDHew76sFA01TqGG7oIX_7V1O1Y8LRD4KJedMy&slof=1",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DU36yrLiHuY?xmt=AQF07TNnl8lzb0-7KuBT1dPi7ShKJ7Y4bsfDHew76sFA01TqGG7oIX_7V1O1Y8LRD4KJedMy&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@benji98760/post/DU3Ou_dD9Az?hl=ko",
+      "content": "https://www.threads.com/@benji98760/post/DU3Ou_dD9Az?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@benji98760/post/DU3Ou_dD9Az?hl=ko",
+      "content": "https://www.threads.com/@benji98760/post/DU3Ou_dD9Az?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DU3JX_pE3Z3?xmt=AQF0U74BpV3PqeNDLd21l6Gwo5rEJVwGH8Y-nugyGZ4SixMCCWmkDkSC8byi9OhmwVPWEFc&slof=1",
+      "content": "https://www.threads.com/@ai.profitwise/post/DU3JX_pE3Z3?xmt=AQF0U74BpV3PqeNDLd21l6Gwo5rEJVwGH8Y-nugyGZ4SixMCCWmkDkSC8byi9OhmwVPWEFc&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DU3JX_pE3Z3?xmt=AQF0U74BpV3PqeNDLd21l6Gwo5rEJVwGH8Y-nugyGZ4SixMCCWmkDkSC8byi9OhmwVPWEFc&slof=1",
+      "content": "https://www.threads.com/@ai.profitwise/post/DU3JX_pE3Z3?xmt=AQF0U74BpV3PqeNDLd21l6Gwo5rEJVwGH8Y-nugyGZ4SixMCCWmkDkSC8byi9OhmwVPWEFc&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DU3JLi5kmzI?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DU3JLi5kmzI?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DU3JLi5kmzI?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DU3JLi5kmzI?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DU3He2ZEvUa",
+      "content": "https://www.threads.com/@makekim.kr/post/DU3He2ZEvUa",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DU3He2ZEvUa",
+      "content": "https://www.threads.com/@makekim.kr/post/DU3He2ZEvUa",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DU2tPC1D964?xmt=AQF0i54vUdoa4r0MaD4rEUnhPAKBXsriZ7moL_Mp-bRXHhYz5TM-wOu37t5cw930Anf3za6F&slof=1",
+      "content": "https://www.threads.com/@lawyerssm/post/DU2tPC1D964?xmt=AQF0i54vUdoa4r0MaD4rEUnhPAKBXsriZ7moL_Mp-bRXHhYz5TM-wOu37t5cw930Anf3za6F&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DU1zTH8j70v/?igsh=dmkyMDRuYzJzamhh",
+      "content": "https://www.instagram.com/reel/DU1zTH8j70v/?igsh=dmkyMDRuYzJzamhh",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@interior.pulse/post/DU2McwhkVKH?xmt=AQF0Eg-sGufcbRlSG6RLu3xPrszBNnj-nCu972WnDwP3XsdyTXq6HIHadzy14SW_DMtoFxQ&slof=1",
+      "content": "https://www.threads.com/@interior.pulse/post/DU2McwhkVKH?xmt=AQF0Eg-sGufcbRlSG6RLu3xPrszBNnj-nCu972WnDwP3XsdyTXq6HIHadzy14SW_DMtoFxQ&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DU1kkgbClzv/?igsh=M2dsZGs0amRnMWl3",
+      "content": "https://www.instagram.com/reel/DU1kkgbClzv/?igsh=M2dsZGs0amRnMWl3",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DU1vKuwj1u6?xmt=AQF0oPuN3S5ro8_iNeVL0C0yW9qgt5eELStdeTQWo1iOvdHQwyfNf7OGkYCVzjRZPGetQjg&slof=1",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DU1vKuwj1u6?xmt=AQF0oPuN3S5ro8_iNeVL0C0yW9qgt5eELStdeTQWo1iOvdHQwyfNf7OGkYCVzjRZPGetQjg&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DU16NjRifv1?xmt=AQF0K0yPL7CDxfMp27LbS4ko6_kCDp9yq3w5-Rn4gSp1ItwQyZILjOkMu4QLLFx-EenRVuKL&slof=1",
+      "content": "https://www.threads.com/@dodo_list_/post/DU16NjRifv1?xmt=AQF0K0yPL7CDxfMp27LbS4ko6_kCDp9yq3w5-Rn4gSp1ItwQyZILjOkMu4QLLFx-EenRVuKL&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-17",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/stevejobboo_%EB%AA%85%EC%A0%88-%EC%95%9E%EB%91%90%EA%B3%A0-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%B5%9C%EA%B3%A0%EC%9D%98-%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89-%EC%84%9C%EC%9A%B8%EB%9E%9C%EB%93%9C-%EC%95%84%EC%9D%B4%EA%B0%80-%EC%9E%88%EB%8A%94-%EB%B6%80%EB%AA%A8%EB%9D%BC%EB%A9%B4-%EB%AA%85%EC%A0%88-ugcPost-7429178290684440576-uSWg?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "content": "https://www.linkedin.com/posts/stevejobboo_%EB%AA%85%EC%A0%88-%EC%95%9E%EB%91%90%EA%B3%A0-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%B5%9C%EA%B3%A0%EC%9D%98-%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89-%EC%84%9C%EC%9A%B8%EB%9E%9C%EB%93%9C-%EC%95%84%EC%9D%B4%EA%B0%80-%EC%9E%88%EB%8A%94-%EB%B6%80%EB%AA%A8%EB%9D%BC%EB%A9%B4-%EB%AA%85%EC%A0%88-ugcPost-7429178290684440576-uSWg?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DU0eeFmkiA5?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DU0eeFmkiA5?xmt=AQF0ftijBZgr9fC9N81VjRy2Her4LOj6cToQA7vduRQx1Q",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@inner.builder/post/DU0a-0tkR-u?xmt=AQF0KHNqlXmoqF0ncDh-p_k3ngkb0zmo-JXuPiFpxZcQFQ",
+      "content": "https://www.threads.com/@inner.builder/post/DU0a-0tkR-u?xmt=AQF0KHNqlXmoqF0ncDh-p_k3ngkb0zmo-JXuPiFpxZcQFQ",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://x.com/dot_shef/status/2023375162163503427",
+      "content": "https://x.com/dot_shef/status/2023375162163503427\n\nX로 이전했습니다. ㅎㅅㅎ",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8159-b3d8-e1116d0b8b19",
+      "date": "2026-02-22",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472931281028251823/SKILL.md?ex=69945da7&is=69930c27&hm=ca45f769397a895c7845bc550ab399afc5a8b75da90706d79b10befb6b5eaba8&",
+      "content": "연휴 이슈로 날짜를 착각해 뒤늦게 제출합니다.\n코드 리포지토리에서의 작업 이력을 (Git과 별개로) history.md 파일에 기록하는 스킬을 만들어 보았습니다. Git 커밋에는 명시적으로 포함되지 않는 작업들, 이를테면 코드 분석, 방향성 논의, 설계 문서 작성, 기존 PRD 보완 등의 작업을 수행하고 그 결과를 기록으로 남길 때 사용하고 있습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DU0W-eDEr8G",
+      "content": "https://www.threads.com/@makekim.kr/post/DU0W-eDEr8G",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DU0N5Upj2vc?xmt=AQF058CFFsPw-ugmyJftMF68kmjaeOe2SliEYj5Cb7LqKhklXG-5wUdppsp-Gu8IuDNBaBHY&slof=1",
+      "content": "https://www.threads.com/@lawyerssm/post/DU0N5Upj2vc?xmt=AQF058CFFsPw-ugmyJftMF68kmjaeOe2SliEYj5Cb7LqKhklXG-5wUdppsp-Gu8IuDNBaBHY&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8112-9aff-ccc87d661968",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@slowwbuilder/post/DUzwfnHEl_I?xmt=AQF0yR7yMALZ88G2e2Qlz8p0XxnrYWuJIu5DSHEGFb_Aict2gCk0Rf04wHK1yGiEmwGBTwlz&slof=1",
+      "content": "https://www.threads.com/@slowwbuilder/post/DUzwfnHEl_I?xmt=AQF0yR7yMALZ88G2e2Qlz8p0XxnrYWuJIu5DSHEGFb_Aict2gCk0Rf04wHK1yGiEmwGBTwlz&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DUzsVSXkx7m?xmt=AQF0J5qoZEloRodOP_xa1EDu0n8Oyy5pry29Yg4WybjZ2uu2yA43_pgGBsGTBzdY3UzlCPk&slof=1",
+      "content": "https://www.threads.com/@ai.profitwise/post/DUzsVSXkx7m?xmt=AQF0J5qoZEloRodOP_xa1EDu0n8Oyy5pry29Yg4WybjZ2uu2yA43_pgGBsGTBzdY3UzlCPk&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DUzq-AoiLMN?xmt=AQF0CWCKsNV9xTbuOAyVULv2kRvyvmmdYjvVZeV5FXcVMxZS2Fi2HxJ85XCrF86l5diO1jKL&slof=1",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DUzq-AoiLMN?xmt=AQF0CWCKsNV9xTbuOAyVULv2kRvyvmmdYjvVZeV5FXcVMxZS2Fi2HxJ85XCrF86l5diO1jKL&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DUzYz_5CdpW?xmt=AQF0WHw7j5gi-aCf7ehiXkOnPtYACOLhzpFVlGYQFAH7LOMMXa7ZjLvpfvqAzQcHG7s0NV8&slof=1",
+      "content": "https://www.threads.com/@dodo_list_/post/DUzYz_5CdpW?xmt=AQF0WHw7j5gi-aCf7ehiXkOnPtYACOLhzpFVlGYQFAH7LOMMXa7ZjLvpfvqAzQcHG7s0NV8&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DUy-acIk2pS?xmt=AQF05U-c9K6g2TOXBtF4tQVf2KgDPiCADUa9fKLdj9YENw",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DUy-acIk2pS?xmt=AQF05U-c9K6g2TOXBtF4tQVf2KgDPiCADUa9fKLdj9YENw",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DUzVUsyD-EO/?igsh=MXBkemp0cTU3NnR3Yg==",
+      "content": "https://www.instagram.com/reel/DUzVUsyD-EO/?igsh=MXBkemp0cTU3NnR3Yg==",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8115-b45c-d6f367a7c18a",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472635174973079575/skill.md?ex=699349e1&is=6991f861&hm=aa1b0e1519ac87f0c1673fd056eb346c7f1f4a6c281d700ffdd13353f2d2f70b&",
+      "content": "클로드의 부족한점을 코덱스로 보완하기 위해 만든 스킬이고 예전부터 자주 애용하고 있습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-16",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@interior.pulse/post/DUyI_Fjk3mw?xmt=AQF09k4ZPugSw3gLbAWCk-JPR59VSGfDOZsjEfOTjlCq-gl3UH7vQLuBc41KcdkiBCMzPxxJ&slof=1",
+      "content": "https://www.threads.com/@interior.pulse/post/DUyI_Fjk3mw?xmt=AQF09k4ZPugSw3gLbAWCk-JPR59VSGfDOZsjEfOTjlCq-gl3UH7vQLuBc41KcdkiBCMzPxxJ&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81a2-b5d9-cd59c87a32f7",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472617425747972168/skill.md?ex=6993395a&is=6991e7da&hm=5cbcc181bbe5932b50a0022c0d66dbf13871299c98c479ce672d62bbbf641c39&",
+      "content": "Openclaw를 활용한 스킬 중 이 스킬은 브리핑/분석/추천을 같은 형식으로 통일해서 품질 흔들림을 막는 용도입니다. \n• 특히 **리스크 규칙(손절/일손실/포지션 수)**을 강제해서 감정매매를 줄이는 게 포인트입니다 • “주식비서” 호출 시 이 포맷대로 답하면 일관된 투자 보조가 가능하도록 하는 skill 중 하나 입니다",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@interior.pulse/post/DUyGMOFkxzv?xmt=AQF0-AuOuPPq45FDsCjLEYffAfqYrKl0RusPviT9XMsD9V9rAl3eo6eEoPSLCgtNh2YVkTU&slof=1",
+      "content": "https://www.threads.com/@interior.pulse/post/DUyGMOFkxzv?xmt=AQF0-AuOuPPq45FDsCjLEYffAfqYrKl0RusPviT9XMsD9V9rAl3eo6eEoPSLCgtNh2YVkTU&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-819d-88e9-d4779a5f1f87",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472607377663590481/suneung-skill.md?ex=69932ffe&is=6991de7e&hm=fa619f8f171c2df7f3b143f85929a104bf805531762a7decbef38764ada5b523&",
+      "content": "EBS 수능특강 영어 지문을 ppt로 만들어 주는 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DUyFKWhEoTZ?xmt=AQF0hjbYPzcoRxfbuQeSAb-fOyOnLfYICuq8Kg1eBoh5V6rlWv53Lo2H5OWrJNxhrZ0qQNc&slof=1",
+      "content": "https://www.threads.com/@makekim.kr/post/DUyFKWhEoTZ?xmt=AQF0hjbYPzcoRxfbuQeSAb-fOyOnLfYICuq8Kg1eBoh5V6rlWv53Lo2H5OWrJNxhrZ0qQNc&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f1-aa1e-f7250a0d3470",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472605587471601837/PRD.md?ex=69932e53&is=6991dcd3&hm=e492aec637a5cf8b46265fecc0f120966c7bd729440dca0d2be53332bedc71e6&",
+      "content": "[박경민/케이/0기] 빌더 심화 과제",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f1-aa1e-f7250a0d3470",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472604957156053064/image.png?ex=69932dbd&is=6991dc3d&hm=634b3fed5c648d50179f4c929d3673d499fd82362689ddcdf1e09fc0a8613200&",
+      "content": "1주차 과제 제출",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472604957156053064/image.png?ex=69932dbd&is=6991dc3d&hm=634b3fed5c648d50179f4c929d3673d499fd82362689ddcdf1e09fc0a8613200&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81f1-aa1e-f7250a0d3470",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472604957156053064/image.png?ex=69932dbd&is=6991dc3d&hm=634b3fed5c648d50179f4c929d3673d499fd82362689ddcdf1e09fc0a8613200&",
+      "content": "1주차 과제 제출",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472604957156053064/image.png?ex=69932dbd&is=6991dc3d&hm=634b3fed5c648d50179f4c929d3673d499fd82362689ddcdf1e09fc0a8613200&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81eb-a6f4-cecebc61bfbb",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://blog.naver.com/teri_home/224185008341",
+      "content": "https://blog.naver.com/teri_home/224185008341",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e3-8edc-f8a1b3ae5f26",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://maily.so/jake/posts/2nzn78g6rp5",
+      "content": "https://maily.so/jake/posts/2nzn78g6rp5",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472601217783038104/message.txt?ex=69932a41&is=6991d8c1&hm=bed74992855bce7b8dc84bc0480a03e6e163405b11f68f3062b733158e4ef634&",
+      "content": "1주차 과제 인증입니다.\n앱인토스 앱 제작 중입니다 prd md파일 첨부해서 올렸습니다",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ba-85ef-e17d1232093b",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link",
+      "content": "첫 과제 입니다.\n일대일 컨설팅 전환을 위한 리드로서 조직 진단 서비스를 운영할 계획입니다. \n\n- PRD\nhttps://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link\n\n- 랜딩 페이지\nhttps://kindred-connection-code.lovable.app/\nQ. 랜딩페이지가 제 컴퓨터에서 위 링크로 볼땐 정상적으로 보이는데, 아래 예시 이미지엔 깨져보입니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ba-85ef-e17d1232093b",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link",
+      "content": "첫 과제 입니다.\n일대일 컨설팅 전환을 위한 리드로서 조직 진단 서비스를 운영할 계획입니다. \n\n- PRD\nhttps://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link\n\n- 랜딩 페이지\nhttps://kindred-connection-code.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ba-85ef-e17d1232093b",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link",
+      "content": "첫 과제 입니다.\n일대일 컨설팅 전환을 위한 리드로서 조직 진단 서비스를 운영할 계획입니다. \n\n- PRD\nhttps://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link\n\n- 랜딩 페이지\nhttps://preview--kindred-connection-code.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ba-85ef-e17d1232093b",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link",
+      "content": "첫 과제 입니다.\n일대일 컨설팅 전환을 위한 리드로서 조직 진단 서비스를 운영할 계획입니다. \n\n- PRD\nhttps://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link\n\n- 랜딩 페이지\nhttps://kindred-connection-code.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e0-8b9a-ec79b7a9c8ff",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472596860177875007/SKILL.md?ex=69932632&is=6991d4b2&hm=de0a3174cdb6a3c3dda4234bec6a07518a6d824bbdbdcfc516e14f3a8e9b0c00&",
+      "content": "제 글의 문체를 학습하고 분석해 제가 콘텐츠를 입력하면 자동으로 제 문체의 책으로 집필해주는 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ba-85ef-e17d1232093b",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link",
+      "content": "첫 과제 입니다.\n일대일 컨설팅 전환을 위한 리드로서 조직 진단 서비스를 운영할 계획입니다. \n\n- PRD\nhttps://www.notion.so/B2B-PRD-30846f468c0d8026a356c9535e2f4e71?source=copy_link\n\n- 랜딩 페이지\nhttps://id-preview-6065cc91--b5cb0eda-7ea2-4b8a-beb7-1c8b3d5d84dd.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8137-8941-c3b05bd3ce53",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472592563843235840/SKILL.md?ex=69932232&is=6991d0b2&hm=4e8e26a2d2ac7e6506aa7c082889f075b809e772382fb77976a9f17ec2b364ad&",
+      "content": "이메일을 음성으로 보낼 수 있도록 하는 스킬입니다. \n\n메신저로 내가 원하는 내용을 음성으로 입력하고, 관련된 인원에게 메일을 보내달라고 하면 보내주는 스킬입니다. \n\n이동중에도 이메일을 편하게 처리할 수 있습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8137-8941-c3b05bd3ce53",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cycle-sprint-goals.lovable.app",
+      "content": "첫 과제 인증입니다!\n\n랜딩페이지 : https://cycle-sprint-goals.lovable.app\nPRD : https://drive.google.com/file/d/1zQvgI39HDhjXwoYtBuLx1m8wSbhR8pl4/view?usp=drivesdk\n\n잘 도와주셔서 겨우 따라왔습니다.\n계속 해보겠습니다\n감사합니다!",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f1-aa1e-f7250a0d3470",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472585179473252373/SKILL.md?ex=69931b52&is=6991c9d2&hm=935aedcfa86cf494f812f9bbd37391400e31f1382a2c8a5ed082a331e69c6d53&",
+      "content": "오프라인 모임 커뮤니티 찾기 스킬\n\n이 스킬은 사용자가 원하는 오프라인 모임 커뮤니티를 찾아 가입 방법과 활동 정보를 제공합니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8135-a31c-d965505143f6",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472579398602457212/SKILL.md?ex=699315ef&is=6991c46f&hm=e799282623d12714bb90097ef0f085357f42e32e6eb80eac9b23233fbd807fe4&",
+      "content": "UI 레퍼런스 리서치를 조사 시킬 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8146-9d11-eed95d59dfb4",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/JGGz7JVFYTUhWEtoMycj2s",
+      "content": "1주차 과제 제출합니다. \n\n1) 해외 영업 세일즈 퍼널\nhttps://whimsical.com/JGGz7JVFYTUhWEtoMycj2s\n\n2) USP 정의\nhttps://docs.google.com/document/d/1MXDYzplcYGwXZMDtoBmpAJfTZsHX0Sg_mw188W3LWGU/edit?usp=sharing\n\n3) 인터뷰지 (인터뷰 예정)\nhttps://docs.google.com/document/d/1CRsqCqGzTYO6LzyDYAFcKMF9_SBrWFPr8D2QonR6wMA/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8146-9d11-eed95d59dfb4",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/JGGz7JVFYTUhWEtoMycj2s",
+      "content": "1주차 과제 제출합니다. \n\n1) 해외 영업 세일즈 퍼널\nhttps://whimsical.com/JGGz7JVFYTUhWEtoMycj2s\n\n2)",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ca-9eb7-cdeedff433d2",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1A_JF1Qg36B2MeF7fONQqoa7wnVlIxP3Dsa89gPb8_5A/edit?usp=sharing",
+      "content": "첫 과제인증입니다~\n\nPRD: https://docs.google.com/document/d/1A_JF1Qg36B2MeF7fONQqoa7wnVlIxP3Dsa89gPb8_5A/edit?usp=sharing\n\n랜딩페이지: https://betweenlines-mirror-journey.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ca-9eb7-cdeedff433d2",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1A_JF1Qg36B2MeF7fONQqoa7wnVlIxP3Dsa89gPb8_5A/edit?usp=sharing",
+      "content": "PRD: https://docs.google.com/document/d/1A_JF1Qg36B2MeF7fONQqoa7wnVlIxP3Dsa89gPb8_5A/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81a2-9270-ebe22111bc3f",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472571514456117354/SKILL.md?ex=69930e98&is=6991bd18&hm=8aef3f86e02823d9a3b77f67e99eb032c1ccbbe9cb805ddb83c4c6dc98ccc1c8&",
+      "content": "강의영상 따라서 PPT 제작 스킬 만들었습니다^^",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8188-a616-ff7a66f4ef14",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472570974476959755/SKILL_KR.md?ex=69930e17&is=6991bc97&hm=89b28a9bfa2db03dcaf5a03c2af32c6a759c77ca100680cd44f1f8502dc4ec06&",
+      "content": "1주차 과제 제출 - 회의 녹음, 요약본 제공 (단순 요약본을 제공하는게 아니라 백지상태에 있는 사람들도 이해할 수 있도록 회의록 정리 + 다음 액션 정리)",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8121-b8e7-c990031cf8df",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cueru.app",
+      "content": "1주차 과제 제출합니다.\nhttps://cueru.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8195-a4a2-f00355c27e81",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472563129929171137/masterplan.md?ex=699306c9&is=6991b549&hm=223ca93b54a677b99f14977c278212451c6fe6e6e055f3ed13d52189d0b1a4b8&",
+      "content": "PRD, 스크린샷",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8182-80ec-f33a6a7fceaa",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/mangani/AI-30398082261c802f99b3c11dd88ac65b?source=copy_link)",
+      "content": "```diff\n- 빌드 트랙(심화) 1주차 과제 제출합니다\n```\n\n1. [PRD.md](https://www.notion.so/mangani/AI-30398082261c802f99b3c11dd88ac65b?source=copy_link)\n키오스크 비교 사이트",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472562264568627396/image.png?ex=699305fa&is=6991b47a&hm=3af7fac0be01fd5300838e138911f02d4da0c553888bb2f0094b12a680c8e9bd&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-8195-a4a2-f00355c27e81",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472562048905904222/SKILL.md?ex=699305c7&is=6991b447&hm=2663e0fc7b3ff82f0fa63def73398881240ee5cf8ed3da43690a9ef6de4190d9&",
+      "content": "과제 제출합니다. 동남아시아 스타트업 리서치 전용 스킬.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8108-a308-f045a8dc9c18",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472561031611023644/SKILL_1.md?ex=699304d4&is=6991b354&hm=b01302afcf93255acd75dd2af5e621b22cee2baa05031968818030210c092758&",
+      "content": "1주차 과제 제출합니다\n고객사들의 이슈 리포팅을 자동 분류 및 담당자에게 전달하는 스킬입니다",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e1-9cd6-d0632ca3771a",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472561584315437171/transcript-to-ticktick.md?ex=69930558&is=6991b3d8&hm=f95f1090f8d226e1cf1a61be7fad2dabcf504946202f02e0fc11dd316521e9c7&",
+      "content": "1주차 과제 - AI 녹음기의 전사내용에서 할일 목록을 뽑아서 TickTick에 이메일을 보내서 할일 목록에 추가하는 스킬.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-807c-9c1e-f0d5e668ffdf",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472561340144029900/image.png?ex=6993051e&is=6991b39e&hm=960e97a8f8fe6462624ccbc9861a1bc74c18de12895e6bb874a6a9f15cd4efbe&",
+      "content": "1주차과제인증!",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472561340144029900/image.png?ex=6993051e&is=6991b39e&hm=960e97a8f8fe6462624ccbc9861a1bc74c18de12895e6bb874a6a9f15cd4efbe&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-8108-a308-f045a8dc9c18",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472561031611023644/SKILL_1.md?ex=699304d4&is=6991b354&hm=b01302afcf93255acd75dd2af5e621b22cee2baa05031968818030210c092758&",
+      "content": "1주차 과제 제출합니다\n고객사들의 이슈 리포팅을 자동 분류 및 담당 개발자에게 전달하는 스킬입니다",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://maily.so/youngwon/posts/mjz6qpn1rwk",
+      "content": "https://maily.so/youngwon/posts/mjz6qpn1rwk",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/BpygcQQb5okqueQU5CSgad",
+      "content": "1주차 과제 제출합니다.\n\n[과제 1. 자신만의 퍼널 설계도 만들기]\nhttps://whimsical.com/BpygcQQb5okqueQU5CSgad\n\n[과제 2. 나만의 usp 정의하고 채워오기]\nhttps://docs.google.com/document/d/1tqsgda4hIVBPQwaXT1ViqLGs7LkTBM1P0xTTx-XLFIA/edit?usp=sharing\n\n[과제 3. 고객 인터뷰 3명 진행하기]\n2주차 과제 전에 진행분 올리겠습니다 !",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-819a-8f4f-f330a653f7ea",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/LfLENKdELXtutAxFHysVhE",
+      "content": "퍼널 설계도 : https://whimsical.com/LfLENKdELXtutAxFHysVhE\nUSP : https://docs.google.com/document/d/1Ozw6zY7oXt8pH81agMxr8OhwFpVeoEA25eq-DNEUO4M/edit?usp=sharing\n고객인터뷰: https://docs.google.com/document/d/1D9PRCbSysCQvCcZ8nfZeeHaSvtbedhyZ/edit?usp=drive_link&ouid=106864949804080579348&rtpof=true&sd=true",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8114-b66c-c76e8e022b02",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://claude.ai/public/artifacts/0655efd9-3008-4d98-9238-cb6b8eba2546",
+      "content": "과제인증 \n[과제1. 자신만의 퍼널 설계도 만들기]\nhttps://claude.ai/public/artifacts/0655efd9-3008-4d98-9238-cb6b8eba2546\n\n[과제2.나만의 usp 정의하고 채워오기 ]\nhttps://docs.google.com/document/d/e/2PACX-1vQ0XFrcAN-oUhkqxrvsjPGAaOTatw0K7sJRUk9LE0WiFf6e6OWHsbR_CBCBJzL7RD6-S_GMeKVjGAyB/pub\n\n[과제3.고객 인터뷰 3명 진행하기\n조금만 더 시간 부탁드립니다 ^^",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8139-82c8-cb21321cba9c",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472555401378660641/SKILL.md?ex=6992ff96&is=6991ae16&hm=b8bf0e012ac815ee39da6ab4154646b293049a400935a94374627bd01f514ae4&",
+      "content": "1주차 과제 제출합니다. 학습자료 로드맵 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ff-9f12-c3b31a1345d3",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472552343903015035/mkt_writing_SKILL.md?ex=6992fcbd&is=6991ab3d&hm=dc422726f05d600da456fd59ff4a776488975e6fe661dca7d5c0c322fb7cba5d&",
+      "content": "1주차 마케팅 글쓰기 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/10rQCHhPqW74n5RvDhlxLhWmBVv8zyYAPDW1gmrEME98/edit?usp=sharing",
+      "content": "현재 도메인 만들기 전이어서, 발행 전의 뉴스레터를 공유합니다. \n\nhttps://docs.google.com/document/d/10rQCHhPqW74n5RvDhlxLhWmBVv8zyYAPDW1gmrEME98/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-819b-99af-dc7716a5f96f",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472551238129291306/SKILL.md?ex=6992fbb5&is=6991aa35&hm=7c80e7fef41f66943ec064ecbf2451b23368d9393e119912d2dcc7bc84e6a424&",
+      "content": "1주차 과제 제출합니다.\n선물용 쿠키 세트 패키지 디자인 스킬입니다.  브랜드 커스터마이징 가능, 타겟층별, 시즈널 이슈에 따라 패키지 디자인을 제안합니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e6-873e-c5a131700198",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://afterwork-kr.vercel.app/",
+      "content": "1주차 과제 제출합니다. 🙂\nPRD문서 : MD파일 첨부\n랜딩페이지 링크 : https://afterwork-kr.vercel.app/",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@benji98760/post/DUxr5BgEVBU?hl=ko",
+      "content": "https://www.threads.com/@benji98760/post/DUxr5BgEVBU?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8028-8dbe-ef8246e90b85",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472548464431726685/power_contents_blog_writing_skill.md?ex=6992f920&is=6991a7a0&hm=30b11042e3e1335e40c32d681cc2e6a141286ff83b48439d352cfbc8e46db0ad&",
+      "content": "1주차 네이버 파워콘텐츠 조건에 맞는 블로그 글 작성하기 skill",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8198-a241-c89bdcc70956",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472546281686700172/SKILL.md?ex=6992f718&is=6991a598&hm=6cf22ffcac35920bd94148b8989fbc349aa473823332c8f8a797da7bd1f47627&",
+      "content": "1주차 과제 제출\n- 쓰레드 용 주제 키워드 트렌드, 인사이트/전문 지식 요약 및 정리",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81a0-9bc2-ce3cd8b4cc76",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472546168012804137/Skills.md?ex=6992f6fd&is=6991a57d&hm=fd07bd3f9159e689488704f2b580916ee04832786d84b7b5c033a51b1b37ac33&",
+      "content": "1주차 미션 제출합니다. 업계 주간 뉴스를 정리하여 뉴스레터 형식으로 바꿔주는 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-a487-f94ece8a83e8",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472543642831814779/Prompt_Triad_Orchestrator.md?ex=6992f4a2&is=6991a322&hm=ed47babbd6deb47b66252f09130cd44557a984b259100d43d2445753966fd35d&",
+      "content": "1주차 미션 제출합니다.\n\n프롬프트 생성하는 Skill을 작업하고 있습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8028-8dbe-ef8246e90b85",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1IGND2HlkFF0zQ8dG6-wu_J5NPhbKiyaAgT_91adSxvE/edit?usp=sharing",
+      "content": "1주차\n- 판매상품 : 사업자 대표를 위한 ai 실무 활용법 강의 \n- PRD : https://docs.google.com/document/d/1IGND2HlkFF0zQ8dG6-wu_J5NPhbKiyaAgT_91adSxvE/edit?usp=sharing \n- 랜딩 : https://biz-ai-start.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-81a2-a40f-d6a24d221c66",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/AhyEpU5CpGXer3VDCKYx7i",
+      "content": "세일즈 1주차 과제 제출합니다~\n\n과제1 퍼널 설계도: https://whimsical.com/AhyEpU5CpGXer3VDCKYx7i \n과제2 USP 정의: https://docs.google.com/document/d/1k27x7G2kBwCWNsIsw2MQTFDRIEBxeE2hvglvCrOATUU/edit?usp=sharing \n과제2 고객인터뷰: https://docs.google.com/document/d/1jq4DV_DszGKc18D8R6jKacB2jnBfQwKrwoTpdN2ZV44/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81d7-91b5-d83cb15b5aa1",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://offer-boost-spot.lovable.app",
+      "content": "1주차 과제 제출!\n- PRD문서 : MD파일 첨부\n- 랜딩페이지 링크 : https://offer-boost-spot.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8150-8a39-c0c9053c64a5",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://life-loop-health.lovable.app",
+      "content": "빌더 1주차 과제\nPRD 문서 : 파일 업로드\n어플 랜딩 페이지 : https://life-loop-health.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8146-9d11-eed95d59dfb4",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472532508393345094/SKILL.md?ex=6992ea44&is=699198c4&hm=964ea9b7342909e07aa1329a1f34274d924eaf2a95bbf311144129635c5a9fb1&",
+      "content": "1주차 과제 제출합니다. 소셜 미디어 자동 업로드 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "3006400e-9268-8121-ad2d-f0c76cb20143",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/zoopeterai-2o6nFLQKa8zPmzusiRxWmZ",
+      "content": "세일즈 실전 1주차 과제 제출합니다\n\n과제1. 퍼널 설계도\nhttps://whimsical.com/zoopeterai-2o6nFLQKa8zPmzusiRxWmZ\n\n과제2. USP 정의 \nhttps://docs.google.com/document/d/1nsue6I7imm28CLg3DDhocutoJ_58rGMA5qkyKUq0imI/edit?usp=sharing\n\n과제3. 고객인터뷰 진행\nhttps://docs.google.com/document/d/11Oj9RXDFGs2r2fOiRMvbK8-GbdWgHgD7lhAo_JljOtI/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "3006400e-9268-8121-ad2d-f0c76cb20143",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/zoopeterai-2o6nFLQKa8zPmzusiRxWmZ",
+      "content": "세일즈 실전 1주차 과제 제출합니다\n\n과제1. 퍼널 설계도\nhhttps://whimsical.com/zoopeterai-2o6nFLQKa8zPmzusiRxWmZ\n\n과제2. USP 정의 \nhttps://docs.google.com/document/d/1nsue6I7imm28CLg3DDhocutoJ_58rGMA5qkyKUq0imI/edit?usp=sharing\n\n과제3. 고객인터뷰 진행\nhttps://docs.google.com/document/d/11Oj9RXDFGs2r2fOiRMvbK8-GbdWgHgD7lhAo_JljOtI/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-8139-b447-fcbb968d8bf7",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472528406087205110/SKILL.md?ex=6992e672&is=699194f2&hm=2544aef4a4d0a7a6ec42b3ec2a4a6d5fd1b9f6ee8dedee64f8111ead779befcd&",
+      "content": "1주차 과제 제출합니다. 쿠팡 데이터를 다운로드 받아 주간 매출 리포트를 자동화 해 주는 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-818c-b026-cd92d926f7b9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472525536847855757/SKILL.md?ex=6992e3c6&is=69919246&hm=69d4ec4ae1d8430008b71e9b25d59d23ab03f864202780285b99cd3105a2bafa&",
+      "content": "1주차 과제 제출합니다!\n\niOS 앱 개발에서 , 한 개의 기능(피처)를 개발을 여러번 AI에게 요청을 하던 것을 \n\"한 번의 요청\"으로 (예시 \"로그인 기능 구현해줘\") \n대략적인 뼈대를 만들어주는 스킬을 만들어 보았습니다.\n\n[용어 설명]\n- TCA: iOS 앱 개발에서 앱의 상태 변화를 한 방향으로 흐르게 구조를 만들어주는 라이브러리(코드 모음집)\n- 클린 아키택처: 코드를 역할 별로 층을 나눠서 정리하는 방법론.",
+      "images": null
+    },
+    {
+      "memberId": "3006400e-9268-8121-ad2d-f0c76cb20143",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1-fCiUX1mZ3knJ2Oxg-p_CtWrX3RY8mTvTDx72n1zG7o/edit?usp=sharing",
+      "content": "빌더 기초 1주차 과제\n주식 종목 분석 앱\nPRD 문서 :\nhttps://docs.google.com/document/d/1-fCiUX1mZ3knJ2Oxg-p_CtWrX3RY8mTvTDx72n1zG7o/edit?usp=sharing\n\n랜딩페이지 : https://www.zoopeterai.com/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-9c9a-d07a9bb198fd",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472524888282497201/claude-code-skills.zip?ex=6992e32b&is=699191ab&hm=b67f2df8bf2d57f22cfe67ed1df43f0b2c9bcf50d7ca30cb4724192975c35476&",
+      "content": "**Claude Code 커스텀 스킬 공유** - 세션 관리 + 배포 + 동기화\nSPEC.md(프로젝트 명세서) 기반 개발 워크플로우에서 쓰고 있는 스킬 4개 공유합니다.\n세션이 끊겨도 컨텍스트 유지하고, 종료 시 자동 정리되는 구조예요.\n\n스킬 소개\n- /session-start [작업] - 세션 시작 시 SPEC.md를 읽어서 \"지금 뭐 하고 있었는지\" 자동 요약. 세션 끊겨도 컨텍스트가 날아가지 않게 하려고 만들었어요.\n- /session-end [메모] - 세션 종료 시 자동 정리. Git 커밋 → SPEC.md 상태 업데이트 → GitHub Project 동기화 제안까지 3단계로 진행됩니다. typecheck + build 검증 포함.\n- /deploy [--preview] - 프로덕션(CI/CD) 또는 프리뷰(wrangler) 배포. lint → typecheck → test → 빌드 → 배포 → 모니터링을 한 커맨드로.\n- /sync [push|pull|status]-— SPEC.md 체크박스 작업 목록 ↔ GitHub Project 양방향 동기화. 둘 중 하나만 업데이트해도 동기화하면 끝.\n\n워크플로우 흐름\n/session-start [작업]     ← 컨텍스트 복원\n        ↓\n    (작업 수행)\n        ↓\n/session-end [메모]       ← 커밋 + SPEC.md 업데이트\n        ↓\n/deploy [--preview]       ← 배포 (필요 시)\n        ↓\n/sync push                ← GitHub Project 동기화 (필요 시)\n\n핵심은 SPEC.md를 프로젝트 상태의 Single Source of Truth로 쓰는 건데, session-end가 매번 자동 업데이트하고 session-start가 복원하는 루프입니다.\nSKILL.md 파일\n첨부된 파일을 .claude/skills/스킬명/SKILL.md에 넣으면 됩니다.\n프로젝트에 맞게 경로, 브랜치명, GitHub Project 상수 등을 수정해서 쓰세요.\n\nSPEC.md가 없으면 session-start/end의 효과가 반감되니, 프로젝트 명세서를 하나 만들어두는 걸 추천해요.",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/11qtk1tNILIOn6PjdNUXtXSpVeKmIDjgyPfOQm1l1N5c/edit?usp=sharing",
+      "content": "빌더 기초 1주차 과제\nPRD 문서 : https://docs.google.com/document/d/11qtk1tNILIOn6PjdNUXtXSpVeKmIDjgyPfOQm1l1N5c/edit?usp=sharing\n랜딩 페이지 : https://aligned-brand-flow.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-818f-bd5a-de00ad0aebd9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472518324800716900/ui-design-system-builder-SKILL.md?ex=6992dd0e&is=69918b8e&hm=5485439bc4de56059bb3005f4b8ac143fa44c8787febd759d28ba3f29d5343e9&",
+      "content": "1주차 과제 제출합니다.\n저는 서비스 개발할 때 매번 디자인이 어려웠어요. 레퍼런스를 찾아보고, 직접 그려도 봤는데 생각보다 직관적이고 유려한 디자인이 잘 안나오더군요. 디자인에 시간을 많이 들여야 해서 SKill을 직접 만들었습니다",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-817f-8006-cc6b2816473d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://health-checkup-parsing.vercel.app/",
+      "content": "근로자 건강진단 관리 서비스\n1. PRD.MD (첨부)\n\n2. 랜딩페이지: https://health-checkup-parsing.vercel.app/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/reel/DUxXh4ED6Z0/?igsh=YWZrd2dqcjlqczI0",
+      "content": "https://www.instagram.com/reel/DUxXh4ED6Z0/?igsh=YWZrd2dqcjlqczI0",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472504562895294465/SKILL.md?ex=6992d03d&is=69917ebd&hm=2efd7dddb8126902ffa99d4df9e43e0052ec5d335257100b708c722d7e42d93d&",
+      "content": "1주차 과제 제출합니다. 사이트 주소를 넣으면 그 사이트의 구조를 템플릿화 해주는 스킬입니다.  테스트로 m.samsung.com으로 만들어진 템플릿으로 기존에 만들어 놓았던 사이트를 리디자인 시켜보니 yumnote.png의 디자인이 landing-redesign-full.png로 변경이 되었습니다. 그래서 이번에는 그냥 기존의 디자인을 참고하지 말고 분석한대로 템플릿을 적용시켜서 리디자인을 해달라고 했습니다. 그렇게 해서 나온 결과가 landing-samsung-style-desktop.png입니다. 아직 초기버젼이라 조금 더 다듬어봐야겠습니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472504563528503449/yumnote.png?ex=6992d03d&is=69917ebd&hm=f1676aa32a726618b8497cb4f341d6bd2b1056079d6441150191a34ac6905bf5&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472504564660834407/landing-redesign-full.png?ex=6992d03e&is=69917ebe&hm=ec8a989703ce944522ce067a0e462a8aca2865adfc8b9ffd5d7ecafe8ad2aca2&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472504565311078431/landing-samsung-style-desktop.png?ex=6992d03e&is=69917ebe&hm=63ef5c11c59d12ffc73ad3f661574ece9332890dc8f720e8d106c21c9c038338&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472502731423088712/yumnote.png?ex=6992ce88&is=69917d08&hm=f79019b1a83ca10d937b280f1ea6f48ddf994898c61ff02718db520d36a74456&",
+      "content": "1주차 과제 제출합니다. 사이트 주소를 넣으면 그 사이트의 구조를 템플릿화 해주는 스킬입니다.  테스트로 m.samsung.com으로 만들어진 템플릿으로 기존에 만들어 놓았던 사이트를 리디자인 시켜보니 yumnote.png의 디자인이 landing-redesign-full.png로 변경이 되었습니다. 그래서 이번에는 그냥 기존의 디자인을 참고하지 말고 분석한대로 템플릿을 적용시켜서 리디자인을 해달라고 했습니다. 그렇게 해서 나온 결과가 landing-samsung-style-desktop.png입니다. 아직 초기버젼이라 조금 더 다듬어봐야겠습니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472502731423088712/yumnote.png?ex=6992ce88&is=69917d08&hm=f79019b1a83ca10d937b280f1ea6f48ddf994898c61ff02718db520d36a74456&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472502732492505232/landing-redesign-full.png?ex=6992ce89&is=69917d09&hm=3f3b64ad0a3211cc4a23efa9bbdb0208c46f01cb9728ea4d44464a8b82a0a0a7&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472502733360599186/landing-samsung-style-desktop.png?ex=6992ce89&is=69917d09&hm=5dee30fdb5732a42f28a4eff4d45e4354dc53214b3d133db94babfb7c44fbb9c&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472502731423088712/yumnote.png?ex=6992ce88&is=69917d08&hm=f79019b1a83ca10d937b280f1ea6f48ddf994898c61ff02718db520d36a74456&",
+      "content": "1주차 과제 제출합니다. 사이트 주소를 넣으면 그 사이트의 구조를 템플릿화 해주는 스킬입니다.  테스트로 m.samsung.com으로 만들어진 템플릿으로 기존에 만들어 놓았던 사이트를 리디자인 시켜보니 yumnote.png의 디자인이 landing-redesign-full.png로 변경이 되었습니다. 그래서 이번에는 그냥 기존의 디자인을 참고하지 말고 분석한대로 템플릿을 적용시켜서 리디자인을 해달라고 했습니다. 그렇게 해서 나온 결과가 landing-samsung-style-desktop.png입니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472502731423088712/yumnote.png?ex=6992ce88&is=69917d08&hm=f79019b1a83ca10d937b280f1ea6f48ddf994898c61ff02718db520d36a74456&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472502732492505232/landing-redesign-full.png?ex=6992ce89&is=69917d09&hm=3f3b64ad0a3211cc4a23efa9bbdb0208c46f01cb9728ea4d44464a8b82a0a0a7&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472502733360599186/landing-samsung-style-desktop.png?ex=6992ce89&is=69917d09&hm=5dee30fdb5732a42f28a4eff4d45e4354dc53214b3d133db94babfb7c44fbb9c&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472502224642117795/landing-samsung-style.html?ex=6992ce10&is=69917c90&hm=1641178494d2e2dca8b0918d7feb5ea799780d485873ce422feb42adea4caaad&",
+      "content": "[이종원/수리아/4기] AI 에이전트 과제",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472502224147185758/landing-redesign.html?ex=6992ce10&is=69917c90&hm=7b5736db760a6901e3100c5a59abdfab18db03c7017699c18a333239358726d5&",
+      "content": "[이종원/수리아/4기] AI 에이전트 과제",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472501786265780245/SKILL.md?ex=6992cda7&is=69917c27&hm=e8844ce90347a48286f3c12b2cae101501729a95ad475fb8f7ee92dfc5bfc174&",
+      "content": "1주차 과제 제출합니다. 사이트 주소를 넣으면 그 사이트의 구조를 템플릿화 해주는 스킬입니다.  테스트로 m.samsung.com으로 만들어진 템플릿으로 기존에 만들어 놓았던 사이트를 리디자인 시켜보니 yumnote.png의 디자인이 landing-redesign-full.png로 변경이 되었습니다. 그래서 이번에는 그냥 기존의 디자인을 참고하지 말고 분석한대로 템플릿을 적용시켜서 리디자인을 해달라고 했습니다. 그렇게 해서 나온 결과가 landing-samsung-style-desktop.png입니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472501786878152765/yumnote.png?ex=6992cda7&is=69917c27&hm=ffe29461315a06222cda783c881d5e4f4d02357e576c65b251d143a7105e1809&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472501786265780245/SKILL.md?ex=6992cda7&is=69917c27&hm=e8844ce90347a48286f3c12b2cae101501729a95ad475fb8f7ee92dfc5bfc174&",
+      "content": "1주차 과제 제출합니다. 사이트 주소를 넣으면 그 사이트의 구조를 템플릿화 해주는 스킬입니다.  테스트로 m.samsung.com으로 만들어진 템플릿으로 기존에 만들어 놓았던 사이트를 리디자인 시켜보니 yumnote.png의 디자인이 landing-redesign-full.png로 변경이 되었습니다. 그래서 이번에는 그냥 기존의 디자인을 참고하지 말고 분석한대로 템플릿을 적용시켜서 리디자인을 해달라고 했습니다. 그렇게 해서 나온 결과가 landing-samsung-style-desktop.png입니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472501786878152765/yumnote.png?ex=6992cda7&is=69917c27&hm=ffe29461315a06222cda783c881d5e4f4d02357e576c65b251d143a7105e1809&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472501788539359232/landing-samsung-style-desktop.png?ex=6992cda8&is=69917c28&hm=2d4e17da2bac9091eb6e491892e2e0a866501bab5aea00ad98650d1342e1724e&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81f8-88dc-e980ca38527d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472501786265780245/SKILL.md?ex=6992cda7&is=69917c27&hm=e8844ce90347a48286f3c12b2cae101501729a95ad475fb8f7ee92dfc5bfc174&",
+      "content": "1주차 과제 제출합니다. 사이트 주소를 넣으면 그 사이트의 구조를 템플릿화 해주는 스킬입니다.  테스트로 m.samsung.com으로 만들어진 템플릿으로 기존에 만들어 놓았던 사이트를 리디자인 시켜보니 yumnote.png의 디자인이 landing-redesign-full.png로 변경이 되었습니다. 그래서 이번에는 그냥 기존의 디자인을 참고하지 말고 분석한대로 템플릿을 적용시켜서 리디자인을 해달라고 했습니다. 그렇게 해서 나온 결과가 landing-samsung-style-desktop.png입니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472501786878152765/yumnote.png?ex=6992cda7&is=69917c27&hm=ffe29461315a06222cda783c881d5e4f4d02357e576c65b251d143a7105e1809&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472501787834585150/landing-redesign-full.png?ex=6992cda7&is=69917c27&hm=13dbf14b5a7cc5e6ec6eb045370fae1cb156f044960fe2360248af66ffa32b71&",
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472501788539359232/landing-samsung-style-desktop.png?ex=6992cda8&is=69917c28&hm=2d4e17da2bac9091eb6e491892e2e0a866501bab5aea00ad98650d1342e1724e&"
+      ]
+    },
+    {
+      "memberId": "2fd6400e-9268-81ed-afee-c1b5690af250",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/Cmwtixx6LGYvFE9N1ZwXqJ",
+      "content": "1주차 과제 제출합니다.\n\n과제1. 퍼널 설계도\nhttps://whimsical.com/Cmwtixx6LGYvFE9N1ZwXqJ\n\n과제2. USP 정의\nhttps://lightax-accounting.notion.site/USP-3080347cfa45803aa41bed0ce7f7b3bb?source=copy_link\n\n과제3. 고객인터뷰 진행\n현재 회계법인을 직접 운영하고 있어 인터뷰는 진행이 어려워 진행하지 못하였으나, 초도미팅시 고객이 하는 얘기가 항상 유사하여 대략적인 SPIN에 대해서 인지하고 있습니다. 신규 서비스라인의 경우 추가 진행하여 업로드하겠습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81be-aee5-f8cd794f2b99",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472492613100900544/SKILL.md?ex=6992c51c&is=6991739c&hm=c67fb6748975a9af2a74d6d4b043e8355e0e4cf6c5620bb0d7b71905f07f9653&",
+      "content": "1주차 과제 제출합니다. 글쓰기 관련 스킬입니다.",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-8175-a957-d84741a15a93",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472237273473880214/SKILL.md?ex=6992800e&is=69912e8e&hm=8d30aafb62606d4ac78abde2935d6e34767d4d060498b5eb1517e9e0d2a3b9eb&",
+      "content": "과제 인증합니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-813e-8bd2-d50dcf0e78aa",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.canva.com/design/DAHBXNJynZs/JAo4hyV8esg6gk9QBS0EKw/edit?utm_content=DAHBXNJynZs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+      "content": "1주차 과제 제출합니다. \n\n과제1 - 퍼널 설계도 \nhttps://www.canva.com/design/DAHBXNJynZs/JAo4hyV8esg6gk9QBS0EKw/edit?utm_content=DAHBXNJynZs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton\n\n과제2 - 나만의 USP 정의 \nhttps://docs.google.com/document/d/16ViyN2uoqDiwQ_PGyv3N-JhE2thULrKUuJvrYy0wfjM/edit?usp=sharing\n\n과제3 - 고객인터뷰 진행 \n제품개발 시 고객 17명 대상으로 설문조사를 했던 것으로 작성하였습니다.  항목을 구체화하여 추가진행 예정입니다.  \nhttps://docs.google.com/document/d/100hKRGsfZDOEjzSidZj_MFZWLo6Q2lNyitpqsmq8nso/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81a8-b99f-d5dd37834c11",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472483287762206854/SKILL.md?ex=6992bc6d&is=69916aed&hm=75ad20be957cd16fc03b9bd4008edb14c9748cde23c16c764c899cb692818e0f&",
+      "content": "1주차 과제 제출합니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8142-a989-f8352e9ecf0d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472482192834691223/SKILL_Music.md?ex=6992bb68&is=699169e8&hm=eac6f70a35c6f04cddc6e4f255d9deecea70581d12b170a27425ea0d4bd637a1&",
+      "content": "1주차 과제 제출합니다\n키워드를 통한 BGM을 검색해주는 스킬입니다!",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ca-b12f-cc1cb33d59bf",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472479060708823132/SKILL.md?ex=6992b87d&is=699166fd&hm=850c95106697575f60444ddc1bf4e74854c480244d7477edaa7d21163641e41d&",
+      "content": "[곽병준/6기] AI 에이전트 과제",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81f6-9118-c3a00fbd6580",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://vaulbo.tistory.com/entry/%EC%8B%9D%EB%8B%A8%EA%B4%80%EB%A6%AC%EB%A5%BC-%EC%9E%90%EB%8F%99%ED%99%94-%ED%95%98%EB%8A%94-%EB%B2%95",
+      "content": "https://vaulbo.tistory.com/entry/%EC%8B%9D%EB%8B%A8%EA%B4%80%EB%A6%AC%EB%A5%BC-%EC%9E%90%EB%8F%99%ED%99%94-%ED%95%98%EB%8A%94-%EB%B2%95",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://landing-sparkle-magic-50.lovable.app",
+      "content": "1주차 과제 제출\nprd : 파일 첨부\n렌딩 페이지 : https://landing-sparkle-magic-50.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-819b-99af-dc7716a5f96f",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/11NauWWpkrtG_MmpIKS31FLMsiVn1ml-QMFq9yenBioA/edit?usp=sharing",
+      "content": "1주차 과제제출\n\n\"프리미엄 커스텀 쿠키 선물\" \n\nPRD\nhttps://docs.google.com/document/d/11NauWWpkrtG_MmpIKS31FLMsiVn1ml-QMFq9yenBioA/edit?usp=sharing\n\n랜딩페이지 링크 \nhttps://grainscookiecustom.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8187-8ee7-f0f795165475",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/17NDDc3s105kyjrI3TR29b0xpLyE085z0r29cUE3tC5o/edit?usp=sharing",
+      "content": "\"대학원생을 위한 연구 방향 탐색 지도\" 웹사이트를 만들었습니다. \n\n러버블 크레딧 이슈로 개선을 많이 진행하지 못해서, 지속해서 개선을 해나가 보겠습니다. \n\n현재 버전의 PRD와 랜딩페이지 링크 제출합니다. \n\nPRD : https://docs.google.com/document/d/17NDDc3s105kyjrI3TR29b0xpLyE085z0r29cUE3tC5o/edit?usp=sharing\n랜딩 페이지: https://study-sparker.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8142-a989-f8352e9ecf0d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://lunch-buddy-fair.lovable.app/",
+      "content": "1주차 과제 제출 : lunchat \n\nPRD : 첨부\n랜딩페이지 : https://lunch-buddy-fair.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-818e-bcfd-cb87b9a53831",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://zoey.day/claude-code-agent-product-page-localization",
+      "content": "https://zoey.day/claude-code-agent-product-page-localization",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-818e-bcfd-cb87b9a53831",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472456902519554129/CLAUDE.md?ex=6992a3da&is=6991525a&hm=493a2e2590391b785897ba331078bdc57d3cfda47ce2c475e6fc18d83a8e337c&",
+      "content": "[1주차 과제 제출]\n기존의 상세페이지를 다른 국가별로 로컬라이제이션 해주는 현지화 팀입니다.\n- 국가별 리서치 에이전트 / 번역 에이전트 / 카피라이팅 에이전트 / 이미지 현지화 생성 에이전트 / 검수 에이전트",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81f6-9118-c3a00fbd6580",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://routine-chef-buddy.lovable.app",
+      "content": "1주차 과제 제출 : FItMeal\n크레딧 문제로 크리에이터 수업 내용을 반영해서 지속해서 개선해 나갈 계획입니다.\n\n랜딩 페이지 : https://routine-chef-buddy.lovable.app\nPRD : https://www.notion.so/FitMeal-PRD-3089a535777880fd92f4c9c9198fab5b?source=copy_link",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8109-bbe4-ea21d95278a3",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://weddingcontroltower.lovable.app",
+      "content": "1주차 과제 제출 : 웨딩컨트롤타워 서비스\n\nPRD : (유첨)\n랜딩페이지 : https://weddingcontroltower.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8105-b2fd-d5b845fc5ce3",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/BpygcQQb5okqueQU5CSgad",
+      "content": "1주차 과제 제출합니다.\n\n[과제1. 자신만의 퍼널 설계도 만들기]\nhttps://whimsical.com/BpygcQQb5okqueQU5CSgad\n\n[과제2. 나만의 usp 정의하고 채워오기]",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DUw9M0Pj6fM?xmt=AQF0-txHFupNdHtbeJuaKS9FTtdCZt-NglUWTa6Me5LWCg",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DUw9M0Pj6fM?xmt=AQF0-txHFupNdHtbeJuaKS9FTtdCZt-NglUWTa6Me5LWCg",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8197-b9e2-f86b8440fc47",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/13cKyAVJEvd8RwUp5eJrzc",
+      "content": "1주차 과제 제출합니다.\n\n\n[과제 1. 자신만의 퍼널 설계도 만들어오기]\nhttps://whimsical.com/13cKyAVJEvd8RwUp5eJrzc\n\n[과제 2. 나만의 USP 정의하고 채워오기]\nhttps://docs.google.com/document/d/1Kd9u0lHqwRSmmbHoB17TUAiacPZKbTbi2YGC-lu6t4Y/edit?tab=t.0\n\n[과제 3. 고객 인터뷰 3명 진행하기]\nhttps://docs.google.com/document/d/1qgCYFkY2WfphMdq70mLvbYEb7K0yQQNm6kf5INgkMOs/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81f6-9118-c3a00fbd6580",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://routine-chef-buddy.lovable.app",
+      "content": "1주차 과제 제출 : FItMeal\n랜딩 페이지 : https://routine-chef-buddy.lovable.app\nPRD : https://www.notion.so/FitMeal-PRD-3089a535777880fd92f4c9c9198fab5b?source=copy_link",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81b8-a720-e96e913c55d0",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472443165263921386/2026-02-15_125854.png?ex=6992970f&is=6991458f&hm=82c75a8a73f37c5f5110961c94592ffd7d77782502330e7a40c648448f253118&",
+      "content": "# 🎯 PROMPT FACTORY SKILL\n\n> 💡 \"뽀모도로 타이머 앱 만들고 싶어\" — 이런 **아이디어 하나만** 넣으면,\n> AI 직원 3명이 디자인(HTML)은 자동으로 만들고, 기능 추가용 프롬프트까지 완성해줍니다.\n\n**핵심 장점**\n1️⃣ **코딩 제로** — 복사-붙여넣기만으로 웹 앱 완성\n2️⃣ **체계적 품질** — 놓치기 쉬운 기능까지 AI가 빈틈없이 설계\n3️⃣ **시간 절약** — 디자인 자동 생성, AI Studio만 실행하면 끝\n\n**왜 필요한가?**\n❌ \"그냥 타이머 앱 달라고 하면\" → 기능 부족, 디자인 엉성\n✅ 이 스킬 →\n→ **찰리**가 필요한 기능 정리\n→ **샘**이 Stitch로 HTML 자동 생성\n→ **데니스**가 AI Studio 프롬프트 작성\n→ 완성된 **HTML + 프롬프트** 바로 사용!\n\n🎯 아이디어만 던지면 디자인부터 코드까지, **알아서 완성해주는 스킬**\n테스트 진행해본 예시 초안 디자인과 prompt-factory skill.md 파일 첨부합니다!",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470031821134631004/1472443165263921386/2026-02-15_125854.png?ex=6992970f&is=6991458f&hm=82c75a8a73f37c5f5110961c94592ffd7d77782502330e7a40c648448f253118&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81d6-9901-ce6520aefbf2",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472438270800560189/SKILL.md?ex=69929280&is=69914100&hm=9357929647edda250a9c766063573b61b6fb63efda8f192aa0fe67c17465feff&",
+      "content": "1주차 과제 제출합니다\n범용 뉴스레터 제작 스킬입니다!",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8128-a649-c35d601c95a0",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472435269994287175/SKILL.md?ex=69928fb4&is=69913e34&hm=0e2d0ad952fd053e298a64bdb08dd802b8fe9f80140e901d9a7f5606cc15129b&",
+      "content": "1주차 과제 제출합니다.\n인스타그램 컨텐츠 아이디어 리서치하는 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81b8-a720-e96e913c55d0",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/3079c44f5af0810b9d5bdf35c1c5a015?source=copy_link",
+      "content": "1주차 과제 제출하겠습니다!\n\n[과제1. 자신만의 퍼널 설계도 만들기]\n\nhttps://www.notion.so/3079c44f5af0810b9d5bdf35c1c5a015?source=copy_link\n\n[과제2.나만의 usp 정의하고 채워오기 ]\n\nhttps://docs.google.com/document/d/e/2PACX-1vQUYj98VuZmX-6xgm-RUx1l0BJ02ejxdlNMFEDBLBVNRUxrQGFPT7AUwkNBTfZEmQ/pub\n\n[과제3.고객 인터뷰 3명 진행하기]\n\nhttps://docs.google.com/document/d/e/2PACX-1vRJA207hW8okcKke-fsGcvLVl8i25bHOBh5JuAaEfVBSIYeswVgNF-EBIb_mVDOmPFx36siJxHrHW8G/pub",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8120-bd8b-f5af991a620a",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/f42AEBfMJ35o5MQPz9DTc",
+      "content": "안녕하세요. 첫번째 과제 인증합니다.\n\n[과제 1. 자신만의 퍼널 설계도 만들어오기]\nhttps://whimsical.com/f42AEBfMJ35o5MQPz9DTc\n\n[과제 2. 나만의 USP 정의하고 채워오기]\nhttps://docs.google.com/document/d/1PRtpAvVO8YMlXLGvomnBmvypNBPEu8eYdsLEx9CEAVg/edit?usp=sharing\n\n[과제 3. 고객 인터뷰 3명 진행하기]\nhttps://docs.google.com/document/d/1PLTrPitKKpKd13vYLlUKmVpYnw3RA6E8_JaagkOVJ90/edit?usp=sharing\nhttps://docs.google.com/spreadsheets/d/1yax9QsN-TN9J6hf-PzXuJiVMbW-nMGWGbbCqOa8P4SQ/edit?usp=sharing",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8114-a6ed-c7c89589c9d1",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470028096370511893/1472391573055737896/657733756933f583.docx?ex=69926702&is=69911582&hm=7f5d962dbd6c7936b9a30e30fbf1037e707f591df603f77d8197f215d81e35eb&",
+      "content": "랜딩페이지는 ai 로 만들기\n위해 준비중입니다\n\nNOtion do 트랙\n지정되어 있지 않습니다. 하고 뜨는 이유는 뭘까요?\n\nhttps://cdn.discordapp.com/attachments/1470028096370511893/1472391573055737896/657733756933f583.docx?ex=69926702&is=69911582&hm=7f5d962dbd6c7936b9a30e30fbf1037e707f591df603f77d8197f215d81e35eb&",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472394180188835840/SKILL.md?ex=69926970&is=699117f0&hm=4515bfde3fd8a7172eb9ce3beb959d872fd9814d3a8c96c2d113bc3bee2ed5fa&",
+      "content": "1주차 과제 제출, 다양한 자료 제시하면  동영상으로 교육자료를 만들어주는 시킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472394180188835840/SKILL.md?ex=69926970&is=699117f0&hm=4515bfde3fd8a7172eb9ce3beb959d872fd9814d3a8c96c2d113bc3bee2ed5fa&",
+      "content": "1주차 과제 제출, 다양한 자료 제시하면  동영상으로 교육자료를 만들어주는 시킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://totogi.lovable.app/",
+      "content": "1주차 과제제출 :실버를 위한  인지 게임\n\n\nhttps://totogi.lovable.app/\n또또기는 방문판매 조직을 위한 인지건강 플랫폼으로, 무료 인지테스트와 월간 뇌 건강 리포트를 통해 고객을 관리하고, 카운셀러의 건강기능식품 상담을 데이터 기반으로 지원하는 매출 증대 도구입니다.\n즐거운 명절 보내세요",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://totogi.lovable.app/",
+      "content": "1주차 과제제출 :실버를 위한  인지 게임\n\n\nhttps://totogi.lovable.app/\n또또기는 방문판매 조직을 위한 인지건강 플랫폼으로, 무료 인지테스트와 월간 뇌 건강 리포트를 통해 고객을 관리하고, 카운셀러의 건강기능식품 상담을 데이터 기반으로 지원하는 매출 증대 도구입니다.\n즐거운 명절 보내세요",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://solkim.blog/archive/the-trap-of-someday/",
+      "content": "https://solkim.blog/archive/the-trap-of-someday/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://solkim.blog/archive/the-trap-of-someday/",
+      "content": "https://solkim.blog/archive/the-trap-of-someday/",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://totogi.lovable.app/",
+      "content": "실버를 위한  인지 게임\n\n랜딩ㅔ이지.\nhttps://totogi.lovable.app/\n또또기는 방문판매 조직을 위한 인지건강 플랫폼으로, 무료 인지테스트와 월간 뇌 건강 리포트를 통해 고객을 관리하고, 카운셀러의 건강기능식품 상담을 데이터 기반으로 지원하는 매출 증대 도구입니다.\n즐거운 명절 보내세요",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-8143-b246-e53c29e5f2f9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://totogi.lovable.app/",
+      "content": "실버를 위한  인지 게임\n\n랜딩ㅔ이지.\nhttps://totogi.lovable.app/\n또또기는 방문판매 조직을 위한 인지건강 플랫폼으로, 무료 인지테스트와 월간 뇌 건강 리포트를 통해 고객을 관리하고, 카운셀러의 건강기능식품 상담을 데이터 기반으로 지원하는 매출 증대 도구입니다.\n즐거운 명절 보내세요",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8172-994c-f2f75ab413b1",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://flaxen-pomelo-d2b.notion.site/Pikka-PRD-306b9b3f281d80a2b081dc9a7318c2e3?source=copy_link",
+      "content": "PRD: https://flaxen-pomelo-d2b.notion.site/Pikka-PRD-306b9b3f281d80a2b081dc9a7318c2e3?source=copy_link\n\n랜딩페이지: https://pika-save-mind.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8172-994c-f2f75ab413b1",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://flaxen-pomelo-d2b.notion.site/Pikka-PRD-306b9b3f281d80a2b081dc9a7318c2e3?source=copy_link",
+      "content": "PRD: https://flaxen-pomelo-d2b.notion.site/Pikka-PRD-306b9b3f281d80a2b081dc9a7318c2e3?source=copy_link\n\n랜딩페이지: https://pika-save-mind.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-8139-b447-fcbb968d8bf7",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://1q1q.notion.site/Masterplan-md-307e60851b6d8081a97fd10e9804bcad?source=copy_link",
+      "content": "부족하지만 크레딧 부족으로 우선 제출합니다\nPRD : https://1q1q.notion.site/Masterplan-md-307e60851b6d8081a97fd10e9804bcad?source=copy_link\n랜딩페이지 : https://ninety-day-cxo-proof.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-8139-b447-fcbb968d8bf7",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://1q1q.notion.site/Masterplan-md-307e60851b6d8081a97fd10e9804bcad?source=copy_link",
+      "content": "부족하지만 크레딧 부족으로 우선 제출합니다\nPRD : https://1q1q.notion.site/Masterplan-md-307e60851b6d8081a97fd10e9804bcad?source=copy_link\n랜딩페이지 : https://ninety-day-cxo-proof.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8180-a0ab-f2ab326becf7",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@jiwon_business/post/DUvFeiTkpj8?xmt=AQF0yWUPTwORrz5ewrfz0oe3eradbvE1zdiHXnXRdsgF-rjkgdiglIZdqJXHyIbiO76tNAo&slof=1",
+      "content": "https://www.threads.com/@jiwon_business/post/DUvFeiTkpj8?xmt=AQF0yWUPTwORrz5ewrfz0oe3eradbvE1zdiHXnXRdsgF-rjkgdiglIZdqJXHyIbiO76tNAo&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81b6-8773-e4e735274728",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472268673770065920/SKILL.md?ex=6991f48d&is=6990a30d&hm=6c919cf14941c74f6426b94484ec140128157b2e7462c2b54068bce86371d1c0&",
+      "content": "1주차 과제 제출합니다.\n카드 뉴스 제작해주는 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8120-bd8b-f5af991a620a",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472244352389742634/SKILL.md?ex=6991dde6&is=69908c66&hm=279a3df337147a5cff4e2f1dd66fd420092bf8f52f9a84b10068dea0c1a5a0d0&",
+      "content": "1주차 과제 제출합니다.\nPPT 파일의 내용을 분석하여 노션으로 요약하여 정리하는 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8187-8ee7-f0f795165475",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472243177976107008/SKILL.md?ex=6991dcce&is=69908b4e&hm=3a21d7c9ae0523734130b9fd2bd2e3d3f56bc23e5008d819aa5939234daef3ca&",
+      "content": "아직 모든것이 익숙하지가 않아서 수업시간에 말씀해주신 ppt 관련 스킬을 따라서 만들어봤습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-807c-8701-d2dfa8c77dd2",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.figma.com/board/uBst5Px3TygWlWkBSXlncb/%ED%8D%BC%EB%84%90-%EC%84%A4%EA%B3%84?node-id=0-1&t=SEBE6GQeopZtC5DR-1",
+      "content": "과제인증 \n[과제1. 자신만의 퍼널 설계도 만들기]\nhttps://www.figma.com/board/uBst5Px3TygWlWkBSXlncb/%ED%8D%BC%EB%84%90-%EC%84%A4%EA%B3%84?node-id=0-1&t=SEBE6GQeopZtC5DR-1\n\n[과제2.나만의 usp 정의하고 채워오기 ]\nhttps://starterteam.notion.site/usp-3077c1122f1480b8998bc14b7b7f92b0?source=copy_link\n\n[과제3.고객 인터뷰 3명 진행하기]\nhttps://starterteam.notion.site/3077c1122f1480288c97eb84eaf4de28?source=copy_link",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/T1QKRh3cT3GQMEGPoN4Tqu",
+      "content": "[과제1. 자신만의 퍼널 설계도 만들기]\nhttps://whimsical.com/T1QKRh3cT3GQMEGPoN4Tqu\n[과제2. 나만의 usp 정의하고 채워오기]\nhttps://docs.google.com/document/d/1KSqs9XEHmnLfGr13Ie0hbq-Rsb-g2RaAfH4sm7bfGjc/edit?usp=sharing\n[과제3. 고객 인터뷰 3명 진행하기]\n현재 판매가 없어서, 고객 인터뷰는 진행하지 않았습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8112-9aff-ccc87d661968",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472237568824180898/image.png?ex=6991d795&is=69908615&hm=84a7cad799fcf452811b048544a18f7d7c4df853e07ac55c16aa198f8598e0ec&",
+      "content": "1주차 과제  제출",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472237568824180898/image.png?ex=6991d795&is=69908615&hm=84a7cad799fcf452811b048544a18f7d7c4df853e07ac55c16aa198f8598e0ec&"
+      ]
+    },
+    {
+      "memberId": "2fd6400e-9268-818c-b026-cd92d926f7b9",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://stevenkim18.notion.site/1-PRD-30797549484c80b99f59d08f50112841",
+      "content": "빌더 기초 1주차 과제\nPRD 문서: https://stevenkim18.notion.site/1-PRD-30797549484c80b99f59d08f50112841\n랜딩페이지: https://aix-lab-landing-page.vercel.app/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81a1-b9a1-da8bcdf7dbbb",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://bobbobbob.lovable.app",
+      "content": "1주차 과제 제출합니다. \n\nPRD : (유첨)\n랜딩페이지 : https://bobbobbob.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-80e6-a976-f62af164bfe3",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1duaM0LiNdxjBOktd4SL5upFtu4rkAoEPaZ5nbXb2G-8/edit?usp=sharing",
+      "content": "1주차 과제 제출합니다~ (Manual Recovery)",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DUvV8bEkwcf?xmt=AQF0UI7IiZYO6nVxAPBpQEhfXR5iD79IshnDfO3-tt4dYA",
+      "content": "https://www.threads.com/@ai.profitwise/post/DUvV8bEkwcf?xmt=AQF0UI7IiZYO6nVxAPBpQEhfXR5iD79IshnDfO3-tt4dYA",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e2-99de-cbc33a4cde1d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472219697595547800/SKILL.md?ex=6991c6f0&is=69907570&hm=806579851f558eb5718818ec2558b689d5c9b6b73aaacff755260bad1c9ac51f&",
+      "content": "고객 자문 시 고객 의도를 빠르게 판단하여 판례, 행정해석 등 법률 판단을 도와주는 자동화 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e2-99de-cbc33a4cde1d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472218432970817699/message.txt?ex=6991c5c2&is=69907442&hm=26e08c231b4c3cc727d6ebdb6325caf23a961e629ecdf403434fff7e497e95e8&",
+      "content": "저는 고객 자문 시 판례, 행정해석을 참조하는 내용을 자동화하는 스킬을  만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-8175-a957-d84741a15a93",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://whimsical.com/8j58zH5MQ4VoKp1xfPTZiL",
+      "content": "과제인증 \n[과제1. 자신만의 퍼널 설계도 만들기]\nhttps://whimsical.com/8j58zH5MQ4VoKp1xfPTZiL\n\n[과제2.나만의 usp 정의하고 채워오기 ]\nhttps://docs.google.com/document/d/10GHj2J5P9O8i85dkksE-HRrQLHGLnmNtYLS1sVMCW1c/edit?usp=sharing\n\n[과제3.고객 인터뷰 3명 진행하기\n\n현재 판매를 운영하고 있어 인터뷰는 진행이 어려워 과제를 하지 않았습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8129-8d16-cdd1012c5003",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://retire-bright-score.lovable.app/",
+      "content": "Manual One-off Submission requested by User.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8141-bfd2-c21b441f04da",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472207969180717170/SKILL.md?ex=6991bc04&is=69906a84&hm=6cfe21a330228d207a4b926d2acce3b8ddc80ddcfe9af8a9db137b62167b54a0&",
+      "content": "회의록을 요약하고 참여자 각자 To do list를 만드는 스킬을 만들었습니다",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ed-a523-e46ee7043bc8",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472198647813767301/2026-02-14_8.43.35.png?ex=6991b355&is=699061d5&hm=93ffd7cd93f75b7a05e0d1d255d53328c5c91d82581d743c5edfce31bc2b68bf&",
+      "content": "1주차 과제 제출",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472198647813767301/2026-02-14_8.43.35.png?ex=6991b355&is=699061d5&hm=93ffd7cd93f75b7a05e0d1d255d53328c5c91d82581d743c5edfce31bc2b68bf&"
+      ]
+    },
+    {
+      "memberId": "2fd6400e-9268-8185-b93b-e48e330e682b",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472197036890914837/SKILL.md?ex=6991b1d5&is=69906055&hm=caa859933408723e77712e2db008867e02a7a86df263fd1af4fd368238f1e68e&",
+      "content": "사업자등록할 때 업종코드 많이 고민되시죠? \n어떤 사업을 할지 자유롭게 내용 입력하면, 사업자 업종코드를 매칭시켜주고 \n더 나아가 나이와 사업장주소지를 입력하면 창업감면과 중소기업특별세액 감면 여부 \n그리고 감면율 까지 한장의 보고서로 만들어 주는 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DUvKtCUkqh2",
+      "content": "https://www.threads.com/@makekim.kr/post/DUvKtCUkqh2",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472194982202052739/SKILL.md?ex=6991afeb&is=69905e6b&hm=ebd5fc7069e9a7e8f7dba66feedc28c6d5c2a786636e87073d198dd676bfacb6&",
+      "content": "Nicolas Cole의 \"콘텐츠 설계자\" 프레임워크로 짧은 글(Threads/Substack Notes/LinkedIn)과\n  긴 글(Substack Newsletter)을 한국어/영어로 작성하는 스킬을 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/valueforyourbiz_2026%EB%85%84-%ED%95%9C-%ED%95%B4%EB%A5%BC-%EA%B3%84%ED%9A%8D%ED%95%98%EA%B3%A0-%EB%AA%A9%ED%91%9C%EB%A5%BC-%EA%B3%B5%EC%9C%A0%ED%95%98%EB%8A%94-%EA%B0%80%EC%A1%B1-%EC%9B%8C%ED%81%AC%EC%83%B5%EC%9D%84-%EC%A7%84%ED%96%89%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4-activity-7428387300348207104-yVYq?utm_source=share&utm_medium=member_ios&rcm=ACoAAC6L56oBcnSGNNosRJL25X2aGHLoxESQD-U",
+      "content": "https://www.linkedin.com/posts/valueforyourbiz_2026%EB%85%84-%ED%95%9C-%ED%95%B4%EB%A5%BC-%EA%B3%84%ED%9A%8D%ED%95%98%EA%B3%A0-%EB%AA%A9%ED%91%9C%EB%A5%BC-%EA%B3%B5%EC%9C%A0%ED%95%98%EB%8A%94-%EA%B0%80%EC%A1%B1-%EC%9B%8C%ED%81%AC%EC%83%B5%EC%9D%84-%EC%A7%84%ED%96%89%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4-activity-7428387300348207104-yVYq?utm_source=share&utm_medium=member_ios&rcm=ACoAAC6L56oBcnSGNNosRJL25X2aGHLoxESQD-U",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e2-99de-cbc33a4cde1d",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472168763813134398/PRD_.md?ex=69919780&is=69904600&hm=06b60020a9fe6fa8f78a33df49fc194ed068b20d9b03e17d4028708777abdc7a&",
+      "content": "1주 과제. 1.prd.md 파일, 2. 스크린샷",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472168764874166284/image.png?ex=69919781&is=69904601&hm=5b6ed97188b196290af9bd95cddccd85f498962f80d73680748094199ce8375e&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-8107-915c-df625d9e364f",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472145620478201960/SKILL.md?ex=699181f3&is=69903073&hm=f75e24b61f546a1afd1263542dc6f169cd6fd9887fad6e676148708418bfdd08&",
+      "content": "엑셀 파일을 통해서 특정 값들을 입력하면 별도의 엑셀 형태의 다른 파일을 자동으로 작성하는 스킬을 작성했습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1u6YBYOI56hGOB0H7oec7_c8wBzUQFwzfKzr1THqpst4/edit?tab=t.0#heading=h.k9gv0acohqvz",
+      "content": "빌더 기초 1주차 과제 올립니다. \nPRD : https://docs.google.com/document/d/1u6YBYOI56hGOB0H7oec7_c8wBzUQFwzfKzr1THqpst4/edit?tab=t.0#heading=h.k9gv0acohqvz\n랜딩페이지 : https://past-bloom.lovable.app\n\n구정 연휴가 시작되네요. 모두 편안한 연휴 되시길 바랍니다. ^^",
+      "images": null
+    },
+    {
+      "memberId": "2fc6400e-9268-81bf-b5b8-f405c3666c00",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1472129188264935454/SKILL.md?ex=699172a5&is=69902125&hm=ae1afd8a469b99ca44dd4b1f4e812d389f7026792a2970054ec6677089cf8718&",
+      "content": "ppt스킬을 먼저 만들었습니다. \n만들때는 클로드에서 질문하면서 만들었습니다.\n커서에서 써봤는데 수정해야될 부분이 보여서 클로드에게 다시 보완해서 만들어달라고 하니 업데이트 하더라구요.\n그대로 다시 만들어달라니까 보완된 버전으로 만들어주었습니다.\n\n추가로 몇개 만들어보려고 했는데, 폴더를 따로 만들어야되는건지, 기존 ppt스킬에 있는 폴더에 그대로 추가해서 만들어도 되는지 아직 너무 어렵네요.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@home_dad_sol/post/DUt6pLCE434?xmt=AQF0fKiUTOpsGaiGcen95sLQ-ogA9VXz5BefWFI4utwykAfIYY0UAktcn-A-KSayHSH4YkPu&slof=1",
+      "content": "https://www.threads.com/@home_dad_sol/post/DUt6pLCE434?xmt=AQF0fKiUTOpsGaiGcen95sLQ-ogA9VXz5BefWFI4utwykAfIYY0UAktcn-A-KSayHSH4YkPu&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81b0-8550-de5e956fa37c",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1472113599530012738/PRD__HANJARI.md?ex=69916420&is=699012a0&hm=ad2877c934c198e249a34355fd78128b4a3e32e7a273cbf9dcef13665e8e7a71&",
+      "content": "1주 과제 1. PRD.MD파일 2. 스크린샷",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1472113599982993468/image.png?ex=69916420&is=699012a0&hm=1e288fa6b947b9b1b022e67f48e23e94aed756ebb0049657b965ce66ca1528b0&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81d7-91b5-d83cb15b5aa1",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.youtube.com/watch?v=ZZAFLkBcfjA)>",
+      "content": "저는 카드뉴스 자동화 팀을 만들어보았습니다!\n그래서 스킬 md파일이 아닌 팀 세팅  md 파일을 추출해서 올립니다-!\n\n어제 조쉬님 <[클로드코드로 고퀄리티 PPT 슬라이드 자동으로 만드는 방법 (자료조사부터 슬라이드까지)](https://www.youtube.com/watch?v=ZZAFLkBcfjA)> 이 영상 보면서 따라해봤는데요\n\n얼추 나오긴 하지만 제가 원하는 퀄리티대로 이미지 산출물 뽑는게 너무 어렵더라고요. 아직 스킬, 에이전트 구분도 잘 못하는 상태라 그런거 같았어요. 어디서부터 퀄리티 컨트롤이 안되는건지 판단이 안되더라구요.\n\n근데 클로드랑 대화하다가 '스킬 > 에이전트' 순서로 연습해보라고 하길래 거기서 유레카 싶더라고요.\n\n그래서 이 순서로 해봤어요\n1. 카드뉴스 기획 스킬을 만든다 (마음에 들때까지 반복개선함)\n2. 카드뉴스 제작 스킬을 만든다 (마음에 들때까지 반복개선함)\n3. 이 2개 스킬을 순서대로 엮는 에이전트를 만들어달라고 함\n4. 클로드가 기획 에이전트, 제작 에이전트, 오케스트레이션하는 총괄 에이전트를 만들겠다고 함\n5. 클로드가 director 에이전트에 전체 파이프라인을 다 담겠다고 함. 기획/제작 에이전트를 따로 호출하지 않고 director가 직접 수행하는 방식으로 수정하겠다고 함.\n6. 막상 돌려보니까 리서치 부분이 아쉬워서 리서치 스킬을 추가해서 워크플로우 디벨롭함\n\n디자인 레퍼런스는 조쉬님 파일로 넣었더니 깔끔하게 예쁘게 나오네용ㅋㅋ",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8112-b8b5-ee2f1ed40c98",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1SZnaqSc7idFN80b_vyAMhyj0Fv4uMWg1byVLKRaaG1g/edit?usp=drive_link",
+      "content": "PRD 및 랜딩페이지 제출 합니다! 크레딧이 충분하지않아서 다른 툴로 조금 살을 덧 붙였습니다.\n\nPRD - https://docs.google.com/document/d/1SZnaqSc7idFN80b_vyAMhyj0Fv4uMWg1byVLKRaaG1g/edit?usp=drive_link\n랜딩페이지 - https://teacher-helper-9tr.pages.dev/",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-819d-93b5-da9757bcc9b7",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://k-friend-route.lovable.app",
+      "content": "아직은 어설프지만 제출합니다~\n\nPRD : \n랜딩페이지 : https://k-friend-route.lovable.app",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e0-bd5b-fb74ce02611c",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://docs.google.com/document/d/1FdiI8ewxw7YcwESnAX3tz8bgntTOKlk7xPBevuBNfAA/edit?tab=t.0",
+      "content": "수정하고 싶은 부분이 많지만, 크레딧 부족으로 이쯤에서 제출합니다 🥺\n- PRD: https://docs.google.com/document/d/1FdiI8ewxw7YcwESnAX3tz8bgntTOKlk7xPBevuBNfAA/edit?tab=t.0\n- Lovable로 만든 랜딩 페이지: https://aap-by-notomo.lovable.app/",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://maily.so/ai.insider.club/posts/1gz27y3wr3q",
+      "content": "https://maily.so/ai.insider.club/posts/1gz27y3wr3q",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DUt66tqE9OJ?xmt=AQF0SCjTHSHYg_FPiACNd2OUFjDeP8M9NlyBWWYRh0SzkQ",
+      "content": "https://www.threads.com/@dodo_list_/post/DUt66tqE9OJ?xmt=AQF0SCjTHSHYg_FPiACNd2OUFjDeP8M9NlyBWWYRh0SzkQ",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e2-b354-c403515ec0de",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.vibecoding/post/DUt9XqVEhp1?xmt=AQF0xt2R-HC-BznYGyADA6kq8t81O9vqSquqqpt48wQxVw",
+      "content": "https://www.threads.com/@ai.vibecoding/post/DUt9XqVEhp1?xmt=AQF0xt2R-HC-BznYGyADA6kq8t81O9vqSquqqpt48wQxVw",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-812f-a8a5-efa051d245ef",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://www.notion.so/3-AI-3066400e926880b4864ad377b3128220",
+      "content": "ppt 자동화를했습니다. 몇개 뽑아보니 생각보다 디자인도 좋고 잘 뽑히네요. 근데 파이썬 자꾸 깔라고 하는데 파이썬 깔아야 할까요? ai 에이전트 돌릴려면 깔아야 할거 같기도하고..}",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.instagram.com/p/DUttQMGitI-/",
+      "content": "https://www.instagram.com/p/DUttQMGitI-/",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-14",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://maily.so/newsdaddyai/posts/g1o4g67gove",
+      "content": "https://maily.so/newsdaddyai/posts/g1o4g67gove",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-812d-8baa-f9ec2f57a336",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@benji98760?xmt=AQF0jn0TKZ9n-3btPGP5iFFBYeRYFT5ok-4GM2RHLEAWLA",
+      "content": "https://www.threads.com/@benji98760?xmt=AQF0jn0TKZ9n-3btPGP5iFFBYeRYFT5ok-4GM2RHLEAWLA",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8135-a31c-d965505143f6",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@swlbear/post/DUs58qOj06T?xmt=AQF00fmiUs-NHpoW2amqhhXjCjQaPfQc73D461DICALkrQ",
+      "content": "https://www.threads.com/@swlbear/post/DUs58qOj06T?xmt=AQF00fmiUs-NHpoW2amqhhXjCjQaPfQc73D461DICALkrQ",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-815c-9c55-ea7eac6e3841",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/stevejobboo_txurwarpwree-rzgreetey-share-7428083686274920448-U7Cb?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "content": "https://www.linkedin.com/posts/stevejobboo_txurwarpwree-rzgreetey-share-7428083686274920448-U7Cb?utm_source=share&utm_medium=member_android&rcm=ACoAAB0VZoQBkVmUDVZv3DuILrpczRa57dmKl7U",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-807c-9c1e-f0d5e668ffdf",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@simpliciety/post/DUs5lTCEreX?xmt=AQF0wwQASRKY-6FVEN72Sx007Hr_wzC23GC8h5aRZCzJeLUF2b6skZzpBvMTpKS3NUm6nwg&slof=1",
+      "content": "https://www.threads.com/@simpliciety/post/DUs5lTCEreX?xmt=AQF0wwQASRKY-6FVEN72Sx007Hr_wzC23GC8h5aRZCzJeLUF2b6skZzpBvMTpKS3NUm6nwg&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2f96400e-9268-81f6-9118-c3a00fbd6580",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@jakvis.labs/post/DUs3lF8kvxn?xmt=AQF0P5cb6d7LFvV_9rGtwqQtiXs_YUpGMKmpWX3Mw_9pz3o",
+      "content": "https://www.threads.com/@jakvis.labs/post/DUs3lF8kvxn?xmt=AQF0P5cb6d7LFvV_9rGtwqQtiXs_YUpGMKmpWX3Mw_9pz3o",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8182-80ec-f33a6a7fceaa",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@gncut_official/post/DUs3IDYCVt3?xmt=AQF0H_hXgQJhR3VxdH1fQcBZd5l49nwJcCzQjrfktmFkGg",
+      "content": "https://www.threads.com/@gncut_official/post/DUs3IDYCVt3?xmt=AQF0H_hXgQJhR3VxdH1fQcBZd5l49nwJcCzQjrfktmFkGg",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81ca-b12f-cc1cb33d59bf",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1471866046393880598/screencapture-localhost-3000-about-2026-02-13-22_45_29.png?ex=69907d93&is=698f2c13&hm=4c4aa8a68a04149c930cac883bc9b796221c0d9a86f996014838efb15b5c1fb5&",
+      "content": "1주차 과제 제출합니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1471866046393880598/screencapture-localhost-3000-about-2026-02-13-22_45_29.png?ex=69907d93&is=698f2c13&hm=4c4aa8a68a04149c930cac883bc9b796221c0d9a86f996014838efb15b5c1fb5&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-8150-b060-d7e281a7c073",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470029883391348777/1471862226292965518/image.png?ex=69907a04&is=698f2884&hm=3ce91f83164e1358ddcbb37c14b6b5aeedb683d54816ffaef60f4d29ebe1dccb&",
+      "content": "1주차 과제 제출합니다.",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1470029883391348777/1471862226292965518/image.png?ex=69907a04&is=698f2884&hm=3ce91f83164e1358ddcbb37c14b6b5aeedb683d54816ffaef60f4d29ebe1dccb&"
+      ]
+    },
+    {
+      "memberId": "2df6400e-9268-81b0-8550-de5e956fa37c",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1471862119610716180/SKILL.md?ex=699079eb&is=698f286b&hm=fa45b06a6cb2c01e665d940e919d63228480f261ac9a4e8c6c035ab176ff3956&",
+      "content": "저는 저만의 레포트 자동화 SKILL을 만들어 보았습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81e1-a52f-e0e6871e5fe5",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@jiyong.product/post/DUswTwOE_2c?xmt=AQF0cqzyUzx7JSVAE3kyNgDoAlYECrgVrKrk2OAEH42mhw",
+      "content": "https://www.threads.com/@jiyong.product/post/DUswTwOE_2c?xmt=AQF0cqzyUzx7JSVAE3kyNgDoAlYECrgVrKrk2OAEH42mhw",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e3-8edc-f8a1b3ae5f26",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@han_lab_",
+      "content": "https://www.threads.com/@han_lab_",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1471852013275840797/SKILL.md?ex=69907081&is=698f1f01&hm=bc00a1bcfb273684771bdb1a98bc573cc4f0bc97cb13ef941915316f03c4a7e2&",
+      "content": "claude code 갖고 놀다가 콘텍스트를 다 써버려서 2/19 리프레시 된답니다. 확.... 지르고 싶으나, 아무것도 모르는 상태에서 저지른 것이라 claude 한테 질문해가며 skill.md를 만들었습니다.",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81af-82fd-d21d72e9d5f5",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@bagsijun765/post/DUse6mDgdVY?hl=ko",
+      "content": "https://www.threads.com/@bagsijun765/post/DUse6mDgdVY?hl=ko",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-817f-8006-cc6b2816473d",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@saemidoc/post/DUrkGyPAbWX?xmt=AQF0hG3N6TOVl45yFHkxDbMHHD52MrLu-FtflPfUZus9GKkof3n-7gLM6sVTMXoukcY49HCg&slof=1",
+      "content": "https://www.threads.com/@saemidoc/post/DUrkGyPAbWX?xmt=AQF0hG3N6TOVl45yFHkxDbMHHD52MrLu-FtflPfUZus9GKkof3n-7gLM6sVTMXoukcY49HCg&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-8109-b7af-e8094d4e2c68",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@makekim.kr/post/DUsaOd5kmhe",
+      "content": "https://www.threads.com/@makekim.kr/post/DUsaOd5kmhe",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8169-846d-ce04ade77650",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@ai.profitwise/post/DUsVN-Pk16H?xmt=AQF05dI2ldV52hakthQMQTY92WMJYeaOPTGeqLDQWt9a5g",
+      "content": "https://www.threads.com/@ai.profitwise/post/DUsVN-Pk16H?xmt=AQF05dI2ldV52hakthQMQTY92WMJYeaOPTGeqLDQWt9a5g",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8199-9968-e841144cd05e",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@fortunecat_saju/post/DUsUmUtEtjf?xmt=AQF0L-HTEAHGploGL3t_YGM8lWueqOAk3WYH6sljbwGf2Q",
+      "content": "https://www.threads.com/@fortunecat_saju/post/DUsUmUtEtjf?xmt=AQF0L-HTEAHGploGL3t_YGM8lWueqOAk3WYH6sljbwGf2Q",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81eb-a6f4-cecebc61bfbb",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://naver.me/5PWhX39h",
+      "content": "https://naver.me/5PWhX39h",
+      "images": null
+    },
+    {
+      "memberId": "2fe6400e-9268-81e0-86cd-ea72e6a3d2b1",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.linkedin.com/posts/activity-7427987438754586624-NLkU?utm_source=share&utm_medium=member_android&rcm=ACoAAGRq29gB9Bua5GCO9wUo6-ViDVOTmPGME6U",
+      "content": "https://www.linkedin.com/posts/activity-7427987438754586624-NLkU?utm_source=share&utm_medium=member_android&rcm=ACoAAGRq29gB9Bua5GCO9wUo6-ViDVOTmPGME6U",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://blog.naver.com/svminseo/224181709511",
+      "content": "https://blog.naver.com/svminseo/224181709511",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81ab-b236-e695df448e47",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@home_dad_sol/post/DUsMQ4rD5fT?xmt=AQF0rKZsozKAlNwON-zVtUYKALcQ8MQ3VwioMNzMwuLGLw",
+      "content": "https://www.threads.com/@home_dad_sol/post/DUsMQ4rD5fT?xmt=AQF0rKZsozKAlNwON-zVtUYKALcQ8MQ3VwioMNzMwuLGLw",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@interior.pulse/post/DUsKFmFkcqh?xmt=AQF0L9YMvVTMm-EpA5G7CFM9jRAm9eB6rcFrcXNVW68WHw",
+      "content": "https://www.threads.com/@interior.pulse/post/DUsKFmFkcqh?xmt=AQF0L9YMvVTMm-EpA5G7CFM9jRAm9eB6rcFrcXNVW68WHw",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e6-873e-c5a131700198",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1471767954713481236/SKILL.md?ex=69902238&is=698ed0b8&hm=b3d9ed7a35a76c0413b7592821946074f943b6cae5f7e1a72d62a25387485573&",
+      "content": "공유해주신 글쓰기 템플릿을 활용해서 제가 작성한 블로그 글을 쓰레드와 x 버전으로 다시 작성해주는 skill 을 만들었습니다. 🙂",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-814a-b27c-e51737db7b7a",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://rebirthcoaching.tistory.com/m/entry/AI%EA%B0%80-%EC%B0%8D%EC%96%B4%EB%82%B4%EB%8A%94-%EA%B8%80-%EC%86%8D%EC%97%90%EC%84%9C-%EB%8B%B9%EC%8B%A0%EC%9D%98-%EC%9D%B4%EC%95%BC%EA%B8%B0%EA%B0%80-%EB%B9%9B%EB%82%98%EB%8A%94-%EB%B2%95",
+      "content": "https://rebirthcoaching.tistory.com/m/entry/AI%EA%B0%80-%EC%B0%8D%EC%96%B4%EB%82%B4%EB%8A%94-%EA%B8%80-%EC%86%8D%EC%97%90%EC%84%9C-%EB%8B%B9%EC%8B%A0%EC%9D%98-%EC%9D%B4%EC%95%BC%EA%B8%B0%EA%B0%80-%EB%B9%9B%EB%82%98%EB%8A%94-%EB%B2%95",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81e6-873e-c5a131700198",
+      "date": "2026-02-15",
+      "status": "submitted",
+      "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
+      ],
+      "link": "https://cdn.discordapp.com/attachments/1470031821134631004/1471757537132150824/SKILL.md?ex=69901884&is=698ec704&hm=be2e0a601d80f0c9a387fa58627de9e9a6c18eba46167ea3b0f1537bffba0212&",
+      "content": "공유해주신 글쓰기 템플릿을 활용해서 제가 작성한 블로그 글을 쓰레드와 x 버전으로 다시 작성해주는 skill 을 만들었습니다. 🙂",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8145-b1b8-d2dc02094e51",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@newsdaddy.ai/post/DUr-u3QiFQJ",
+      "content": "https://www.threads.com/@newsdaddy.ai/post/DUr-u3QiFQJ",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DUrl_m-D9Nq?xmt=AQF0v2e4fuf7OlFJypnq11RE8ranEdOInsainu2HJz5Rmg",
+      "content": "https://www.threads.com/@lawyerssm/post/DUrl_m-D9Nq?xmt=AQF0v2e4fuf7OlFJypnq11RE8ranEdOInsainu2HJz5Rmg",
+      "images": null
+    },
+    {
+      "memberId": "3016400e-9268-810b-81a5-d1797af75675",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@lawyerssm/post/DUp1tYxD3SB?xmt=AQF0_QCp0-4G-bMpnHh3SyR2Ymg06DONnd8ZDiw5l0DJpg",
+      "content": "https://www.threads.com/@lawyerssm/post/DUp1tYxD3SB?xmt=AQF0_QCp0-4G-bMpnHh3SyR2Ymg06DONnd8ZDiw5l0DJpg",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-8112-9aff-ccc87d661968",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@slowwbuilder/post/DUr7uKMEqPY?xmt=AQF0jn0TKZ9n-3btPGP5iFFBYeRYFT5ok-4GM2RHLEAWLA",
+      "content": "https://www.threads.com/@slowwbuilder/post/DUr7uKMEqPY?xmt=AQF0jn0TKZ9n-3btPGP5iFFBYeRYFT5ok-4GM2RHLEAWLA",
+      "images": null
+    },
+    {
+      "memberId": "2df6400e-9268-814a-b27c-e51737db7b7a",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@aron_aiconbia/post/DUr4-6vj8wL?xmt=AQF0eQjUP6H6HdqJ2D-KgdRgETSmMJF0mcOYbq0CmKLzqPtcbjrdgHyFVJtBzdHqfUXm7yd2&slof=1",
+      "content": "https://www.threads.com/@aron_aiconbia/post/DUr4-6vj8wL?xmt=AQF0eQjUP6H6HdqJ2D-KgdRgETSmMJF0mcOYbq0CmKLzqPtcbjrdgHyFVJtBzdHqfUXm7yd2&slof=1",
+      "images": null
+    },
+    {
+      "memberId": "2fd6400e-9268-81eb-801a-ed13c7acb4c6",
+      "date": "2026-02-13",
+      "status": "submitted",
+      "tracks": [
+        "Shortform"
+      ],
+      "link": "https://www.threads.com/@dodo_list_/post/DUru2FTAY03?xmt=AQF0gNoZBLlyHVN-uArIYURO-kaGdjov_g08r4PFgtTyn-2Y_ez6IjPHn1kSZ7HyzvYjdNI&slof=1",
+      "content": "https://www.threads.com/@dodo_list_/post/DUru2FTAY03?xmt=AQF0gNoZBLlyHVN-uArIYURO-kaGdjov_g08r4PFgtTyn-2Y_ez6IjPHn1kSZ7HyzvYjdNI&slof=1",
+      "images": null
+    },
+    {
       "memberId": "2df6400e-9268-81c7-966d-e2f1f6a8030c",
       "date": "2026-02-13",
       "status": "submitted",
@@ -3316,7 +6568,11 @@ const REAL_DATA = {
       "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
-        "Builder Basic"
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
       ],
       "link": "https://docs.google.com/document/d/1iK81NitDXhk24iDSF51r4WJRdCriImLxaQe0_McaruM/",
       "content": "https://docs.google.com/document/d/1iK81NitDXhk24iDSF51r4WJRdCriImLxaQe0_McaruM/",
@@ -3373,7 +6629,11 @@ const REAL_DATA = {
       "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
-        "Sales"
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
+        "Builder Advanced"
       ],
       "link": "https://whimsical.com/KH7s2aaRUyU2BQzUeZXF6u",
       "content": "안녕하세요 과제 인증 올립겠습니다.\n\n[과제 1. 자신만의 퍼널 설계도 만들어오기 - 퍼널 링크 공유하기]\nhttps://whimsical.com/KH7s2aaRUyU2BQzUeZXF6u\n\n[과제 2. 나만의 USP 정의하고 차별화요기 - 문서 제출하기]\nhttps://docs.google.com/document/d/1ZAJUxFgpR50uJXUG91A3lnXICRkbnaZHEClRWraQdkQ/edit?usp=sharing\n\n[과제 3. 고객 인터뷰 3명 진행하기]\nhttps://docs.google.com/document/d/1X37IwXY8eZJWD_4KzCtySo4SviF8PSNWaLTMzAG8efs/edit?usp=sharing",
@@ -3696,6 +6956,10 @@ const REAL_DATA = {
       "date": "2026-02-15",
       "status": "submitted",
       "tracks": [
+        "AI Agent",
+        "Longform",
+        "Sales",
+        "Builder Basic",
         "Builder Advanced"
       ],
       "link": "https://docs.google.com/document/d/1duaM0LiNdxjBOktd4SL5upFtu4rkAoEPaZ5nbXb2G-8/edit?usp=sharing",
@@ -3857,7 +7121,7 @@ const REAL_DATA = {
       "images": null
     }
   ],
-  "lastUpdated": "2026-02-13T13:35:19.929245"
+  "lastUpdated": "2026-02-19T10:20:16.090890"
 };
 
 export const mockMembers: Member[] = REAL_DATA.members.map(m => ({
