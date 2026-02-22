@@ -83,8 +83,11 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                     return !hasSubmitted;
                 });
 
-                // ONLY show dropout candidates (missing 4 or more)
-                if (missingDates.length >= 4) {
+                // Dropout Candidates:
+                // Shortform: 5 or more
+                // Weekly (Others): 1 or more
+                const threshold = track === Track.SHORTFORM ? 5 : 1;
+                if (missingDates.length >= threshold) {
                     if (!groups[track]) groups[track] = [];
                     groups[track]!.push({ member, missingDates });
                 }
@@ -123,9 +126,9 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                     <AlertCircle className="w-5 h-5" />
                 </div>
                 <div>
-                    <h3 className="font-extrabold text-slate-800 text-lg">탈락 대상자 특별 관리 현황 (4회 이상 누락)</h3>
+                    <h3 className="font-extrabold text-slate-800 text-lg">탈락 대상자 명단</h3>
                     <p className="text-sm font-medium text-slate-500">
-                        전체 트랙을 통틀어 과제를 4회 이상 제출하지 않은 <strong>{totalMissingMembers}명</strong>의 인원입니다.
+                        숏폼 5회 이상 / 주간 과제 1회 이상 미제출한 <strong>{totalMissingMembers}명</strong>의 인원입니다.
                     </p>
                 </div>
             </div>
@@ -175,8 +178,8 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
 
                                         <div className="mt-auto pl-2">
                                             <div className="flex items-center gap-2 mb-2">
-                                                <span className="text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md bg-rose-100 text-rose-600">
-                                                    {missingDates.length}회 누락 (경고)
+                                                <span className={`text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md ${track === Track.SHORTFORM ? 'bg-rose-100 text-rose-600' : 'bg-red-500 text-white'}`}>
+                                                    {missingDates.length}회 누락 {track === Track.SHORTFORM ? '(경고/탈락)' : '(즉시 탈락 대상)'}
                                                 </span>
                                             </div>
                                             <div className="flex flex-wrap gap-1">
