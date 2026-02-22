@@ -8,6 +8,7 @@ import MemberManagement from '../components/MemberManagement';
 import GroupManagement from '../components/GroupManagement';
 import NotificationTester from '../components/NotificationTester';
 import NotificationPreview from '../components/NotificationPreview';
+import MissingReport from '../components/MissingReport';
 import { Member, Submission, Track } from '../types';
 
 interface AdminDashboardProps {
@@ -131,6 +132,14 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 cohortConfig={cohortConfig}
                                 activeTrack={activeTrack}
                             />
+                            <div className="px-4 md:px-8 pb-4 md:pb-8">
+                                <MissingReport
+                                    members={members}
+                                    submissions={submissions}
+                                    cohortConfig={cohortConfig}
+                                    activeTrack={activeTrack}
+                                />
+                            </div>
                         </div>
                     )}
 
