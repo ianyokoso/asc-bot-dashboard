@@ -128,17 +128,55 @@ const App: React.FC = () => {
         const newData = result.data;
         setMembers(newData.members);
         setSubmissions(newData.submissions);
-        await fetchGroups(); // Also update groups after sync
-        if (!isAuto) showToast("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.", 'success');
-        else console.log("✅ Auto-sync completed.");
+
+        if (result.background_sync) {
+          // Cached data loaded instantly — background sync is running
+          if (!isAuto) showToast("📦 캐시 데이터 로드 완료. 백그라운드에서 최신 데이터 동기화 중...", 'success');
+
+          // Poll for sync completion
+          const pollInterval = setInterval(async () => {
+            try {
+              const statusRes = await fetch(`${API_BASE_URL}/api/sync-status`);
+              const status = await statusRes.json();
+              if (!status.running) {
+                clearInterval(pollInterval);
+                // Fetch fresh data
+                const freshRes = await fetch(`${API_BASE_URL}/api/data`);
+                const freshResult = await freshRes.json();
+                if (freshResult.status === 'success') {
+                  setMembers(freshResult.data.members);
+                  setSubmissions(freshResult.data.submissions);
+                  await fetchGroups();
+                  if (!isAuto) showToast("✅ Notion 최신 데이터 동기화 완료!", 'success');
+                }
+                setIsSyncing(false);
+              }
+            } catch {
+              clearInterval(pollInterval);
+              setIsSyncing(false);
+            }
+          }, 3000);
+
+          // Safety timeout: stop polling after 60s
+          setTimeout(() => {
+            clearInterval(pollInterval);
+            setIsSyncing(false);
+          }, 60000);
+        } else {
+          // Full sync completed (first time, no cache)
+          await fetchGroups();
+          if (!isAuto) showToast("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.", 'success');
+          else console.log("✅ Auto-sync completed.");
+          setIsSyncing(false);
+        }
       } else {
         if (!isAuto) showToast(`❌ 동기화 실패: ${result.message}`, 'error');
         else console.error(`❌ Auto-sync failed: ${result.message}`);
+        setIsSyncing(false);
       }
     } catch (err) {
       console.error(err);
       if (!isAuto) showToast(`❌ 서버 접속 실패: ${err} \n(admin_server.py가 켜져 있나요?)`, 'error');
-    } finally {
       setIsSyncing(false);
     }
   };
