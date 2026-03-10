@@ -22,6 +22,16 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
     // Selected submission for Modal
     const [selectedSubmission, setSelectedSubmission] = useState<{ sub: Submission, memberName: string } | null>(null);
 
+    // 0. Index submissions by "memberId_date" for O(1) lookup per cell
+    const submissionMap = useMemo(() => {
+        const map = new Map<string, Submission>();
+        for (const s of submissions) {
+            const key = `${s.memberId}_${s.date}`;
+            map.set(key, s);
+        }
+        return map;
+    }, [submissions]);
+
     // 1. Filter Members by Track
     const filteredMembers = useMemo(() => {
         return members.filter(member => {
@@ -216,12 +226,9 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
 
                                     {/* Submission Cells */}
                                     {displayDates.map(date => {
-                                        // [FIX] Filter submission by Active Track (Prevent showing same submission across different tracks)
-                                        const sub = submissions.find(s =>
-                                            s.memberId === member.id &&
-                                            s.date === date &&
-                                            (s.tracks ? s.tracks.includes(activeTrack) : true)
-                                        );
+                                        // [FIX] O(1) lookup via Map (indexed by memberId_date)
+                                        const candidate = submissionMap.get(`${member.id}_${date}`);
+                                        const sub = candidate && (candidate.tracks ? candidate.tracks.includes(activeTrack) : true) ? candidate : undefined;
 
                                         let isHoliday = false;
                                         if (cohortConfig.holidayStart && cohortConfig.holidayEnd) {
