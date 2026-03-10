@@ -127,8 +127,8 @@ const App: React.FC = () => {
       if (result.status === 'success') {
         setMembers(result.data.members);
         setSubmissions(result.data.submissions);
-        await fetchGroups();
-        if (!isAuto) showToast("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.", 'success');
+        fetchGroups(); // non-blocking
+        if (!isAuto) showToast("✅ 동기화 완료!", 'success');
         else console.log("✅ Auto-sync completed.");
       } else {
         if (!isAuto) showToast(`❌ 동기화 실패: ${result.message}`, 'error');
