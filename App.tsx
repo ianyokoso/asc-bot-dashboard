@@ -125,51 +125,19 @@ const App: React.FC = () => {
       const result = await res.json();
 
       if (result.status === 'success') {
-        const newData = result.data;
-        setMembers(newData.members);
-        setSubmissions(newData.submissions);
-
-        if (result.background_sync) {
-          // Cached data loaded instantly — stop spinner immediately
-          setIsSyncing(false);
-          if (!isAuto) showToast("✅ 동기화 완료!", 'success');
-
-          // Silently poll for background sync, then auto-update
-          const pollInterval = setInterval(async () => {
-            try {
-              const statusRes = await fetch(`${API_BASE_URL}/api/sync-status`);
-              const status = await statusRes.json();
-              if (!status.running) {
-                clearInterval(pollInterval);
-                const freshRes = await fetch(`${API_BASE_URL}/api/data`);
-                const freshResult = await freshRes.json();
-                if (freshResult.status === 'success') {
-                  setMembers(freshResult.data.members);
-                  setSubmissions(freshResult.data.submissions);
-                  fetchGroups();
-                }
-              }
-            } catch {
-              clearInterval(pollInterval);
-            }
-          }, 3000);
-
-          setTimeout(() => clearInterval(pollInterval), 60000);
-        } else {
-          // Full sync completed (first time, no cache)
-          await fetchGroups();
-          if (!isAuto) showToast("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.", 'success');
-          else console.log("✅ Auto-sync completed.");
-          setIsSyncing(false);
-        }
+        setMembers(result.data.members);
+        setSubmissions(result.data.submissions);
+        await fetchGroups();
+        if (!isAuto) showToast("✅ 동기화 완료! Notion 최신 데이터로 갱신되었습니다.", 'success');
+        else console.log("✅ Auto-sync completed.");
       } else {
         if (!isAuto) showToast(`❌ 동기화 실패: ${result.message}`, 'error');
         else console.error(`❌ Auto-sync failed: ${result.message}`);
-        setIsSyncing(false);
       }
     } catch (err) {
       console.error(err);
       if (!isAuto) showToast(`❌ 서버 접속 실패: ${err} \n(admin_server.py가 켜져 있나요?)`, 'error');
+    } finally {
       setIsSyncing(false);
     }
   };
