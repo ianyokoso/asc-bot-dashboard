@@ -130,38 +130,31 @@ const App: React.FC = () => {
         setSubmissions(newData.submissions);
 
         if (result.background_sync) {
-          // Cached data loaded instantly — background sync is running
-          if (!isAuto) showToast("📦 캐시 데이터 로드 완료. 백그라운드에서 최신 데이터 동기화 중...", 'success');
+          // Cached data loaded instantly — stop spinner immediately
+          setIsSyncing(false);
+          if (!isAuto) showToast("✅ 동기화 완료!", 'success');
 
-          // Poll for sync completion
+          // Silently poll for background sync, then auto-update
           const pollInterval = setInterval(async () => {
             try {
               const statusRes = await fetch(`${API_BASE_URL}/api/sync-status`);
               const status = await statusRes.json();
               if (!status.running) {
                 clearInterval(pollInterval);
-                // Fetch fresh data
                 const freshRes = await fetch(`${API_BASE_URL}/api/data`);
                 const freshResult = await freshRes.json();
                 if (freshResult.status === 'success') {
                   setMembers(freshResult.data.members);
                   setSubmissions(freshResult.data.submissions);
-                  await fetchGroups();
-                  if (!isAuto) showToast("✅ Notion 최신 데이터 동기화 완료!", 'success');
+                  fetchGroups();
                 }
-                setIsSyncing(false);
               }
             } catch {
               clearInterval(pollInterval);
-              setIsSyncing(false);
             }
           }, 3000);
 
-          // Safety timeout: stop polling after 60s
-          setTimeout(() => {
-            clearInterval(pollInterval);
-            setIsSyncing(false);
-          }, 60000);
+          setTimeout(() => clearInterval(pollInterval), 60000);
         } else {
           // Full sync completed (first time, no cache)
           await fetchGroups();
