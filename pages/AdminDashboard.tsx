@@ -10,6 +10,7 @@ import NotificationTester from '../components/NotificationTester';
 import NotificationPreview from '../components/NotificationPreview';
 import MissingReport from '../components/MissingReport';
 import TrackManager from '../components/TrackManager';
+import RankingBoard from '../components/RankingBoard';
 import { Member, Submission, Track, TrackConfigItem, TRACKS } from '../types';
 
 interface AdminDashboardProps {
@@ -93,7 +94,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     isTrackConfigSaving
 }) => {
     // Tabs: Submissions vs Groups vs Members vs Settings
-    const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'settings'>('submissions');
+    const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'rankings' | 'settings'>('submissions');
     // Views inside Submissions tab
     const [submissionsView, setSubmissionsView] = useState<'table' | 'missing'>('table');
 
@@ -109,6 +110,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         if (activeTab === 'submissions') return `${displayCohort} 과제 제출 현황`;
         if (activeTab === 'groups') return '조 관리';
         if (activeTab === 'members') return '멤버 관리';
+        if (activeTab === 'rankings') return '랭킹보드';
         return '봇 설정 (v2.0)';
     }, [activeTab, cohortConfig.name]);
 
@@ -139,7 +141,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     endDate={cohortConfig.endDate}
                 />
 
-                <div className={`flex-1 flex flex-col ${activeTab === 'submissions' || activeTab === 'groups' ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'}`}>
+                <div className={`flex-1 flex flex-col ${activeTab === 'submissions' || activeTab === 'groups' || activeTab === 'rankings' ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'}`}>
                     {/* SUBMISSIONS TAB */}
                     {activeTab === 'submissions' && (
                         <div className="flex-1 flex flex-col min-h-0 bg-slate-50/30">
@@ -208,7 +210,17 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                     groupData={groupData}
                                     isLoading={isGroupsLoading}
                                     submissions={submissions}
+                                    trackConfig={trackConfig}
                                 />
+                            </div>
+                        </div>
+                    )}
+
+                    {/* RANKINGS TAB */}
+                    {activeTab === 'rankings' && (
+                        <div className="flex-1 p-4 md:p-6 overflow-hidden">
+                            <div className="bg-white/40 backdrop-blur-3xl rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-white/50 overflow-hidden h-full">
+                                <RankingBoard />
                             </div>
                         </div>
                     )}

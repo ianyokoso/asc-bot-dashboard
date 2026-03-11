@@ -1,6 +1,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { LayoutGrid, Users, ExternalLink, Search, Crown, User, AlertCircle } from 'lucide-react';
+import { TrackConfigItem } from '../types';
 
 interface GroupMember {
     id: string;
@@ -25,39 +26,32 @@ interface GroupManagementProps {
     groupData: TrackData[];
     isLoading: boolean;
     submissions: any[];
+    trackConfig?: TrackConfigItem[];
 }
 
-const PREFERRED_ORDER = [
-    '크리에이터 트랙',
-    '빌더 기초 트랙',
-    '빌더 심화 트랙',
-    '세일즈 실전 트랙',
-    'AI 에이전트 트랙'
-];
-
-const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading, submissions }) => {
+const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading, submissions, trackConfig }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeTab, setActiveTab] = useState<string>('');
 
-    // Sort Tracks based on Preferred Order
+    // Sort Tracks based on trackConfig order (dynamic)
     const sortedTracks = useMemo(() => {
         if (!groupData) return [];
 
+        // Build order map from trackConfig's groupDbName
+        const orderMap: Record<string, number> = {};
+        if (trackConfig && trackConfig.length > 0) {
+            trackConfig.forEach(tc => {
+                if (tc.groupDbName) orderMap[tc.groupDbName] = tc.order;
+            });
+        }
+
         return [...groupData].sort((a, b) => {
-            const indexA = PREFERRED_ORDER.indexOf(a.trackName);
-            const indexB = PREFERRED_ORDER.indexOf(b.trackName);
-
-            // If both are in the preferred list, sort by index
-            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-
-            // If only one is in the list, prioritize it
-            if (indexA !== -1) return -1;
-            if (indexB !== -1) return 1;
-
-            // Otherwise, sort alphabetically
+            const orderA = orderMap[a.trackName] ?? 999;
+            const orderB = orderMap[b.trackName] ?? 999;
+            if (orderA !== orderB) return orderA - orderB;
             return a.trackName.localeCompare(b.trackName);
         });
-    }, [groupData]);
+    }, [groupData, trackConfig]);
 
     // Set initial active tab
     useEffect(() => {
@@ -290,6 +284,14 @@ const GroupManagement: React.FC<GroupManagementProps> = ({ groupData, isLoading,
                                 );
                             })}
                         </div>
+                    </div>
+                ) : currentTrackData && currentTrackData.groups.length === 0 && !searchTerm ? (
+                    <div className="flex flex-col items-center justify-center py-20 text-center animate-in fade-in zoom-in duration-300">
+                        <div className="w-16 h-16 bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center mb-4 border border-white/60 shadow-sm">
+                            <Users className="w-6 h-6 text-gray-300" />
+                        </div>
+                        <p className="text-gray-500 font-bold">아직 조가 편성되지 않았습니다.</p>
+                        <p className="text-xs text-gray-400 mt-1">이 트랙에 조를 배치하면 여기에 표시됩니다.</p>
                     </div>
                 ) : (
                     <div className="flex flex-col items-center justify-center py-20 text-center animate-in fade-in zoom-in duration-300">
