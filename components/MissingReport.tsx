@@ -208,16 +208,16 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                                                 </div>
                                             </div>
 
-                                            <div className="flex gap-1">
+                                            <div className="flex gap-1.5 items-center">
                                                 <button
                                                     onClick={() => {
                                                         const memberTracks = member.tracks && member.tracks.length > 0 ? member.tracks : [member.track];
                                                         setConfirmTarget({ memberId: member.id, memberName: member.name, track, allTracks: memberTracks });
                                                     }}
-                                                    title={`${track} 트랙에서 탈락 처리`}
-                                                    className="p-1.5 rounded-lg transition-colors border shadow-sm bg-rose-50 border-rose-200 text-rose-500 hover:bg-rose-100 hover:text-rose-700"
+                                                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[10px] font-bold transition-colors border shadow-sm bg-rose-500 border-rose-500 text-white hover:bg-rose-600"
                                                 >
-                                                    <UserX className="w-4 h-4" />
+                                                    <UserX className="w-3 h-3" />
+                                                    탈락
                                                 </button>
                                                 <button
                                                     onClick={() => handleCopy(member.discordId || "")}
