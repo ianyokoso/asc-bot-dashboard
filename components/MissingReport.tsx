@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Member, Submission, Track } from '../types';
 import { Copy, Check, AlertCircle, UserX } from 'lucide-react';
 
@@ -255,8 +256,8 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                 })}
             </div>
 
-            {/* 탈락 처리 확인 모달 */}
-            {confirmTarget && (
+            {/* 탈락 처리 확인 모달 — Portal로 body에 렌더링 */}
+            {confirmTarget && createPortal(
                 <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" onClick={() => setConfirmTarget(null)}>
                     <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full" onClick={e => e.stopPropagation()}>
                         <div className="flex items-center gap-3 mb-4">
@@ -310,7 +311,8 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </div>
     );
