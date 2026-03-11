@@ -9,7 +9,7 @@ import GroupManagement from '../components/GroupManagement';
 import NotificationTester from '../components/NotificationTester';
 import NotificationPreview from '../components/NotificationPreview';
 import MissingReport from '../components/MissingReport';
-import { Member, Submission, Track } from '../types';
+import { Member, Submission, Track, TrackConfigItem, TRACKS } from '../types';
 
 interface AdminDashboardProps {
     members: Member[];
@@ -52,6 +52,8 @@ interface AdminDashboardProps {
     // Full Sync
     onFullSync?: () => void;
     isFullSyncing?: boolean;
+    // Track Config
+    trackConfig: TrackConfigItem[];
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -82,7 +84,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     isGroupsLoading,
     onMemberDropped,
     onFullSync,
-    isFullSyncing
+    isFullSyncing,
+    trackConfig
 }) => {
     // Tabs: Submissions vs Groups vs Members vs Settings
     const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'settings'>('submissions');
@@ -90,8 +93,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     const [submissionsView, setSubmissionsView] = useState<'table' | 'missing'>('table');
 
     // Track State for Submissions Tab
-    const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
-    const [activeTrack, setActiveTrack] = useState<Track>(Track.SHORTFORM);
+    const trackOrder = trackConfig.length > 0
+        ? [...trackConfig].sort((a, b) => a.order - b.order).map(tc => tc.displayName as Track)
+        : [TRACKS.SHORTFORM, TRACKS.LONGFORM, TRACKS.BUILDER_BASIC, TRACKS.BUILDER_ADVANCED, TRACKS.SALES, TRACKS.AI_AGENT];
+    const [activeTrack, setActiveTrack] = useState<Track>(trackOrder[0] || 'Shortform');
 
     const currentHeaderTitle = useMemo(() => {
         const displayCohort = cohortConfig.name.endsWith('기') ? cohortConfig.name : `${cohortConfig.name}기`;
@@ -172,6 +177,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                             submissions={submissions}
                                             cohortConfig={cohortConfig}
                                             activeTrack={activeTrack}
+                                            schedule={trackConfig.find(tc => tc.displayName === activeTrack)?.schedule || 'daily'}
                                         />
                                     </div>
                                 </>
@@ -182,6 +188,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                         submissions={submissions}
                                         cohortConfig={cohortConfig}
                                         onMemberDropped={onMemberDropped}
+                                        trackConfig={trackConfig}
                                     />
                                 </div>
                             )}

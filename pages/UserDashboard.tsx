@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import LuxuryHeader from '../components/LuxuryHeader';
 import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
 import LuxurySubmissionTable from '../components/LuxurySubmissionTable';
-import { Member, Submission, Track } from '../types';
+import { Member, Submission, Track, TrackConfigItem, TRACKS } from '../types';
 
 interface UserDashboardProps {
   members: Member[];
@@ -16,6 +16,7 @@ interface UserDashboardProps {
     holidayStart?: string;
     holidayEnd?: string;
   };
+  trackConfig: TrackConfigItem[];
 }
 
 const UserDashboard: React.FC<UserDashboardProps> = ({
@@ -23,7 +24,8 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
   submissions,
   isSyncing,
   onSync,
-  cohortConfig
+  cohortConfig,
+  trackConfig
 }) => {
   const currentHeaderTitle = useMemo(() => {
     const displayCohort = cohortConfig.name.endsWith('기') ? cohortConfig.name : `${cohortConfig.name}기`;
@@ -31,8 +33,10 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
   }, [cohortConfig.name]);
 
   // Tab State Managed Here (Top Level for User View)
-  const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
-  const [activeTrack, setActiveTrack] = useState<Track>(Track.SHORTFORM);
+  const trackOrder = trackConfig.length > 0
+    ? [...trackConfig].sort((a, b) => a.order - b.order).map(tc => tc.displayName as Track)
+    : [TRACKS.SHORTFORM, TRACKS.LONGFORM, TRACKS.BUILDER_BASIC, TRACKS.BUILDER_ADVANCED, TRACKS.SALES, TRACKS.AI_AGENT];
+  const [activeTrack, setActiveTrack] = useState<Track>(trackOrder[0] || 'Shortform');
 
   return (
     <div className="flex h-screen bg-[#F0F4F8] overflow-hidden relative font-sans text-gray-900 selection:bg-indigo-100 selection:text-indigo-700">
@@ -68,6 +72,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
           submissions={submissions}
           cohortConfig={cohortConfig}
           activeTrack={activeTrack}
+          schedule={trackConfig.find(tc => tc.displayName === activeTrack)?.schedule || 'daily'}
         />
       </main>
     </div>

@@ -1,25 +1,38 @@
 
-export enum Track {
-  SHORTFORM = 'Shortform',
-  LONGFORM = 'Longform',
-  BUILDER_BASIC = 'Builder Basic',
-  BUILDER_ADVANCED = 'Builder Advanced',
-  SALES = 'Sales',
-  AI_AGENT = 'AI Agent',
-  CREATOR_LITE = 'Creator Lite',
-  BUILDER_LITE = 'Builder Lite',
-  UNASSIGNED = 'Unassigned'
-}
+export type Track = string;
+
+export const TRACKS = {
+  SHORTFORM: 'Shortform' as Track,
+  LONGFORM: 'Longform' as Track,
+  BUILDER_BASIC: 'Builder Basic' as Track,
+  BUILDER_ADVANCED: 'Builder Advanced' as Track,
+  SALES: 'Sales' as Track,
+  AI_AGENT: 'AI Agent' as Track,
+  CREATOR_LITE: 'Creator Lite' as Track,
+  BUILDER_LITE: 'Builder Lite' as Track,
+  UNASSIGNED: 'Unassigned' as Track,
+} as const;
 
 export type SubmissionStatus = 'submitted' | 'missed' | 'pending' | 'none';
+
+export interface TrackConfigItem {
+  notionName: string;
+  displayName: string;
+  schedule: 'daily' | 'weekly';
+  missingThreshold: number;
+  groupDbName: string;
+  linkedDropTracks: string[];
+  aliases: string[];
+  order: number;
+}
 
 export interface Member {
   id: string;
   name: string;
   discordId: string;
   discordUsername?: string;
-  discordNickname?: string; // [NEW] Discord Nickname (e.g. "이충우/caleb/0기")
-  profileImage?: string; // [NEW] Profile Picture URL
+  discordNickname?: string;
+  profileImage?: string;
   track: Track;
   tracks?: Track[];
   joinedAt: string;
@@ -34,10 +47,4 @@ export interface Submission {
   link?: string;
   content?: string;
   images?: string[];
-}
-
-export interface TrackConfig {
-  track: Track;
-  reminderTime: string;
-  isFixedAssignment: boolean;
 }

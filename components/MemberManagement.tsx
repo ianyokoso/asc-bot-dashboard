@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Users, CheckCircle, AlertCircle, Search, UserMinus, BarChart2 } from 'lucide-react';
-import { Member, Track } from '../types';
+import { Member, Track, TRACKS } from '../types';
 
 interface MemberManagementProps {
     members: Member[];
@@ -48,12 +48,12 @@ const StatusTile: React.FC<{
 const CompactTrackBadge: React.FC<{ track: Track }> = ({ track }) => {
     let classes = "bg-gray-100/50 text-gray-500 border-gray-200/50";
     switch (track) {
-        case Track.SHORTFORM: classes = "bg-rose-50/50 text-rose-700 border-rose-100/50"; break;
-        case Track.LONGFORM: classes = "bg-pink-50/50 text-pink-700 border-pink-100/50"; break;
-        case Track.BUILDER_BASIC: classes = "bg-teal-50/50 text-teal-700 border-teal-100/50"; break;
-        case Track.BUILDER_ADVANCED: classes = "bg-emerald-50/50 text-emerald-700 border-emerald-100/50"; break;
-        case Track.SALES: classes = "bg-blue-50/50 text-blue-700 border-blue-100/50"; break;
-        case Track.AI_AGENT: classes = "bg-purple-50/50 text-purple-700 border-purple-100/50"; break;
+        case TRACKS.SHORTFORM: classes = "bg-rose-50/50 text-rose-700 border-rose-100/50"; break;
+        case TRACKS.LONGFORM: classes = "bg-pink-50/50 text-pink-700 border-pink-100/50"; break;
+        case TRACKS.BUILDER_BASIC: classes = "bg-teal-50/50 text-teal-700 border-teal-100/50"; break;
+        case TRACKS.BUILDER_ADVANCED: classes = "bg-emerald-50/50 text-emerald-700 border-emerald-100/50"; break;
+        case TRACKS.SALES: classes = "bg-blue-50/50 text-blue-700 border-blue-100/50"; break;
+        case TRACKS.AI_AGENT: classes = "bg-purple-50/50 text-purple-700 border-purple-100/50"; break;
     }
     return (
         <span className={`px-2 py-0.5 rounded text-[11px] font-medium border ${classes} whitespace-nowrap backdrop-blur-sm`}>
@@ -77,13 +77,13 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
 
         return {
             total: members.length,
-            shortform: members.filter(m => hasTrack(m, Track.SHORTFORM)).length,
-            longform: members.filter(m => hasTrack(m, Track.LONGFORM)).length,
-            builderBasic: members.filter(m => hasTrack(m, Track.BUILDER_BASIC)).length,
-            builderAdvanced: members.filter(m => hasTrack(m, Track.BUILDER_ADVANCED)).length,
-            sales: members.filter(m => hasTrack(m, Track.SALES)).length,
-            aiAgent: members.filter(m => hasTrack(m, Track.AI_AGENT)).length,
-            inactive: members.filter(m => m.track === Track.UNASSIGNED || !m.track).length, // Inactive is usually primary track unassigned
+            shortform: members.filter(m => hasTrack(m, TRACKS.SHORTFORM)).length,
+            longform: members.filter(m => hasTrack(m, TRACKS.LONGFORM)).length,
+            builderBasic: members.filter(m => hasTrack(m, TRACKS.BUILDER_BASIC)).length,
+            builderAdvanced: members.filter(m => hasTrack(m, TRACKS.BUILDER_ADVANCED)).length,
+            sales: members.filter(m => hasTrack(m, TRACKS.SALES)).length,
+            aiAgent: members.filter(m => hasTrack(m, TRACKS.AI_AGENT)).length,
+            inactive: members.filter(m => m.track === TRACKS.UNASSIGNED || !m.track).length,
         };
     }, [members]);
 
@@ -91,7 +91,7 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
     const filteredMembers = useMemo(() => {
         let result = members;
         if (filterTrack === 'Inactive') {
-            result = result.filter(m => m.track === Track.UNASSIGNED || !m.track);
+            result = result.filter(m => m.track === TRACKS.UNASSIGNED || !m.track);
         } else if (filterTrack !== 'Total') {
             result = result.filter(m => m.tracks ? m.tracks.includes(filterTrack) : m.track === filterTrack);
         }
@@ -109,7 +109,7 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
         result.sort((a, b) => {
             // 1. Active vs Inactive (Unassigned is Inactive)
             // Note: We treat "Unassigned" track as Inactive.
-            const isInactive = (m: Member) => m.track === Track.UNASSIGNED || !m.track;
+            const isInactive = (m: Member) => m.track === TRACKS.UNASSIGNED || !m.track;
             const aInactive = isInactive(a);
             const bInactive = isInactive(b);
 
@@ -160,12 +160,12 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
             {/* 2. Slim Horizontal Status Bar */}
             <div className="flex gap-2 overflow-x-auto pb-2 px-1 custom-scrollbar">
                 <StatusTile label="Total" count={stats.total} color="indigo" active={filterTrack === 'Total'} onClick={() => setFilterTrack('Total')} />
-                <StatusTile label="Shortform" count={stats.shortform} color="rose" active={filterTrack === Track.SHORTFORM} onClick={() => setFilterTrack(Track.SHORTFORM)} />
-                <StatusTile label="Longform" count={stats.longform} color="pink" active={filterTrack === Track.LONGFORM} onClick={() => setFilterTrack(Track.LONGFORM)} />
-                <StatusTile label="Basic" count={stats.builderBasic} color="teal" active={filterTrack === Track.BUILDER_BASIC} onClick={() => setFilterTrack(Track.BUILDER_BASIC)} />
-                <StatusTile label="Advanced" count={stats.builderAdvanced} color="emerald" active={filterTrack === Track.BUILDER_ADVANCED} onClick={() => setFilterTrack(Track.BUILDER_ADVANCED)} />
-                <StatusTile label="Sales" count={stats.sales} color="blue" active={filterTrack === Track.SALES} onClick={() => setFilterTrack(Track.SALES)} />
-                <StatusTile label="AI Agent" count={stats.aiAgent} color="purple" active={filterTrack === Track.AI_AGENT} onClick={() => setFilterTrack(Track.AI_AGENT)} />
+                <StatusTile label="Shortform" count={stats.shortform} color="rose" active={filterTrack === TRACKS.SHORTFORM} onClick={() => setFilterTrack(TRACKS.SHORTFORM)} />
+                <StatusTile label="Longform" count={stats.longform} color="pink" active={filterTrack === TRACKS.LONGFORM} onClick={() => setFilterTrack(TRACKS.LONGFORM)} />
+                <StatusTile label="Basic" count={stats.builderBasic} color="teal" active={filterTrack === TRACKS.BUILDER_BASIC} onClick={() => setFilterTrack(TRACKS.BUILDER_BASIC)} />
+                <StatusTile label="Advanced" count={stats.builderAdvanced} color="emerald" active={filterTrack === TRACKS.BUILDER_ADVANCED} onClick={() => setFilterTrack(TRACKS.BUILDER_ADVANCED)} />
+                <StatusTile label="Sales" count={stats.sales} color="blue" active={filterTrack === TRACKS.SALES} onClick={() => setFilterTrack(TRACKS.SALES)} />
+                <StatusTile label="AI Agent" count={stats.aiAgent} color="purple" active={filterTrack === TRACKS.AI_AGENT} onClick={() => setFilterTrack(TRACKS.AI_AGENT)} />
                 <StatusTile label="Inactive" count={stats.inactive} color="gray" active={filterTrack === 'Inactive'} onClick={() => setFilterTrack('Inactive')} />
             </div>
 
@@ -189,7 +189,7 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
                         <tbody className="divide-y divide-white/20">
                             {filteredMembers.length > 0 ? (
                                 filteredMembers.map((member) => {
-                                    const isInactive = member.track === Track.UNASSIGNED || !member.track;
+                                    const isInactive = member.track === TRACKS.UNASSIGNED || !member.track;
 
                                     return (
                                         <tr

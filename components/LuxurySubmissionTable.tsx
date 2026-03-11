@@ -12,9 +12,10 @@ interface LuxurySubmissionTableProps {
         holidayEnd?: string;
     };
     activeTrack: Track;
+    schedule?: 'daily' | 'weekly';
 }
 
-const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, submissions, cohortConfig, activeTrack }) => {
+const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, submissions, cohortConfig, activeTrack, schedule = 'daily' }) => {
 
     // Ref for the scrollable container
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -56,7 +57,7 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
             const day = current.getDay();
             const dateStr = current.toISOString().split('T')[0];
 
-            if (activeTrack === Track.SHORTFORM) {
+            if (schedule === 'daily') {
                 if (day !== 0 && day !== 6) dates.push(dateStr);
             } else {
                 if (day === 0) dates.push(dateStr);
@@ -65,7 +66,7 @@ const LuxurySubmissionTable: React.FC<LuxurySubmissionTableProps> = ({ members, 
             safetyCount++;
         }
         return dates.sort((a, b) => a.localeCompare(b));
-    }, [activeTrack, cohortConfig.startDate, cohortConfig.endDate]);
+    }, [activeTrack, schedule, cohortConfig.startDate, cohortConfig.endDate]);
 
     // Auto-Scroll to Today (or Nearest Past Date) Effect
     useEffect(() => {

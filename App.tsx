@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { mockMembers } from './mockData';
-import { Member, Submission, Track } from './types';
+import { Member, Submission, Track, TrackConfigItem } from './types';
 import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Toast from './components/Toast';
@@ -18,6 +18,7 @@ const App: React.FC = () => {
   const [groupData, setGroupData] = useState<any[]>([]); // New
   const [isGroupsLoading, setIsGroupsLoading] = useState(false); // New
   const [isFullSyncing, setIsFullSyncing] = useState(false);
+  const [trackConfig, setTrackConfig] = useState<TrackConfigItem[]>([]);
 
   // 기수 및 기간 설정
   const [cohortName, setCohortName] = useState('6기');
@@ -71,6 +72,7 @@ const App: React.FC = () => {
         if (data.sfTime2) setSfTime2(data.sfTime2);
         if (data.weeklyTime1) setWeeklyTime1(data.weeklyTime1);
         if (data.weeklyTime2) setWeeklyTime2(data.weeklyTime2);
+        if (data.trackConfig) setTrackConfig(data.trackConfig);
       })
       .catch(err => console.error("Failed to load settings:", err));
 
@@ -301,6 +303,7 @@ const App: React.FC = () => {
             isSyncing={isSyncing}
             onSync={() => handleSync(false)}
             cohortConfig={cohortConfig}
+            trackConfig={trackConfig}
           />
         } />
         <Route path="/admin" element={
@@ -341,6 +344,7 @@ const App: React.FC = () => {
             isGroupsLoading={isGroupsLoading}
             onFullSync={handleFullSync}
             isFullSyncing={isFullSyncing}
+            trackConfig={trackConfig}
           />
         } />
       </Routes>

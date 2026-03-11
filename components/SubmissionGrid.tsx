@@ -1,6 +1,6 @@
 
 import React, { useMemo, useState } from 'react';
-import { Member, Submission, Track } from '../types';
+import { Member, Submission, Track, TRACKS } from '../types';
 import { CheckCircle2, XCircle, Minus, ExternalLink, Calendar } from 'lucide-react';
 
 interface SubmissionGridProps {
@@ -16,8 +16,8 @@ interface SubmissionGridProps {
 }
 
 const SubmissionGrid: React.FC<SubmissionGridProps> = ({ members, submissions, cohortConfig }) => {
-  const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
-  const [activeTrack, setActiveTrack] = useState<Track>(Track.SHORTFORM);
+  const trackOrder = [TRACKS.SHORTFORM, TRACKS.LONGFORM, TRACKS.BUILDER_BASIC, TRACKS.BUILDER_ADVANCED, TRACKS.SALES, TRACKS.AI_AGENT];
+  const [activeTrack, setActiveTrack] = useState<Track>(TRACKS.SHORTFORM);
 
   // 현재 선택된 트랙의 멤버들
   const filteredMembers = useMemo(() => {
@@ -46,7 +46,7 @@ const SubmissionGrid: React.FC<SubmissionGridProps> = ({ members, submissions, c
       const day = current.getDay();
       const dateStr = current.toISOString().split('T')[0];
 
-      if (activeTrack === Track.SHORTFORM) {
+      if (activeTrack === TRACKS.SHORTFORM) {
         // 숏폼: 토/일 제외하고 매일
         if (day !== 0 && day !== 6) {
           dates.push(dateStr);
@@ -124,12 +124,12 @@ const SubmissionGrid: React.FC<SubmissionGridProps> = ({ members, submissions, c
 
   const getTrackColor = (track: Track) => {
     switch (track) {
-      case Track.SHORTFORM: return 'pink';
-      case Track.LONGFORM: return 'purple';
-      case Track.BUILDER_BASIC: return 'blue';
-      case Track.BUILDER_ADVANCED: return 'cyan';
-      case Track.SALES: return 'green';
-      case Track.AI_AGENT: return 'amber';
+      case TRACKS.SHORTFORM: return 'pink';
+      case TRACKS.LONGFORM: return 'purple';
+      case TRACKS.BUILDER_BASIC: return 'blue';
+      case TRACKS.BUILDER_ADVANCED: return 'cyan';
+      case TRACKS.SALES: return 'green';
+      case TRACKS.AI_AGENT: return 'amber';
       default: return 'gray';
     }
   };

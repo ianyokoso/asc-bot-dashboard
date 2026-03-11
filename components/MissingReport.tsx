@@ -1,25 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Member, Submission, Track } from '../types';
+import { Member, Submission, Track, TrackConfigItem, TRACKS } from '../types';
 import { Copy, Check, AlertCircle, UserX } from 'lucide-react';
 
 const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
 const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
-
-// 대시보드 트랙명(영문) → 노션 트랙명(한글) 매핑
-const TRACK_TO_NOTION_NAME: Record<string, string> = {
-    [Track.SHORTFORM]: '크리에이터 숏폼 트랙',
-    [Track.LONGFORM]: '크리에이터 롱폼 트랙',
-    [Track.BUILDER_BASIC]: '빌더 기초 트랙',
-    [Track.BUILDER_ADVANCED]: '빌더 심화 트랙',
-    [Track.SALES]: '세일즈 실전 트랙',
-    [Track.AI_AGENT]: 'AI 에이전트 트랙',
-};
-
-// 노션 트랙명(한글) → 대시보드 트랙명(영문) 역매핑
-const NOTION_NAME_TO_TRACK: Record<string, Track> = Object.fromEntries(
-    Object.entries(TRACK_TO_NOTION_NAME).map(([k, v]) => [v, k as Track])
-);
 
 interface MissingReportProps {
     members: Member[];
@@ -30,16 +15,52 @@ interface MissingReportProps {
         holidayStart?: string;
         holidayEnd?: string;
     };
-    onMemberDropped?: (memberId: string, droppedTrack: Track) => void; // 탈락 처리 후 즉시 UI 반영 콜백
+    onMemberDropped?: (memberId: string, droppedTrack: Track) => void;
+    trackConfig: TrackConfigItem[];
 }
 
-const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, cohortConfig, onMemberDropped }) => {
+const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, cohortConfig, onMemberDropped, trackConfig }) => {
     const [copiedId, setCopiedId] = useState<string | null>(null);
-    const [droppingId, setDroppingId] = useState<string | null>(null); // 현재 탈락 처리 중인 멤버
+    const [droppingId, setDroppingId] = useState<string | null>(null);
     const [confirmTarget, setConfirmTarget] = useState<{ memberId: string; memberName: string; track: Track; allTracks: Track[] } | null>(null);
 
+    const trackToNotionName = useMemo(() => {
+        const map: Record<string, string> = {};
+        trackConfig.forEach(tc => { map[tc.displayName] = tc.notionName; });
+        return map;
+    }, [trackConfig]);
+
+    const notionNameToTrack = useMemo(() => {
+        const map: Record<string, Track> = {};
+        trackConfig.forEach(tc => { map[tc.notionName] = tc.displayName; });
+        return map;
+    }, [trackConfig]);
+
+    const trackOrder = trackConfig.length > 0
+        ? [...trackConfig].sort((a, b) => a.order - b.order).map(tc => tc.displayName as Track)
+        : [TRACKS.SHORTFORM, TRACKS.LONGFORM, TRACKS.BUILDER_BASIC, TRACKS.BUILDER_ADVANCED, TRACKS.SALES, TRACKS.AI_AGENT];
+
+    const getThreshold = (track: Track) => {
+        const tc = trackConfig.find(c => c.displayName === track);
+        return tc ? tc.missingThreshold : 1;
+    };
+
+    const getSchedule = (track: Track): 'daily' | 'weekly' => {
+        const tc = trackConfig.find(c => c.displayName === track);
+        return tc ? tc.schedule : (track === TRACKS.SHORTFORM ? 'daily' : 'weekly');
+    };
+
+    const getLinkedDropTracks = (track: Track) => {
+        const tc = trackConfig.find(c => c.displayName === track);
+        if (!tc) return [];
+        return tc.linkedDropTracks.map(nt => {
+            const linked = trackConfig.find(c => c.notionName === nt);
+            return linked ? linked.displayName : null;
+        }).filter(Boolean) as string[];
+    };
+
     const handleDropFromTrack = async (memberId: string, track: Track) => {
-        const notionTrackName = TRACK_TO_NOTION_NAME[track];
+        const notionTrackName = trackToNotionName[track];
         if (!notionTrackName) return;
 
         setDroppingId(memberId);
@@ -53,10 +74,9 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
             if (data.status === 'success') {
                 setConfirmTarget(null);
                 if (onMemberDropped) {
-                    // 서버에서 함께 탈락된 트랙들 (예: 롱폼 → 숏폼도 함께)
                     const droppedTracks: string[] = data.droppedTracks || [notionTrackName];
                     for (const nt of droppedTracks) {
-                        const dashTrack = NOTION_NAME_TO_TRACK[nt];
+                        const dashTrack = notionNameToTrack[nt];
                         if (dashTrack) onMemberDropped(memberId, dashTrack);
                     }
                 }
@@ -70,10 +90,7 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
         }
     };
 
-    const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
-
-    // Calculate Past Expected Dates for ANY Track (Shortform Mon-Fri, Others Sunday)
-    const getPastExpectedDates = (trackType: 'shortform' | 'longform') => {
+    const getPastExpectedDates = (schedule: 'daily' | 'weekly') => {
         const dates: string[] = [];
         const start = new Date(cohortConfig.startDate);
         const end = new Date(cohortConfig.endDate);
@@ -97,23 +114,24 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
             }
 
             if (!isHoliday) {
-                if (trackType === 'shortform') {
-                    if (day !== 0 && day !== 6) dates.push(dateStr); // Mon-Fri
+                if (schedule === 'daily') {
+                    if (day !== 0 && day !== 6) dates.push(dateStr);
                 } else {
-                    if (day === 0) dates.push(dateStr); // Sunday only
+                    if (day === 0) dates.push(dateStr);
                 }
             }
 
             current.setDate(current.getDate() + 1);
             safetyCount++;
         }
-        return dates.sort((a, b) => b.localeCompare(a)); // Newest first
+        return dates.sort((a, b) => b.localeCompare(a));
     };
 
-    const pastExpectedDatesSF = useMemo(() => getPastExpectedDates('shortform'), [cohortConfig.startDate, cohortConfig.endDate, cohortConfig.holidayStart, cohortConfig.holidayEnd]);
-    const pastExpectedDatesLF = useMemo(() => getPastExpectedDates('longform'), [cohortConfig.startDate, cohortConfig.endDate, cohortConfig.holidayStart, cohortConfig.holidayEnd]);
+    const pastExpectedDatesBySchedule = useMemo(() => ({
+        daily: getPastExpectedDates('daily'),
+        weekly: getPastExpectedDates('weekly'),
+    }), [cohortConfig.startDate, cohortConfig.endDate, cohortConfig.holidayStart, cohortConfig.holidayEnd]);
 
-    // Calculate Missing Data grouped by Track
     const groupedMissingData = useMemo(() => {
         const groups: Partial<Record<Track, { member: Member, missingDates: string[] }[]>> = {};
 
@@ -123,7 +141,8 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
             memberTracks.forEach(track => {
                 if (!track) return;
 
-                const expectedDates = track === Track.SHORTFORM ? pastExpectedDatesSF : pastExpectedDatesLF;
+                const schedule = getSchedule(track);
+                const expectedDates = pastExpectedDatesBySchedule[schedule];
                 if (expectedDates.length === 0) return;
 
                 const missingDates = expectedDates.filter(date => {
@@ -136,10 +155,7 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                     return !hasSubmitted;
                 });
 
-                // Dropout Candidates:
-                // Shortform: 5 or more
-                // Weekly (Others): 1 or more
-                const threshold = track === Track.SHORTFORM ? 5 : 1;
+                const threshold = getThreshold(track);
                 if (missingDates.length >= threshold) {
                     if (!groups[track]) groups[track] = [];
                     groups[track]!.push({ member, missingDates });
@@ -147,14 +163,13 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
             });
         });
 
-        // Sort by missing count descending within each group
         Object.keys(groups).forEach(key => {
             const t = key as Track;
             groups[t]?.sort((a, b) => b.missingDates.length - a.missingDates.length);
         });
 
         return groups;
-    }, [members, submissions, pastExpectedDatesSF, pastExpectedDatesLF]);
+    }, [members, submissions, pastExpectedDatesBySchedule, trackConfig]);
 
     const handleCopy = (id: string) => {
         navigator.clipboard.writeText(id);
@@ -191,6 +206,8 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                     const list = groupedMissingData[track];
                     if (!list || list.length === 0) return null;
 
+                    const trackSchedule = getSchedule(track);
+
                     return (
                         <div key={track} className="flex flex-col gap-3">
                             <h4 className="font-bold text-slate-700 bg-slate-100/50 px-4 py-2 rounded-xl inline-flex items-center self-start shadow-sm border border-slate-200/50">
@@ -200,12 +217,10 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                                 {list.map(({ member, missingDates }, index) => (
                                     <div key={`${member.id}-${index}`} className="flex flex-col bg-white/90 border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
 
-                                        {/* Danger Stripe */}
                                         <div className="absolute top-0 left-0 w-1.5 h-full bg-rose-400"></div>
 
                                         <div className="flex justify-between items-start mb-3 pl-2">
                                             <div className="flex gap-3 items-center">
-                                                {/* Avatar */}
                                                 <div className="w-10 h-10 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center overflow-hidden flex-shrink-0">
                                                     {member.profileImage ? (
                                                         <img src={member.profileImage} alt="" className="w-full h-full object-cover" />
@@ -243,8 +258,8 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
 
                                         <div className="mt-auto pl-2">
                                             <div className="flex items-center gap-2 mb-2">
-                                                <span className={`text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md ${track === Track.SHORTFORM ? 'bg-rose-100 text-rose-600' : 'bg-red-500 text-white'}`}>
-                                                    {missingDates.length}회 누락 {track === Track.SHORTFORM ? '(경고/탈락)' : '(즉시 탈락 대상)'}
+                                                <span className={`text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded-md ${trackSchedule === 'daily' ? 'bg-rose-100 text-rose-600' : 'bg-red-500 text-white'}`}>
+                                                    {missingDates.length}회 누락 {trackSchedule === 'daily' ? '(경고/탈락)' : '(즉시 탈락 대상)'}
                                                 </span>
                                             </div>
                                             <div className="flex flex-wrap gap-1">
@@ -268,7 +283,6 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                 })}
             </div>
 
-            {/* 탈락 처리 확인 모달 — Portal로 body에 렌더링 */}
             {confirmTarget && createPortal(
                 <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" onClick={() => setConfirmTarget(null)}>
                     <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full" onClick={e => e.stopPropagation()}>
@@ -284,16 +298,19 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                                 <strong>{confirmTarget.memberName}</strong>님을
                                 <span className="text-rose-600 font-bold"> {confirmTarget.track}</span> 트랙에서 탈락 처리합니다.
                             </p>
-                            {confirmTarget.track === Track.LONGFORM && confirmTarget.allTracks.includes(Track.SHORTFORM) && (
-                                <p className="text-xs text-amber-600 mt-2 font-bold bg-amber-50 px-3 py-1.5 rounded-lg">
-                                    롱폼 탈락 시 숏폼도 함께 탈락 처리됩니다.
-                                </p>
-                            )}
+                            {(() => {
+                                const linkedTracks = getLinkedDropTracks(confirmTarget.track);
+                                const linkedInMember = linkedTracks.filter(lt => confirmTarget.allTracks.includes(lt));
+                                return linkedInMember.length > 0 ? (
+                                    <p className="text-xs text-amber-600 mt-2 font-bold bg-amber-50 px-3 py-1.5 rounded-lg">
+                                        {confirmTarget.track} 탈락 시 {linkedInMember.join(', ')}도 함께 탈락 처리됩니다.
+                                    </p>
+                                ) : null;
+                            })()}
                             {confirmTarget.allTracks.length > 1 ? (
                                 (() => {
-                                    const alsoDropped = confirmTarget.track === Track.LONGFORM && confirmTarget.allTracks.includes(Track.SHORTFORM)
-                                        ? [confirmTarget.track, Track.SHORTFORM]
-                                        : [confirmTarget.track];
+                                    const linkedTracks = getLinkedDropTracks(confirmTarget.track);
+                                    const alsoDropped = [confirmTarget.track, ...linkedTracks.filter(lt => confirmTarget.allTracks.includes(lt))];
                                     const remaining = confirmTarget.allTracks.filter(t => !alsoDropped.includes(t));
                                     return remaining.length > 0 ? (
                                         <p className="text-xs text-slate-500 mt-2">

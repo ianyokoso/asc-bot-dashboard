@@ -1,6 +1,6 @@
 
 import React, { useMemo, useState } from 'react';
-import { Member, Submission, Track, SubmissionStatus } from '../types';
+import { Member, Submission, Track, SubmissionStatus, TRACKS } from '../types';
 import { CheckCircle2, XCircle, Clock, Minus, ExternalLink, Calendar, Info } from 'lucide-react';
 
 interface SubmissionGridProps {
@@ -40,8 +40,8 @@ const MemberAvatar: React.FC<{ member: Member }> = ({ member }) => {
 
 const SubmissionGridModern: React.FC<SubmissionGridProps> = ({ members, submissions, cohortConfig }) => {
     // UNASSIGNED 제거됨
-    const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
-    const [activeTrack, setActiveTrack] = useState<Track>(Track.SHORTFORM);
+    const trackOrder = [TRACKS.SHORTFORM, TRACKS.LONGFORM, TRACKS.BUILDER_BASIC, TRACKS.BUILDER_ADVANCED, TRACKS.SALES, TRACKS.AI_AGENT];
+    const [activeTrack, setActiveTrack] = useState<Track>(TRACKS.SHORTFORM);
 
     // 현재 선택된 트랙의 멤버들
     const filteredMembers = useMemo(() => {
@@ -67,7 +67,7 @@ const SubmissionGridModern: React.FC<SubmissionGridProps> = ({ members, submissi
             const day = current.getDay();
             const dateStr = current.toISOString().split('T')[0];
 
-            if (activeTrack === Track.SHORTFORM) {
+            if (activeTrack === TRACKS.SHORTFORM) {
                 if (day !== 0 && day !== 6) dates.push(dateStr);
             } else {
                 if (day === 0) dates.push(dateStr);
