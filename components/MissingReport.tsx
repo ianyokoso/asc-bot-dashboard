@@ -38,10 +38,10 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
 
         setDroppingId(memberId);
         try {
-            const res = await fetch(`${API_BASE_URL}/api/members/${memberId}/drop-track`, {
+            const res = await fetch(`${API_BASE_URL}/api/drop-track`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ trackName: notionTrackName }),
+                body: JSON.stringify({ memberId, trackName: notionTrackName }),
             });
             const data = await res.json();
             if (data.status === 'success') {
@@ -257,7 +257,7 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
 
             {/* 탈락 처리 확인 모달 */}
             {confirmTarget && (
-                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setConfirmTarget(null)}>
+                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" onClick={() => setConfirmTarget(null)}>
                     <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full" onClick={e => e.stopPropagation()}>
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 bg-rose-100 rounded-xl">
