@@ -47,6 +47,8 @@ interface AdminDashboardProps {
     // Group Data
     groupData: any[];
     isGroupsLoading: boolean;
+    // Drop Member
+    onMemberDropped?: (memberId: string, droppedTrack: Track) => void;
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -74,7 +76,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     onTestNotification,
     onRunCommand,
     groupData,
-    isGroupsLoading
+    isGroupsLoading,
+    onMemberDropped
 }) => {
     // Tabs: Submissions vs Groups vs Members vs Settings
     const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'settings'>('submissions');
@@ -171,7 +174,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                         members={members}
                                         submissions={submissions}
                                         cohortConfig={cohortConfig}
-                                        onMemberDropped={onSync}
+                                        onMemberDropped={onMemberDropped}
                                     />
                                 </div>
                             )}

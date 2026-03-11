@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { mockMembers } from './mockData';
-import { Member, Submission } from './types';
+import { Member, Submission, Track } from './types';
 import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Toast from './components/Toast';
@@ -287,6 +287,15 @@ const App: React.FC = () => {
             submissions={submissions}
             isSyncing={isSyncing}
             onSync={() => handleSync(false)}
+            onMemberDropped={(memberId: string, droppedTrack: Track) => {
+              setMembers(prev => prev.map(m => {
+                if (m.id !== memberId) return m;
+                const newTracks = (m.tracks || []).filter(t => t !== droppedTrack);
+                if (newTracks.length === 0) return null as any;
+                return { ...m, tracks: newTracks, track: newTracks[0] };
+              }).filter(Boolean));
+              showToast('탈락 처리 완료', 'success');
+            }}
             cohortConfig={cohortConfig}
             setCohortName={setCohortName}
             setStartDate={setStartDate}

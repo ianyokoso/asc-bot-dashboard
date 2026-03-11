@@ -25,7 +25,7 @@ interface MissingReportProps {
         holidayStart?: string;
         holidayEnd?: string;
     };
-    onMemberDropped?: () => void; // 탈락 처리 후 데이터 새로고침 콜백
+    onMemberDropped?: (memberId: string, droppedTrack: Track) => void; // 탈락 처리 후 즉시 UI 반영 콜백
 }
 
 const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, cohortConfig, onMemberDropped }) => {
@@ -47,7 +47,7 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
             const data = await res.json();
             if (data.status === 'success') {
                 setConfirmTarget(null);
-                if (onMemberDropped) onMemberDropped();
+                if (onMemberDropped) onMemberDropped(memberId, track);
             } else {
                 alert(`탈락 처리 실패: ${data.message}`);
             }
