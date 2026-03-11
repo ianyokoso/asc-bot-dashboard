@@ -1,6 +1,19 @@
 import React, { useMemo, useState } from 'react';
 import { Member, Submission, Track } from '../types';
-import { Copy, Check, AlertCircle } from 'lucide-react';
+import { Copy, Check, AlertCircle, UserX } from 'lucide-react';
+
+const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
+const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
+
+// 대시보드 트랙명(영문) → 노션 트랙명(한글) 매핑
+const TRACK_TO_NOTION_NAME: Record<string, string> = {
+    [Track.SHORTFORM]: '크리에이터 숏폼 트랙',
+    [Track.LONGFORM]: '크리에이터 롱폼 트랙',
+    [Track.BUILDER_BASIC]: '빌더 기초 트랙',
+    [Track.BUILDER_ADVANCED]: '빌더 심화 트랙',
+    [Track.SALES]: '세일즈 실전 트랙',
+    [Track.AI_AGENT]: 'AI 에이전트 트랙',
+};
 
 interface MissingReportProps {
     members: Member[];
@@ -11,11 +24,38 @@ interface MissingReportProps {
         holidayStart?: string;
         holidayEnd?: string;
     };
-    // activeTrack is no longer used since we show all tracks grouped
+    onMemberDropped?: () => void; // 탈락 처리 후 데이터 새로고침 콜백
 }
 
-const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, cohortConfig }) => {
+const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, cohortConfig, onMemberDropped }) => {
     const [copiedId, setCopiedId] = useState<string | null>(null);
+    const [droppingId, setDroppingId] = useState<string | null>(null); // 현재 탈락 처리 중인 멤버
+    const [confirmTarget, setConfirmTarget] = useState<{ memberId: string; memberName: string; track: Track; allTracks: Track[] } | null>(null);
+
+    const handleDropFromTrack = async (memberId: string, track: Track) => {
+        const notionTrackName = TRACK_TO_NOTION_NAME[track];
+        if (!notionTrackName) return;
+
+        setDroppingId(memberId);
+        try {
+            const res = await fetch(`${API_BASE_URL}/api/members/${memberId}/drop-track`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ trackName: notionTrackName }),
+            });
+            const data = await res.json();
+            if (data.status === 'success') {
+                setConfirmTarget(null);
+                if (onMemberDropped) onMemberDropped();
+            } else {
+                alert(`탈락 처리 실패: ${data.message}`);
+            }
+        } catch (e) {
+            alert(`오류가 발생했습니다: ${e}`);
+        } finally {
+            setDroppingId(null);
+        }
+    };
 
     const trackOrder = [Track.SHORTFORM, Track.LONGFORM, Track.BUILDER_BASIC, Track.BUILDER_ADVANCED, Track.SALES, Track.AI_AGENT];
 
@@ -167,13 +207,25 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                                                 </div>
                                             </div>
 
-                                            <button
-                                                onClick={() => handleCopy(member.discordId || "")}
-                                                title="Discord ID 복사"
-                                                className={`p-1.5 rounded-lg transition-colors border shadow-sm ${copiedId === member.discordId ? 'bg-emerald-50 border-emerald-200 text-emerald-600' : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-indigo-600'}`}
-                                            >
-                                                {copiedId === member.discordId ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                                            </button>
+                                            <div className="flex gap-1">
+                                                <button
+                                                    onClick={() => {
+                                                        const memberTracks = member.tracks && member.tracks.length > 0 ? member.tracks : [member.track];
+                                                        setConfirmTarget({ memberId: member.id, memberName: member.name, track, allTracks: memberTracks });
+                                                    }}
+                                                    title={`${track} 트랙에서 탈락 처리`}
+                                                    className="p-1.5 rounded-lg transition-colors border shadow-sm bg-rose-50 border-rose-200 text-rose-500 hover:bg-rose-100 hover:text-rose-700"
+                                                >
+                                                    <UserX className="w-4 h-4" />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleCopy(member.discordId || "")}
+                                                    title="Discord ID 복사"
+                                                    className={`p-1.5 rounded-lg transition-colors border shadow-sm ${copiedId === member.discordId ? 'bg-emerald-50 border-emerald-200 text-emerald-600' : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-indigo-600'}`}
+                                                >
+                                                    {copiedId === member.discordId ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                                                </button>
+                                            </div>
                                         </div>
 
                                         <div className="mt-auto pl-2">
@@ -202,6 +254,64 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                     );
                 })}
             </div>
+
+            {/* 탈락 처리 확인 모달 */}
+            {confirmTarget && (
+                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setConfirmTarget(null)}>
+                    <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full" onClick={e => e.stopPropagation()}>
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="p-2 bg-rose-100 rounded-xl">
+                                <UserX className="w-5 h-5 text-rose-600" />
+                            </div>
+                            <h3 className="font-extrabold text-lg text-slate-800">탈락 처리 확인</h3>
+                        </div>
+
+                        <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                            <p className="text-sm text-slate-700">
+                                <strong>{confirmTarget.memberName}</strong>님을
+                                <span className="text-rose-600 font-bold"> {confirmTarget.track}</span> 트랙에서 탈락 처리합니다.
+                            </p>
+                            {confirmTarget.allTracks.length > 1 ? (
+                                <p className="text-xs text-slate-500 mt-2">
+                                    이 멤버는 {confirmTarget.allTracks.length}개 트랙에 등록되어 있습니다.
+                                    <strong> {confirmTarget.track}만</strong> 제거되고 나머지 트랙은 유지됩니다.
+                                    <br />
+                                    <span className="text-slate-400">
+                                        유지: {confirmTarget.allTracks.filter(t => t !== confirmTarget.track).join(', ')}
+                                    </span>
+                                </p>
+                            ) : (
+                                <p className="text-xs text-rose-500 mt-2 font-bold">
+                                    마지막 트랙이므로 전체 현황표에서도 사라집니다.
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="flex gap-3 justify-end">
+                            <button
+                                onClick={() => setConfirmTarget(null)}
+                                className="px-4 py-2 text-sm font-bold text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors"
+                            >
+                                취소
+                            </button>
+                            <button
+                                onClick={() => handleDropFromTrack(confirmTarget.memberId, confirmTarget.track)}
+                                disabled={droppingId !== null}
+                                className="px-4 py-2 text-sm font-bold text-white bg-rose-500 rounded-xl hover:bg-rose-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                            >
+                                {droppingId ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        처리 중...
+                                    </>
+                                ) : (
+                                    '탈락 처리'
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

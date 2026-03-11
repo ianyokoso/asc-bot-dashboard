@@ -171,6 +171,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                         members={members}
                                         submissions={submissions}
                                         cohortConfig={cohortConfig}
+                                        onMemberDropped={onSync}
                                     />
                                 </div>
                             )}
