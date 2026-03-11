@@ -16,6 +16,11 @@ const TRACK_TO_NOTION_NAME: Record<string, string> = {
     [Track.AI_AGENT]: 'AI 에이전트 트랙',
 };
 
+// 노션 트랙명(한글) → 대시보드 트랙명(영문) 역매핑
+const NOTION_NAME_TO_TRACK: Record<string, Track> = Object.fromEntries(
+    Object.entries(TRACK_TO_NOTION_NAME).map(([k, v]) => [v, k as Track])
+);
+
 interface MissingReportProps {
     members: Member[];
     submissions: Submission[];
@@ -47,7 +52,14 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
             const data = await res.json();
             if (data.status === 'success') {
                 setConfirmTarget(null);
-                if (onMemberDropped) onMemberDropped(memberId, track);
+                if (onMemberDropped) {
+                    // 서버에서 함께 탈락된 트랙들 (예: 롱폼 → 숏폼도 함께)
+                    const droppedTracks: string[] = data.droppedTracks || [notionTrackName];
+                    for (const nt of droppedTracks) {
+                        const dashTrack = NOTION_NAME_TO_TRACK[nt];
+                        if (dashTrack) onMemberDropped(memberId, dashTrack);
+                    }
+                }
             } else {
                 alert(`탈락 처리 실패: ${data.message}`);
             }
@@ -272,15 +284,32 @@ const MissingReport: React.FC<MissingReportProps> = ({ members, submissions, coh
                                 <strong>{confirmTarget.memberName}</strong>님을
                                 <span className="text-rose-600 font-bold"> {confirmTarget.track}</span> 트랙에서 탈락 처리합니다.
                             </p>
-                            {confirmTarget.allTracks.length > 1 ? (
-                                <p className="text-xs text-slate-500 mt-2">
-                                    이 멤버는 {confirmTarget.allTracks.length}개 트랙에 등록되어 있습니다.
-                                    <strong> {confirmTarget.track}만</strong> 제거되고 나머지 트랙은 유지됩니다.
-                                    <br />
-                                    <span className="text-slate-400">
-                                        유지: {confirmTarget.allTracks.filter(t => t !== confirmTarget.track).join(', ')}
-                                    </span>
+                            {confirmTarget.track === Track.LONGFORM && confirmTarget.allTracks.includes(Track.SHORTFORM) && (
+                                <p className="text-xs text-amber-600 mt-2 font-bold bg-amber-50 px-3 py-1.5 rounded-lg">
+                                    롱폼 탈락 시 숏폼도 함께 탈락 처리됩니다.
                                 </p>
+                            )}
+                            {confirmTarget.allTracks.length > 1 ? (
+                                (() => {
+                                    const alsoDropped = confirmTarget.track === Track.LONGFORM && confirmTarget.allTracks.includes(Track.SHORTFORM)
+                                        ? [confirmTarget.track, Track.SHORTFORM]
+                                        : [confirmTarget.track];
+                                    const remaining = confirmTarget.allTracks.filter(t => !alsoDropped.includes(t));
+                                    return remaining.length > 0 ? (
+                                        <p className="text-xs text-slate-500 mt-2">
+                                            이 멤버는 {confirmTarget.allTracks.length}개 트랙에 등록되어 있습니다.
+                                            <strong> {alsoDropped.join(', ')}</strong> 제거되고 나머지 트랙은 유지됩니다.
+                                            <br />
+                                            <span className="text-slate-400">
+                                                유지: {remaining.join(', ')}
+                                            </span>
+                                        </p>
+                                    ) : (
+                                        <p className="text-xs text-rose-500 mt-2 font-bold">
+                                            모든 트랙이 제거되므로 전체 현황표에서도 사라집니다.
+                                        </p>
+                                    );
+                                })()
                             ) : (
                                 <p className="text-xs text-rose-500 mt-2 font-bold">
                                     마지막 트랙이므로 전체 현황표에서도 사라집니다.
