@@ -9,6 +9,7 @@ import GroupManagement from '../components/GroupManagement';
 import NotificationTester from '../components/NotificationTester';
 import NotificationPreview from '../components/NotificationPreview';
 import MissingReport from '../components/MissingReport';
+import TrackManager from '../components/TrackManager';
 import { Member, Submission, Track, TrackConfigItem, TRACKS } from '../types';
 
 interface AdminDashboardProps {
@@ -54,6 +55,8 @@ interface AdminDashboardProps {
     isFullSyncing?: boolean;
     // Track Config
     trackConfig: TrackConfigItem[];
+    onSaveTrackConfig?: (config: TrackConfigItem[]) => void;
+    isTrackConfigSaving?: boolean;
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -85,7 +88,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     onMemberDropped,
     onFullSync,
     isFullSyncing,
-    trackConfig
+    trackConfig,
+    onSaveTrackConfig,
+    isTrackConfigSaving
 }) => {
     // Tabs: Submissions vs Groups vs Members vs Settings
     const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'settings'>('submissions');
@@ -391,7 +396,16 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                     </div>
                                 </div>
 
-                                {/* 5. Notification Tester */}
+                                {/* 5. Track Manager */}
+                                <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+                                    <TrackManager
+                                        trackConfig={trackConfig}
+                                        onSave={onSaveTrackConfig || (() => {})}
+                                        isSaving={isTrackConfigSaving}
+                                    />
+                                </div>
+
+                                {/* 6. Notification Tester */}
                                 <div className="p-1 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
                                     <NotificationTester members={members} onTest={onTestNotification} />
                                 </div>

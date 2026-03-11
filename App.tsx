@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [isGroupsLoading, setIsGroupsLoading] = useState(false); // New
   const [isFullSyncing, setIsFullSyncing] = useState(false);
   const [trackConfig, setTrackConfig] = useState<TrackConfigItem[]>([]);
+  const [isTrackConfigSaving, setIsTrackConfigSaving] = useState(false);
 
   // 기수 및 기간 설정
   const [cohortName, setCohortName] = useState('6기');
@@ -192,6 +193,28 @@ const App: React.FC = () => {
   const saveHoliday = () => saveSettings({ holidayStart, holidayEnd }, "휴무 설정 저장 완료!");
   const saveSchedule = () => saveSettings({ sfTime1, sfTime2, weeklyTime1, weeklyTime2 }, "스케줄 설정 저장 완료!");
 
+  const saveTrackConfig = async (config: TrackConfigItem[]) => {
+    setIsTrackConfigSaving(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/settings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trackConfig: config, trigger: 'manual' })
+      });
+      const result = await res.json();
+      if (result.status === 'success') {
+        setTrackConfig(config);
+        showToast("트랙 설정 저장 완료!", 'success');
+      } else {
+        showToast(`트랙 설정 저장 실패: ${result.message}`, 'error');
+      }
+    } catch (err) {
+      showToast(`서버 접속 실패: ${err}`, 'error');
+    } finally {
+      setIsTrackConfigSaving(false);
+    }
+  };
+
   // Immediate Toggle Handler
   const handleToggleNotifications = async () => {
     const newState = !notificationsEnabled;
@@ -345,6 +368,8 @@ const App: React.FC = () => {
             onFullSync={handleFullSync}
             isFullSyncing={isFullSyncing}
             trackConfig={trackConfig}
+            onSaveTrackConfig={saveTrackConfig}
+            isTrackConfigSaving={isTrackConfigSaving}
           />
         } />
       </Routes>
