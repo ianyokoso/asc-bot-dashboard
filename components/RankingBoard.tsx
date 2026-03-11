@@ -80,48 +80,138 @@ const RankingBoard: React.FC = () => {
 
     return (
         <div className="h-full flex flex-col">
-            {/* Summary Stats */}
+            {/* Podium + Stats */}
             <div className="shrink-0 px-6 pt-6 pb-2">
-                <div className="grid grid-cols-4 gap-4">
-                    <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/50 border border-amber-200/50">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-amber-400/20 rounded-lg">
-                                <Trophy className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">1st Place</span>
+                <div className="flex gap-5">
+                    {/* Podium Section */}
+                    <div className="flex-1 p-5 rounded-2xl bg-gradient-to-br from-indigo-50/80 via-purple-50/50 to-pink-50/50 border border-white/60 backdrop-blur-sm">
+                        <div className="flex items-end justify-center gap-4 h-[200px]">
+                            {/* 2nd Place */}
+                            {(() => {
+                                const second = MOCK_GROUP_RANKINGS[1];
+                                const maxScore = MOCK_GROUP_RANKINGS[0].totalScore;
+                                const barHeight = (second.totalScore / maxScore) * 140;
+                                return (
+                                    <div className="flex flex-col items-center gap-2 w-[140px]">
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center shadow-lg shadow-slate-200/50">
+                                            <Medal className="w-5 h-5 text-white" />
+                                        </div>
+                                        <span className="text-xs font-bold text-[#1e293b] text-center leading-tight">{second.name}</span>
+                                        <div
+                                            className="w-full rounded-t-2xl bg-gradient-to-t from-slate-300 to-slate-200 flex flex-col items-center justify-end pb-3 relative overflow-hidden shadow-inner"
+                                            style={{ height: `${barHeight}px` }}
+                                        >
+                                            <div className="absolute inset-0 bg-white/20" />
+                                            <span className="text-2xl font-black text-white relative z-10 drop-shadow-sm">{second.totalScore}</span>
+                                            <span className="text-[9px] font-bold text-white/80 relative z-10">2nd</span>
+                                            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-slate-400/30 to-transparent" />
+                                        </div>
+                                    </div>
+                                );
+                            })()}
+
+                            {/* 1st Place */}
+                            {(() => {
+                                const first = MOCK_GROUP_RANKINGS[0];
+                                const barHeight = 160;
+                                return (
+                                    <div className="flex flex-col items-center gap-2 w-[140px]">
+                                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-yellow-300 to-amber-500 flex items-center justify-center shadow-lg shadow-amber-300/50 ring-2 ring-amber-200/50">
+                                            <Crown className="w-6 h-6 text-white" />
+                                        </div>
+                                        <span className="text-sm font-extrabold text-[#1e293b] text-center leading-tight">{first.name}</span>
+                                        <div
+                                            className="w-full rounded-t-2xl bg-gradient-to-t from-amber-400 to-yellow-300 flex flex-col items-center justify-end pb-3 relative overflow-hidden shadow-lg shadow-amber-200/30"
+                                            style={{ height: `${barHeight}px` }}
+                                        >
+                                            <div className="absolute inset-0 bg-white/10" />
+                                            <span className="text-3xl font-black text-white relative z-10 drop-shadow-md">{first.totalScore}</span>
+                                            <span className="text-[10px] font-bold text-white/90 relative z-10">1st</span>
+                                            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-amber-500/30 to-transparent" />
+                                        </div>
+                                    </div>
+                                );
+                            })()}
+
+                            {/* 3rd Place */}
+                            {(() => {
+                                const third = MOCK_GROUP_RANKINGS[2];
+                                const maxScore = MOCK_GROUP_RANKINGS[0].totalScore;
+                                const barHeight = (third.totalScore / maxScore) * 140;
+                                return (
+                                    <div className="flex flex-col items-center gap-2 w-[140px]">
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-600 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-200/50">
+                                            <Award className="w-5 h-5 text-white" />
+                                        </div>
+                                        <span className="text-xs font-bold text-[#1e293b] text-center leading-tight">{third.name}</span>
+                                        <div
+                                            className="w-full rounded-t-2xl bg-gradient-to-t from-amber-700 to-amber-500 flex flex-col items-center justify-end pb-3 relative overflow-hidden shadow-inner"
+                                            style={{ height: `${barHeight}px` }}
+                                        >
+                                            <div className="absolute inset-0 bg-white/10" />
+                                            <span className="text-2xl font-black text-white relative z-10 drop-shadow-sm">{third.totalScore}</span>
+                                            <span className="text-[9px] font-bold text-white/80 relative z-10">3rd</span>
+                                            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-amber-800/30 to-transparent" />
+                                        </div>
+                                    </div>
+                                );
+                            })()}
                         </div>
-                        <p className="text-lg font-extrabold text-amber-900">크리에이터 1조</p>
-                        <p className="text-xs text-amber-600 font-medium mt-0.5">160점</p>
+                        {/* Score gap indicators */}
+                        <div className="flex justify-center gap-16 mt-3">
+                            <div className="text-center">
+                                <span className="text-[10px] text-gray-400 font-medium">1st - 2nd 격차</span>
+                                <p className="text-sm font-extrabold text-indigo-600">
+                                    {MOCK_GROUP_RANKINGS[0].totalScore - MOCK_GROUP_RANKINGS[1].totalScore}점
+                                </p>
+                            </div>
+                            <div className="text-center">
+                                <span className="text-[10px] text-gray-400 font-medium">2nd - 3rd 격차</span>
+                                <p className="text-sm font-extrabold text-indigo-600">
+                                    {MOCK_GROUP_RANKINGS[1].totalScore - MOCK_GROUP_RANKINGS[2].totalScore}점
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white/50 border border-white/60 backdrop-blur-sm">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-indigo-400/20 rounded-lg">
-                                <Users className="w-4 h-4 text-indigo-600" />
+
+                    {/* Stats Cards */}
+                    <div className="w-[280px] grid grid-rows-4 gap-3">
+                        <div className="p-3.5 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/50 border border-amber-200/50">
+                            <div className="flex items-center gap-2 mb-1">
+                                <div className="p-1 bg-amber-400/20 rounded-lg">
+                                    <Trophy className="w-3.5 h-3.5 text-amber-600" />
+                                </div>
+                                <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider">1st Place</span>
                             </div>
-                            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Total Groups</span>
+                            <p className="text-base font-extrabold text-amber-900">크리에이터 1조</p>
                         </div>
-                        <p className="text-lg font-extrabold text-[#1e293b]">6개 조</p>
-                        <p className="text-xs text-gray-500 font-medium mt-0.5">24명 참여</p>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-white/50 border border-white/60 backdrop-blur-sm">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-emerald-400/20 rounded-lg">
-                                <TrendingUp className="w-4 h-4 text-emerald-600" />
+                        <div className="p-3.5 rounded-2xl bg-white/50 border border-white/60 backdrop-blur-sm">
+                            <div className="flex items-center gap-2 mb-1">
+                                <div className="p-1 bg-indigo-400/20 rounded-lg">
+                                    <Users className="w-3.5 h-3.5 text-indigo-600" />
+                                </div>
+                                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Total Groups</span>
                             </div>
-                            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Avg Completion</span>
+                            <p className="text-base font-extrabold text-[#1e293b]">6개 조 <span className="text-xs font-medium text-gray-400">/ 24명</span></p>
                         </div>
-                        <p className="text-lg font-extrabold text-[#1e293b]">87%</p>
-                        <p className="text-xs text-emerald-600 font-medium mt-0.5">+3% vs last week</p>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-white/50 border border-white/60 backdrop-blur-sm">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-purple-400/20 rounded-lg">
-                                <MessageSquare className="w-4 h-4 text-purple-600" />
+                        <div className="p-3.5 rounded-2xl bg-white/50 border border-white/60 backdrop-blur-sm">
+                            <div className="flex items-center gap-2 mb-1">
+                                <div className="p-1 bg-emerald-400/20 rounded-lg">
+                                    <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
+                                </div>
+                                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Avg Completion</span>
                             </div>
-                            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Activity Points</span>
+                            <p className="text-base font-extrabold text-[#1e293b]">87% <span className="text-xs font-medium text-emerald-500">+3%</span></p>
                         </div>
-                        <p className="text-lg font-extrabold text-[#1e293b]">241점</p>
-                        <p className="text-xs text-purple-600 font-medium mt-0.5">이번 주 게시판 활동</p>
+                        <div className="p-3.5 rounded-2xl bg-white/50 border border-white/60 backdrop-blur-sm">
+                            <div className="flex items-center gap-2 mb-1">
+                                <div className="p-1 bg-purple-400/20 rounded-lg">
+                                    <MessageSquare className="w-3.5 h-3.5 text-purple-600" />
+                                </div>
+                                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Activity Points</span>
+                            </div>
+                            <p className="text-base font-extrabold text-[#1e293b]">241점 <span className="text-xs font-medium text-purple-500">이번 주</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
