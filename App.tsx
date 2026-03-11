@@ -17,6 +17,7 @@ const App: React.FC = () => {
   const [isSyncing, setIsSyncing] = useState(false);
   const [groupData, setGroupData] = useState<any[]>([]); // New
   const [isGroupsLoading, setIsGroupsLoading] = useState(false); // New
+  const [isFullSyncing, setIsFullSyncing] = useState(false);
 
   // 기수 및 기간 설정
   const [cohortName, setCohortName] = useState('6기');
@@ -139,6 +140,27 @@ const App: React.FC = () => {
       if (!isAuto) showToast(`❌ 서버 접속 실패: ${err} \n(admin_server.py가 켜져 있나요?)`, 'error');
     } finally {
       setIsSyncing(false);
+    }
+  };
+
+  const handleFullSync = async () => {
+    setIsFullSyncing(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/full-sync`, { method: 'POST' });
+      const result = await res.json();
+
+      if (result.status === 'success') {
+        setMembers(result.data.members);
+        setSubmissions(result.data.submissions);
+        fetchGroups();
+        showToast("✅ Full Sync 완료! (노션 전체 재동기화)", 'success');
+      } else {
+        showToast(`❌ Full Sync 실패: ${result.message}`, 'error');
+      }
+    } catch (err) {
+      showToast(`❌ 서버 접속 실패: ${err}`, 'error');
+    } finally {
+      setIsFullSyncing(false);
     }
   };
 
@@ -317,6 +339,8 @@ const App: React.FC = () => {
             onRunCommand={handleRunCommand}
             groupData={groupData}
             isGroupsLoading={isGroupsLoading}
+            onFullSync={handleFullSync}
+            isFullSyncing={isFullSyncing}
           />
         } />
       </Routes>

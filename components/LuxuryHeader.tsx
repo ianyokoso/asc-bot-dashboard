@@ -6,9 +6,11 @@ interface LuxuryHeaderProps {
     endDate?: string;
     onSync: () => void;
     isSyncing: boolean;
+    onFullSync?: () => void;
+    isFullSyncing?: boolean;
 }
 
-const LuxuryHeader: React.FC<LuxuryHeaderProps> = ({ title, startDate, endDate, onSync, isSyncing }) => {
+const LuxuryHeader: React.FC<LuxuryHeaderProps> = ({ title, startDate, endDate, onSync, isSyncing, onFullSync, isFullSyncing }) => {
     // Calculate Progress
     const calculateProgress = () => {
         if (!startDate || !endDate) return 0;
@@ -59,8 +61,20 @@ const LuxuryHeader: React.FC<LuxuryHeaderProps> = ({ title, startDate, endDate, 
                         </div>
                     </div>
 
-                    {/* Mobile Only: Refresh Button is tucked here on the right of the top row */}
-                    <div className="md:hidden">
+                    {/* Mobile Only: Refresh + Full Sync Buttons */}
+                    <div className="md:hidden flex gap-1.5">
+                        {onFullSync && (
+                            <button
+                                onClick={onFullSync}
+                                disabled={isFullSyncing}
+                                className="h-8 px-2.5 bg-indigo-500 hover:bg-indigo-600 text-white border border-indigo-400/50 rounded-full text-[10px] font-bold hover:shadow-lg transition-all duration-300 backdrop-blur-md disabled:opacity-50 flex items-center justify-center gap-1"
+                            >
+                                <svg className={`w-3.5 h-3.5 ${isFullSyncing ? 'animate-spin' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                                {isFullSyncing ? '...' : 'Full'}
+                            </button>
+                        )}
                         <button
                             onClick={onSync}
                             disabled={isSyncing}
@@ -127,8 +141,20 @@ const LuxuryHeader: React.FC<LuxuryHeaderProps> = ({ title, startDate, endDate, 
                     </div>
                 )}
 
-                {/* --- 3. Right Group: Refresh Button (Desktop Only) --- */}
-                <div className="hidden md:block relative z-10">
+                {/* --- 3. Right Group: Full Sync + Refresh Buttons (Desktop Only) --- */}
+                <div className="hidden md:flex gap-2 relative z-10">
+                    {onFullSync && (
+                        <button
+                            onClick={onFullSync}
+                            disabled={isFullSyncing}
+                            className="px-5 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white border border-indigo-400/50 rounded-xl text-sm font-bold hover:shadow-lg transition-all duration-300 backdrop-blur-md disabled:opacity-50 flex items-center justify-center gap-2 group"
+                        >
+                            <svg className={`w-4 h-4 ${isFullSyncing ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            <span>{isFullSyncing ? 'Full Syncing...' : 'Full Sync'}</span>
+                        </button>
+                    )}
                     <button
                         onClick={onSync}
                         disabled={isSyncing}

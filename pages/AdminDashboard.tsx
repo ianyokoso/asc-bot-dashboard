@@ -49,6 +49,9 @@ interface AdminDashboardProps {
     isGroupsLoading: boolean;
     // Drop Member
     onMemberDropped?: (memberId: string, droppedTrack: Track) => void;
+    // Full Sync
+    onFullSync?: () => void;
+    isFullSyncing?: boolean;
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -77,7 +80,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     onRunCommand,
     groupData,
     isGroupsLoading,
-    onMemberDropped
+    onMemberDropped,
+    onFullSync,
+    isFullSyncing
 }) => {
     // Tabs: Submissions vs Groups vs Members vs Settings
     const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'settings'>('submissions');
@@ -118,6 +123,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     title={currentHeaderTitle}
                     onSync={onSync}
                     isSyncing={isSyncing}
+                    onFullSync={onFullSync}
+                    isFullSyncing={isFullSyncing}
                     startDate={cohortConfig.startDate}
                     endDate={cohortConfig.endDate}
                 />
