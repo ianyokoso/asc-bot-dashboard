@@ -1,5 +1,6 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Users, CheckCircle, AlertCircle, Search, X, ExternalLink, FileText, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { Member, Track, TRACKS } from '../types';
 
@@ -318,9 +319,10 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
     return (
         <div className="space-y-4 pb-12 font-sans h-full flex flex-col">
 
-            {/* Modal */}
-            {selectedMemberId && (
-                <MemberDetailModal userId={selectedMemberId} onClose={() => setSelectedMemberId(null)} />
+            {/* Modal (Portal to body to escape backdrop-blur stacking context) */}
+            {selectedMemberId && createPortal(
+                <MemberDetailModal userId={selectedMemberId} onClose={() => setSelectedMemberId(null)} />,
+                document.body
             )}
 
             {/* 1. Header Area: Title & Search */}
