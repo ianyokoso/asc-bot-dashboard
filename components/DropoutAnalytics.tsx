@@ -98,8 +98,10 @@ const DropoutAnalytics: React.FC = () => {
   }, [stats]);
 
   const maxWeeklyDrops = useMemo(() => {
-    if (!stats?.weeklyAnalysis) return 1;
-    return Math.max(1, ...stats.weeklyAnalysis.map(w => w.total));
+    if (!stats?.weeklyAnalysis || stats.weeklyAnalysis.length === 0) return 1;
+    const vals = stats.weeklyAnalysis.map(w => w.total);
+    const m = vals.reduce((a, b) => Math.max(a, b), 0);
+    return Math.max(1, m);
   }, [stats]);
 
   if (loading) {
