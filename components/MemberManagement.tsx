@@ -194,6 +194,14 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
                                     return (
                                         <tr
                                             key={member.id}
+                                            onClick={() => {
+                                                const uid = member.discordId || member.id;
+                                                const base = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app')
+                                                    ? 'http://168.107.16.76:8000'
+                                                    : window.location.origin;
+                                                window.open(`${base}/member/${uid}`, '_blank');
+                                            }}
+                                            style={{ cursor: 'pointer' }}
                                             className={`group hover:bg-white/40 transition-colors duration-150 ${isInactive ? 'opacity-50' : ''}`}
                                         >
                                             {/* Identity: Avatar + Names */}
