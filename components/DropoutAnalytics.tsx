@@ -370,9 +370,9 @@ const DropoutAnalytics: React.FC = () => {
             )}
 
             {/* 2. Cohort Retention Table */}
-            <div className="p-6 rounded-2xl bg-white/70 border border-white/60 shadow-sm">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-bold text-gray-800">Cohort Analysis</h3>
+            <div className="p-4 rounded-2xl bg-white/70 border border-white/60 shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xs font-bold text-gray-800">Cohort Analysis</h3>
                 <div className="flex items-center gap-4 text-[10px] text-gray-400">
                   <span>Metric: <strong className="text-gray-600">Retention</strong></span>
                 </div>
@@ -383,10 +383,10 @@ const DropoutAnalytics: React.FC = () => {
                   <table className="w-full border-collapse">
                     <thead>
                       <tr>
-                        <th className="text-left text-xs font-bold text-gray-500 pb-3 pr-4 w-52 sticky left-0 bg-white/70">트랙</th>
-                        <th className="text-center text-xs font-bold text-gray-500 pb-3 px-3 min-w-[72px]">멤버</th>
+                        <th className="text-left text-[11px] font-bold text-gray-500 pb-2 pr-3 w-40 sticky left-0 bg-white/70">트랙</th>
+                        <th className="text-center text-[11px] font-bold text-gray-500 pb-2 px-2 min-w-[48px]">멤버</th>
                         {weeklyAnalysis.map((w) => (
-                          <th key={w.week} className="text-center text-xs font-bold text-gray-500 pb-3 px-2 min-w-[88px]">
+                          <th key={w.week} className="text-center text-[11px] font-bold text-gray-500 pb-2 px-1 min-w-[64px]">
                             {w.weekLabel}
                           </th>
                         ))}
@@ -400,24 +400,24 @@ const DropoutAnalytics: React.FC = () => {
 
                         return (
                           <tr key={track} className="group">
-                            <td className="py-2 pr-4 sticky left-0 bg-white/70">
-                              <div className="flex items-center gap-2.5">
-                                <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: trackColorMap[track] || '#999' }}></div>
-                                <span className="text-sm font-semibold text-gray-700 truncate">{track}</span>
+                            <td className="py-[3px] pr-3 sticky left-0 bg-white/70">
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: trackColorMap[track] || '#999' }}></div>
+                                <span className="text-xs font-semibold text-gray-700 truncate">{track}</span>
                               </div>
                             </td>
-                            <td className="py-2 px-3 text-center">
-                              <span className="text-sm font-bold text-gray-800">{total}</span>
+                            <td className="py-[3px] px-2 text-center">
+                              <span className="text-xs font-bold text-gray-800">{total}</span>
                             </td>
                             {weeklyAnalysis.map((w, wi) => {
                               const val = retention[wi] ?? -1;
                               const isHovered = hoveredCell?.track === track && hoveredCell?.week === w.week;
                               return (
-                                <td key={w.week} className="py-2 px-1.5"
+                                <td key={w.week} className="py-[3px] px-0.5"
                                   onMouseEnter={() => setHoveredCell({ track, week: w.week })}
                                   onMouseLeave={() => setHoveredCell(null)}
                                 >
-                                  <div className={`h-12 rounded-xl flex items-center justify-center text-sm font-semibold transition-all cursor-default
+                                  <div className={`h-8 rounded-lg flex items-center justify-center text-[11px] font-semibold transition-all cursor-default
                                     ${val < 0 ? 'bg-gray-50 text-gray-300' : getRetentionColor(val)}
                                     ${isHovered ? 'ring-2 ring-purple-400 ring-offset-1 scale-105' : ''}
                                   `}>
@@ -432,17 +432,17 @@ const DropoutAnalytics: React.FC = () => {
 
                       {/* Total row */}
                       <tr className="border-t-2 border-purple-100">
-                        <td className="py-3 pr-4 sticky left-0 bg-white/70">
-                          <span className="text-sm font-extrabold text-purple-700">Total</span>
+                        <td className="py-1.5 pr-3 sticky left-0 bg-white/70">
+                          <span className="text-xs font-extrabold text-purple-700">Total</span>
                         </td>
-                        <td className="py-3 px-3 text-center">
-                          <span className="text-sm font-extrabold text-purple-700">{summary.totalMembers}</span>
+                        <td className="py-1.5 px-2 text-center">
+                          <span className="text-xs font-extrabold text-purple-700">{summary.totalMembers}</span>
                         </td>
                         {weeklyAnalysis.map((_, wi) => {
                           const val = retentionData.overall[wi] ?? -1;
                           return (
-                            <td key={wi} className="py-3 px-1.5">
-                              <div className={`h-12 rounded-xl flex items-center justify-center text-sm font-bold transition-all
+                            <td key={wi} className="py-1.5 px-0.5">
+                              <div className={`h-8 rounded-lg flex items-center justify-center text-[11px] font-bold transition-all
                                 ${val < 0 ? 'bg-gray-50 text-gray-300' : 'bg-purple-700 text-white'}
                               `}>
                                 {val >= 0 ? `${val}%` : '–'}
