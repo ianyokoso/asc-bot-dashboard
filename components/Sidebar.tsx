@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Table, Users, Settings, LayoutGrid, Trophy } from 'lucide-react';
+import { Table, Users, Settings, LayoutGrid, Trophy, UserMinus } from 'lucide-react';
 
 interface SidebarProps {
-  activeTab: 'submissions' | 'groups' | 'members' | 'rankings' | 'settings';
-  setActiveTab: (tab: 'submissions' | 'groups' | 'members' | 'rankings' | 'settings') => void;
+  activeTab: 'submissions' | 'groups' | 'members' | 'rankings' | 'dropouts' | 'settings';
+  setActiveTab: (tab: 'submissions' | 'groups' | 'members' | 'rankings' | 'dropouts' | 'settings') => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
@@ -13,6 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
     { id: 'groups', icon: LayoutGrid, label: '조 관리' },
     { id: 'members', icon: Users, label: '멤버 관리' },
     { id: 'rankings', icon: Trophy, label: '랭킹보드' },
+    { id: 'dropouts', icon: UserMinus, label: '탈락 현황' },
     { id: 'settings', icon: Settings, label: '봇 설정' },
   ];
 
