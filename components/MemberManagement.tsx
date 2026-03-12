@@ -1,11 +1,206 @@
 
-import React, { useState, useMemo } from 'react';
-import { Users, CheckCircle, AlertCircle, Search, UserMinus, BarChart2 } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Users, CheckCircle, AlertCircle, Search, X, ExternalLink, FileText, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { Member, Track, TRACKS } from '../types';
+
+const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
+const API_BASE = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
 
 interface MemberManagementProps {
     members: Member[];
 }
+
+interface MemberDetail {
+    pageId: string;
+    name: string;
+    nickname: string;
+    userId: string;
+    discordId: string;
+    avatar: string;
+    cohort: string;
+    tracks: string[];
+    status: string;
+    notes: string;
+    dropWeek: string;
+    groups: string[];
+    submissions: {
+        title: string;
+        types: string[];
+        link: string;
+        date: string;
+        content: string;
+        images: string[];
+    }[];
+}
+
+// --- Member Detail Modal ---
+const MemberDetailModal: React.FC<{ userId: string; onClose: () => void }> = ({ userId, onClose }) => {
+    const [detail, setDetail] = useState<MemberDetail | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const fetchDetail = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/api/member/${userId}`);
+                const json = await res.json();
+                if (json.status === 'success') {
+                    setDetail(json.data);
+                } else {
+                    setError(json.message || '멤버를 찾을 수 없습니다.');
+                }
+            } catch (e: any) {
+                setError(e.message || '데이터를 불러올 수 없습니다.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchDetail();
+    }, [userId]);
+
+    // Close on Escape key
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', handleKey);
+        return () => window.removeEventListener('keydown', handleKey);
+    }, [onClose]);
+
+    const statusColor = detail?.status === '탈락' ? 'bg-red-100 text-red-700 border-red-200' : 'bg-emerald-100 text-emerald-700 border-emerald-200';
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+
+            {/* Modal */}
+            <div
+                className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col"
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Close Button */}
+                <button onClick={onClose} className="absolute top-4 right-4 z-10 p-1.5 rounded-full hover:bg-gray-100 transition-colors">
+                    <X className="w-5 h-5 text-gray-400" />
+                </button>
+
+                {loading ? (
+                    <div className="flex flex-col items-center justify-center py-20 gap-3">
+                        <Loader2 className="w-8 h-8 text-indigo-500 animate-spin" />
+                        <span className="text-sm text-gray-500">멤버 정보를 불러오는 중...</span>
+                    </div>
+                ) : error ? (
+                    <div className="flex flex-col items-center justify-center py-20 gap-2">
+                        <AlertCircle className="w-10 h-10 text-red-400" />
+                        <span className="text-sm text-red-500">{error}</span>
+                    </div>
+                ) : detail ? (
+                    <div className="overflow-y-auto custom-scrollbar">
+                        {/* Profile Header */}
+                        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 px-6 pt-6 pb-5">
+                            <div className="flex items-center gap-4">
+                                {detail.avatar ? (
+                                    <img src={detail.avatar} alt="" className="w-16 h-16 rounded-full border-2 border-white shadow-md object-cover" />
+                                ) : (
+                                    <div className="w-16 h-16 rounded-full bg-indigo-500 border-2 border-white shadow-md flex items-center justify-center">
+                                        <span className="text-2xl font-bold text-white">{(detail.name || detail.nickname || '?')[0]}</span>
+                                    </div>
+                                )}
+                                <div className="flex-1 min-w-0">
+                                    <h2 className="text-xl font-bold text-gray-900 truncate">{detail.name || detail.nickname}</h2>
+                                    <p className="text-sm text-gray-500">{detail.nickname}{detail.discordId ? ` · @${detail.discordId}` : ''}</p>
+                                    <p className="text-xs text-gray-400 font-mono mt-0.5">ID: {detail.userId}</p>
+                                </div>
+                            </div>
+
+                            {/* Tags */}
+                            <div className="flex flex-wrap gap-2 mt-4">
+                                {detail.cohort && <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 border border-blue-200">{detail.cohort}</span>}
+                                {detail.tracks.map(t => (
+                                    <span key={t} className="px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200">{t}</span>
+                                ))}
+                                {detail.groups.map(g => (
+                                    <span key={g} className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-200">{g}</span>
+                                ))}
+                                <span className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${statusColor}`}>
+                                    {detail.status || '활동중'}{detail.dropWeek ? ` (${detail.dropWeek})` : ''}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Stats Row */}
+                        <div className="grid grid-cols-3 gap-3 px-6 py-4">
+                            <div className="bg-gray-50 rounded-xl p-3 text-center">
+                                <div className="text-2xl font-bold text-indigo-600">{detail.submissions.length}</div>
+                                <div className="text-[11px] text-gray-500 font-medium mt-0.5">총 제출</div>
+                            </div>
+                            <div className="bg-gray-50 rounded-xl p-3 text-center">
+                                <div className="text-2xl font-bold text-emerald-600">{new Set(detail.submissions.map(s => s.date)).size}</div>
+                                <div className="text-[11px] text-gray-500 font-medium mt-0.5">제출 일수</div>
+                            </div>
+                            <div className="bg-gray-50 rounded-xl p-3 text-center">
+                                <div className="text-2xl font-bold text-amber-600">{detail.submissions.filter(s => s.link).length}</div>
+                                <div className="text-[11px] text-gray-500 font-medium mt-0.5">링크 포함</div>
+                            </div>
+                        </div>
+
+                        {/* Notes */}
+                        {detail.notes && (
+                            <div className="mx-6 mb-4 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                                <div className="text-xs font-semibold text-gray-500 mb-1">📝 기타사항</div>
+                                <div className="text-sm text-gray-700 whitespace-pre-line">{detail.notes}</div>
+                            </div>
+                        )}
+
+                        {/* Submissions */}
+                        <div className="px-6 pb-6">
+                            <div className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                                <FileText className="w-4 h-4" /> 과제 제출 내역
+                            </div>
+                            {detail.submissions.length > 0 ? (
+                                <div className="space-y-2">
+                                    {detail.submissions.map((s, i) => (
+                                        <div key={i} className="bg-gray-50 rounded-xl p-3 border border-gray-100 hover:border-gray-200 transition-colors">
+                                            <div className="flex items-start justify-between gap-2">
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="text-sm font-medium text-gray-800 truncate">{s.title || '제출물'}</div>
+                                                    <div className="flex items-center gap-2 mt-1">
+                                                        <span className="text-xs text-gray-400 font-mono">{s.date || '-'}</span>
+                                                        {s.types.map(t => (
+                                                            <span key={t} className="text-[10px] px-1.5 py-0.5 bg-gray-200 text-gray-600 rounded">{t}</span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 flex-shrink-0">
+                                                    {s.images.length > 0 && (
+                                                        <span className="text-xs text-gray-400 flex items-center gap-0.5">
+                                                            <ImageIcon className="w-3 h-3" />{s.images.length}
+                                                        </span>
+                                                    )}
+                                                    {s.link && (
+                                                        <a
+                                                            href={s.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="p-1.5 rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-200 transition-colors"
+                                                            onClick={e => e.stopPropagation()}
+                                                        >
+                                                            <ExternalLink className="w-3.5 h-3.5" />
+                                                        </a>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="text-center py-8 text-sm text-gray-400">제출 내역이 없습니다.</div>
+                            )}
+                        </div>
+                    </div>
+                ) : null}
+            </div>
+        </div>
+    );
+};
 
 // --- Slim Status Tile Component (Glass Version) ---
 const StatusTile: React.FC<{
@@ -20,9 +215,8 @@ const StatusTile: React.FC<{
     count,
     active,
     onClick,
-    color, // e.g., "indigo"
+    color,
 }) => {
-        // Dynamic color classes
         const activeText = `text-${color}-700`;
         const hoverBg = `hover:bg-white/40`;
 
@@ -65,13 +259,12 @@ const CompactTrackBadge: React.FC<{ track: Track }> = ({ track }) => {
 const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
     const [filterTrack, setFilterTrack] = useState<Track | 'Total' | 'Inactive'>('Total');
     const [searchTerm, setSearchTerm] = useState('');
+    const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
 
-    // Safe Check
     if (!members || !Array.isArray(members)) {
         return <div className="p-8 text-center text-gray-500 font-mono text-sm">Initializing System...</div>;
     }
 
-    // --- Stats Calculation ---
     const stats = useMemo(() => {
         const hasTrack = (m: Member, t: Track) => m.tracks ? m.tracks.includes(t) : m.track === t;
 
@@ -87,7 +280,6 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
         };
     }, [members]);
 
-    // --- Filtering Logic ---
     const filteredMembers = useMemo(() => {
         let result = members;
         if (filterTrack === 'Inactive') {
@@ -105,22 +297,17 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
                 (m.discordId || '').includes(lowerTerm)
             );
         }
-        // Sorting: Active First -> Track Count Desc -> Name Asc
         result.sort((a, b) => {
-            // 1. Active vs Inactive (Unassigned is Inactive)
-            // Note: We treat "Unassigned" track as Inactive.
             const isInactive = (m: Member) => m.track === TRACKS.UNASSIGNED || !m.track;
             const aInactive = isInactive(a);
             const bInactive = isInactive(b);
 
-            if (aInactive !== bInactive) return aInactive ? 1 : -1; // Active comes first
+            if (aInactive !== bInactive) return aInactive ? 1 : -1;
 
-            // 2. Track Count (More tracks = higher priority, e.g. Admins)
             const aCount = a.tracks ? a.tracks.length : (a.track ? 1 : 0);
             const bCount = b.tracks ? b.tracks.length : (b.track ? 1 : 0);
             if (aCount !== bCount) return bCount - aCount;
 
-            // 3. Name Alphabetical
             return (a.name || '').localeCompare(b.name || '');
         });
 
@@ -130,6 +317,11 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
 
     return (
         <div className="space-y-4 pb-12 font-sans h-full flex flex-col">
+
+            {/* Modal */}
+            {selectedMemberId && (
+                <MemberDetailModal userId={selectedMemberId} onClose={() => setSelectedMemberId(null)} />
+            )}
 
             {/* 1. Header Area: Title & Search */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 px-2">
@@ -169,11 +361,9 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
                 <StatusTile label="Inactive" count={stats.inactive} color="gray" active={filterTrack === 'Inactive'} onClick={() => setFilterTrack('Inactive')} />
             </div>
 
-            {/* 3. Compact Data Table (Glass Container) */}
-            {/* The wrapper in AdminDashboard handles the outer border/shadow, so we keep this distinct but transparent */}
+            {/* 3. Compact Data Table */}
             <div className="bg-white/20 rounded-[24px] border border-white/40 shadow-inner overflow-hidden flex-1 flex flex-col backdrop-blur-xl relative">
 
-                {/* Decorative Shine */}
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-white/5 via-white/20 to-transparent pointer-events-none"></div>
 
                 <div className="overflow-auto flex-1 custom-scrollbar relative z-10">
@@ -194,17 +384,11 @@ const MemberManagement: React.FC<MemberManagementProps> = ({ members }) => {
                                     return (
                                         <tr
                                             key={member.id}
-                                            onClick={() => {
-                                                const uid = member.discordId || member.id;
-                                                const base = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app')
-                                                    ? 'http://168.107.16.76:8000'
-                                                    : window.location.origin;
-                                                window.open(`${base}/member/${uid}`, '_blank');
-                                            }}
+                                            onClick={() => setSelectedMemberId(member.discordId || member.id)}
                                             style={{ cursor: 'pointer' }}
                                             className={`group hover:bg-white/40 transition-colors duration-150 ${isInactive ? 'opacity-50' : ''}`}
                                         >
-                                            {/* Identity: Avatar + Names */}
+                                            {/* Identity */}
                                             <td className="px-4 py-3 pl-6">
                                                 <div className="flex items-center gap-3">
                                                     <div className={`w-8 h-8 rounded-full bg-white/50 border border-white/60 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm`}>
