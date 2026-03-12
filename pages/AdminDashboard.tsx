@@ -132,16 +132,18 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
 
             <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative z-10 h-full">
-                {/* Unified Luxury Header */}
-                <LuxuryHeader
-                    title={currentHeaderTitle}
-                    onSync={onSync}
-                    isSyncing={isSyncing}
-                    onFullSync={onFullSync}
-                    isFullSyncing={isFullSyncing}
-                    startDate={cohortConfig.startDate}
-                    endDate={cohortConfig.endDate}
-                />
+                {/* Unified Luxury Header - hidden on dropouts tab */}
+                {activeTab !== 'dropouts' && (
+                    <LuxuryHeader
+                        title={currentHeaderTitle}
+                        onSync={onSync}
+                        isSyncing={isSyncing}
+                        onFullSync={onFullSync}
+                        isFullSyncing={isFullSyncing}
+                        startDate={cohortConfig.startDate}
+                        endDate={cohortConfig.endDate}
+                    />
+                )}
 
                 <div className={`flex-1 flex flex-col ${activeTab === 'submissions' || activeTab === 'groups' || activeTab === 'rankings' || activeTab === 'dropouts' ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'}`}>
                     {/* SUBMISSIONS TAB */}

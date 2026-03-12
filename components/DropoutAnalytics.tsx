@@ -225,63 +225,58 @@ const DropoutAnalytics: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
-      {/* Header */}
-      <div className="px-8 pt-6 pb-2 shrink-0">
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-purple-100/80 rounded-xl">
-              <TrendingDown className="w-5 h-5 text-purple-600" />
-            </div>
-            <div>
-              <h2 className="text-xl font-extrabold text-[#1e293b]">코호트 리텐션 분석</h2>
-              <p className="text-xs text-gray-500 font-medium">트랙별 잔존율 및 주차별 이탈 추이</p>
-            </div>
+      {/* Compact Header */}
+      <div className="px-8 pt-4 pb-1 shrink-0">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <TrendingDown className="w-4 h-4 text-purple-600" />
+            <h2 className="text-sm font-bold text-[#1e293b]">코호트 리텐션 분석</h2>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-white/80 backdrop-blur-md p-1 rounded-full flex gap-1 border border-gray-200 shadow-sm">
-              <button onClick={() => setView('overview')} className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${view === 'overview' ? 'bg-[#1e293b] text-white shadow-md' : 'text-gray-500 hover:text-gray-800'}`}>
-                <BarChart3 className="w-3.5 h-3.5" />트랙별
+            <div className="bg-white/80 backdrop-blur-md p-0.5 rounded-full flex gap-0.5 border border-gray-200 shadow-sm">
+              <button onClick={() => setView('overview')} className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all flex items-center gap-1 ${view === 'overview' ? 'bg-[#1e293b] text-white shadow-md' : 'text-gray-500 hover:text-gray-800'}`}>
+                <BarChart3 className="w-3 h-3" />트랙별
               </button>
-              <button onClick={() => setView('weekly')} className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${view === 'weekly' ? 'bg-[#1e293b] text-white shadow-md' : 'text-gray-500 hover:text-gray-800'}`}>
-                <Calendar className="w-3.5 h-3.5" />코호트
+              <button onClick={() => setView('weekly')} className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all flex items-center gap-1 ${view === 'weekly' ? 'bg-[#1e293b] text-white shadow-md' : 'text-gray-500 hover:text-gray-800'}`}>
+                <Calendar className="w-3 h-3" />코호트
               </button>
             </div>
-            <button onClick={fetchStats} className="p-2.5 bg-white/60 hover:bg-white/80 rounded-xl border border-white/60 transition-all shadow-sm">
-              <RefreshCw className="w-4 h-4 text-gray-600" />
+            <button onClick={fetchStats} className="p-2 bg-white/60 hover:bg-white/80 rounded-lg border border-white/60 transition-all shadow-sm">
+              <RefreshCw className="w-3.5 h-3.5 text-gray-600" />
             </button>
           </div>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-4 gap-3 mb-4">
-          <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="p-1.5 bg-blue-100 rounded-lg"><Users className="w-3.5 h-3.5 text-blue-600" /></div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">전체 멤버</span>
+        <div className="grid grid-cols-4 gap-2 mb-3">
+          <div className="p-3 rounded-xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
+            <div className="flex items-center gap-1.5 mb-1">
+              <div className="p-1 bg-blue-100 rounded-md"><Users className="w-3 h-3 text-blue-600" /></div>
+              <span className="text-[10px] font-bold text-gray-500 uppercase">전체 멤버</span>
             </div>
-            <p className="text-2xl font-extrabold text-[#1e293b]">{summary.totalMembers}<span className="text-sm font-bold text-gray-400 ml-0.5">명</span></p>
+            <p className="text-xl font-extrabold text-[#1e293b]">{summary.totalMembers}<span className="text-xs font-bold text-gray-400 ml-0.5">명</span></p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="p-1.5 bg-rose-100 rounded-lg"><UserMinus className="w-3.5 h-3.5 text-rose-600" /></div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">탈락 인원</span>
+          <div className="p-3 rounded-xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
+            <div className="flex items-center gap-1.5 mb-1">
+              <div className="p-1 bg-rose-100 rounded-md"><UserMinus className="w-3 h-3 text-rose-600" /></div>
+              <span className="text-[10px] font-bold text-gray-500 uppercase">탈락 인원</span>
             </div>
-            <p className="text-2xl font-extrabold text-rose-600">{summary.totalDropped}<span className="text-sm font-bold text-gray-400 ml-0.5">명</span></p>
+            <p className="text-xl font-extrabold text-rose-600">{summary.totalDropped}<span className="text-xs font-bold text-gray-400 ml-0.5">명</span></p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="p-1.5 bg-purple-100 rounded-lg"><TrendingDown className="w-3.5 h-3.5 text-purple-600" /></div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">전체 잔존율</span>
+          <div className="p-3 rounded-xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
+            <div className="flex items-center gap-1.5 mb-1">
+              <div className="p-1 bg-purple-100 rounded-md"><TrendingDown className="w-3 h-3 text-purple-600" /></div>
+              <span className="text-[10px] font-bold text-gray-500 uppercase">전체 잔존율</span>
             </div>
-            <p className="text-2xl font-extrabold text-purple-600">{(100 - summary.overallDropRate).toFixed(1)}<span className="text-sm font-bold ml-0.5">%</span></p>
+            <p className="text-xl font-extrabold text-purple-600">{(100 - summary.overallDropRate).toFixed(1)}<span className="text-xs font-bold ml-0.5">%</span></p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="p-1.5 bg-amber-100 rounded-lg"><Target className="w-3.5 h-3.5 text-amber-600" /></div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">이탈 집중 주차</span>
+          <div className="p-3 rounded-xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
+            <div className="flex items-center gap-1.5 mb-1">
+              <div className="p-1 bg-amber-100 rounded-md"><Target className="w-3 h-3 text-amber-600" /></div>
+              <span className="text-[10px] font-bold text-gray-500 uppercase">이탈 집중 주차</span>
             </div>
-            <p className="text-2xl font-extrabold text-amber-600">{summary.peakWeek || '-'}
-              {(summary.peakWeekDrops || 0) > 0 && <span className="text-sm font-bold text-gray-400 ml-1">({summary.peakWeekDrops}명)</span>}
+            <p className="text-xl font-extrabold text-amber-600">{summary.peakWeek || '-'}
+              {(summary.peakWeekDrops || 0) > 0 && <span className="text-xs font-bold text-gray-400 ml-1">({summary.peakWeekDrops}명)</span>}
             </p>
           </div>
         </div>
