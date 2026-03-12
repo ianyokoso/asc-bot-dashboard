@@ -6,6 +6,7 @@ interface DroppedMember {
   name: string;
   track: string;
   droppedDate: string;
+  droppedWeek?: number;
   activityStatus: string;
 }
 
@@ -40,8 +41,8 @@ interface DropStats {
   recentDrops: DroppedMember[];
 }
 
-const COLOR_PALETTE = [
-  '#3b82f6', '#f43f5e', '#f59e0b', '#10b981', '#8b5cf6', '#06b6d4', '#f97316', '#ec4899',
+const LINE_COLORS = [
+  '#8b5cf6', '#f43f5e', '#06b6d4', '#f59e0b', '#10b981', '#ec4899', '#3b82f6', '#f97316',
 ];
 
 const DropoutAnalytics: React.FC = () => {
@@ -50,6 +51,7 @@ const DropoutAnalytics: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
   const [view, setView] = useState<'overview' | 'weekly'>('overview');
+  const [hoveredCell, setHoveredCell] = useState<{ track: string; week: number } | null>(null);
 
   const isProxyNeeded = window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app');
   const API_BASE_URL = isProxyNeeded ? '/api-proxy' : 'http://168.107.16.76:8000';
@@ -59,10 +61,7 @@ const DropoutAnalytics: React.FC = () => {
     setError(null);
     try {
       const res = await fetch(`${API_BASE_URL}/api/drop-stats`);
-      if (!res.ok) {
-        setError(`서버 오류 (${res.status})`);
-        return;
-      }
+      if (!res.ok) { setError(`서버 오류 (${res.status})`); return; }
       const data = await res.json();
       if (data.status === 'success') {
         setStats({
@@ -72,27 +71,55 @@ const DropoutAnalytics: React.FC = () => {
           allTracks: data.allTracks || [],
           recentDrops: data.recentDrops || [],
         });
-      } else {
-        setError(data.message || 'Failed to load');
-      }
-    } catch (e: any) {
-      setError('서버 연결 실패: ' + (e?.message || ''));
-    } finally {
-      setLoading(false);
-    }
+      } else { setError(data.message || 'Failed to load'); }
+    } catch (e: any) { setError('서버 연결 실패: ' + (e?.message || '')); }
+    finally { setLoading(false); }
   };
 
   useEffect(() => { fetchStats(); }, []);
 
   const trackColorMap = useMemo(() => {
     const map: Record<string, string> = {};
-    if (stats?.allTracks) {
-      stats.allTracks.forEach((t, i) => {
-        map[t] = COLOR_PALETTE[i % COLOR_PALETTE.length];
-      });
-    }
+    if (stats?.allTracks) stats.allTracks.forEach((t, i) => { map[t] = LINE_COLORS[i % LINE_COLORS.length]; });
     return map;
   }, [stats?.allTracks]);
+
+  // Compute retention data: per track, cumulative retention % at each week
+  const retentionData = useMemo(() => {
+    if (!stats) return { byTrack: {} as Record<string, number[]>, overall: [] as number[] };
+    const { trackStats, weeklyAnalysis, allTracks } = stats;
+    const byTrack: Record<string, number[]> = {};
+    const overallRetention: number[] = [];
+
+    // Get current week number (how far into cohort we are)
+    const today = new Date();
+    const cohortStart = new Date('2026-02-11'); // Will be approximate
+    const currentWeek = Math.max(1, Math.ceil((today.getTime() - cohortStart.getTime()) / (7 * 86400000)));
+
+    for (const track of allTracks) {
+      const ts = trackStats.find(t => t.track === track);
+      const total = ts?.total || 0;
+      if (total === 0) { byTrack[track] = weeklyAnalysis.map(() => 100); continue; }
+
+      let cumulativeDrops = 0;
+      byTrack[track] = weeklyAnalysis.map((w) => {
+        if (w.week > currentWeek) return -1; // future week, no data yet
+        cumulativeDrops += (w.byTrack?.[track] || 0);
+        return Math.round(((total - cumulativeDrops) / total) * 1000) / 10;
+      });
+    }
+
+    // Overall retention
+    const totalMembers = stats.summary.totalMembers || 1;
+    let cumDrops = 0;
+    for (const w of weeklyAnalysis) {
+      if (w.week > currentWeek) { overallRetention.push(-1); continue; }
+      cumDrops += w.total;
+      overallRetention.push(Math.round(((totalMembers - cumDrops) / totalMembers) * 1000) / 10);
+    }
+
+    return { byTrack, overall: overallRetention };
+  }, [stats]);
 
   if (loading) {
     return (
@@ -111,9 +138,7 @@ const DropoutAnalytics: React.FC = () => {
         <div className="text-center">
           <AlertTriangle className="w-10 h-10 text-amber-400 mx-auto mb-2" />
           <p className="text-gray-600 font-medium">{error || '데이터 없음'}</p>
-          <button onClick={fetchStats} className="mt-3 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-bold">
-            다시 시도
-          </button>
+          <button onClick={fetchStats} className="mt-3 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-bold">다시 시도</button>
         </div>
       </div>
     );
@@ -124,38 +149,78 @@ const DropoutAnalytics: React.FC = () => {
     ? (trackStats.find(t => t.track === selectedTrack)?.droppedMembers || [])
     : (recentDrops || []);
 
-  const getBarColor = (rate: number) => {
-    if (rate >= 20) return 'bg-rose-500';
-    if (rate >= 10) return 'bg-amber-500';
-    return 'bg-emerald-500';
+  const getBarColor = (rate: number) => rate >= 20 ? 'bg-rose-500' : rate >= 10 ? 'bg-amber-500' : 'bg-emerald-500';
+  const getRateColor = (rate: number) => rate >= 20 ? 'text-rose-600' : rate >= 10 ? 'text-amber-600' : 'text-emerald-600';
+
+  // Purple gradient for retention heatmap (higher = darker purple = better retention)
+  const getRetentionColor = (pct: number) => {
+    if (pct < 0) return 'bg-gray-50 text-gray-300'; // future
+    if (pct >= 95) return 'bg-purple-600 text-white';
+    if (pct >= 90) return 'bg-purple-500 text-white';
+    if (pct >= 80) return 'bg-purple-400 text-white';
+    if (pct >= 70) return 'bg-purple-300 text-purple-900';
+    if (pct >= 60) return 'bg-purple-200 text-purple-800';
+    if (pct >= 50) return 'bg-purple-100 text-purple-700';
+    return 'bg-purple-50 text-purple-600';
   };
 
-  const getRateColor = (rate: number) => {
-    if (rate >= 20) return 'text-rose-600';
-    if (rate >= 10) return 'text-amber-600';
-    return 'text-emerald-600';
-  };
+  // SVG Retention Curve Chart
+  const RetentionChart = ({ data, tracks, colors, weeks }: {
+    data: Record<string, number[]>; tracks: string[]; colors: Record<string, string>; weeks: WeeklyData[];
+  }) => {
+    const W = 700, H = 240, padL = 45, padR = 20, padT = 20, padB = 40;
+    const chartW = W - padL - padR;
+    const chartH = H - padT - padB;
+    const validWeeks = weeks.filter((_, i) => {
+      return tracks.some(t => (data[t]?.[i] ?? -1) >= 0);
+    });
+    const numPoints = validWeeks.length;
+    if (numPoints === 0) return <p className="text-sm text-gray-400 text-center py-8">데이터 없음</p>;
 
-  // Safe max calculations
-  const maxWeeklyDrops = Math.max(1, ...(weeklyAnalysis || []).map(w => w.total || 0), 0);
-  const maxCellValue = (() => {
-    let max = 1;
-    for (const w of (weeklyAnalysis || [])) {
-      for (const t of (allTracks || [])) {
-        const v = w.byTrack?.[t] || 0;
-        if (v > max) max = v;
-      }
-    }
-    return max;
-  })();
+    const xStep = numPoints > 1 ? chartW / (numPoints - 1) : chartW;
+    const yScale = (val: number) => padT + chartH - (val / 100) * chartH;
+    const xPos = (i: number) => padL + (numPoints > 1 ? i * xStep : chartW / 2);
 
-  const getHeatColor = (count: number, max: number) => {
-    if (count === 0) return 'bg-gray-50 text-gray-300';
-    const intensity = count / Math.max(max, 1);
-    if (intensity >= 0.75) return 'bg-rose-500 text-white font-bold';
-    if (intensity >= 0.5) return 'bg-rose-300 text-rose-900 font-semibold';
-    if (intensity >= 0.25) return 'bg-rose-200 text-rose-800';
-    return 'bg-rose-100 text-rose-700';
+    // Grid lines
+    const gridLines = [0, 25, 50, 75, 100];
+
+    return (
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ maxHeight: '260px' }}>
+        {/* Grid */}
+        {gridLines.map(v => (
+          <g key={v}>
+            <line x1={padL} x2={W - padR} y1={yScale(v)} y2={yScale(v)} stroke="#e5e7eb" strokeWidth={1} strokeDasharray={v === 0 ? '' : '4,4'} />
+            <text x={padL - 8} y={yScale(v) + 4} textAnchor="end" className="fill-gray-400" fontSize="10" fontWeight="500">{v}%</text>
+          </g>
+        ))}
+
+        {/* X axis labels */}
+        {validWeeks.map((w, i) => (
+          <text key={w.week} x={xPos(i)} y={H - 8} textAnchor="middle" className="fill-gray-500" fontSize="10" fontWeight="600">{w.weekLabel}</text>
+        ))}
+
+        {/* Lines per track */}
+        {tracks.map((track) => {
+          const vals = data[track] || [];
+          const points = validWeeks.map((_, i) => {
+            const v = vals[weeks.indexOf(validWeeks[i])];
+            return v >= 0 ? { x: xPos(i), y: yScale(v), v } : null;
+          }).filter(Boolean) as { x: number; y: number; v: number }[];
+
+          if (points.length < 1) return null;
+          const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ');
+
+          return (
+            <g key={track}>
+              <path d={pathD} fill="none" stroke={colors[track] || '#999'} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" opacity={0.85} />
+              {points.map((p, i) => (
+                <circle key={i} cx={p.x} cy={p.y} r={4} fill="white" stroke={colors[track] || '#999'} strokeWidth={2} />
+              ))}
+            </g>
+          );
+        })}
+      </svg>
+    );
   };
 
   return (
@@ -164,39 +229,24 @@ const DropoutAnalytics: React.FC = () => {
       <div className="px-8 pt-6 pb-2 shrink-0">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-rose-100/80 rounded-xl">
-              <TrendingDown className="w-5 h-5 text-rose-600" />
+            <div className="p-2.5 bg-purple-100/80 rounded-xl">
+              <TrendingDown className="w-5 h-5 text-purple-600" />
             </div>
             <div>
-              <h2 className="text-xl font-extrabold text-[#1e293b]">탈락 현황 분석</h2>
-              <p className="text-xs text-gray-500 font-medium">트랙별 탈락률 및 주차별 추이 분석</p>
+              <h2 className="text-xl font-extrabold text-[#1e293b]">코호트 리텐션 분석</h2>
+              <p className="text-xs text-gray-500 font-medium">트랙별 잔존율 및 주차별 이탈 추이</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <div className="bg-white/80 backdrop-blur-md p-1 rounded-full flex gap-1 border border-gray-200 shadow-sm">
-              <button
-                onClick={() => setView('overview')}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  view === 'overview' ? 'bg-indigo-600 text-white shadow-md' : 'text-gray-500 hover:text-indigo-600'
-                }`}
-              >
-                <BarChart3 className="w-3.5 h-3.5" />
-                트랙별
+              <button onClick={() => setView('overview')} className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${view === 'overview' ? 'bg-[#1e293b] text-white shadow-md' : 'text-gray-500 hover:text-gray-800'}`}>
+                <BarChart3 className="w-3.5 h-3.5" />트랙별
               </button>
-              <button
-                onClick={() => setView('weekly')}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  view === 'weekly' ? 'bg-indigo-600 text-white shadow-md' : 'text-gray-500 hover:text-indigo-600'
-                }`}
-              >
-                <Calendar className="w-3.5 h-3.5" />
-                주차별
+              <button onClick={() => setView('weekly')} className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${view === 'weekly' ? 'bg-[#1e293b] text-white shadow-md' : 'text-gray-500 hover:text-gray-800'}`}>
+                <Calendar className="w-3.5 h-3.5" />코호트
               </button>
             </div>
-            <button
-              onClick={fetchStats}
-              className="p-2.5 bg-white/60 hover:bg-white/80 rounded-xl border border-white/60 transition-all shadow-sm"
-            >
+            <button onClick={fetchStats} className="p-2.5 bg-white/60 hover:bg-white/80 rounded-xl border border-white/60 transition-all shadow-sm">
               <RefreshCw className="w-4 h-4 text-gray-600" />
             </button>
           </div>
@@ -220,17 +270,17 @@ const DropoutAnalytics: React.FC = () => {
           </div>
           <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
             <div className="flex items-center gap-2 mb-1.5">
-              <div className="p-1.5 bg-amber-100 rounded-lg"><TrendingDown className="w-3.5 h-3.5 text-amber-600" /></div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">전체 탈락률</span>
+              <div className="p-1.5 bg-purple-100 rounded-lg"><TrendingDown className="w-3.5 h-3.5 text-purple-600" /></div>
+              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">전체 잔존율</span>
             </div>
-            <p className={`text-2xl font-extrabold ${getRateColor(summary.overallDropRate)}`}>{summary.overallDropRate}<span className="text-sm font-bold ml-0.5">%</span></p>
+            <p className="text-2xl font-extrabold text-purple-600">{(100 - summary.overallDropRate).toFixed(1)}<span className="text-sm font-bold ml-0.5">%</span></p>
           </div>
           <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 shadow-sm">
             <div className="flex items-center gap-2 mb-1.5">
-              <div className="p-1.5 bg-purple-100 rounded-lg"><Target className="w-3.5 h-3.5 text-purple-600" /></div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">탈락 집중 주차</span>
+              <div className="p-1.5 bg-amber-100 rounded-lg"><Target className="w-3.5 h-3.5 text-amber-600" /></div>
+              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">이탈 집중 주차</span>
             </div>
-            <p className="text-2xl font-extrabold text-purple-600">{summary.peakWeek || '-'}
+            <p className="text-2xl font-extrabold text-amber-600">{summary.peakWeek || '-'}
               {(summary.peakWeekDrops || 0) > 0 && <span className="text-sm font-bold text-gray-400 ml-1">({summary.peakWeekDrops}명)</span>}
             </p>
           </div>
@@ -240,26 +290,15 @@ const DropoutAnalytics: React.FC = () => {
       {/* Content Area */}
       <div className="flex-1 px-8 pb-6 overflow-y-auto custom-scrollbar min-h-0">
         {view === 'overview' ? (
+          /* ===== TRACK OVERVIEW ===== */
           <div className="flex gap-6 h-full">
-            {/* Left: Track Stats */}
             <div className="w-1/2 flex flex-col gap-2.5">
               <h3 className="text-sm font-bold text-gray-700 mb-1">트랙별 탈락률</h3>
-              <button
-                onClick={() => setSelectedTrack(null)}
-                className={`w-full text-left p-3.5 rounded-2xl border transition-all ${
-                  selectedTrack === null ? 'bg-indigo-50/80 border-indigo-200 shadow-sm' : 'bg-white/50 border-white/60 hover:bg-white/70'
-                }`}
-              >
+              <button onClick={() => setSelectedTrack(null)} className={`w-full text-left p-3.5 rounded-2xl border transition-all ${selectedTrack === null ? 'bg-indigo-50/80 border-indigo-200 shadow-sm' : 'bg-white/50 border-white/60 hover:bg-white/70'}`}>
                 <span className="text-sm font-bold text-gray-700">전체 최근 탈락자</span>
               </button>
               {trackStats.map((ts) => (
-                <button
-                  key={ts.track}
-                  onClick={() => setSelectedTrack(ts.track)}
-                  className={`w-full text-left p-3.5 rounded-2xl border transition-all ${
-                    selectedTrack === ts.track ? 'bg-indigo-50/80 border-indigo-200 shadow-sm' : 'bg-white/50 border-white/60 hover:bg-white/70'
-                  }`}
-                >
+                <button key={ts.track} onClick={() => setSelectedTrack(ts.track)} className={`w-full text-left p-3.5 rounded-2xl border transition-all ${selectedTrack === ts.track ? 'bg-indigo-50/80 border-indigo-200 shadow-sm' : 'bg-white/50 border-white/60 hover:bg-white/70'}`}>
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-2">
                       <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: trackColorMap[ts.track] || '#999' }}></div>
@@ -280,8 +319,6 @@ const DropoutAnalytics: React.FC = () => {
                 </button>
               ))}
             </div>
-
-            {/* Right: Dropped Members List */}
             <div className="w-1/2 flex flex-col">
               <h3 className="text-sm font-bold text-gray-700 mb-2">
                 {selectedTrack ? `${selectedTrack} 탈락자` : '최근 탈락자'}
@@ -289,28 +326,17 @@ const DropoutAnalytics: React.FC = () => {
               </h3>
               {filteredMembers.length === 0 ? (
                 <div className="flex-1 flex items-center justify-center">
-                  <div className="text-center">
-                    <UserMinus className="w-8 h-8 text-gray-200 mx-auto mb-2" />
-                    <p className="text-sm text-gray-400">탈락자가 없습니다</p>
-                  </div>
+                  <div className="text-center"><UserMinus className="w-8 h-8 text-gray-200 mx-auto mb-2" /><p className="text-sm text-gray-400">탈락자가 없습니다</p></div>
                 </div>
               ) : (
                 <div className="flex flex-col gap-2">
                   {filteredMembers.map((m, idx) => (
                     <div key={`${m.memberId}-${idx}`} className="p-3.5 rounded-xl bg-white/60 border border-white/60 shadow-sm flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center">
-                          <UserMinus className="w-3.5 h-3.5 text-rose-500" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold text-gray-800">{m.name}</p>
-                          <p className="text-[11px] text-gray-500">{m.track}</p>
-                        </div>
+                        <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center"><UserMinus className="w-3.5 h-3.5 text-rose-500" /></div>
+                        <div><p className="text-sm font-bold text-gray-800">{m.name}</p><p className="text-[11px] text-gray-500">{m.track}</p></div>
                       </div>
-                      <div className="flex items-center gap-1.5 text-[11px] text-gray-500">
-                        <Calendar className="w-3 h-3" />
-                        {m.droppedDate}
-                      </div>
+                      <div className="flex items-center gap-1.5 text-[11px] text-gray-500"><Calendar className="w-3 h-3" />{m.droppedDate}</div>
                     </div>
                   ))}
                 </div>
@@ -318,142 +344,196 @@ const DropoutAnalytics: React.FC = () => {
             </div>
           </div>
         ) : (
-          /* ===== WEEKLY VIEW ===== */
+          /* ===== COHORT RETENTION VIEW (Adjust-style) ===== */
           <div className="flex flex-col gap-6">
-            {/* Weekly Bar Chart */}
-            <div className="p-6 rounded-2xl bg-white/60 border border-white/60 shadow-sm">
-              <h3 className="text-sm font-bold text-gray-700 mb-4">주차별 탈락 추이</h3>
-              {weeklyAnalysis.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center py-8">주차별 데이터가 없습니다</p>
-              ) : (
-                <>
-                  <div className="flex items-end gap-3 h-48">
-                    {weeklyAnalysis.map((w) => (
-                      <div key={w.week} className="flex-1 flex flex-col items-center gap-1">
-                        <div className="w-full flex flex-col-reverse items-center" style={{ height: '160px' }}>
-                          {w.total === 0 ? (
-                            <div className="w-full max-w-[48px] h-1 bg-gray-100 rounded-full"></div>
-                          ) : (
-                            <div
-                              className="w-full max-w-[48px] rounded-lg overflow-hidden flex flex-col-reverse transition-all duration-500"
-                              style={{ height: `${Math.max((w.total / maxWeeklyDrops) * 160, 12)}px` }}
-                            >
-                              {allTracks.map((track, tIdx) => {
-                                const count = w.byTrack?.[track] || 0;
-                                if (count === 0) return null;
-                                const pct = (count / w.total) * 100;
-                                return (
-                                  <div
-                                    key={track}
-                                    style={{ height: `${pct}%`, backgroundColor: trackColorMap[track] || '#999', minHeight: '4px' }}
-                                    title={`${track}: ${count}명`}
-                                  />
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                        <span className={`text-xs font-bold ${w.total > 0 ? 'text-gray-700' : 'text-gray-300'}`}>
-                          {w.total > 0 ? w.total : '-'}
-                        </span>
-                        <span className="text-[10px] font-semibold text-gray-500">{w.weekLabel}</span>
-                        <span className="text-[9px] text-gray-400">{w.dateRange}</span>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Legend */}
-                  <div className="flex flex-wrap gap-3 mt-4 pt-3 border-t border-gray-100">
-                    {allTracks.map((track) => (
-                      <div key={track} className="flex items-center gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: trackColorMap[track] || '#999' }}></div>
-                        <span className="text-[11px] font-medium text-gray-600">{track}</span>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
 
-            {/* Heatmap: Track x Week */}
-            {weeklyAnalysis.length > 0 && allTracks.length > 0 && (
-              <div className="p-6 rounded-2xl bg-white/60 border border-white/60 shadow-sm">
-                <h3 className="text-sm font-bold text-gray-700 mb-1">트랙 x 주차 히트맵</h3>
-                <p className="text-[11px] text-gray-400 mb-4">셀 색이 진할수록 해당 주차에 탈락이 집중된 구간입니다.</p>
+            {/* 1. Cohort Retention Table */}
+            <div className="p-6 rounded-2xl bg-white/70 border border-white/60 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-bold text-gray-800">Cohort Analysis</h3>
+                <div className="flex items-center gap-4 text-[10px] text-gray-400">
+                  <span>Metric: <strong className="text-gray-600">Retention</strong></span>
+                </div>
+              </div>
+
+              {weeklyAnalysis.length > 0 && allTracks.length > 0 ? (
                 <div className="overflow-x-auto">
-                  <table className="w-full">
+                  <table className="w-full border-collapse">
                     <thead>
                       <tr>
-                        <th className="text-left text-[11px] font-bold text-gray-500 pb-2 pr-4 w-40">트랙</th>
+                        <th className="text-left text-[11px] font-bold text-gray-500 pb-3 pr-4 w-48 sticky left-0 bg-white/70">트랙</th>
+                        <th className="text-center text-[11px] font-bold text-gray-500 pb-3 px-2 min-w-[64px]">멤버</th>
                         {weeklyAnalysis.map((w) => (
-                          <th key={w.week} className="text-center text-[10px] font-bold text-gray-500 pb-2 px-1 min-w-[56px]">
-                            <div>{w.weekLabel}</div>
-                            <div className="font-normal text-gray-400">{w.dateRange}</div>
+                          <th key={w.week} className="text-center text-[11px] font-bold text-gray-500 pb-3 px-1 min-w-[72px]">
+                            {w.weekLabel}
                           </th>
                         ))}
-                        <th className="text-center text-[11px] font-bold text-gray-600 pb-2 pl-3 min-w-[48px]">합계</th>
                       </tr>
                     </thead>
                     <tbody>
                       {allTracks.map((track) => {
-                        const trackTotal = weeklyAnalysis.reduce((sum, w) => sum + (w.byTrack?.[track] || 0), 0);
+                        const ts = trackStats.find(t => t.track === track);
+                        const total = ts?.total || 0;
+                        const retention = retentionData.byTrack[track] || [];
+
                         return (
-                          <tr key={track}>
-                            <td className="py-1 pr-4">
+                          <tr key={track} className="group">
+                            <td className="py-1.5 pr-4 sticky left-0 bg-white/70">
                               <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: trackColorMap[track] || '#999' }}></div>
+                                <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: trackColorMap[track] || '#999' }}></div>
                                 <span className="text-xs font-semibold text-gray-700 truncate">{track}</span>
                               </div>
                             </td>
-                            {weeklyAnalysis.map((w) => {
-                              const count = w.byTrack?.[track] || 0;
+                            <td className="py-1.5 px-2 text-center">
+                              <span className="text-xs font-bold text-gray-800">{total}</span>
+                            </td>
+                            {weeklyAnalysis.map((w, wi) => {
+                              const val = retention[wi] ?? -1;
+                              const isHovered = hoveredCell?.track === track && hoveredCell?.week === w.week;
                               return (
-                                <td key={w.week} className="py-1 px-1">
-                                  <div className={`w-full h-9 rounded-lg flex items-center justify-center text-xs transition-all ${getHeatColor(count, maxCellValue)}`}>
-                                    {count > 0 ? count : ''}
+                                <td key={w.week} className="py-1.5 px-1"
+                                  onMouseEnter={() => setHoveredCell({ track, week: w.week })}
+                                  onMouseLeave={() => setHoveredCell(null)}
+                                >
+                                  <div className={`h-10 rounded-lg flex items-center justify-center text-xs font-semibold transition-all cursor-default
+                                    ${val < 0 ? 'bg-gray-50 text-gray-300' : getRetentionColor(val)}
+                                    ${isHovered ? 'ring-2 ring-purple-400 ring-offset-1 scale-105' : ''}
+                                  `}>
+                                    {val >= 0 ? `${val}%` : '–'}
                                   </div>
                                 </td>
                               );
                             })}
-                            <td className="py-1 pl-3">
-                              <div className={`h-9 rounded-lg flex items-center justify-center text-xs font-bold ${trackTotal > 0 ? 'bg-gray-100 text-gray-800' : 'text-gray-300'}`}>
-                                {trackTotal > 0 ? trackTotal : '-'}
-                              </div>
-                            </td>
                           </tr>
                         );
                       })}
-                      <tr className="border-t border-gray-200">
-                        <td className="py-2 pr-4"><span className="text-xs font-bold text-gray-700">주차 합계</span></td>
-                        {weeklyAnalysis.map((w) => (
-                          <td key={w.week} className="py-2 px-1">
-                            <div className={`w-full h-9 rounded-lg flex items-center justify-center text-xs font-bold ${w.total > 0 ? 'bg-gray-800 text-white' : 'bg-gray-50 text-gray-300'}`}>
-                              {w.total > 0 ? w.total : '-'}
-                            </div>
-                          </td>
-                        ))}
-                        <td className="py-2 pl-3">
-                          <div className="h-9 rounded-lg flex items-center justify-center text-xs font-extrabold bg-rose-600 text-white">
-                            {summary.totalDropped}
-                          </div>
+
+                      {/* Total row */}
+                      <tr className="border-t-2 border-purple-100">
+                        <td className="py-2.5 pr-4 sticky left-0 bg-white/70">
+                          <span className="text-xs font-extrabold text-purple-700">Total</span>
                         </td>
+                        <td className="py-2.5 px-2 text-center">
+                          <span className="text-xs font-extrabold text-purple-700">{summary.totalMembers}</span>
+                        </td>
+                        {weeklyAnalysis.map((_, wi) => {
+                          const val = retentionData.overall[wi] ?? -1;
+                          return (
+                            <td key={wi} className="py-2.5 px-1">
+                              <div className={`h-10 rounded-lg flex items-center justify-center text-xs font-bold transition-all
+                                ${val < 0 ? 'bg-gray-50 text-gray-300' : 'bg-purple-700 text-white'}
+                              `}>
+                                {val >= 0 ? `${val}%` : '–'}
+                              </div>
+                            </td>
+                          );
+                        })}
                       </tr>
                     </tbody>
                   </table>
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-gray-400 text-center py-8">주차별 데이터가 없습니다</p>
+              )}
+            </div>
 
-            {/* Insight Card */}
+            {/* 2. Retention Curve Chart */}
+            <div className="p-6 rounded-2xl bg-white/70 border border-white/60 shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-gray-800">Cohort Analysis Chart</h3>
+                <div className="flex items-center gap-4 text-[10px] text-gray-400">
+                  <span>Metric: <strong className="text-gray-600">Retention</strong></span>
+                </div>
+              </div>
+
+              <RetentionChart
+                data={retentionData.byTrack}
+                tracks={allTracks}
+                colors={trackColorMap}
+                weeks={weeklyAnalysis}
+              />
+
+              {/* Legend */}
+              <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3 pt-3 border-t border-gray-100">
+                {allTracks.map((track) => (
+                  <div key={track} className="flex items-center gap-1.5">
+                    <div className="w-3 h-[3px] rounded-full" style={{ backgroundColor: trackColorMap[track] || '#999' }}></div>
+                    <span className="text-[11px] font-medium text-gray-600">{track}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Performance Trend (Overall) */}
+            <div className="p-6 rounded-2xl bg-white/70 border border-white/60 shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-bold text-gray-800">Performance Trends</h3>
+                <div className="flex items-center gap-4 text-[10px] text-gray-400">
+                  <span>Metric: <strong className="text-gray-600">Retention</strong></span>
+                  <span>Period: <strong className="text-gray-600">Week</strong></span>
+                </div>
+              </div>
+
+              {(() => {
+                const W = 700, H = 200, padL = 45, padR = 20, padT = 20, padB = 40;
+                const chartW = W - padL - padR;
+                const chartH = H - padT - padB;
+                const overall = retentionData.overall.filter(v => v >= 0);
+                if (overall.length === 0) return <p className="text-sm text-gray-400 text-center py-8">데이터 없음</p>;
+
+                const xStep = overall.length > 1 ? chartW / (overall.length - 1) : chartW;
+                const yScale = (v: number) => padT + chartH - (v / 100) * chartH;
+                const xPos = (i: number) => padL + (overall.length > 1 ? i * xStep : chartW / 2);
+
+                const points = overall.map((v, i) => ({ x: xPos(i), y: yScale(v), v }));
+                const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ');
+                const areaD = pathD + ` L${points[points.length - 1].x},${padT + chartH} L${points[0].x},${padT + chartH} Z`;
+
+                return (
+                  <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ maxHeight: '220px' }}>
+                    <defs>
+                      <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.15" />
+                        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.02" />
+                      </linearGradient>
+                    </defs>
+                    {[0, 25, 50, 75, 100].map(v => (
+                      <g key={v}>
+                        <line x1={padL} x2={W - padR} y1={yScale(v)} y2={yScale(v)} stroke="#e5e7eb" strokeWidth={1} strokeDasharray={v === 0 ? '' : '4,4'} />
+                        <text x={padL - 8} y={yScale(v) + 4} textAnchor="end" className="fill-gray-400" fontSize="10" fontWeight="500">{v}%</text>
+                      </g>
+                    ))}
+                    {points.map((_, i) => (
+                      <text key={i} x={xPos(i)} y={H - 8} textAnchor="middle" className="fill-gray-500" fontSize="10" fontWeight="600">
+                        {weeklyAnalysis[i]?.weekLabel || ''}
+                      </text>
+                    ))}
+                    <path d={areaD} fill="url(#areaGrad)" />
+                    <path d={pathD} fill="none" stroke="#8b5cf6" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+                    {points.map((p, i) => (
+                      <circle key={i} cx={p.x} cy={p.y} r={4} fill="white" stroke="#8b5cf6" strokeWidth={2} />
+                    ))}
+                  </svg>
+                );
+              })()}
+
+              <div className="flex items-center gap-2 mt-2 pt-2 border-t border-gray-100">
+                <div className="w-3 h-[3px] rounded-full bg-purple-500"></div>
+                <span className="text-[11px] font-medium text-gray-500">전체 잔존율</span>
+              </div>
+            </div>
+
+            {/* 4. Insight */}
             {summary.totalDropped > 0 && summary.peakWeek && summary.peakWeek !== '-' && (
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 shadow-sm">
+              <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200/60 shadow-sm">
                 <div className="flex items-start gap-3">
-                  <div className="p-2 bg-amber-100 rounded-lg shrink-0 mt-0.5">
-                    <AlertTriangle className="w-4 h-4 text-amber-600" />
+                  <div className="p-2 bg-purple-100 rounded-lg shrink-0 mt-0.5">
+                    <AlertTriangle className="w-4 h-4 text-purple-600" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-amber-900 mb-1">인사이트</h4>
-                    <p className="text-xs text-amber-800 leading-relaxed">
-                      <strong>{summary.peakWeek}</strong>에 탈락이 가장 많이 발생했습니다 ({summary.peakWeekDrops}명).
+                    <h4 className="text-sm font-bold text-purple-900 mb-1">인사이트</h4>
+                    <p className="text-xs text-purple-800 leading-relaxed">
+                      <strong>{summary.peakWeek}</strong>에 이탈이 가장 많이 발생했습니다 ({summary.peakWeekDrops}명).
                       {(() => {
                         try {
                           const peakWeekData = weeklyAnalysis.find(w => w.weekLabel === summary.peakWeek);
@@ -461,11 +541,10 @@ const DropoutAnalytics: React.FC = () => {
                           const entries = Object.entries(peakWeekData.byTrack).filter(([, v]) => v > 0);
                           if (entries.length === 0) return '';
                           const topTrack = entries.sort(([, a], [, b]) => b - a)[0];
-                          return ` 특히 ${topTrack[0]}에서 ${topTrack[1]}명이 탈락하여 해당 주차 커리큘럼 검토가 필요할 수 있습니다.`;
-                        } catch {
-                          return '';
-                        }
+                          return ` 특히 ${topTrack[0]}에서 ${topTrack[1]}명이 이탈하여 해당 주차 커리큘럼 점검이 필요합니다.`;
+                        } catch { return ''; }
                       })()}
+                      {' '}전체 잔존율은 {(100 - summary.overallDropRate).toFixed(1)}%입니다.
                     </p>
                   </div>
                 </div>
