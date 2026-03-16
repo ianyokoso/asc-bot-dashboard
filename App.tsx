@@ -40,6 +40,9 @@ const App: React.FC = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [testMode, setTestMode] = useState(false);
 
+  // Discord 채널 설정
+  const [discordChannels, setDiscordChannels] = useState<Record<string, number | null>>({});
+
   // Toast State
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error'; visible: boolean }>({
     message: '',
@@ -74,6 +77,7 @@ const App: React.FC = () => {
         if (data.weeklyTime1) setWeeklyTime1(data.weeklyTime1);
         if (data.weeklyTime2) setWeeklyTime2(data.weeklyTime2);
         if (data.trackConfig) setTrackConfig(data.trackConfig);
+        if (data.discordChannels) setDiscordChannels(data.discordChannels);
       })
       .catch(err => console.error("Failed to load settings:", err));
 
@@ -192,6 +196,10 @@ const App: React.FC = () => {
   const saveCohort = () => saveSettings({ cohortName, startDate, endDate }, "기수/기간 설정 저장 완료!");
   const saveHoliday = () => saveSettings({ holidayStart, holidayEnd }, "휴무 설정 저장 완료!");
   const saveSchedule = () => saveSettings({ sfTime1, sfTime2, weeklyTime1, weeklyTime2 }, "스케줄 설정 저장 완료!");
+  const saveChannels = async (channels: Record<string, number | null>) => {
+    await saveSettings({ discordChannels: channels }, "채널 설정 저장 완료!");
+    setDiscordChannels(channels);
+  };
 
   const saveTrackConfig = async (config: TrackConfigItem[]) => {
     setIsTrackConfigSaving(true);
@@ -370,6 +378,8 @@ const App: React.FC = () => {
             trackConfig={trackConfig}
             onSaveTrackConfig={saveTrackConfig}
             isTrackConfigSaving={isTrackConfigSaving}
+            discordChannels={discordChannels}
+            onSaveChannels={saveChannels}
           />
         } />
       </Routes>

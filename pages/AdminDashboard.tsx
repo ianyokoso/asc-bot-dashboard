@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save, Zap, AlertCircle } from 'lucide-react';
+import { Settings, AlertTriangle, Bell, CheckCircle, Minus, Save, Zap, AlertCircle, Hash } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import LuxuryHeader from '../components/LuxuryHeader';
 import LuxuryTrackTabs from '../components/LuxuryTrackTabs';
@@ -59,6 +59,9 @@ interface AdminDashboardProps {
     trackConfig: TrackConfigItem[];
     onSaveTrackConfig?: (config: TrackConfigItem[]) => void;
     isTrackConfigSaving?: boolean;
+    // Discord Channels
+    discordChannels: Record<string, number | null>;
+    onSaveChannels?: (channels: Record<string, number | null>) => void;
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -92,7 +95,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     isFullSyncing,
     trackConfig,
     onSaveTrackConfig,
-    isTrackConfigSaving
+    isTrackConfigSaving,
+    discordChannels,
+    onSaveChannels
 }) => {
     // Tabs: Submissions vs Groups vs Members vs Settings
     const [activeTab, setActiveTab] = useState<'submissions' | 'groups' | 'members' | 'rankings' | 'dropouts' | 'settings'>('submissions');
@@ -421,6 +426,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                     </div>
                                 </div>
 
+                                {/* 4.5 Discord Channel Settings */}
+                                <ChannelSettings channels={discordChannels} onSave={onSaveChannels || (() => {})} />
+
                                 {/* 5. Track Manager */}
                                 <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
                                     <TrackManager
@@ -442,6 +450,91 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </div>
             </main >
         </div >
+    );
+};
+
+const CHANNEL_LABELS: Record<string, string> = {
+    CREATOR_SHORT_CHANNEL: '크리에이터 숏폼',
+    CREATOR_LONG_CHANNEL: '크리에이터 롱폼',
+    BUILDER_BASIC_ID: '빌더 기초',
+    BUILDER_ADVANCED_ID: '빌더 심화',
+    SALES_PRACTICAL_ID: '세일즈 실전',
+    AI_AGENT_ID: 'AI 에이전트',
+};
+
+const ChannelSettings: React.FC<{
+    channels: Record<string, number | null>;
+    onSave: (channels: Record<string, number | null>) => void;
+}> = ({ channels, onSave }) => {
+    const [editChannels, setEditChannels] = useState<Record<string, string>>(() => {
+        const init: Record<string, string> = {};
+        for (const key of Object.keys(CHANNEL_LABELS)) {
+            init[key] = channels[key] ? String(channels[key]) : '';
+        }
+        return init;
+    });
+    const [isSaving, setIsSaving] = useState(false);
+
+    // Sync when props change
+    React.useEffect(() => {
+        const updated: Record<string, string> = {};
+        for (const key of Object.keys(CHANNEL_LABELS)) {
+            updated[key] = channels[key] ? String(channels[key]) : '';
+        }
+        setEditChannels(updated);
+    }, [channels]);
+
+    const handleSave = async () => {
+        setIsSaving(true);
+        const result: Record<string, number | null> = {};
+        for (const [key, val] of Object.entries(editChannels)) {
+            result[key] = val ? Number(val) : null;
+        }
+        await onSave(result);
+        setIsSaving(false);
+    };
+
+    const hasChanges = Object.keys(CHANNEL_LABELS).some(
+        key => String(channels[key] || '') !== editChannels[key]
+    );
+
+    return (
+        <div className="p-6 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+            <div className="flex justify-between items-center mb-6">
+                <h3 className="text-base font-bold flex items-center gap-2 text-[#1e293b]">
+                    <div className="p-1.5 bg-violet-100 rounded-lg text-violet-600">
+                        <Hash className="w-4 h-4" />
+                    </div>
+                    Discord Channel IDs
+                </h3>
+                <button
+                    onClick={handleSave}
+                    disabled={!hasChanges || isSaving}
+                    className={`px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
+                        hasChanges
+                            ? 'bg-violet-500 text-white hover:bg-violet-600 shadow-lg'
+                            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    }`}
+                >
+                    <Save className="w-3.5 h-3.5" />
+                    {isSaving ? '저장 중...' : '저장'}
+                </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {Object.entries(CHANNEL_LABELS).map(([key, label]) => (
+                    <div key={key} className="space-y-1.5">
+                        <label className="text-[11px] font-bold text-gray-400 uppercase tracking-wider pl-1">{label}</label>
+                        <input
+                            type="text"
+                            value={editChannels[key] || ''}
+                            onChange={(e) => setEditChannels(prev => ({ ...prev, [key]: e.target.value }))}
+                            placeholder="채널 ID 입력"
+                            className="w-full pl-4 pr-4 py-2.5 bg-white/50 border border-white/60 rounded-xl focus:ring-2 focus:ring-violet-400/50 focus:bg-white/80 focus:border-violet-400/30 outline-none transition-all duration-300 backdrop-blur-sm shadow-sm font-mono text-sm text-gray-700"
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
